@@ -1,0 +1,17 @@
+This week we expected to be able to do...
+Do the E-R diagram and start with the tables
+
+Optional: Reasons why
+We've already chosen the topic and start thinking about the entities.
+
+This week we did...
+Finish the E-R diagram, download the project from github and start with the tables
+
+Optional: Reasons why
+On Monday's class we learn how to make the tables with sql and we already knew how to do the ER diagram
+
+Next weeks we will do...
+Finish the table 
+
+Optional: Reasons why
+We will have more time to do so 
