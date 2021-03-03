@@ -1,11 +1,11 @@
 CREATE TABLE family_history (
-      id_famHistory INTEGER PRIMARY KEY
+      id_famHistory INTEGER PRIMARY KEY AUTOINCREMENT
       type TEXT 
       member TEXT,
 )
 
 CREATE TABLE patient (
-      id_patient INTEGER PRIMARY KEY
+      id_patient INTEGER PRIMARY KEY AUTOINCREMENT
       name TEXT NOT NULL
       surname TEXT NOT NULL
       sex TEXT NOT NULL
@@ -17,21 +17,21 @@ CREATE TABLE patient (
 )
 
 CREATE TABLE medical_examinations (
-    id_medExam INTEGER PRIMARY KEY 
+    id_medExam INTEGER PRIMARY KEY AUTOINCREMENT
     type TEXT NOT NULL 
     date DATE NOT NULL
     diagnosis TEXT NOT NULL,
 )
 
 CREATE TABLE cancer (
-    id_cancer INTEGER PRIMARY KEY
+    id_cancer INTEGER PRIMARY KEY AUTOINCREMENT
     id_medExam REFERENCES medical_examinations (id_medExam) ON DELETE SET NULL
     type TEXT NOT NULL, 
 
 )
 
 CREATE TABLE treatment (
-    id_treatment INTEGER PRIMARY KEY
+    id_treatment INTEGER PRIMARY KEY AUTOINCREMENT
     type TEXT NOT NULL
     effects TEXT NOT NULL 
     startDate DATE NOT NULL
@@ -41,7 +41,7 @@ CREATE TABLE treatment (
 
 
 CREATE TABLE symptomps (
-   id_Symps INTEGER PRIMARY KEY
+   id_Symps INTEGER PRIMARY KEY AUTOINCREMENT
    detail TEXT NOT NULL
    id_medExam REFERENCES medical_examinations (id_medExam) ON DELETE SET NULL,
 )
