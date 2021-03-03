@@ -19,12 +19,9 @@ public class Cancer implements Serializable{
 		this.cancer_type = cancer_type;
 	}
 	
-
+	//getters and setters
 	public Integer getId_cancer() {
 		return id_cancer;
-	}
-	public void setId_cancer(Integer id_cancer) {
-		this.id_cancer = id_cancer;
 	}
 	public String getCancer_type() {
 		return cancer_type;

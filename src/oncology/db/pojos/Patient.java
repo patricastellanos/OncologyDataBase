@@ -20,7 +20,7 @@ public Patient(Integer id_patient, String name, String surname, String sex, Stri
 	
 	
 }
-
+	//getters and setters
 public Integer getId_patient() {
 	return id_patient;
 }
@@ -75,7 +75,7 @@ public String toString() {
 	return "Patient [id_patient=" + id_patient + ", name=" + name + ", surname=" + surname + ", sex=" + sex
 			+ ", med_condition=" + med_condition + ", location=" + location + "]";
 }
-
+//hashcode
 @Override
 public int hashCode() {
 	final int prime = 31;
@@ -89,7 +89,6 @@ public int hashCode() {
 	return result;
 }
 
-//hasCode
 @Override
 public boolean equals(Object obj) {
 	if (this == obj)
