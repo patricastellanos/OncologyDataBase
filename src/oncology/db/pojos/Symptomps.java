@@ -7,7 +7,7 @@ public class Symptomps implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id_symp;
-	private String intensity; //fixed values fokr future
+	private String intensity; //fixed values for future
 	private String details;
 	
 	//constructor

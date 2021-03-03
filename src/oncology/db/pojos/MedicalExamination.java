@@ -3,7 +3,7 @@ package oncology.db.pojos;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Medical_examination implements Serializable{
+public class MedicalExamination implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	private Integer id_medExam;
@@ -12,7 +12,7 @@ public class Medical_examination implements Serializable{
 	private String diagnosis;
 	
 	//constructor
-	public Medical_examination(Integer id_medExam, String medExam_type, Date dateMedExam, String diagnosis) {
+	public MedicalExamination(Integer id_medExam, String medExam_type, Date dateMedExam, String diagnosis) {
 		super();
 		this.id_medExam = id_medExam;
 		this.medExam_type = medExam_type;
@@ -51,6 +51,8 @@ public class Medical_examination implements Serializable{
 				+ dateMedExam + ", diagnosis=" + diagnosis + "]";
 	}
 	//hashcode
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -69,7 +71,7 @@ public class Medical_examination implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Medical_examination other = (Medical_examination) obj;
+		MedicalExamination other = (MedicalExamination) obj;
 		if (dateMedExam == null) {
 			if (other.dateMedExam != null)
 				return false;
