@@ -8,9 +8,6 @@ public class Cancer implements Serializable{
 	private Integer id_cancer;
 	private String cancer_type;
 	
-	
-	
-	
 	//constructor
 	
 	public Cancer(Integer id_cancer, String cancer_type) {
