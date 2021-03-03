@@ -1,21 +1,23 @@
 package oncology.db.pojos;
 
-public class Patient {
- private Integer id_patient;
+import java.io.Serializable;
+
+public class Patient implements Serializable {
+
+private static final long serialVersionUID = 1L;
+private Integer id_patient;
  private String name;
  private String surname;
  private String sex;
- private String med_condition;
  private String location;
  
  //Constructor
-public Patient(Integer id_patient, String name, String surname, String sex, String med_condition, String location) {
+public Patient(Integer id_patient, String name, String surname, String sex, String location) {
 	super();
 	this.id_patient = id_patient;
 	this.name = name;
 	this.surname = surname;
 	this.sex = sex;
-	this.med_condition = med_condition;
 	this.location = location;
 	
 	
@@ -23,10 +25,6 @@ public Patient(Integer id_patient, String name, String surname, String sex, Stri
 	//getters and setters
 public Integer getId_patient() {
 	return id_patient;
-}
-
-public void setId_patient(Integer id_patient) {
-	this.id_patient = id_patient;
 }
 
 public String getName() {
@@ -53,13 +51,6 @@ public void setSex(String sex) {
 	this.sex = sex;
 }
 
-public String getMed_condition() {
-	return med_condition;
-}
-
-public void setMed_condition(String med_condition) {
-	this.med_condition = med_condition;
-}
 
 public String getLocation() {
 	return location;
@@ -73,7 +64,7 @@ public void setLocation(String location) {
 @Override
 public String toString() {
 	return "Patient [id_patient=" + id_patient + ", name=" + name + ", surname=" + surname + ", sex=" + sex
-			+ ", med_condition=" + med_condition + ", location=" + location + "]";
+			+  ", location=" + location + "]";
 }
 //hashcode
 @Override
@@ -82,7 +73,6 @@ public int hashCode() {
 	int result = 1;
 	result = prime * result + ((id_patient == null) ? 0 : id_patient.hashCode());
 	result = prime * result + ((location == null) ? 0 : location.hashCode());
-	result = prime * result + ((med_condition == null) ? 0 : med_condition.hashCode());
 	result = prime * result + ((name == null) ? 0 : name.hashCode());
 	result = prime * result + ((sex == null) ? 0 : sex.hashCode());
 	result = prime * result + ((surname == null) ? 0 : surname.hashCode());
@@ -107,11 +97,6 @@ public boolean equals(Object obj) {
 		if (other.location != null)
 			return false;
 	} else if (!location.equals(other.location))
-		return false;
-	if (med_condition == null) {
-		if (other.med_condition != null)
-			return false;
-	} else if (!med_condition.equals(other.med_condition))
 		return false;
 	if (name == null) {
 		if (other.name != null)
