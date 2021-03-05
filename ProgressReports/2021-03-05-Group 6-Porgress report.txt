@@ -1,0 +1,17 @@
+This week we expected to be able to do...
+Start working with java
+
+Optional: Reasons why
+We saw how to write from SQL to java
+
+This week we did...
+Create the pojos and start with DBManager 
+
+Optional: Reasons why
+We already have the tables, ER diagram and SQL code for tables creation and learnt how to write that in java
+
+Next weeks we will do...
+Continue with the java code for DBManager methods 
+
+Optional: Reasons why
+More time to work in class and more information 
