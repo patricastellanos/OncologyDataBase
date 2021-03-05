@@ -1,13 +1,16 @@
 package oncology.db.pojos;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Cancer implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	private Integer id_cancer;
 	private String cancer_type;
-	
+	private List<Patient> patient_list;
+	private List<Treatment>treat_list;	
+	private MedicalExamination m;
 	//constructor
 	
 	public Cancer(Integer id_cancer, String cancer_type) {
