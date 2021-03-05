@@ -1,6 +1,7 @@
 package oncology.db.pojos;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Symptomps implements Serializable{
 	
@@ -9,6 +10,8 @@ public class Symptomps implements Serializable{
 	private Integer id_symp;
 	private String intensity; //fixed values for future
 	private String details;
+	private List<Patient> patient_list;
+	private MedicalExamination m;
 	
 	//constructor
 	

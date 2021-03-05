@@ -2,6 +2,7 @@ package oncology.db.pojos;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 public class MedicalExamination implements Serializable{
 	
@@ -10,6 +11,8 @@ public class MedicalExamination implements Serializable{
 	private String medExam_type;
 	private Date dateMedExam;
 	private String diagnosis;
+	private List<Cancer> cancer_list;
+	private List<Symptomps> symptomps_list;
 	
 	//constructor
 	public MedicalExamination(Integer id_medExam, String medExam_type, Date dateMedExam, String diagnosis) {

@@ -6,4 +6,5 @@
  *
  */
 module oncologyDataBase {
+	requires java.sql;
 }
