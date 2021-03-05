@@ -55,7 +55,14 @@ CREATE TABLE patient_symptomps (
  
 CREATE TABLE cancer_treatment (
    id_cancer INTEGER REFERENCES cancer (id_cancer)
-   id_treat REFERENCES treatment (id_treatment),
+   id_treat INTEGER REFERENCES treatment (id_treatment),
    PRIMARY KEY (id_cancer, id_treat)
 
 )
+
+CREATE TABLE cancer_patient (
+   id_cancer INTEGER REFERENCES cancer (id_cancer)
+   id_patient INTEGER REFERENCES patient (id_patient),
+   PRIMARY KEY (id_cancer, id_patient)
+   
+ )
