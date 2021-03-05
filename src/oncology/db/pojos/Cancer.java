@@ -23,6 +23,7 @@ public class Cancer implements Serializable{
 	public String getCancer_type() {
 		return cancer_type;
 	}
+
 	public void setCancer_type(String cancer_type) {
 		this.cancer_type = cancer_type;
 	}
