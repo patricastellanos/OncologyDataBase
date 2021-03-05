@@ -60,7 +60,7 @@ CREATE TABLE cancer_treatment (
 
 )
 
-CREATE TABLE cancer_table (
+CREATE TABLE cancer_patient (
    id_cancer INTEGER REFERENCES cancer (id_cancer)
    id_patient INTEGER REFERENCES patient (id_patient),
    PRIMARY KEY (id_cancer, id_patient)
