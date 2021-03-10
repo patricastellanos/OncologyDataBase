@@ -62,6 +62,7 @@ public class SQLMaster implements DBMaster {
 					+ " actual_state NOT NULL, "
 					+ " id_famHistory INTEGER REFERENCES family_history (id_famHistory) ON DELETE SET NULL, )";
 			stmt1.executeUpdate(sql1);
+			
 			// Create table cancer
 			sql1 = "CREATE TABLE cancer " 
 					+ "( id_cancer INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -69,30 +70,50 @@ public class SQLMaster implements DBMaster {
 					+ " type TEXT NOT NULL, )";
 
 			stmt1.executeUpdate(sql1);
+			
 			// Create table cancer_treatment
 			sql1 = "CREATE TABLE cancer_treatment " 
 					+ "( id_cancer INTEGER REFERENCES cancer (id_cancer), "
 					+ "id_treat INTEGER REFERENCES treatment (id_treatment), " 
 					+ "PRIMARY KEY (id_cancer, id_treat, )";
 			stmt1.executeUpdate(sql1);
-
+			
+			// Create table symptomps
 			sql1 = "CREATE TABLE symptomps " 
 					+ "(id_symp  INTEGER  PRIMARY KEY AUTOINCREMENT,"
 					+ " detail    TEXT     NOT NULL, )";
 			stmt1.executeUpdate(sql1);
-
+			
+			// Create table treatment
 			sql1 = "CREATE TABLE treatment " + "(id_treat   INTEGER  PRIMARY KEY AUTOINCREMENT,"
 					+ " type    TEXT     NOT NULL, "
 					+ " startdate     DATE NOT NULL, "
 					+ " enddate DATE NOT NULL  TEXT, )";
 			stmt1.executeUpdate(sql1);
-			stmt1.close();
-
+			
+			// Create table patient_symptomps
 			sql1 = "CREATE TABLE patient_symptomps"
 					+ "(id_patient INTEGER REFERENCES patient(id_patient) ON DELETE SET NULL, "
 					+ " id_symp INTEGER REFERENCES symptomps(id_symp) ON DELETE SET NULL, "
 					+ "PRIMARY KEY (id_patient, id_symp))";
 
+			stmt1.executeUpdate(sql1);
+			
+			// Create table family_history
+			sql1 = "CREATE TABLE family_history "
+					+  " (id_famHistory INTEGER PRIMARY KEY AUTOINCREMENT, "
+					+  "  type TEXT, "
+					+  "  member TEXT)";
+					
+			stmt1.executeUpdate(sql1);
+			
+			
+			// Create table cancer_patient
+			sql1 = "CREATE TABLE cancer_patient "
+					+  "(id_cancer INTEGER REFERENCES cancer (id_cancer), "
+					+  " id_patient INTEGER REFERENCES patient (id_patient), "
+					+  " PRIMARY KEY (id_cancer, id_patient))";
+					
 			stmt1.executeUpdate(sql1);
 			stmt1.close();
 		} catch (SQLException e) {
