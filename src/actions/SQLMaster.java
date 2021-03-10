@@ -2,6 +2,7 @@ package actions;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.List;
 
 import oncology.db.interfaces.DBMaster;
@@ -14,6 +15,21 @@ public class SQLMaster implements DBMaster {
 
 	@Override
 	public void connect() {
+			try {
+				// Open database connection
+				Class.forName("org.sqlite.JDBC");
+				c = DriverManager.getConnection("jdbc:sqlite:./db/jobSeeker.db");
+				c.createStatement().execute("PRAGMA foreign_keys=ON");
+				System.out.println("Database connection opened.");
+				this.createTables();
+			} catch (SQLException sqlE) {
+				System.out.println("There was a database exception.");
+				sqlE.printStackTrace();
+			} catch (Exception e) {
+				System.out.println("There was a general exception.");
+				e.printStackTrace();
+			}
+		
 
 		// TODO Auto-generated method stub
 		
