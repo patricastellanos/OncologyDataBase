@@ -25,10 +25,27 @@ public Patient(Integer id_patient, String name, String surname, String sex, Stri
 	
 	
 }
-	//getters and setters
+//Constructor for the method searchPatientByName
+	public Patient(Integer id_patient, String name, String surname) {
+	super();
+	this.id_patient = id_patient;
+	this.name = name;
+	this.surname = surname;
+}
+	
+//Constructor for addPatientMenu
+	public Patient(String name, String surname) {
+		super();
+		this.name = name;
+		this.surname = surname;
+	}
+	
+	
+//getters and setters
 public Integer getId_patient() {
 	return id_patient;
 }
+
 
 public String getName() {
 	return name;

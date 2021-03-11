@@ -2,8 +2,10 @@ package actions;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 import oncology.db.interfaces.DBMaster;
@@ -126,8 +128,16 @@ public class SQLMaster implements DBMaster {
 
 	@Override
 	public void addPatient(Patient p) {
-		// TODO Auto-generated method stub
-
+		try{
+			Statement stmt=c.createStatement();
+			String sql="INSERT INTO patient(name, surname) "
+					+ "VALUES('" + p.getName() + p.getSurname() +"')"; 
+			stmt.close();
+			}
+			catch(Exception e){
+			e.printStackTrace();
+			}
+			
 	}
 
 	@Override
@@ -135,12 +145,59 @@ public class SQLMaster implements DBMaster {
 		// TODO Auto-generated method stub
 
 	}
-
-	@Override
-	public List<Patient> searchPatientByName(String name) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	public List<Patient> searchPatientByName(String name, String surname) {
+		// TODO Unsafe method, update later
+		// TODO What happens if name is null?
+		List<Patient> patient_list = new ArrayList<Patient>();
+		try {
+			Statement stmt = c.createStatement();
+			String sql = "SELECT * FROM patient WHERE name,surname "
+					+ " LIKE '%" + name + "% ','%"+ surname + "%'" ;
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) { // true: there is another result and I have advanced to it
+								// false: there are no more results
+				int id = rs.getInt("id");
+				String patientName = rs.getString("name");
+				String patientSurname=rs.getString("surname");
+				Patient p = new Patient (id, patientName,patientSurname);
+				patient_list.add(p);
+			}
+			rs.close();
+			stmt.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return patient_list;
 	}
+	
+	
+	public List<Patient> removePatientByName(String name, String surname) {
+		// TODO Unsafe method, update later
+		// TODO What happens if name is null?
+		List<Patient> patient_list = new ArrayList<Patient>();
+		try {
+			Statement stmt = c.createStatement();
+			String sql = "SELECT * FROM patient WHERE name,surname "
+					+ " LIKE '%" + name + "% ','%"+ surname + "%'" ;
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) { // true: there is another result and I have advanced to it
+								// false: there are no more results
+				int id = rs.getInt("id");
+				String patientName = rs.getString("name");
+				String patientSurname=rs.getString("surname");
+				Patient p = new Patient (id, patientName,patientSurname);
+				patient_list.remove(p);
+			}
+			rs.close();
+			stmt.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return patient_list;
+	}
+
+
 
 	@Override
 	public Cancer typeOfCancer(String name) {
