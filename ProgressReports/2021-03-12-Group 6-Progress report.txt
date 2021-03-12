@@ -1,0 +1,17 @@
+This week we expected to be able to do...
+Finish with the table creation and satrt programming the menu and all the methods in JAVA
+
+Optional: Reasons why
+We learn how to program some methods wiht SELCT and INSERT
+
+This week we did...
+Create the tables, some methods and start with the menu
+
+Optional: Reasons why
+We already know how to make the user interface and the code for some methods
+
+Next weeks we will do...
+Continue developing the methods and the menu
+
+Optional: Reasons why
+More time to work in class and more information 
