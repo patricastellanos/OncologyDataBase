@@ -55,7 +55,7 @@ public class SQLMaster implements DBMaster {
 			stmt1 = c.createStatement();
 			// Create table patient
 			String sql1 = "CREATE TABLE patient "
-					+ "(id       INTEGER  PRIMARY KEY AUTOINCREMENT,"
+					+ "(id       INTEGER  PRIMARY KEY AUTOINCREMENT, "
 					+ " name     TEXT     NOT NULL, "
 					+ " surname     TEXT     NOT NULL, "
 					+ " sex TEXT NOT NULL, "
@@ -76,8 +76,8 @@ public class SQLMaster implements DBMaster {
 			// Create table cancer_treatment
 			sql1 = "CREATE TABLE cancer_treatment " 
 					+ "( id_cancer INTEGER REFERENCES cancer (id_cancer), "
-					+ "id_treat INTEGER REFERENCES treatment (id_treatment), " 
-					+ "PRIMARY KEY (id_cancer, id_treat, )";
+					+ " id_treat INTEGER REFERENCES treatment (id_treatment), " 
+					+ " PRIMARY KEY (id_cancer, id_treat, )";
 			stmt1.executeUpdate(sql1);
 			
 			// Create table symptomps
@@ -87,7 +87,8 @@ public class SQLMaster implements DBMaster {
 			stmt1.executeUpdate(sql1);
 			
 			// Create table treatment
-			sql1 = "CREATE TABLE treatment " + "(id_treat   INTEGER  PRIMARY KEY AUTOINCREMENT,"
+			sql1 = "CREATE TABLE treatment " 
+					+ "(id_treat   INTEGER  PRIMARY KEY AUTOINCREMENT,"
 					+ " type    TEXT     NOT NULL, "
 					+ " startdate     DATE NOT NULL, "
 					+ " enddate DATE NOT NULL  TEXT, )";
@@ -97,15 +98,15 @@ public class SQLMaster implements DBMaster {
 			sql1 = "CREATE TABLE patient_symptomps"
 					+ "(id_patient INTEGER REFERENCES patient(id_patient) ON DELETE SET NULL, "
 					+ " id_symp INTEGER REFERENCES symptomps(id_symp) ON DELETE SET NULL, "
-					+ "PRIMARY KEY (id_patient, id_symp))";
+					+ " PRIMARY KEY (id_patient, id_symp))";
 
 			stmt1.executeUpdate(sql1);
 			
 			// Create table family_history
 			sql1 = "CREATE TABLE family_history "
-					+  " (id_famHistory INTEGER PRIMARY KEY AUTOINCREMENT, "
+					+  "(id_famHistory INTEGER PRIMARY KEY AUTOINCREMENT, "
 					+  "  type TEXT, "
-					+  "  member TEXT)";
+					+  "  member TEXT, )";
 					
 			stmt1.executeUpdate(sql1);
 			
@@ -114,7 +115,7 @@ public class SQLMaster implements DBMaster {
 			sql1 = "CREATE TABLE cancer_patient "
 					+  "(id_cancer INTEGER REFERENCES cancer (id_cancer), "
 					+  " id_patient INTEGER REFERENCES patient (id_patient), "
-					+  " PRIMARY KEY (id_cancer, id_patient))";
+					+  " PRIMARY KEY (id_cancer, id_patient), )";
 					
 			stmt1.executeUpdate(sql1);
 			stmt1.close();
@@ -146,21 +147,21 @@ public class SQLMaster implements DBMaster {
 
 	}
 	
-	public List<Patient> searchPatientByName(String name, String surname) {
+	public List<Patient> searchPatientByName(String name /* String surname*/) {
 		// TODO Unsafe method, update later
 		// TODO What happens if name is null?
 		List<Patient> patient_list = new ArrayList<Patient>();
 		try {
 			Statement stmt = c.createStatement();
 			String sql = "SELECT * FROM patient WHERE name,surname "
-					+ " LIKE '%" + name + "% ','%"+ surname + "%'" ;
+					+ " LIKE '%" + name + "% ' " /*,'%"+ surname + "%'"*/ ;
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) { // true: there is another result and I have advanced to it
 								// false: there are no more results
 				int id = rs.getInt("id");
 				String patientName = rs.getString("name");
-				String patientSurname=rs.getString("surname");
-				Patient p = new Patient (id, patientName,patientSurname);
+				//String patientSurname=rs.getString("surname");
+				Patient p = new Patient (id, patientName/*patientSurname*/);
 				patient_list.add(p);
 			}
 			rs.close();
@@ -172,21 +173,22 @@ public class SQLMaster implements DBMaster {
 	}
 	
 	
-	public List<Patient> removePatientByName(String name, String surname) {
+	
+	public List<Patient> removePatientByName(String name /*String surname*/) {
 		// TODO Unsafe method, update later
 		// TODO What happens if name is null?
 		List<Patient> patient_list = new ArrayList<Patient>();
 		try {
 			Statement stmt = c.createStatement();
 			String sql = "SELECT * FROM patient WHERE name,surname "
-					+ " LIKE '%" + name + "% ','%"+ surname + "%'" ;
+					+ " LIKE '%" + name + "% '" /*,'%"+ surname + "%'" */;
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) { // true: there is another result and I have advanced to it
 								// false: there are no more results
 				int id = rs.getInt("id");
 				String patientName = rs.getString("name");
-				String patientSurname=rs.getString("surname");
-				Patient p = new Patient (id, patientName,patientSurname);
+				//String patientSurname=rs.getString("surname");
+				Patient p = new Patient (id, patientName /*patientSurname*/);
 				patient_list.remove(p);
 			}
 			rs.close();
@@ -204,5 +206,6 @@ public class SQLMaster implements DBMaster {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

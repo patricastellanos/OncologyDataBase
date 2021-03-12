@@ -26,13 +26,19 @@ public Patient(Integer id_patient, String name, String surname, String sex, Stri
 	
 }
 //Constructor for the method searchPatientByName
-	public Patient(Integer id_patient, String name, String surname) {
+	public Patient(Integer id_patient, String name /*String surname*/) {
 	super();
 	this.id_patient = id_patient;
 	this.name = name;
-	this.surname = surname;
+	//this.surname = surname;
 }
 	
+	
+public Patient(String name) {
+	super();
+	this.id_patient = id_patient;
+	this.name = name;
+}
 //Constructor for addPatientMenu
 	public Patient(String name, String surname) {
 		super();
