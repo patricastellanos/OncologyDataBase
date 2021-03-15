@@ -141,13 +141,9 @@ public class SQLMaster implements DBMaster {
 			
 	}
 
-	@Override
-	public void removePatient(Patient p) {
-		// TODO Auto-generated method stub
-
-	}
 	
-	public List<Patient> searchPatientByName(String name /* String surname*/) {
+	
+	public List<Patient> searchPatientByName (String name) { /* String surname*/
 		// TODO Unsafe method, update later
 		// TODO What happens if name is null?
 		List<Patient> patient_list = new ArrayList<Patient>();
