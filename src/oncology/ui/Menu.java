@@ -51,7 +51,7 @@ public class Menu {
 		
 		String name = reader.readLine();
 		String surname=reader.readLine();
-		dbmaster.addPatient(new Patient(name /*surname*/));
+		dbmaster.addPatient(new Patient(name, surname));
 	}
 	private static void removePatientMenu() throws Exception {
 		System.out.println("Please, input the patient's name:");

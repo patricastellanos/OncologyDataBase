@@ -6,7 +6,6 @@ import oncology.db.pojos.Cancer;
 import oncology.db.pojos.FamilyHistory;
 import oncology.db.pojos.MedicalExamination;
 import oncology.db.pojos.Patient;
-import oncology.db.pojos.Symptomps;
 import oncology.db.pojos.Symptoms;
 import oncology.db.pojos.Treatment;
 
