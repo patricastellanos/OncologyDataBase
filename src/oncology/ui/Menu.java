@@ -59,7 +59,7 @@ public class Menu {
 		
 		String name = reader.readLine();
 		String surname=reader.readLine();
-		dbmaster.removePatient(new Patient(name/* surname*/));
+		dbmaster.removePatientByName(name,surname);
 	}
 	
 	
@@ -68,8 +68,8 @@ public class Menu {
 		System.out.print("Name contains: ");
 		System.out.print("Surname contains: ");
 		String name = reader.readLine();
-		//String surname = reader.readLine();
-		List<Patient> p = dbmaster.searchPatientByName(name);//ask
+		String surname = reader.readLine();
+		List<Patient> p = dbmaster.searchPatientByName(name,surname);//ask
 		if (p.isEmpty()) {
 			System.out.println("No results.");
 		}

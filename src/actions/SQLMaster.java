@@ -10,7 +10,11 @@ import java.util.List;
 
 import oncology.db.interfaces.DBMaster;
 import oncology.db.pojos.Cancer;
+import oncology.db.pojos.FamilyHistory;
+import oncology.db.pojos.MedicalExamination;
 import oncology.db.pojos.Patient;
+import oncology.db.pojos.Symptomps;
+import oncology.db.pojos.Treatment;
 
 public class SQLMaster implements DBMaster {
 
@@ -143,21 +147,21 @@ public class SQLMaster implements DBMaster {
 
 	
 	
-	public List<Patient> searchPatientByName (String name) { /* String surname*/
+	public List<Patient> searchPatientByName (String name,String surname) { 
 		// TODO Unsafe method, update later
 		// TODO What happens if name is null?
 		List<Patient> patient_list = new ArrayList<Patient>();
 		try {
 			Statement stmt = c.createStatement();
 			String sql = "SELECT * FROM patient WHERE name,surname "
-					+ " LIKE '%" + name + "% ' " /*,'%"+ surname + "%'"*/ ;
+					+ " LIKE '%" + name + "% ' , '%"+ surname + "%'";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) { // true: there is another result and I have advanced to it
 								// false: there are no more results
 				int id = rs.getInt("id");
 				String patientName = rs.getString("name");
-				//String patientSurname=rs.getString("surname");
-				Patient p = new Patient (id, patientName/*patientSurname*/);
+				String patientSurname=rs.getString("surname");
+				Patient p = new Patient (id, patientName,patientSurname);
 				patient_list.add(p);
 			}
 			rs.close();
@@ -170,21 +174,21 @@ public class SQLMaster implements DBMaster {
 	
 	
 	
-	public List<Patient> removePatientByName(String name /*String surname*/) {
+	public List<Patient> removePatientByName(String name,String surname) {
 		// TODO Unsafe method, update later
 		// TODO What happens if name is null?
 		List<Patient> patient_list = new ArrayList<Patient>();
 		try {
 			Statement stmt = c.createStatement();
 			String sql = "SELECT * FROM patient WHERE name,surname "
-					+ " LIKE '%" + name + "% '" /*,'%"+ surname + "%'" */;
+					+ " LIKE '%" + name + "% ' ,'%"+ surname + "%'" ;
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) { // true: there is another result and I have advanced to it
 								// false: there are no more results
 				int id = rs.getInt("id");
 				String patientName = rs.getString("name");
-				//String patientSurname=rs.getString("surname");
-				Patient p = new Patient (id, patientName /*patientSurname*/);
+				String patientSurname=rs.getString("surname");
+				Patient p = new Patient (id, patientName,patientSurname);
 				patient_list.remove(p);
 			}
 			rs.close();
@@ -195,13 +199,38 @@ public class SQLMaster implements DBMaster {
 		return patient_list;
 	}
 
-
-
 	@Override
-	public Cancer typeOfCancer(String name) {
+	public Symptomps patientSymptomps(Patient p) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public MedicalExamination infoSymptomps(Symptomps s) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Cancer resultMedExamination(MedicalExamination m) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Treatment assesTreatment(Cancer c) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<FamilyHistory> showFamHistorial(Patient p) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
 
 
 }
