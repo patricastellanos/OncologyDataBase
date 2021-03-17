@@ -7,6 +7,7 @@ import oncology.db.pojos.FamilyHistory;
 import oncology.db.pojos.MedicalExamination;
 import oncology.db.pojos.Patient;
 import oncology.db.pojos.Symptomps;
+import oncology.db.pojos.Symptoms;
 import oncology.db.pojos.Treatment;
 
 public interface DBMaster {
@@ -23,16 +24,13 @@ public interface DBMaster {
      * Maybe in medical examination or in patient (i think that treatment is the best one)
      */
    //Cancer
-    public Symptomps patientSymptomps(Patient p);
-    public MedicalExamination infoSymptomps(Symptomps s);
+    public Symptoms patientSymptoms(Patient p);
+    public MedicalExamination infoSymptoms(Symptoms s);
     public Cancer resultMedExamination (MedicalExamination m);//the result will be cancer (type) of not (sane patient)
     public Treatment assesTreatment(Cancer c);
     public List<FamilyHistory> showFamHistorial(Patient p);
     
-   
-    BORRA LO DE ABAJO SI NO SE VA A USAR PATS
-    
-    
+
     /*
     
      *FOR TREATMENT (2)

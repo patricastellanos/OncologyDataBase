@@ -3,7 +3,7 @@ package oncology.db.pojos;
 import java.io.Serializable;
 import java.util.List;
 
-public class Symptomps implements Serializable{
+public class Symptoms implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -15,7 +15,7 @@ public class Symptomps implements Serializable{
 	
 	//constructor
 	
-	public Symptomps(Integer id_symp, String intensity, String details) {
+	public Symptoms(Integer id_symp, String intensity, String details) {
 		super();
 		this.id_symp = id_symp;
 		this.intensity = intensity;
@@ -70,7 +70,7 @@ public class Symptomps implements Serializable{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Symptomps other = (Symptomps) obj;
+		Symptoms other = (Symptoms) obj;
 		if (details == null) {
 			if (other.details != null)
 				return false;

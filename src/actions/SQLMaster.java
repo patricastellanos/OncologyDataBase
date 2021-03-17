@@ -13,7 +13,7 @@ import oncology.db.pojos.Cancer;
 import oncology.db.pojos.FamilyHistory;
 import oncology.db.pojos.MedicalExamination;
 import oncology.db.pojos.Patient;
-import oncology.db.pojos.Symptomps;
+import oncology.db.pojos.Symptoms;
 import oncology.db.pojos.Treatment;
 
 public class SQLMaster implements DBMaster {
@@ -84,7 +84,7 @@ public class SQLMaster implements DBMaster {
 					+ " PRIMARY KEY (id_cancer, id_treat, )";
 			stmt1.executeUpdate(sql1);
 			
-			// Create table symptomps
+			// Create table symptoms
 			sql1 = "CREATE TABLE symptomps " 
 					+ "(id_symp  INTEGER  PRIMARY KEY AUTOINCREMENT,"
 					+ " detail    TEXT     NOT NULL, )";
@@ -98,10 +98,10 @@ public class SQLMaster implements DBMaster {
 					+ " enddate DATE NOT NULL  TEXT, )";
 			stmt1.executeUpdate(sql1);
 			
-			// Create table patient_symptomps
-			sql1 = "CREATE TABLE patient_symptomps"
+			// Create table patient_symptoms
+			sql1 = "CREATE TABLE patient_symptoms"
 					+ "(id_patient INTEGER REFERENCES patient(id_patient) ON DELETE SET NULL, "
-					+ " id_symp INTEGER REFERENCES symptomps(id_symp) ON DELETE SET NULL, "
+					+ " id_symp INTEGER REFERENCES symptoms(id_symp) ON DELETE SET NULL, "
 					+ " PRIMARY KEY (id_patient, id_symp))";
 
 			stmt1.executeUpdate(sql1);
@@ -198,18 +198,7 @@ public class SQLMaster implements DBMaster {
 		}
 		return patient_list;
 	}
-
-	@Override
-	public Symptomps patientSymptomps(Patient p) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public MedicalExamination infoSymptomps(Symptomps s) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public Cancer resultMedExamination(MedicalExamination m) {
@@ -225,6 +214,18 @@ public class SQLMaster implements DBMaster {
 
 	@Override
 	public List<FamilyHistory> showFamHistorial(Patient p) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Symptoms patientSymptoms(Patient p) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public MedicalExamination infoSymptoms(Symptoms s) {
 		// TODO Auto-generated method stub
 		return null;
 	}

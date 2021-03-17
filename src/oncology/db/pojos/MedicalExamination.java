@@ -12,7 +12,7 @@ public class MedicalExamination implements Serializable{
 	private Date dateMedExam;
 	private String diagnosis;
 	private List<Cancer> cancer_list;
-	private List<Symptomps> symptomps_list;
+	private List<Symptoms> symptomps_list;
 	
 	//constructor
 	public MedicalExamination(Integer id_medExam, String medExam_type, Date dateMedExam, String diagnosis) {
