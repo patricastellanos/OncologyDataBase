@@ -1,0 +1,17 @@
+This week we expected to be able to do...
+Continue developing the methods and adding the SELECT
+
+Optional: Reasons why
+One practice class on Friday
+
+This week we did...
+Create some methods, learn how to select and update from the data base and keep working on the user interface
+
+Optional: Reasons why
+We learn how to on Monday's and Wednesday's classes
+
+Next weeks we will do...
+Prepare the midterm presentation and keep developing all the methods in JAVA
+
+Optional: Reasons why
+Easter holidays and some time to work on it at home 
