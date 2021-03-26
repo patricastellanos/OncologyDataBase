@@ -1,6 +1,7 @@
 package oncology.db.pojos;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.List;
 
 public class Patient implements Serializable {
@@ -10,7 +11,9 @@ private Integer id_patient;
  private String name;
  private String surname;
  private String sex;
+ private Date date_birth; 
  private String location;
+ private String actual_state;
  private List<Cancer> cancer_list;
  private List<Symptoms> symptoms_list;
  
