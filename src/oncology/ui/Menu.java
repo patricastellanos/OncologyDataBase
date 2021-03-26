@@ -48,10 +48,18 @@ public class Menu {
 	private static void addPatientMenu() throws Exception {
 		System.out.println("Please, input the patient's name:");
 		System.out.println("Please, input the patient's surname:");
+		System.out.println("Please, input the patient's sex:");
+		System.out.println("Please, input the patient's date of birth:");
+		System.out.println("Please, input the patient's location:");
+		System.out.println("Please, input the patient's actual state:");
 		
 		String name = reader.readLine();
 		String surname=reader.readLine();
-		dbmaster.addPatient(new Patient(name, surname));
+		String sex=reader.readLine();
+		String date_birth=reader.readLine();
+		String location=reader.readLine();
+		String actual_state=reader.readLine();
+		dbmaster.addPatient(new Patient(name, surname,sex,date_birth,location,actual_state));//change constructor
 	}
 	private static void removePatientMenu() throws Exception {
 		System.out.println("Please, input the patient's name:");
@@ -77,6 +85,7 @@ public class Menu {
 			System.out.println(p);
 		}
 	}
+	//add questions about 
 
 
 }

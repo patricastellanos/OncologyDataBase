@@ -87,6 +87,18 @@ public void setLocation(String location) {
 	this.location = location;
 }
 
+public Date getDate_birth() {
+	return date_birth;
+}
+public void setDate_birth(Date date_birth) {
+	this.date_birth = date_birth;
+}
+public String getActual_state() {
+	return actual_state;
+}
+public void setActual_state(String actual_state) {
+	this.actual_state = actual_state;
+}
 //toString
 @Override
 public String toString() {
@@ -142,6 +154,7 @@ public boolean equals(Object obj) {
 		return false;
 	return true;
 }
+
  
 
  

@@ -140,9 +140,10 @@ public class SQLMaster implements DBMaster {
 			PreparedStatement prep=c.prepareStatement(sql);
 			prep.setString(1, p.getName());
 			prep.setString(2, p.getSurname());
-			prep.setString(3,p.getSex());
-			prep.setDate(4, p.getDate());
-			prep.ser
+			prep.setString(3, p.getSex());
+			prep.setDate(4, p.getDate_birth());
+			prep.setString(5, p.getLocation());
+			prep.setString(6, p.getActual_state());
 			prep.executeUpdate();
 			prep.close();
 			}
