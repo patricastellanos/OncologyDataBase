@@ -66,14 +66,14 @@ public class SQLMaster implements DBMaster {
 					+ " date_birth DATE NOT NULL, " 
 					+ " location TEXT, " 
 					+ " actual_state NOT NULL, "
-					+ " id_famHistory INTEGER REFERENCES family_history (id_famHistory) ON DELETE SET NULL, )";
+					+ " id_famHistory INTEGER REFERENCES family_history (id_famHistory) ON DELETE SET NULL)";
 			stmt1.executeUpdate(sql1);
 			
 			// Create table cancer
 			sql1 = "CREATE TABLE cancer " 
 					+ "( id_cancer INTEGER PRIMARY KEY AUTOINCREMENT, "
 					+ " id_medExam REFERENCES medical_examinations (id_medExam) ON DELETE SET NULL, "
-					+ " type TEXT NOT NULL, )";
+					+ " type TEXT NOT NULL )";
 
 			stmt1.executeUpdate(sql1);
 			
@@ -81,7 +81,7 @@ public class SQLMaster implements DBMaster {
 			sql1 = "CREATE TABLE cancer_treatment " 
 					+ "( id_cancer INTEGER REFERENCES cancer (id_cancer), "
 					+ " id_treat INTEGER REFERENCES treatment (id_treatment), " 
-					+ " PRIMARY KEY (id_cancer, id_treat, )";
+					+ " PRIMARY KEY (id_cancer, id_treat)";
 			stmt1.executeUpdate(sql1);
 			
 			// Create table symptoms
