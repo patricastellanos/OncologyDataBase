@@ -75,6 +75,8 @@ public class SQLMaster implements DBMaster {
 					+ "( id_cancer INTEGER PRIMARY KEY AUTOINCREMENT, "
 					+ " id_medExam REFERENCES medical_examinations (id_medExam) ON DELETE SET NULL, "
 					+ " type TEXT NOT NULL )";
+			//sql = "INSERT INTO cancer (type) "
+			//+ "VALUES ('Liver');";
 
 			stmt1.executeUpdate(sql1);
 			
@@ -162,6 +164,11 @@ public class SQLMaster implements DBMaster {
 		}
 		List<Patient> patient_list = new ArrayList<Patient>();
 		try {
+			//String sql= SELECT * FROM patient WHERE name LIKE ? AND surname LIKE ?
+			//PreparedStatement stm= c.prepareStatement(sql)
+			//stmt.setString(1, "%" + name + "%");
+			//stmt.setString(2, "%" + surname + "%");
+			//ResultSet rs = stmt.executeQuery();
 			Statement stmt = c.createStatement();
 			String sql = "SELECT * FROM patient WHERE name,surname "
 					+ " LIKE '%" + name + "% ' , '%"+ surname + "%'";
@@ -234,6 +241,9 @@ public class SQLMaster implements DBMaster {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	//print patient and update the state (it can also be in the menu)
+	
 
 
 
