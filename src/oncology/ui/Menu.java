@@ -2,6 +2,10 @@ package oncology.ui;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.lang.Thread.State;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +19,7 @@ public class Menu {
 	private static DBMaster dbmaster = new SQLMaster();
 	private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	private List<Patient> patient_list=new ArrayList();
+	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	public static void main(String[] args) throws Exception {
 		dbmaster.connect();
 		do {
@@ -47,19 +52,18 @@ public class Menu {
 	
 	private static void addPatientMenu() throws Exception {
 		System.out.println("Please, input the patient's name:");
-		System.out.println("Please, input the patient's surname:");
-		System.out.println("Please, input the patient's sex:");
-		System.out.println("Please, input the patient's date of birth:");
-		System.out.println("Please, input the patient's location:");
-		System.out.println("Please, input the patient's actual state:");
-		
 		String name = reader.readLine();
+		System.out.println("Please, input the patient's surname:");
 		String surname=reader.readLine();
+		System.out.println("Please, input the patient's sex:");
 		String sex=reader.readLine();
-		String date_birth=reader.readLine();
+		System.out.println("Please, input the patient's date of birth (yyyy-MM-dd):");
+		LocalDate date_birth=LocalDate.parse(reader.readLine(), formatter);
+		System.out.println("Please, input the patient's actual state: ACUTE_REHABILITATION, SLOWSTREAM_REHABILITATION, COMPLEX_CARE, CONVALESCENT_CARE, PALLIATIVE_RESPITE");
+		State actual_state=State.valueOf(reader.readLine().toUpperCase());
+		System.out.println("Please, input the patient's location:");
 		String location=reader.readLine();
-		String actual_state=reader.readLine();
-		dbmaster.addPatient(new Patient(name, surname,sex,date_birth,location,actual_state));//change constructor
+		dbmaster.addPatient(new Patient(name, surname, sex, Date.valueOf(date_birth), State.actual_state, location));
 	}
 	private static void removePatientMenu() throws Exception {
 		System.out.println("Please, input the patient's name:");

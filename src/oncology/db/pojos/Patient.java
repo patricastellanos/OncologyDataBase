@@ -2,6 +2,7 @@ package oncology.db.pojos;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public class Patient implements Serializable {
@@ -11,23 +12,22 @@ private Integer id_patient;
  private String name;
  private String surname;
  private String sex;
- private Date date_birth; 
+ private Date birth_date; 
  private String location;
- private String actual_state;
+ private State actual_state;
  private List<Cancer> cancer_list;
  private List<Symptoms> symptoms_list;
  
- //Constructor
-public Patient(Integer id_patient, String name, String surname, String sex, String location) {
-	super();
-	this.id_patient = id_patient;
-	this.name = name;
-	this.surname = surname;
-	this.sex = sex;
-	this.location = location;
-	
-	
-}
+ //These are the possible current states which are used to describe the patient´s current cancer state
+ public enum State {
+     ACUTE_REHABILITATION,
+     SLOWSTREAM_REHABILITATION,
+     COMPLEX_CARE,
+	 CONVALESCENT_CARE,
+	 PALLIATIVE_RESPITE;
+ }
+ 
+ 
 //Constructor for the method searchPatientByName
 	public Patient(Integer id_patient, String name,String surname) {
 	super();
@@ -39,15 +39,19 @@ public Patient(Integer id_patient, String name, String surname, String sex, Stri
 	
 	
 
-//Constructor for addPatientMenu
-	public Patient(String name, String surname) {
+//Constructor for addPatient (name, surname,sex,Date.valueOf(date_birth),actual_state,location)
+	public Patient(String name, String surname, String sex, Date birth_date, State actual_state,String location) {
 		super();
 		this.id_patient=id_patient;
 		this.name = name;
 		this.surname = surname;
+		this.sex=sex;
+		this.birth_date=birth_date;
+		this.actual_state=actual_state;
+		this.location=location;
 	}
-	
-	
+
+
 //getters and setters
 public Integer getId_patient() {
 	return id_patient;
@@ -88,15 +92,15 @@ public void setLocation(String location) {
 }
 
 public Date getDate_birth() {
-	return date_birth;
+	return birth_date;
 }
 public void setDate_birth(Date date_birth) {
-	this.date_birth = date_birth;
+	this.birth_date = date_birth;
 }
-public String getActual_state() {
+public State getActual_state() {
 	return actual_state;
 }
-public void setActual_state(String actual_state) {
+public void setActual_state(State actual_state) {
 	this.actual_state = actual_state;
 }
 //toString
