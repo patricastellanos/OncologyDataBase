@@ -244,6 +244,21 @@ public class SQLMaster implements DBMaster {
 	
 	//print patient and update the state (it can also be in the menu)
 	
+	//Method to assign a cancer to a patient (similar to hire method)
+	//public void assignDiagnosis(Cancer can, Patient p) {
+		//try {
+		//String sql= "INSERT INTO cancer_patient (id_cancer, id_patient) VALUES (?,?)";
+		//PreparedStatement prep= c.prepareStatement(sql);
+		//prep.setInt(1, can.getId());
+		//prep.setInt(2,p.getId());
+		//prep.executeUpdate();
+		//prep.close();
+		//}catch(Exception e) {
+			//e.printStackTrace();
+		
+		//}
+		
+	//}
 
 
 
