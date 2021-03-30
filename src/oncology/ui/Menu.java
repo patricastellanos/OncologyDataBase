@@ -61,9 +61,10 @@ public class Menu {
 		LocalDate date_birth=LocalDate.parse(reader.readLine(), formatter);
 		System.out.println("Please, input the patient's actual state: ACUTE_REHABILITATION, SLOWSTREAM_REHABILITATION, COMPLEX_CARE, CONVALESCENT_CARE, PALLIATIVE_RESPITE");
 		State actual_state=State.valueOf(reader.readLine().toUpperCase());
+		System.out.println(actual_state);
 		System.out.println("Please, input the patient's location:");
 		String location=reader.readLine();
-		dbmaster.addPatient(new Patient(name, surname, sex, Date.valueOf(date_birth), State.actual_state, location));
+		//dbmaster.addPatient(new Patient(name, surname, sex, Date.valueOf(date_birth), actual_state, location));
 	}
 	private static void removePatientMenu() throws Exception {
 		System.out.println("Please, input the patient's name:");

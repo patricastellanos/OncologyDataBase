@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import oncology.db.interfaces.DBMaster;
@@ -138,14 +139,14 @@ public class SQLMaster implements DBMaster {
 	public void addPatient(Patient p) {
 		try{
 			String sql="INSERT INTO patient (name, surname, sex, date_birth, location, actual_state) "
-					+ "VALUES(?, ?, ?, ?)";
+					+ "VALUES(?, ?, ?, ?, ?, ?)";
 			PreparedStatement prep=c.prepareStatement(sql);
 			prep.setString(1, p.getName());
 			prep.setString(2, p.getSurname());
 			prep.setString(3, p.getSex());
 			prep.setDate(4, p.getDate_birth());
 			prep.setString(5, p.getLocation());
-			prep.setString(6, p.getActual_state());
+			prep.setActual_State(6, p.getActual_state());
 			prep.executeUpdate();
 			prep.close();
 			}
@@ -164,11 +165,7 @@ public class SQLMaster implements DBMaster {
 		}
 		List<Patient> patient_list = new ArrayList<Patient>();
 		try {
-			//String sql= SELECT * FROM patient WHERE name LIKE ? AND surname LIKE ?
-			//PreparedStatement stm= c.prepareStatement(sql)
-			//stmt.setString(1, "%" + name + "%");
-			//stmt.setString(2, "%" + surname + "%");
-			//ResultSet rs = stmt.executeQuery();
+			
 			Statement stmt = c.createStatement();
 			String sql = "SELECT * FROM patient WHERE name,surname "
 					+ " LIKE '%" + name + "% ' , '%"+ surname + "%'";
@@ -242,23 +239,47 @@ public class SQLMaster implements DBMaster {
 		return null;
 	}
 	
-	//print patient and update the state (it can also be in the menu)
-	
-	//Method to assign a cancer to a patient (similar to hire method)
-	//public void assignDiagnosis(Cancer can, Patient p) {
-		//try {
-		//String sql= "INSERT INTO cancer_patient (id_cancer, id_patient) VALUES (?,?)";
-		//PreparedStatement prep= c.prepareStatement(sql);
-		//prep.setInt(1, can.getId());
-		//prep.setInt(2,p.getId());
-		//prep.executeUpdate();
-		//prep.close();
-		//}catch(Exception e) {
-			//e.printStackTrace();
-		
-		//}
-		
-	//}
+	private static void printPatients() throws SQLException {
+		Statement stmt = c.createStatement();
+		String sql = "SELECT * FROM patient";
+		ResultSet rs = stmt.executeQuery(sql);
+		while (rs.next()) {
+			int id = rs.getInt("id");
+			String name = rs.getString("name");
+                        String surname = rs.getString("surname");
+                        String sex = rs.getString("sex");
+			Date date_birth = rs.getDate("date_birth");
+                        String location = rs.getString("location");
+                        String actual_state = rs.getString("actual_state");
+			Patient p = new Patient(id, name, surname, sex, date_birth, location, actual_state);
+			System.out.println(p);
+		}
+		rs.close();
+		stmt.close();
+	}
+
+//Update patient state
+           BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+			System.out.println("Choose a patient, type its ID: ");
+			int p_id = Integer.parseInt(reader.readLine());
+			printPatients();
+			
+			System.out.print("Type the new patient state: ");
+			String newState = reader.readLine();
+			String sql = "UPDATE patient SET actual_state=? WHERE id=?";
+			PreparedStatement prep = c.prepareStatement(sql);
+			prep.setString(1, newState);
+			prep.setInt(2, p_id);
+			prep.executeUpdate();
+			System.out.println("Update finished.");
+			printPatients();
+			
+			c.close();
+			System.out.println("Database connection closed.");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+         
 
 
 
