@@ -27,6 +27,8 @@ public class Menu {
 		System.out.println("1. Add a patient");
 		System.out.println("2. Search patient");
 		System.out.println("3. Remove patient");
+		System.out.println("4. Update patient´s cancer state");
+		System.out.println("5. Type of cancer according to the medical examination");
 		//create a method about show the list patient
 		System.out.println("0. Exit");
 		int choice = Integer.parseInt(reader.readLine());
@@ -39,6 +41,10 @@ public class Menu {
 			break;
 		case 3:
 			removePatientMenu();
+		case 4:
+			update_patient_stateMenu();
+		case 5:
+			resultMedExaminationMenu();
 		case 0:
 			dbmaster.disconnect();
 			System.exit(0);
@@ -61,18 +67,18 @@ public class Menu {
 		LocalDate date_birth=LocalDate.parse(reader.readLine(), formatter);
 		System.out.println("Please, input the patient's actual state: ACUTE_REHABILITATION, SLOWSTREAM_REHABILITATION, COMPLEX_CARE, CONVALESCENT_CARE, PALLIATIVE_RESPITE");
 		State actual_state=State.valueOf(reader.readLine().toUpperCase());
-		System.out.println(actual_state);
 		System.out.println("Please, input the patient's location:");
 		String location=reader.readLine();
 		//dbmaster.addPatient(new Patient(name, surname, sex, Date.valueOf(date_birth), actual_state, location));
 	}
 	private static void removePatientMenu() throws Exception {
+		dbmaster.printPatients();
 		System.out.println("Please, input the patient's name:");
 		System.out.println("Please, input the patient's surname:");
 		
 		String name = reader.readLine();
 		String surname=reader.readLine();
-		dbmaster.removePatientByName(name,surname);
+		dbmaster.removePatientByName(name,surname);// cambiaria el metodo a removePatient(int id)
 	}
 	
 	
@@ -90,7 +96,24 @@ public class Menu {
 			System.out.println(p);
 		}
 	}
-	//add questions about 
+	private static void update_patient_stateMenu() throws Exception{
+		
+		dbmaster.printPatients();
+		System.out.println("Choose the id of the patient which you want to modify");
+		int id=Integer.parseInt(reader.readLine());
+		System.out.println("Please, input the  new patient's actual state: ACUTE_REHABILITATION, SLOWSTREAM_REHABILITATION, COMPLEX_CARE, CONVALESCENT_CARE, PALLIATIVE_RESPITE");
+		State actual_state=State.valueOf(reader.readLine().toUpperCase());
+		dbmaster.update_patient_state(id,State.actual_state);
+		
+	}
+	//method in order to know the type of cancer according to the medical examination result
+	private static void resultMedExaminationMenu() throws Exception{
+		dbmaster.printPatients();
+		System.out.println("Choose the id of the patient from which you want to know the type of cancer");
+		int id=Integer.parseInt(reader.readLine());
+		
+		
+	}
 
 
 }
