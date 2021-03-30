@@ -246,11 +246,11 @@ public class SQLMaster implements DBMaster {
 		while (rs.next()) {
 			int id = rs.getInt("id");
 			String name = rs.getString("name");
-                        String surname = rs.getString("surname");
-                        String sex = rs.getString("sex");
+            String surname = rs.getString("surname");
+            String sex = rs.getString("sex");
 			Date date_birth = rs.getDate("date_birth");
-                        String location = rs.getString("location");
-                        String actual_state = rs.getString("actual_state");
+            String location = rs.getString("location");
+            String actual_state = rs.getString("actual_state");
 			Patient p = new Patient(id, name, surname, sex, date_birth, location, actual_state);
 			System.out.println(p);
 		}
