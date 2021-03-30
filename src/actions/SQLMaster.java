@@ -1,5 +1,6 @@
 package actions;
 
+import java.lang.Thread.State;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,7 +18,7 @@ import oncology.db.pojos.MedicalExamination;
 import oncology.db.pojos.Patient;
 import oncology.db.pojos.Symptoms;
 import oncology.db.pojos.Treatment;
-import sun.jvm.hotspot.tools.PStack;
+
 
 public class SQLMaster implements DBMaster {
 
@@ -260,7 +261,7 @@ public class SQLMaster implements DBMaster {
             String sex = rs.getString("sex");
 			Date date_birth = rs.getDate("date_birth");
             String location = rs.getString("location");
-            String actual_state = rs.getString("actual_state");
+            State actual_state = rs.("actual_state");//we need to put the value of actual state as a enum or convert it into a string
 			Patient p = new Patient(id, name, surname, sex, date_birth, location, actual_state);
 			System.out.println(p);
 		}
@@ -268,6 +269,7 @@ public class SQLMaster implements DBMaster {
 		stmt.close();
 		}catch(Exception e) {
 			e.printStackTrace();
+	}
 	}
 
 //Update patient state
@@ -290,7 +292,25 @@ public class SQLMaster implements DBMaster {
 			
 		
 			
-		}    
+		}
+
+@Override
+public void update_patient_state(int id, oncology.db.interfaces.State actual_state) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void update_patient_state(int id, oncology.db.interfaces.State actual_state) {
+	// TODO Auto-generated method stub
+	
+}
+
+@Override
+public void update_patient_state(int id, oncology.db.interfaces.State actual_state) {
+	// TODO Auto-generated method stub
+	
+}    
 
 
 
