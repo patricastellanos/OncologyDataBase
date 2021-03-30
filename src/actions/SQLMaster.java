@@ -17,6 +17,7 @@ import oncology.db.pojos.MedicalExamination;
 import oncology.db.pojos.Patient;
 import oncology.db.pojos.Symptoms;
 import oncology.db.pojos.Treatment;
+import sun.jvm.hotspot.tools.PStack;
 
 public class SQLMaster implements DBMaster {
 
@@ -67,7 +68,7 @@ public class SQLMaster implements DBMaster {
 					+ " sex TEXT NOT NULL, "
 					+ " date_birth DATE NOT NULL, " 
 					+ " location TEXT NOT NULL, " 
-					+ " actual_state TEXT NOT NULL, "
+					+ " actual_state ENUM NOT NULL, "
 					+ " id_famHistory INTEGER REFERENCES family_history (id_famHistory) ON DELETE SET NULL )";
 			stmt1.executeUpdate(sql1);
 			
@@ -146,7 +147,7 @@ public class SQLMaster implements DBMaster {
 			prep.setString(3, p.getSex());
 			prep.setDate(4, p.getDate_birth());
 			prep.setString(5, p.getLocation());
-			prep.setActual_State(6, p.getActual_state());
+			prep.setState(6, p.getActual_state());
 			prep.executeUpdate();
 			prep.close();
 			}
@@ -202,15 +203,18 @@ public class SQLMaster implements DBMaster {
 	}
 	
 	
-
+//Crear una enum con los posibles diagnositicos de la examination(buscar en internet) y en base a eso devolver un tipo de cancer asociado
 	@Override
 	public Cancer resultMedExamination(MedicalExamination m) {
 		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	@Override
 	public Treatment assesTreatment(Cancer c) {
+		//Se le pasa un cancer y devuelve el tipo de tratamiento y su duración
+	
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -222,24 +226,30 @@ public class SQLMaster implements DBMaster {
 	}
 
 	@Override
-	public Symptoms patientSymptoms(Patient p) {
-		// TODO Auto-generated method stub
-		return null;
+	public void patientSymptoms(int id, String symptoms) {
+		String sql="INSERT INTO patient (symptoms) "
+				+ "VALUES(?) WHERE id= ?";
+		PreparedStatement prep=c.prepareStatement(sql);
+		prep.setString(1,symptoms);
+		prep.setInt(2, id);
+		
 	}
 
 	@Override
 	public MedicalExamination infoSymptoms(Symptoms s) {
 		// TODO Auto-generated method stub
+		//demasiados metodos que hacen lo mismo basicamente, cambiar los printf y listo
 		return null;
 	}
 
-	@Override
+	@Override// este metodo no hace falta porque hay un metodo que borra pacientes por id tras mostrar la lista de tooodos lospacientes
 	public List<Patient> removePatientByName(String name, String surname) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
-	private static void printPatients() throws SQLException {
+	public void printPatients() {
+		try {
 		Statement stmt = c.createStatement();
 		String sql = "SELECT * FROM patient";
 		ResultSet rs = stmt.executeQuery(sql);
@@ -256,30 +266,31 @@ public class SQLMaster implements DBMaster {
 		}
 		rs.close();
 		stmt.close();
+		}catch(Exception e) {
+			e.printStackTrace();
 	}
 
 //Update patient state
-           BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-			System.out.println("Choose a patient, type its ID: ");
-			int p_id = Integer.parseInt(reader.readLine());
-			printPatients();
+		public void update_patient_state(int id, State actual_state) {
+			try {
+				String sql = "UPDATE patient SET actual_state=? WHERE id=?";
+				PreparedStatement prep = c.prepareStatement(sql);
+				prep.setString(1, actual_state);
+				prep.setInt(2, id);
+				prep.executeUpdate();
+				System.out.println("Update finished.");
+				
+				
+				c.close();
+				System.out.println("Database connection closed.");
+				
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 			
-			System.out.print("Type the new patient state: ");
-			String newState = reader.readLine();
-			String sql = "UPDATE patient SET actual_state=? WHERE id=?";
-			PreparedStatement prep = c.prepareStatement(sql);
-			prep.setString(1, newState);
-			prep.setInt(2, p_id);
-			prep.executeUpdate();
-			System.out.println("Update finished.");
-			printPatients();
+		
 			
-			c.close();
-			System.out.println("Database connection closed.");
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
-         
+		}    
 
 
 

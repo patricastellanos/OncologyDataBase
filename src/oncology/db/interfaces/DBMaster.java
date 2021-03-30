@@ -17,11 +17,13 @@ public interface DBMaster {
     public List<Patient> removePatientByName(String name,String surname);
     public List<Patient> searchPatientByName(String name,String surname);
    
-    public Symptoms patientSymptoms(Patient p);
+    public void patientSymptoms(int id, String symptoms);
     public MedicalExamination infoSymptoms(Symptoms s);
     public Cancer resultMedExamination (MedicalExamination m);//the result will be cancer (type) of not (sane patient)
     public Treatment assesTreatment(Cancer c);
     public List<FamilyHistory> showFamHistorial(Patient p);
+    public void printPatients();
+    public void update_patient_state(int id, State actual_state);
    
 
    

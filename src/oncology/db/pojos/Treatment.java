@@ -8,6 +8,7 @@ public class Treatment implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	private Integer id_treat;
+	//Cambiar stardate y enddate por duracion
 	private String treat_type;
 	private Date start_date;
 	private Date end_date;
