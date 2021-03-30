@@ -147,7 +147,7 @@ public class SQLMaster implements DBMaster {
 			prep.setString(3, p.getSex());
 			prep.setDate(4, p.getDate_birth());
 			prep.setString(5, p.getLocation());
-			prep.setActual_State(6, p.getActual_state());
+			prep.setState(6, p.getActual_state());
 			prep.executeUpdate();
 			prep.close();
 			}
