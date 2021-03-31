@@ -273,7 +273,7 @@ public class SQLMaster implements DBMaster {
 	}
 
 //Update patient state
-		public void update_patient_state(int id, State actual_state) {
+		public void update_patient_state(int id, String actual_state) {//revisar
 			try {
 				String sql = "UPDATE patient SET actual_state=? WHERE id=?";
 				PreparedStatement prep = c.prepareStatement(sql);
@@ -281,8 +281,6 @@ public class SQLMaster implements DBMaster {
 				prep.setInt(2, id);
 				prep.executeUpdate();
 				System.out.println("Update finished.");
-				
-				
 				c.close();
 				System.out.println("Database connection closed.");
 				
@@ -293,27 +291,5 @@ public class SQLMaster implements DBMaster {
 		
 			
 		}
-
-@Override
-public void update_patient_state(int id, oncology.db.interfaces.State actual_state) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void update_patient_state(int id, oncology.db.interfaces.State actual_state) {
-	// TODO Auto-generated method stub
-	
-}
-
-@Override
-public void update_patient_state(int id, oncology.db.interfaces.State actual_state) {
-	// TODO Auto-generated method stub
-	
-}    
-
-
-
-
 
 }

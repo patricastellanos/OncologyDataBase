@@ -103,7 +103,7 @@ public class Menu {
 		int id=Integer.parseInt(reader.readLine());
 		System.out.println("Please, input the  new patient's actual state: ACUTE_REHABILITATION, SLOWSTREAM_REHABILITATION, COMPLEX_CARE, CONVALESCENT_CARE, PALLIATIVE_RESPITE");
 		State actual_state=State.valueOf(reader.readLine().toUpperCase());
-		dbmaster.update_patient_state(id,State.actual_state);
+		dbmaster.update_patient_state(id, actual_state);//el problema es que es void en el otro lado yo creo
 		
 	}
 	//method in order to know the type of cancer according to the medical examination result
@@ -111,7 +111,7 @@ public class Menu {
 		dbmaster.printPatients();
 		System.out.println("Choose the id of the patient from which you want to know the type of cancer");
 		int id=Integer.parseInt(reader.readLine());
-		
+		//complete
 		
 	}
 
