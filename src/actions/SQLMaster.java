@@ -10,7 +10,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
-
 import oncology.db.interfaces.DBMaster;
 import oncology.db.pojos.Cancer;
 import oncology.db.pojos.FamilyHistory;
