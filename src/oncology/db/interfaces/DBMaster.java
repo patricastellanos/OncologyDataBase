@@ -22,8 +22,8 @@ public interface DBMaster {
     public Cancer resultMedExamination (MedicalExamination m);//the result will be cancer (type) of not (sane patient)
     public Treatment assesTreatment(Cancer c);
     public List<FamilyHistory> showFamHistorial(Patient p);
-    public void printPatients();
-    public void update_patient_state(int id, State actual_state);
+    public List<Patient> printPatients();
+    public void update_patient_state(int id, String actual_state);
    
 
    

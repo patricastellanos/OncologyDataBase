@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import oncology.db.interfaces.DBMaster;
@@ -62,122 +62,117 @@ public class SQLMaster implements DBMaster {
 		try {
 			stmt1 = c.createStatement();
 			// Create table patient
-			String sql1 = "CREATE TABLE patient "
-					+ "(id       INTEGER  PRIMARY KEY AUTOINCREMENT, "
-					+ " name     TEXT     NOT NULL, "
-					+ " surname     TEXT     NOT NULL, "
-					+ " sex TEXT NOT NULL, "
-					+ " date_birth DATE NOT NULL, " 
-					+ " location TEXT NOT NULL, " 
-					+ " actual_state ENUM NOT NULL, "
-					+ " id_famHistory INTEGER REFERENCES family_history (id_famHistory) ON DELETE SET NULL )";
+			String sql1 = "CREATE TABLE patient " 
+						+ "( id       INTEGER  PRIMARY KEY AUTOINCREMENT, "
+					    + " name     TEXT     NOT NULL, " 
+						+ " surname     TEXT     NOT NULL, " 
+					    + " sex TEXT NOT NULL, "
+					    + " date_birth DATE NOT NULL, " 
+					    + " location TEXT NOT NULL, " 
+					    + " actual_state TEXT NOT NULL, "
+					    + " id_famHistory INTEGER REFERENCES family_history (id_famHistory) ON DELETE SET NULL )";
 			stmt1.executeUpdate(sql1);
-			
+
 			// Create table cancer
 			sql1 = "CREATE TABLE cancer " 
 					+ "( id_cancer INTEGER PRIMARY KEY AUTOINCREMENT, "
 					+ " id_medExam REFERENCES medical_examinations (id_medExam) ON DELETE SET NULL, "
 					+ " type TEXT NOT NULL )";
-			//sql = "INSERT INTO cancer (type) "
-			//+ "VALUES ('Liver');";
+			// sql = "INSERT INTO cancer (type) "
+			// + "VALUES ('Liver');";
 
 			stmt1.executeUpdate(sql1);
-			
+
 			// Create table cancer_treatment
 			sql1 = "CREATE TABLE cancer_treatment " 
 					+ "( id_cancer INTEGER REFERENCES cancer (id_cancer), "
-					+ " id_treat INTEGER REFERENCES treatment (id_treatment), " 
+					+ " id_treat INTEGER REFERENCES treatment (id_treatment), "
 					+ " PRIMARY KEY (id_cancer, id_treat ))";
 			stmt1.executeUpdate(sql1);
-			
+
 			// Create table symptoms
 			sql1 = "CREATE TABLE symptomps " 
-					+ "(id_symp  INTEGER  PRIMARY KEY AUTOINCREMENT,"
+					+ "( id_symp  INTEGER  PRIMARY KEY AUTOINCREMENT,"
 					+ " detail    TEXT     NOT NULL )";
 			stmt1.executeUpdate(sql1);
-			
+
 			// Create table treatment
 			sql1 = "CREATE TABLE treatment " 
-					+ "(id_treat   INTEGER  PRIMARY KEY AUTOINCREMENT,"
-					+ " type    TEXT     NOT NULL, "
-					+ " startdate     DATE NOT NULL, "
+					+ "( id_treat   INTEGER  PRIMARY KEY AUTOINCREMENT,"
+					+ " type    TEXT     NOT NULL, " 
+					+ " startdate     DATE NOT NULL, " 
 					+ " enddate DATE NOT NULL )";
 			stmt1.executeUpdate(sql1);
-			
+
 			// Create table patient_symptoms
 			sql1 = "CREATE TABLE patient_symptoms"
-					+ "(id_patient INTEGER REFERENCES patient(id_patient) ON DELETE SET NULL, "
+					+ "( id_patient INTEGER REFERENCES patient(id_patient) ON DELETE SET NULL, "
 					+ " id_symp INTEGER REFERENCES symptoms(id_symp) ON DELETE SET NULL, "
 					+ " PRIMARY KEY (id_patient, id_symp) )";
 
 			stmt1.executeUpdate(sql1);
-			
+
 			// Create table family_history
-			sql1 = "CREATE TABLE family_history "
-					+  "(id_famHistory INTEGER PRIMARY KEY AUTOINCREMENT, "
-					+  "  type TEXT, "
-					+  "  member TEXT )";
-					
+			sql1 = "CREATE TABLE family_history " 
+					+ "( id_famHistory INTEGER PRIMARY KEY AUTOINCREMENT, "
+					+ "  type TEXT, " 
+					+ "  member TEXT )";
+
 			stmt1.executeUpdate(sql1);
-			
-			
+
 			// Create table cancer_patient
-			sql1 = "CREATE TABLE cancer_patient "
-					+  "(id_cancer INTEGER REFERENCES cancer (id_cancer), "
-					+  " id_patient INTEGER REFERENCES patient (id_patient), "
-					+  " PRIMARY KEY (id_cancer, id_patient) )";
-					
+			sql1 = "CREATE TABLE cancer_patient " 
+					+ "( id_cancer INTEGER REFERENCES cancer (id_cancer), "
+					+ " id_patient INTEGER REFERENCES patient (id_patient), "
+					+ " PRIMARY KEY (id_cancer, id_patient) )";
+
 			stmt1.executeUpdate(sql1);
 			stmt1.close();
 		} catch (SQLException e) {
-			//if (!e.getMessage().contains("already exists")) {
-				e.printStackTrace();
-			//}
+			// if (!e.getMessage().contains("already exists")) {
+			e.printStackTrace();
+			// }
 		}
 
 	}
 
 	@Override
 	public void addPatient(Patient p) {
-		try{
-			String sql="INSERT INTO patient (name, surname, sex, date_birth, location, actual_state) "
+		try {
+			String sql = "INSERT INTO patient (name, surname, sex, date_birth, location, actual_state) "
 					+ "VALUES(?, ?, ?, ?, ?, ?)";
-			PreparedStatement prep=c.prepareStatement(sql);
+			PreparedStatement prep = c.prepareStatement(sql);
 			prep.setString(1, p.getName());
 			prep.setString(2, p.getSurname());
 			prep.setString(3, p.getSex());
 			prep.setDate(4, p.getDate_birth());
 			prep.setString(5, p.getLocation());
-			prep.setState(6, p.getActual_state());
+			prep.setString(6, p.getActual_state());
 			prep.executeUpdate();
 			prep.close();
-			}
-			catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
-			}
-			
+		}
+
 	}
 
-	
-	
-	public List<Patient> searchPatientByName (String name,String surname) { 
+	public List<Patient> searchPatientByName(String name, String surname) {
 		// TODO Unsafe method, update later
-		if(name==null) {
-			name="";
+		if (name == null) {
+			name = "";
 		}
 		List<Patient> patient_list = new ArrayList<Patient>();
 		try {
-			
+
 			Statement stmt = c.createStatement();
-			String sql = "SELECT * FROM patient WHERE name,surname "
-					+ " LIKE '%" + name + "% ' , '%"+ surname + "%'";
+			String sql = "SELECT * FROM patient WHERE name,surname " + " LIKE '%" + name + "% ' , '%" + surname + "%'";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) { // true: there is another result and I have advanced to it
 								// false: there are no more results
 				int id = rs.getInt("id");
 				String patientName = rs.getString("name");
-				String patientSurname=rs.getString("surname");
-				Patient p = new Patient (id, patientName,patientSurname);
+				String patientSurname = rs.getString("surname");
+				Patient p = new Patient(id, patientName, patientSurname);
 				patient_list.add(p);
 			}
 			rs.close();
@@ -187,13 +182,11 @@ public class SQLMaster implements DBMaster {
 		}
 		return patient_list;
 	}
-	
-	
-	
+
 	public void removePatient(int patient_id) {
 		// TODO Unsafe method, update later
 		try {
-			String sql = "DELETE FROM patient WHERE patient_id= ? " ;
+			String sql = "DELETE FROM patient WHERE patient_id= ? ";
 			PreparedStatement prep = c.prepareStatement(sql);
 			prep.setInt(1, patient_id);
 			prep.executeUpdate();
@@ -202,20 +195,19 @@ public class SQLMaster implements DBMaster {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
 //Crear una enum con los posibles diagnositicos de la examination(buscar en internet) y en base a eso devolver un tipo de cancer asociado
 	@Override
 	public Cancer resultMedExamination(MedicalExamination m) {
 		// TODO Auto-generated method stub
-		
+
 		return null;
 	}
 
 	@Override
 	public Treatment assesTreatment(Cancer c) {
-		//Se le pasa un cancer y devuelve el tipo de tratamiento y su duración
-	
+		// Se le pasa un cancer y devuelve el tipo de tratamiento y su duración
+
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -228,68 +220,93 @@ public class SQLMaster implements DBMaster {
 
 	@Override
 	public void patientSymptoms(int id, String symptoms) {
-		String sql="INSERT INTO patient (symptoms) "
-				+ "VALUES(?) WHERE id= ?";
-		PreparedStatement prep=c.prepareStatement(sql);
-		prep.setString(1,symptoms);
-		prep.setInt(2, id);
+		String sql = "INSERT INTO patient (symptoms) " + "VALUES(?) WHERE id= ?";
+		PreparedStatement prep;
+		try {
+			prep = c.prepareStatement(sql);
+			prep.setString(1, symptoms);
+			prep.setInt(2, id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
+
 	}
 
 	@Override
 	public MedicalExamination infoSymptoms(Symptoms s) {
 		// TODO Auto-generated method stub
-		//demasiados metodos que hacen lo mismo basicamente, cambiar los printf y listo
+		// demasiados metodos que hacen lo mismo basicamente, cambiar los printf y listo
 		return null;
 	}
 
-	@Override// este metodo no hace falta porque hay un metodo que borra pacientes por id tras mostrar la lista de tooodos lospacientes
+	@Override // este metodo no hace falta porque hay un metodo que borra pacientes por id
+				// tras mostrar la lista de tooodos lospacientes
 	public List<Patient> removePatientByName(String name, String surname) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	public void printPatients() {
-		try {
-		Statement stmt = c.createStatement();
-		String sql = "SELECT * FROM patient";
-		ResultSet rs = stmt.executeQuery(sql);
-		while (rs.next()) {
-			int id = rs.getInt("id");
-			String name = rs.getString("name");
-            String surname = rs.getString("surname");
-            String sex = rs.getString("sex");
-			Date date_birth = rs.getDate("date_birth");
-            String location = rs.getString("location");
-            State actual_state = rs.("actual_state");//we need to put the value of actual state as a enum or convert it into a string
-			Patient p = new Patient(id, name, surname, sex, date_birth, location, actual_state);
-			System.out.println(p);
-		}
-		rs.close();
-		stmt.close();
-		}catch(Exception e) {
-			e.printStackTrace();
-	}
-	}
 
-//Update patient state
-		public void update_patient_state(int id, String actual_state) {//revisar
-			try {
-				String sql = "UPDATE patient SET actual_state=? WHERE id=?";
-				PreparedStatement prep = c.prepareStatement(sql);
-				prep.setString(1, actual_state);
-				prep.setInt(2, id);
-				prep.executeUpdate();
-				System.out.println("Update finished.");
-				c.close();
-				System.out.println("Database connection closed.");
+/*	public List<Patient> printPatients() {
+		
+		List <Patient> patient_list=new ArrayList<Patient>();
+		try {
+			Statement stmt = c.createStatement();
+			String sql = "SELECT * FROM patient";
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				Integer id_patient = rs.getInt("id");
+				String name = rs.getString("name");
+				String surname = rs.getString("surname");
+				String sex = rs.getString("sex");
+				Date birth_date = rs.getDate("date_birth");
+				String location = rs.getString("location");
+				String actual_state = rs.getString("actual_state");
 				
-			}catch(Exception e) {
-				e.printStackTrace();
+							
+				Patient p= new Patient ( name, surname,sex,birth_date,location,actual_state);
+				patient_list.add(p);
+				
+				
 			}
 			
+			
+			rs.close();
+			stmt.close();
+			
+			return patient_list;
 		
 			
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+	
+		
+	}*/
+
+//Update patient state
+	public void update_patient_state(int id, String actual_state) {// revisar
+		try {
+			String sql = "UPDATE patient SET actual_state=? WHERE id=?";
+			PreparedStatement prep = c.prepareStatement(sql);
+			prep.setString(1, actual_state);
+			prep.setInt(2, id);
+			prep.executeUpdate();
+			System.out.println("Update finished.");
+			c.close();
+			System.out.println("Database connection closed.");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	@Override
+	public List<Patient> printPatients() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }

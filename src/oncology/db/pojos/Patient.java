@@ -1,6 +1,7 @@
 package oncology.db.pojos;
 
 import java.io.Serializable;
+
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
@@ -14,18 +15,14 @@ private Integer id_patient;
  private String sex;
  private Date birth_date; 
  private String location;
- private State actual_state;
+ private String actual_state;
  private List<Cancer> cancer_list;
  private List<Symptoms> symptoms_list;
  
- //These are the possible current states which are used to describe the patient´s current cancer state
- public enum State {
-     ACUTE_REHABILITATION,
-     SLOWSTREAM_REHABILITATION,
-     COMPLEX_CARE,
-	 CONVALESCENT_CARE,
-	 PALLIATIVE_RESPITE;
- }
+/*
+ * actual_state { ACUTE_REHABILITATION, SLOWSTREAM_REHABILITATION, COMPLEX_CARE,
+ * CONVALESCENT_CARE, PALLIATIVE_RESPITE; }
+ */
  
  
 //Constructor for the method searchPatientByName
@@ -40,22 +37,55 @@ private Integer id_patient;
 	
 
 //Constructor for addPatient (name, surname,sex,Date.valueOf(date_birth),actual_state,location)
-	public Patient(String name, String surname, String sex, Date birth_date, State actual_state,String location) {
+	public Patient(String name, String surname, String sex, Date birth_date,String location, String actual_state) {
 		super();
 		this.id_patient=id_patient;
 		this.name = name;
 		this.surname = surname;
 		this.sex=sex;
 		this.birth_date=birth_date;
-		this.actual_state=actual_state;
 		this.location=location;
+		this.actual_state=actual_state;
+		
 	}
+	
+	
+	/*public Patient(Integer id_patient, String name, String surname, String sex, Date birth_date, String location,
+			String actual_state) {
+		super();
+		this.id_patient = id_patient;
+		this.name = name;
+		this.surname = surname;
+		this.sex = sex;
+		this.birth_date = birth_date;
+		this.location = location;
+		this.actual_state = actual_state;
+	}*/
+
+
 
 
 //getters and setters
 public Integer getId_patient() {
 	return id_patient;
 }
+
+
+public Patient(Integer id_patient, String name, String surname, String sex, Date birth_date, String location,
+		String actual_state, List<Cancer> cancer_list, List<Symptoms> symptoms_list) {
+	super();
+	this.id_patient = id_patient;
+	this.name = name;
+	this.surname = surname;
+	this.sex = sex;
+	this.birth_date = birth_date;
+	this.location = location;
+	this.actual_state = actual_state;
+	this.cancer_list = cancer_list;
+	this.symptoms_list = symptoms_list;
+}
+
+
 
 
 public String getName() {
@@ -97,10 +127,10 @@ public Date getDate_birth() {
 public void setDate_birth(Date date_birth) {
 	this.birth_date = date_birth;
 }
-public State getActual_state() {
+public String getActual_state() {
 	return actual_state;
 }
-public void setActual_state(State actual_state) {
+public void setActual_state(String actual_state) {
 	this.actual_state = actual_state;
 }
 //toString
