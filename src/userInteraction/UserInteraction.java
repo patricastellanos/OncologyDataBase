@@ -53,7 +53,6 @@ public class UserInteraction {
 		String actual_state;
 		do {
 
-			System.out.println("Please, input the patient's state (MALE/FEMALE)");
 			actual_state = reader.readLine().toUpperCase();
 
 		} while (!actual_state.equalsIgnoreCase("ACUTE_REHABILITATION")
