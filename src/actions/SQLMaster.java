@@ -189,7 +189,7 @@ public class SQLMaster implements DBMaster {
 			PreparedStatement prep = c.prepareStatement(sql);
 			prep.setInt(1, patient_id);
 			prep.executeUpdate();
-			prep.close();
+			prep.close();//ask
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
