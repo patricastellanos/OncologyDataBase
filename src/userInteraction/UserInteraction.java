@@ -18,17 +18,7 @@ public class UserInteraction {
 	private static List<Patient> patient_list = new ArrayList();
 	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-	public static void addPatientMenu() throws Exception {
 
-		String name = printPatientNameMenu();
-		String surname = printPatientSurnameMenu();
-		String sex = printPatientSexMenu();
-		LocalDate date_birth = printPatientDateMenu();
-		String location = printPatientLocationMenu();
-		String actual_state = printPatientStateMenu();
-
-		dbmaster.addPatient(new Patient(name, surname, sex, Date.valueOf(date_birth), location, actual_state));
-	}
 
 	// this method ask about the patient's name
 	public static String printPatientNameMenu() throws IOException {
@@ -92,7 +82,18 @@ public class UserInteraction {
 		LocalDate date_birth = LocalDate.parse(reader.readLine(), formatter);
 		return date_birth;
 	}
+	
+	public static void addPatientMenu() throws Exception {
 
+		String name = printPatientNameMenu();
+		String surname = printPatientSurnameMenu();
+		String sex = printPatientSexMenu();
+		LocalDate date_birth = printPatientDateMenu();
+		String location = printPatientLocationMenu();
+		String actual_state = printPatientStateMenu();
+
+		dbmaster.addPatient(new Patient(name, surname, sex, Date.valueOf(date_birth), location, actual_state));
+	}
 	public static void removePatientMenu() throws Exception {
 		printPatientsMenu();
 		String name = printPatientNameMenu();
