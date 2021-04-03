@@ -27,7 +27,7 @@ public class SQLMaster implements DBMaster {
 		try {
 			// Open database connection
 			Class.forName("org.sqlite.JDBC");
-			c = DriverManager.getConnection("jdbc:sqlite:./db/oncologyDB");
+			c = DriverManager.getConnection("jdbc:sqlite:./db/oncology.db");
 			c.createStatement().execute("PRAGMA foreign_keys=ON");
 			System.out.println("Database connection opened.");
 			this.createTables();
