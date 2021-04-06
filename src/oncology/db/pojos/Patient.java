@@ -1,7 +1,6 @@
 package oncology.db.pojos;
 
 import java.io.Serializable;
-
 import java.sql.Date;
 import java.util.List;
 

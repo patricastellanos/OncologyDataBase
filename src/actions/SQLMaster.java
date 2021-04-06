@@ -1,14 +1,13 @@
 package actions;
 
-import java.lang.Thread.State;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.sql.Date;
 import java.util.List;
 
 import oncology.db.interfaces.DBMaster;
@@ -28,7 +27,7 @@ public class SQLMaster implements DBMaster {
 		try {
 			// Open database connection
 			Class.forName("org.sqlite.JDBC");
-			c = DriverManager.getConnection("jdbc:sqlite:./db/oncologyDB");
+			c = DriverManager.getConnection("jdbc:sqlite:./db/oncology.db");
 			c.createStatement().execute("PRAGMA foreign_keys=ON");
 			System.out.println("Database connection opened.");
 			this.createTables();
@@ -124,8 +123,7 @@ public class SQLMaster implements DBMaster {
 	@Override
 	public void addPatient(Patient p) {
 		try {
-			String sql = "INSERT INTO patient (name, surname, sex, date_birth, location, actual_state) "
-					+ "VALUES(?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO patient (name, surname, sex, date_birth, location, actual_state) VALUES(?, ?, ?, ?, ?, ?)";
 			PreparedStatement prep = c.prepareStatement(sql);
 			prep.setString(1, p.getName());
 			prep.setString(2, p.getSurname());
@@ -205,7 +203,7 @@ public class SQLMaster implements DBMaster {
 
 	@Override
 	public void patientSymptoms(int id, String symptoms) {
-		String sql = "INSERT INTO patient (symptoms) " + "VALUES(?) WHERE id= ?";
+		String sql = "INSERT INTO patient (symptoms) VALUES(?) WHERE id= ?";
 		PreparedStatement prep;
 		try {
 			prep = c.prepareStatement(sql);
@@ -230,6 +228,7 @@ public class SQLMaster implements DBMaster {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 	/*
 	 * public List<Patient> printPatients() {
@@ -261,6 +260,40 @@ public class SQLMaster implements DBMaster {
 	 * }
 	 */
 
+	public List<Patient> printPatients() {
+		
+		List <Patient> patient_list=new ArrayList<Patient>();
+		try {
+			Statement stmt = c.createStatement();
+			String sql = "SELECT * FROM patient";
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				Integer id_patient = rs.getInt("id");
+				String name = rs.getString("name");
+				String surname = rs.getString("surname");
+				String sex = rs.getString("sex");
+				Date birth_date = rs.getDate("date_birth");
+				String location = rs.getString("location");
+				String actual_state = rs.getString("actual_state");
+				
+							
+				Patient p= new Patient ( name, surname,sex,birth_date,location,actual_state);
+				patient_list.add(p);
+				
+				
+			}
+			
+			rs.close();
+			stmt.close();
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return patient_list;
+	
+		
+	}
+
 //Update patient state
 	public void update_patient_state(int id, String actual_state) {// revisar
 		try {
@@ -279,10 +312,6 @@ public class SQLMaster implements DBMaster {
 
 	}
 
-	@Override
-	public List<Patient> printPatients() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 }
