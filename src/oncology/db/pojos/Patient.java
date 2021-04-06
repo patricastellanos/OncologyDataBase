@@ -3,7 +3,6 @@ package oncology.db.pojos;
 import java.io.Serializable;
 
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.List;
 
 public class Patient implements Serializable {

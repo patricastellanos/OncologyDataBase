@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
+
 import oncology.db.interfaces.DBMaster;
 import oncology.db.pojos.Cancer;
 import oncology.db.pojos.FamilyHistory;
@@ -17,7 +18,6 @@ import oncology.db.pojos.MedicalExamination;
 import oncology.db.pojos.Patient;
 import oncology.db.pojos.Symptoms;
 import oncology.db.pojos.Treatment;
-
 
 public class SQLMaster implements DBMaster {
 
@@ -61,20 +61,14 @@ public class SQLMaster implements DBMaster {
 		try {
 			stmt1 = c.createStatement();
 			// Create table patient
-			String sql1 = "CREATE TABLE patient " 
-						+ "( id       INTEGER  PRIMARY KEY AUTOINCREMENT, "
-					    + " name     TEXT     NOT NULL, " 
-						+ " surname     TEXT     NOT NULL, " 
-					    + " sex TEXT NOT NULL, "
-					    + " date_birth DATE NOT NULL, " 
-					    + " location TEXT NOT NULL, " 
-					    + " actual_state TEXT NOT NULL, "
-					    + " id_famHistory INTEGER REFERENCES family_history (id_famHistory) ON DELETE SET NULL )";
+			String sql1 = "CREATE TABLE patient " + "( id       INTEGER  PRIMARY KEY AUTOINCREMENT, "
+					+ " name     TEXT     NOT NULL, " + " surname     TEXT     NOT NULL, " + " sex TEXT NOT NULL, "
+					+ " date_birth DATE NOT NULL, " + " location TEXT NOT NULL, " + " actual_state TEXT NOT NULL, "
+					+ " id_famHistory INTEGER REFERENCES family_history (id_famHistory) ON DELETE SET NULL )";
 			stmt1.executeUpdate(sql1);
 
 			// Create table cancer
-			sql1 = "CREATE TABLE cancer " 
-					+ "( id_cancer INTEGER PRIMARY KEY AUTOINCREMENT, "
+			sql1 = "CREATE TABLE cancer " + "( id_cancer INTEGER PRIMARY KEY AUTOINCREMENT, "
 					+ " id_medExam REFERENCES medical_examinations (id_medExam) ON DELETE SET NULL, "
 					+ " type TEXT NOT NULL )";
 			// sql = "INSERT INTO cancer (type) "
@@ -83,24 +77,19 @@ public class SQLMaster implements DBMaster {
 			stmt1.executeUpdate(sql1);
 
 			// Create table cancer_treatment
-			sql1 = "CREATE TABLE cancer_treatment " 
-					+ "( id_cancer INTEGER REFERENCES cancer (id_cancer), "
+			sql1 = "CREATE TABLE cancer_treatment " + "( id_cancer INTEGER REFERENCES cancer (id_cancer), "
 					+ " id_treat INTEGER REFERENCES treatment (id_treatment), "
 					+ " PRIMARY KEY (id_cancer, id_treat ))";
 			stmt1.executeUpdate(sql1);
 
 			// Create table symptoms
-			sql1 = "CREATE TABLE symptomps " 
-					+ "( id_symp  INTEGER  PRIMARY KEY AUTOINCREMENT,"
+			sql1 = "CREATE TABLE symptomps " + "( id_symp  INTEGER  PRIMARY KEY AUTOINCREMENT,"
 					+ " detail    TEXT     NOT NULL )";
 			stmt1.executeUpdate(sql1);
 
 			// Create table treatment
-			sql1 = "CREATE TABLE treatment " 
-					+ "( id_treat   INTEGER  PRIMARY KEY AUTOINCREMENT,"
-					+ " type    TEXT     NOT NULL, " 
-					+ " startdate     DATE NOT NULL, " 
-					+ " enddate DATE NOT NULL )";
+			sql1 = "CREATE TABLE treatment " + "( id_treat   INTEGER  PRIMARY KEY AUTOINCREMENT,"
+					+ " type    TEXT     NOT NULL, " + " startdate     DATE NOT NULL, " + " enddate DATE NOT NULL )";
 			stmt1.executeUpdate(sql1);
 
 			// Create table patient_symptoms
@@ -112,25 +101,22 @@ public class SQLMaster implements DBMaster {
 			stmt1.executeUpdate(sql1);
 
 			// Create table family_history
-			sql1 = "CREATE TABLE family_history " 
-					+ "( id_famHistory INTEGER PRIMARY KEY AUTOINCREMENT, "
-					+ "  type TEXT, " 
-					+ "  member TEXT )";
+			sql1 = "CREATE TABLE family_history " + "( id_famHistory INTEGER PRIMARY KEY AUTOINCREMENT, "
+					+ "  type TEXT, " + "  member TEXT )";
 
 			stmt1.executeUpdate(sql1);
 
 			// Create table cancer_patient
-			sql1 = "CREATE TABLE cancer_patient " 
-					+ "( id_cancer INTEGER REFERENCES cancer (id_cancer), "
+			sql1 = "CREATE TABLE cancer_patient " + "( id_cancer INTEGER REFERENCES cancer (id_cancer), "
 					+ " id_patient INTEGER REFERENCES patient (id_patient), "
 					+ " PRIMARY KEY (id_cancer, id_patient) )";
 
 			stmt1.executeUpdate(sql1);
 			stmt1.close();
 		} catch (SQLException e) {
-			// if (!e.getMessage().contains("already exists")) {
-			e.printStackTrace();
-			// }
+			if (!e.getMessage().contains("already exists")) {
+				e.printStackTrace();
+			}
 		}
 
 	}
@@ -164,7 +150,7 @@ public class SQLMaster implements DBMaster {
 		try {
 
 			Statement stmt = c.createStatement();
-			String sql = "SELECT * FROM patient WHERE name,surname " + " LIKE '%" + name + "% ' , '%" + surname + "%'";
+			String sql = "SELECT * FROM patient WHERE name LIKE '%" + name + "%' AND surname LIKE '%" + surname + "%'";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) { // true: there is another result and I have advanced to it
 								// false: there are no more results
@@ -189,7 +175,7 @@ public class SQLMaster implements DBMaster {
 			PreparedStatement prep = c.prepareStatement(sql);
 			prep.setInt(1, patient_id);
 			prep.executeUpdate();
-			prep.close();//ask
+			prep.close();// ask
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -228,7 +214,6 @@ public class SQLMaster implements DBMaster {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 
 	}
 
@@ -246,42 +231,35 @@ public class SQLMaster implements DBMaster {
 		return null;
 	}
 
-/*	public List<Patient> printPatients() {
-		
-		List <Patient> patient_list=new ArrayList<Patient>();
-		try {
-			Statement stmt = c.createStatement();
-			String sql = "SELECT * FROM patient";
-			ResultSet rs = stmt.executeQuery(sql);
-			while (rs.next()) {
-				Integer id_patient = rs.getInt("id");
-				String name = rs.getString("name");
-				String surname = rs.getString("surname");
-				String sex = rs.getString("sex");
-				Date birth_date = rs.getDate("date_birth");
-				String location = rs.getString("location");
-				String actual_state = rs.getString("actual_state");
-				
-							
-				Patient p= new Patient ( name, surname,sex,birth_date,location,actual_state);
-				patient_list.add(p);
-				
-				
-			}
-			
-			
-			rs.close();
-			stmt.close();
-			
-			return patient_list;
-		
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	
-		
-	}*/
+	/*
+	 * public List<Patient> printPatients() {
+	 * 
+	 * List <Patient> patient_list=new ArrayList<Patient>(); try { Statement stmt =
+	 * c.createStatement(); String sql = "SELECT * FROM patient"; ResultSet rs =
+	 * stmt.executeQuery(sql); while (rs.next()) { Integer id_patient =
+	 * rs.getInt("id"); String name = rs.getString("name"); String surname =
+	 * rs.getString("surname"); String sex = rs.getString("sex"); Date birth_date =
+	 * rs.getDate("date_birth"); String location = rs.getString("location"); String
+	 * actual_state = rs.getString("actual_state");
+	 * 
+	 * 
+	 * Patient p= new Patient ( name, surname,sex,birth_date,location,actual_state);
+	 * patient_list.add(p);
+	 * 
+	 * 
+	 * }
+	 * 
+	 * 
+	 * rs.close(); stmt.close();
+	 * 
+	 * return patient_list;
+	 * 
+	 * 
+	 * } catch (Exception e) { e.printStackTrace(); }
+	 * 
+	 * 
+	 * }
+	 */
 
 //Update patient state
 	public void update_patient_state(int id, String actual_state) {// revisar
@@ -306,6 +284,5 @@ public class SQLMaster implements DBMaster {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 
 }

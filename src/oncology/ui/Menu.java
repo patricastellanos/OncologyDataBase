@@ -30,6 +30,7 @@ public class Menu {
 
 	public static void main(String[] args) throws Exception {
 		dbmaster.connect();
+		UserInteraction.setDBMaster(dbmaster);
 		while (true) {
 			System.out.println("Choose an option:");
 			System.out.println("1. Add a patient");

@@ -13,11 +13,14 @@ import actions.SQLMaster;
 import oncology.db.interfaces.DBMaster;
 
 public class UserInteraction {
-	private static DBMaster dbmaster = new SQLMaster();
+	private static DBMaster dbmaster;
 	private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	private static List<Patient> patient_list = new ArrayList();
 	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
+	public static void setDBMaster(DBMaster dbm) {
+		dbmaster=dbm;
+	}
 	public static void addPatientMenu() throws Exception {
 
 		String name = printPatientNameMenu();
