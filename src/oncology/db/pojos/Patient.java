@@ -17,11 +17,6 @@ private Integer id_patient;
  private List<Cancer> cancer_list;
  private List<Symptoms> symptoms_list;
  
-/*
- * actual_state { ACUTE_REHABILITATION, SLOWSTREAM_REHABILITATION, COMPLEX_CARE,
- * CONVALESCENT_CARE, PALLIATIVE_RESPITE; }
- */
- 
  
 //Constructor for the method searchPatientByName
 	public Patient(Integer id_patient, String name,String surname) {
@@ -47,29 +42,8 @@ private Integer id_patient;
 		
 	}
 	
-	
-	/*public Patient(Integer id_patient, String name, String surname, String sex, Date birth_date, String location,
-			String actual_state) {
-		super();
-		this.id_patient = id_patient;
-		this.name = name;
-		this.surname = surname;
-		this.sex = sex;
-		this.birth_date = birth_date;
-		this.location = location;
-		this.actual_state = actual_state;
-	}*/
 
-
-
-
-//getters and setters
-public Integer getId_patient() {
-	return id_patient;
-}
-
-
-public Patient(Integer id_patient, String name, String surname, String sex, Date birth_date, String location,
+public Patient(/*Integer id_patient,*/ String name, String surname, String sex, Date birth_date, String location,
 		String actual_state, List<Cancer> cancer_list, List<Symptoms> symptoms_list) {
 	super();
 	this.id_patient = id_patient;
@@ -83,6 +57,11 @@ public Patient(Integer id_patient, String name, String surname, String sex, Date
 	this.symptoms_list = symptoms_list;
 }
 
+
+//getters and setters
+public Integer getId_patient() {
+	return id_patient;
+}
 
 
 

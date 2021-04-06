@@ -138,6 +138,19 @@ public class SQLMaster implements DBMaster {
 		}
 
 	}
+	
+	public void removePatient(Integer patient_id) {
+		// TODO Unsafe method, update later
+		try {
+			String sql = "DELETE * FROM patient WHERE patient_id= ? ";
+			PreparedStatement prep = c.prepareStatement(sql);
+			prep.setInt(1, patient_id);
+			prep.executeUpdate();
+			prep.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	public List<Patient> searchPatientByName(String name, String surname) {
 		// TODO Unsafe method, update later
@@ -166,18 +179,7 @@ public class SQLMaster implements DBMaster {
 		return patient_list;
 	}
 
-	public void removePatient(int patient_id) {
-		// TODO Unsafe method, update later
-		try {
-			String sql = "DELETE FROM patient WHERE patient_id= ? ";
-			PreparedStatement prep = c.prepareStatement(sql);
-			prep.setInt(1, patient_id);
-			prep.executeUpdate();
-			prep.close();// ask
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+
 
 //Crear una enum con los posibles diagnositicos de la examination(buscar en internet) y en base a eso devolver un tipo de cancer asociado
 	@Override
@@ -219,13 +221,6 @@ public class SQLMaster implements DBMaster {
 	public MedicalExamination infoSymptoms(Symptoms s) {
 		// TODO Auto-generated method stub
 		// demasiados metodos que hacen lo mismo basicamente, cambiar los printf y listo
-		return null;
-	}
-
-	@Override // este metodo no hace falta porque hay un metodo que borra pacientes por id
-				// tras mostrar la lista de tooodos lospacientes
-	public List<Patient> removePatientByName(String name, String surname) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

@@ -6,20 +6,6 @@ import actions.SQLMaster;
 import oncology.db.interfaces.DBMaster;
 import userInteraction.UserInteraction;
 
-/*import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.lang.Thread.State;
-import java.sql.Date;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import actions.SQLMaster;
-import oncology.db.interfaces.DBMaster;
-import oncology.db.pojos.Patient;*/
-
-
 
 public class Menu {
 	
@@ -42,7 +28,7 @@ public class Menu {
 			System.out.println("0. Exit");
 			try {
 				int choice = Integer.parseInt(reader.readLine());
-				while (choice <= 0 || choice > 6) {
+				while (choice < 0 || choice > 6) {
 					System.out.println("Choose an option within the range:");
                     choice =Integer.parseInt(reader.readLine());
                 }

@@ -14,7 +14,7 @@ public interface DBMaster {
     public void disconnect();
 	
     public void addPatient(Patient p);
-    public List<Patient> removePatientByName(String name,String surname);
+    public void removePatient(Integer id);
     public List<Patient> searchPatientByName(String name,String surname);
    
     public void patientSymptoms(int id, String symptoms);
