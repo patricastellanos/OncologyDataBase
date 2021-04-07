@@ -30,6 +30,17 @@ private Integer id_patient;
 	
 
 //Constructor for addPatient (name, surname,sex,Date.valueOf(date_birth),actual_state,location)
+	public Patient(Integer id_patient,String name, String surname, String sex, Date birth_date,String location, String actual_state) {
+		super();
+		this.id_patient=id_patient;
+		this.name = name;
+		this.surname = surname;
+		this.sex=sex;
+		this.birth_date=birth_date;
+		this.location=location;
+		this.actual_state=actual_state;
+		
+	}
 	public Patient(String name, String surname, String sex, Date birth_date,String location, String actual_state) {
 		super();
 		this.id_patient=id_patient;
@@ -41,9 +52,8 @@ private Integer id_patient;
 		this.actual_state=actual_state;
 		
 	}
-	
 
-public Patient(/*Integer id_patient,*/ String name, String surname, String sex, Date birth_date, String location,
+public Patient(Integer id_patient, String name, String surname, String sex, Date birth_date, String location,
 		String actual_state, List<Cancer> cancer_list, List<Symptoms> symptoms_list) {
 	super();
 	this.id_patient = id_patient;
@@ -110,13 +120,12 @@ public String getActual_state() {
 public void setActual_state(String actual_state) {
 	this.actual_state = actual_state;
 }
-//toString
 @Override
 public String toString() {
 	return "Patient [id_patient=" + id_patient + ", name=" + name + ", surname=" + surname + ", sex=" + sex
-			+  ", location=" + location + "]";
+			+ ", birth_date=" + birth_date + ", location=" + location + ", actual_state=" + actual_state + "]";
 }
-//hashcode
+//hashcode just id
 @Override
 public int hashCode() {
 	final int prime = 31;

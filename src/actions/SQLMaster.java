@@ -60,8 +60,8 @@ public class SQLMaster implements DBMaster {
 		try {
 			stmt1 = c.createStatement();
 			// Create table patient
-			String sql1 = "CREATE TABLE patient " + "( id       INTEGER  PRIMARY KEY AUTOINCREMENT, "
-					+ " name     TEXT     NOT NULL, " + " surname     TEXT     NOT NULL, " + " sex TEXT NOT NULL, "
+			String sql1 = "CREATE TABLE patient " + "( id_patient INTEGER  PRIMARY KEY AUTOINCREMENT, "
+					+ " name TEXT NOT NULL, " + " surname TEXT NOT NULL, " + " sex TEXT NOT NULL, "
 					+ " date_birth DATE NOT NULL, " + " location TEXT NOT NULL, " + " actual_state TEXT NOT NULL, "
 					+ " id_famHistory INTEGER REFERENCES family_history (id_famHistory) ON DELETE SET NULL )";
 			stmt1.executeUpdate(sql1);
@@ -139,18 +139,70 @@ public class SQLMaster implements DBMaster {
 
 	}
 	
-	public void removePatient(Integer patient_id) {
+	public void removePatient(int id_patient) {
 		// TODO Unsafe method, update later
 		try {
-			String sql = "DELETE * FROM patient WHERE patient_id= ? ";
+			String sql = "DELETE FROM patient WHERE id_patient= ?";
 			PreparedStatement prep = c.prepareStatement(sql);
-			prep.setInt(1, patient_id);
+			prep.setInt(1, id_patient);
 			prep.executeUpdate();
 			prep.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	public List<Patient> printPatients() {
+		
+		List <Patient> patient_list=new ArrayList<Patient>();
+		try {
+			Statement stmt = c.createStatement();
+			String sql = "SELECT * FROM patient";
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				Integer id_patient = rs.getInt("id");
+				String name = rs.getString("name");
+				String surname = rs.getString("surname");
+				String sex = rs.getString("sex");
+				Date birth_date = rs.getDate("date_birth");
+				String location = rs.getString("location");
+				String actual_state = rs.getString("actual_state");
+				
+							
+				Patient p= new Patient ( id_patient, name, surname,sex,birth_date,location,actual_state);
+				patient_list.add(p);
+				
+				
+			}
+			
+			rs.close();
+			stmt.close();
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return patient_list;
+	
+		
+	}
+
+//Update patient state
+	public void update_patient_state(int id, String actual_state) {
+		try {
+			String sql = "UPDATE patient SET actual_state=? WHERE id=?";
+			PreparedStatement prep = c.prepareStatement(sql);
+			prep.setString(1, actual_state);
+			prep.setInt(2, id);
+			prep.executeUpdate();
+			System.out.println("Update finished.");
+			c.close();
+			System.out.println("Database connection closed.");//ask
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+
 
 	public List<Patient> searchPatientByName(String name, String surname) {
 		// TODO Unsafe method, update later
@@ -168,9 +220,16 @@ public class SQLMaster implements DBMaster {
 				int id = rs.getInt("id");
 				String patientName = rs.getString("name");
 				String patientSurname = rs.getString("surname");
-				Patient p = new Patient(id, patientName, patientSurname);
+				String sex=rs.getString("sex");
+				String location=rs.getString("location");
+				String actual_state=rs.getString("actual_state");
+				Date date_birth=rs.getDate("date_birth");
+				Patient p = new Patient(id, patientName, patientSurname, sex,date_birth, location, actual_state);
 				patient_list.add(p);
+				
+				//sex loc state
 			}
+			
 			rs.close();
 			stmt.close();
 		} catch (Exception e) {
@@ -225,87 +284,6 @@ public class SQLMaster implements DBMaster {
 	}
 
 
-	/*
-	 * public List<Patient> printPatients() {
-	 * 
-	 * List <Patient> patient_list=new ArrayList<Patient>(); try { Statement stmt =
-	 * c.createStatement(); String sql = "SELECT * FROM patient"; ResultSet rs =
-	 * stmt.executeQuery(sql); while (rs.next()) { Integer id_patient =
-	 * rs.getInt("id"); String name = rs.getString("name"); String surname =
-	 * rs.getString("surname"); String sex = rs.getString("sex"); Date birth_date =
-	 * rs.getDate("date_birth"); String location = rs.getString("location"); String
-	 * actual_state = rs.getString("actual_state");
-	 * 
-	 * 
-	 * Patient p= new Patient ( name, surname,sex,birth_date,location,actual_state);
-	 * patient_list.add(p);
-	 * 
-	 * 
-	 * }
-	 * 
-	 * 
-	 * rs.close(); stmt.close();
-	 * 
-	 * return patient_list;
-	 * 
-	 * 
-	 * } catch (Exception e) { e.printStackTrace(); }
-	 * 
-	 * 
-	 * }
-	 */
-
-	public List<Patient> printPatients() {
-		
-		List <Patient> patient_list=new ArrayList<Patient>();
-		try {
-			Statement stmt = c.createStatement();
-			String sql = "SELECT * FROM patient";
-			ResultSet rs = stmt.executeQuery(sql);
-			while (rs.next()) {
-				Integer id_patient = rs.getInt("id");
-				String name = rs.getString("name");
-				String surname = rs.getString("surname");
-				String sex = rs.getString("sex");
-				Date birth_date = rs.getDate("date_birth");
-				String location = rs.getString("location");
-				String actual_state = rs.getString("actual_state");
-				
-							
-				Patient p= new Patient ( name, surname,sex,birth_date,location,actual_state);
-				patient_list.add(p);
-				
-				
-			}
-			
-			rs.close();
-			stmt.close();
-		
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return patient_list;
-	
-		
-	}
-
-//Update patient state
-	public void update_patient_state(int id, String actual_state) {// revisar
-		try {
-			String sql = "UPDATE patient SET actual_state=? WHERE id=?";
-			PreparedStatement prep = c.prepareStatement(sql);
-			prep.setString(1, actual_state);
-			prep.setInt(2, id);
-			prep.executeUpdate();
-			System.out.println("Update finished.");
-			c.close();
-			System.out.println("Database connection closed.");
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
 
 	
 

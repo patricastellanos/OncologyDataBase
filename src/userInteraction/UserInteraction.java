@@ -102,7 +102,7 @@ public class UserInteraction {
 		printPatientsMenu();
 		System.out.println("Please, input the id of the patient:");
 		Integer id= Integer.parseInt(reader.readLine());
-		dbmaster.removePatient(id);// cambiaria el metodo a removePatient(int id)
+		dbmaster.removePatient(id);
 	}
 	
 	public static void printPatientsMenu() throws Exception {
@@ -113,7 +113,7 @@ public class UserInteraction {
 		}
 	}
 
-	public static void searchPatientMenu() throws Exception {
+	public static void searchPatientMenu() throws Exception { //we should take the id too in order to avoid problems if some patients have the same name and surname
 		System.out.println("Please, input the search term:");
 
 		String name = printPatientNameMenu();
