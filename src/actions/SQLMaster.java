@@ -151,6 +151,7 @@ public class SQLMaster implements DBMaster {
 			e.printStackTrace();
 		}
 	}
+	
 	public List<Patient> printPatients() {
 		
 		List <Patient> patient_list=new ArrayList<Patient>();
@@ -227,7 +228,6 @@ public class SQLMaster implements DBMaster {
 				Patient p = new Patient(id, patientName, patientSurname, sex,date_birth, location, actual_state);
 				patient_list.add(p);
 				
-				//sex loc state
 			}
 			
 			rs.close();
@@ -240,7 +240,8 @@ public class SQLMaster implements DBMaster {
 
 
 
-//Crear una enum con los posibles diagnositicos de la examination(buscar en internet) y en base a eso devolver un tipo de cancer asociado
+//Crear una enum con los posibles diagnositicos de la examination(buscar en internet) y en base a eso
+	//devolver un tipo de cancer asociado
 	@Override
 	public Cancer resultMedExamination(MedicalExamination m) {
 		// TODO Auto-generated method stub

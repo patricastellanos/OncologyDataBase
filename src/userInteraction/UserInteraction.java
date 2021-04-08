@@ -15,7 +15,7 @@ import oncology.db.interfaces.DBMaster;
 public class UserInteraction {
 	private static DBMaster dbmaster;
 	private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-	private static List<Patient> patient_list = new ArrayList();
+	private static List<Patient> patient_list = new ArrayList<Patient>();
 	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
 	public static void setDBMaster(DBMaster dbm) {
@@ -40,16 +40,18 @@ public class UserInteraction {
 
 	// This method ask about the patient's actual state
 	public static String printPatientStateMenu() throws IOException {
-		System.out.println(
-				"Please, input the patient's actual state: ACUTE_REHABILITATION, SLOWSTREAM_REHABILITATION, COMPLEX_CARE, CONVALESCENT_CARE, PALLIATIVE_RESPITE");
+		
 		String actual_state;
 		do {
-
+			System.out.println(
+					"Please, input the patient's actual state: "
+					+ "ACUTE_REHABILITATION, SLOWSTREAM_REHABILITATION, COMPLEX_CARE, CONVALESCENT_CARE, PALLIATIVE_RESPITE");
 			actual_state = reader.readLine().toUpperCase();
 
 		} while (!actual_state.equalsIgnoreCase("ACUTE_REHABILITATION")
 				&& !actual_state.equalsIgnoreCase("SLOWSTREAM_REHABILITATION")
-				&& !actual_state.equalsIgnoreCase("COMPLEX_CARE") && !actual_state.equalsIgnoreCase("CONVALESCENT_CARE")
+				&& !actual_state.equalsIgnoreCase("COMPLEX_CARE") 
+				&& !actual_state.equalsIgnoreCase("CONVALESCENT_CARE")
 				&& !actual_state.equalsIgnoreCase("PALLIATIVE_RESPITE"));
 		return actual_state;
 	}
