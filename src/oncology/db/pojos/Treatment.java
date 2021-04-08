@@ -11,16 +11,16 @@ public class Treatment implements Serializable {
 	//Cambiar stardate y enddate por duracion
 	private String treat_type;
 	private Date start_date;
-	private Date end_date;
+	private Integer duration;
 	private List<Cancer> cancer_list;
 	
 	//Constructor
-	public Treatment(Integer id_treat, String treat_type, Date start_date, Date end_date) {
+	public Treatment(Integer id_treat, String treat_type, Date start_date, Integer duration) {
 		super();
 		this.id_treat = id_treat;
 		this.treat_type = treat_type;
 		this.start_date = start_date;
-		this.end_date = end_date;
+		this.duration = duration;
 	}
 	//Gets and sets
 	public Integer getId_treat() {
@@ -38,25 +38,25 @@ public class Treatment implements Serializable {
 	public void setStart_date(Date start_date) {
 		this.start_date = start_date;
 	}
-	public Date getEnd_date() {
-		return end_date;
+
+	public Integer getDuration() {
+		return duration;
 	}
-	public void setEnd_date(Date end_date) {
-		this.end_date = end_date;
+	public void setDuration(Integer duration) {
+		this.duration = duration;
 	}
-	
 	//toString
 	@Override
 	public String toString() {
 		return "Treatment [id_treat=" + id_treat + ", treat_type=" + treat_type + ", start_date=" + start_date
-				+ ", end_date=" + end_date + "]";
+				+ ", duration=" + duration + "]";
 	}
 	//hasCode
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((end_date == null) ? 0 : end_date.hashCode());
+		result = prime * result + ((duration == null) ? 0 : duration.hashCode());
 		result = prime * result + ((id_treat == null) ? 0 : id_treat.hashCode());
 		result = prime * result + ((start_date == null) ? 0 : start_date.hashCode());
 		result = prime * result + ((treat_type == null) ? 0 : treat_type.hashCode());
@@ -71,10 +71,10 @@ public class Treatment implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Treatment other = (Treatment) obj;
-		if (end_date == null) {
-			if (other.end_date != null)
+		if (duration == null) {
+			if (other.duration != null)
 				return false;
-		} else if (!end_date.equals(other.end_date))
+		} else if (!duration.equals(other.duration))
 			return false;
 		if (id_treat == null) {
 			if (other.id_treat != null)
