@@ -115,7 +115,8 @@ public class UserInteraction {
 		}
 	}
 
-	public static void searchPatientMenu() throws Exception { //we should take the id too in order to avoid problems if some patients have the same name and surname
+	public static void searchPatientMenu() throws Exception { 
+		//we should take the id too in order to avoid problems if some patients have the same name and surname
 		System.out.println("Please, input the search term:");
 
 		String name = printPatientNameMenu();
@@ -136,6 +137,7 @@ public class UserInteraction {
 		String actual_state = printPatientStateMenu();
 
 		dbmaster.update_patient_state(id, actual_state);
+		//printPatientsMenu();
 
 	}
 

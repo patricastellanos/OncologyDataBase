@@ -196,7 +196,7 @@ public class SQLMaster implements DBMaster {
 			prep.executeUpdate();
 			System.out.println("Update finished.");
 			c.close();
-			System.out.println("Database connection closed.");//ask
+			//System.out.println("Database connection closed."); ask
 
 		} catch (Exception e) {
 			e.printStackTrace();
