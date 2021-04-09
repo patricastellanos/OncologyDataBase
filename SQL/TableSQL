@@ -33,9 +33,8 @@ CREATE TABLE cancer (
 CREATE TABLE treatment (
     id_treatment INTEGER PRIMARY KEY AUTOINCREMENT
     type TEXT NOT NULL
-    effects TEXT NOT NULL 
     startDate DATE NOT NULL
-    endDate DATE NOT NULL,
+    duration INTEGER NOT NULL,
 )
 
 
