@@ -142,7 +142,7 @@ public class SQLMaster implements DBMaster {
 	public void removePatient(int id_patient) {
 		// TODO Unsafe method, update later
 		try {
-			String sql = "DELETE FROM patient WHERE id_patient= ?";
+			String sql = "DELETE FROM patient WHERE id= ?";
 			PreparedStatement prep = c.prepareStatement(sql);
 			prep.setInt(1, id_patient);
 			prep.executeUpdate();
@@ -195,7 +195,7 @@ public class SQLMaster implements DBMaster {
 			prep.setInt(2, id);
 			prep.executeUpdate();
 			System.out.println("Update finished.");
-			c.close();
+			prep.close();
 			//System.out.println("Database connection closed."); ask
 
 		} catch (Exception e) {
