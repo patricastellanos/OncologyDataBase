@@ -120,11 +120,20 @@ public String getActual_state() {
 public void setActual_state(String actual_state) {
 	this.actual_state = actual_state;
 }
+/*@Override
+public String toString() {
+	return "Patient"+"\n"+ "[id_patient=" + id_patient + "\n" +"name=" + name +"\n" +"surname=" + surname 
+			+ "\n"+"sex=" + sex+"\n"+ "birth_date=" + birth_date +"\n"+"location=" 
+			+ location +"\n"+"actual_state=" + actual_state + "]";
+}*/
+
 @Override
 public String toString() {
-	return "Patient [id_patient=" + id_patient + ", name=" + name + ", surname=" + surname + ", sex=" + sex
-			+ ", birth_date=" + birth_date + ", location=" + location + ", actual_state=" + actual_state + "]";
+	return "Patient"+", "+ "[id_patient=" + id_patient + ", " +"name=" + name +", " +"surname=" + surname 
+			+ ", "+"sex=" + sex+", "+ "birth_date=" + birth_date +", "+"location=" 
+			+ location +", "+"actual_state=" + actual_state + "]";
 }
+
 //hashcode just id
 @Override
 public int hashCode() {

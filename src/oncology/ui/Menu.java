@@ -55,6 +55,7 @@ public class Menu {
 					break;
 				case 0:
 					dbmaster.disconnect();
+					System.out.println("Data base closed");
 					System.exit(0);
 					break;
 				default:
