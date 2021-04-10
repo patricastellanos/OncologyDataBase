@@ -60,7 +60,7 @@ public class SQLMaster implements DBMaster {
 		try {
 			stmt1 = c.createStatement();
 			// Create table patient
-			String sql1 = "CREATE TABLE patient " + "( id_patient INTEGER  PRIMARY KEY AUTOINCREMENT, "
+			String sql1 = "CREATE TABLE patient " + "( id INTEGER  PRIMARY KEY AUTOINCREMENT, "
 					+ " name TEXT NOT NULL, " + " surname TEXT NOT NULL, " + " sex TEXT NOT NULL, "
 					+ " date_birth DATE NOT NULL, " + " location TEXT NOT NULL, " + " actual_state TEXT NOT NULL, "
 					+ " id_famHistory INTEGER REFERENCES family_history (id_famHistory) ON DELETE SET NULL )";
@@ -93,9 +93,9 @@ public class SQLMaster implements DBMaster {
 
 			// Create table patient_symptoms
 			sql1 = "CREATE TABLE patient_symptoms"
-					+ "( id_patient INTEGER REFERENCES patient(id_patient) ON DELETE SET NULL, "
+					+ "( id INTEGER REFERENCES patient(id) ON DELETE SET NULL, "
 					+ " id_symp INTEGER REFERENCES symptoms(id_symp) ON DELETE SET NULL, "
-					+ " PRIMARY KEY (id_patient, id_symp) )";
+					+ " PRIMARY KEY (id, id_symp) )";
 
 			stmt1.executeUpdate(sql1);
 
@@ -107,8 +107,8 @@ public class SQLMaster implements DBMaster {
 
 			// Create table cancer_patient
 			sql1 = "CREATE TABLE cancer_patient " + "( id_cancer INTEGER REFERENCES cancer (id_cancer), "
-					+ " id_patient INTEGER REFERENCES patient (id_patient), "
-					+ " PRIMARY KEY (id_cancer, id_patient) )";
+					+ " id INTEGER REFERENCES patient (id), "
+					+ " PRIMARY KEY (id_cancer, id) )";
 
 			stmt1.executeUpdate(sql1);
 			stmt1.close();
@@ -139,12 +139,12 @@ public class SQLMaster implements DBMaster {
 
 	}
 	
-	public void removePatient(int id_patient) {
+	public void removePatient(int id) {
 		// TODO Unsafe method, update later
 		try {
 			String sql = "DELETE FROM patient WHERE id= ?";
 			PreparedStatement prep = c.prepareStatement(sql);
-			prep.setInt(1, id_patient);
+			prep.setInt(1, id);
 			prep.executeUpdate();
 			prep.close();
 		} catch (Exception e) {
