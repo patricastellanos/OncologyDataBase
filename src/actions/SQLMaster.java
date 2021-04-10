@@ -173,6 +173,7 @@ public class SQLMaster implements DBMaster {
 
 	}
 	
+	//New method
 	public void Diagnosis(MedicalExamination m, Cancer can) {
 		try {
 			if(m.getDiagnosis().equals("Cancer")) {
@@ -180,6 +181,7 @@ public class SQLMaster implements DBMaster {
 			    PreparedStatement prep = c.prepareStatement(sql);
 				prep.setString(1, can.getCancer_type());
 				prep.setInt(2, m.getId_medExam());
+				//Habría que asignárselo también al paciente 
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
