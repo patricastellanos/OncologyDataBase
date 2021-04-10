@@ -65,6 +65,8 @@ public class SQLMaster implements DBMaster {
 					+ " date_birth DATE NOT NULL, " + " location TEXT NOT NULL, " + " actual_state TEXT NOT NULL, "
 					+ " id_famHistory INTEGER REFERENCES family_history (id_famHistory) ON DELETE SET NULL )";
 			stmt1.executeUpdate(sql1);
+			
+			//We need to create the table for medical examination
 
 			// Create table cancer
 			sql1 = "CREATE TABLE cancer " + "( id_cancer INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -160,7 +162,7 @@ public class SQLMaster implements DBMaster {
 	//New method 
 	public void newMedExam(MedicalExamination m) {
 		try {
-			String sql="INSERT INTO symptoms (details) VALUES(?,?,?)";
+			String sql="INSERT INTO medical_examination (details) VALUES(?,?,?)";
 		    PreparedStatement prep = c.prepareStatement(sql);
 			prep.setString(1, m.getMedExam_type());
 			prep.setDate(2, (Date) m.getDateMedExam());
