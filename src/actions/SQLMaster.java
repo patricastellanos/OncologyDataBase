@@ -139,6 +139,55 @@ public class SQLMaster implements DBMaster {
 
 	}
 	
+	//New method 
+	public void addSymptoms(Symptoms s, int id_patient) {
+		try {
+			String sql;
+			sql= "INSERT INTO symptoms (details) VALUES(?)";
+			sql= "INSERT INTO patient_symptoms (id_patient, id_symp) VALUES (?,?)";
+			PreparedStatement prep = c.prepareStatement(sql);
+			prep.setString(1, s.getDetails());
+			prep.setInt(2, id_patient);
+			prep.setInt(3, s.getId_symp());
+			prep.executeUpdate();
+			prep.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	//New method 
+	public void newMedExam(MedicalExamination m) {
+		try {
+			String sql="INSERT INTO symptoms (details) VALUES(?,?,?)";
+		    PreparedStatement prep = c.prepareStatement(sql);
+			prep.setString(1, m.getMedExam_type());
+			prep.setDate(2, (Date) m.getDateMedExam());
+			prep.setString(3, m.getDiagnosis());
+			prep.executeUpdate();
+			prep.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	public void Diagnosis(MedicalExamination m, Cancer can) {
+		try {
+			if(m.getDiagnosis().equals("Cancer")) {
+				String sql="INSERT INTO cancer (type, id_medExam) VALUES(?,?)";
+			    PreparedStatement prep = c.prepareStatement(sql);
+				prep.setString(1, can.getCancer_type());
+				prep.setInt(2, m.getId_medExam());
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	
 	public void removePatient(int id) {
 		// TODO Unsafe method, update later
 		try {
@@ -203,6 +252,8 @@ public class SQLMaster implements DBMaster {
 		}
 
 	}
+	
+	
 
 
 	public List<Patient> searchPatientByName(String name, String surname) {

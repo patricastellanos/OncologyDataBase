@@ -24,6 +24,9 @@ public interface DBMaster {
     public List<FamilyHistory> showFamHistorial(Patient p);
     public List<Patient> printPatients();
     public void update_patient_state(int id, String actual_state);
+    public void addSymptoms(Symptoms s, int id_patient); //New method
+    public void newMedExam(MedicalExamination m);
+    //public void Diagnosis(MedicalExamination m, Cancer can);
    
 
    
