@@ -59,14 +59,22 @@ public class SQLMaster implements DBMaster {
 		Statement stmt1;
 		try {
 			stmt1 = c.createStatement();
+			// Create table family_history
+			String sql1 = "CREATE TABLE family_history " + "( id_famHistory INTEGER PRIMARY KEY AUTOINCREMENT, "
+								+ "  type TEXT, " + "  member TEXT )";
+			stmt1.executeUpdate(sql1);
+						
 			// Create table patient
-			String sql1 = "CREATE TABLE patient " + "( id INTEGER  PRIMARY KEY AUTOINCREMENT, "
+			 sql1 = "CREATE TABLE patient " + "( id INTEGER  PRIMARY KEY AUTOINCREMENT, "
 					+ " name TEXT NOT NULL, " + " surname TEXT NOT NULL, " + " sex TEXT NOT NULL, "
 					+ " date_birth DATE NOT NULL, " + " location TEXT NOT NULL, " + " actual_state TEXT NOT NULL, "
 					+ " id_famHistory INTEGER REFERENCES family_history (id_famHistory) ON DELETE SET NULL )";
 			stmt1.executeUpdate(sql1);
 			
-			//We need to create the table for medical examination
+			//Create the table medical examination
+			sql1= "CREATE TABLE medical_examination " + "(id_medExam INTEGER PRIMARY KEY AUTOINCREMENT, "
+			      + " medExam_type TEXT NOT NULL, " + " dateMedExam DATE NOT NULL, " + " diagnosis TEXT NOT NULL)";
+			stmt1.executeUpdate(sql1);
 
 			// Create table cancer
 			sql1 = "CREATE TABLE cancer " + "( id_cancer INTEGER PRIMARY KEY AUTOINCREMENT, "
@@ -74,7 +82,16 @@ public class SQLMaster implements DBMaster {
 					+ " type TEXT NOT NULL )";
 			// sql = "INSERT INTO cancer (type) "
 			// + "VALUES ('Liver');";
-
+			stmt1.executeUpdate(sql1);
+			
+			// Create table treatment
+			sql1 = "CREATE TABLE treatment " + "( id_treat   INTEGER  PRIMARY KEY AUTOINCREMENT,"
+				    + " type    TEXT     NOT NULL, " + " startdate     DATE NOT NULL, " + " enddate DATE NOT NULL )";
+			stmt1.executeUpdate(sql1);
+			
+			// Create table symptoms
+			sql1 = "CREATE TABLE symptoms " + "( id_symp  INTEGER  PRIMARY KEY AUTOINCREMENT,"
+				   + " detail    TEXT     NOT NULL )";
 			stmt1.executeUpdate(sql1);
 
 			// Create table cancer_treatment
@@ -83,27 +100,11 @@ public class SQLMaster implements DBMaster {
 					+ " PRIMARY KEY (id_cancer, id_treat ))";
 			stmt1.executeUpdate(sql1);
 
-			// Create table symptoms
-			sql1 = "CREATE TABLE symptomps " + "( id_symp  INTEGER  PRIMARY KEY AUTOINCREMENT,"
-					+ " detail    TEXT     NOT NULL )";
-			stmt1.executeUpdate(sql1);
-
-			// Create table treatment
-			sql1 = "CREATE TABLE treatment " + "( id_treat   INTEGER  PRIMARY KEY AUTOINCREMENT,"
-					+ " type    TEXT     NOT NULL, " + " startdate     DATE NOT NULL, " + " enddate DATE NOT NULL )";
-			stmt1.executeUpdate(sql1);
-
 			// Create table patient_symptoms
 			sql1 = "CREATE TABLE patient_symptoms"
 					+ "( id INTEGER REFERENCES patient(id) ON DELETE SET NULL, "
 					+ " id_symp INTEGER REFERENCES symptoms(id_symp) ON DELETE SET NULL, "
 					+ " PRIMARY KEY (id, id_symp) )";
-
-			stmt1.executeUpdate(sql1);
-
-			// Create table family_history
-			sql1 = "CREATE TABLE family_history " + "( id_famHistory INTEGER PRIMARY KEY AUTOINCREMENT, "
-					+ "  type TEXT, " + "  member TEXT )";
 
 			stmt1.executeUpdate(sql1);
 
@@ -318,11 +319,11 @@ public class SQLMaster implements DBMaster {
 		return null;
 	}
 
-	@Override
-	public void patientSymptoms(int id, String symptoms) {
-		String sql = "INSERT INTO patient (symptoms) VALUES(?) WHERE id= ?";
-		PreparedStatement prep;
-		try {
+	//@Override
+	//public void patientSymptoms(int id, String symptoms) {
+		//String sql = "INSERT INTO patient (symptoms) VALUES(?) WHERE id= ?";
+		//PreparedStatement prep;
+		/*try {
 			prep = c.prepareStatement(sql);
 			prep.setString(1, symptoms);
 			prep.setInt(2, id);
@@ -330,7 +331,7 @@ public class SQLMaster implements DBMaster {
 			e.printStackTrace();
 		}
 
-	}
+	}*/
 
 	@Override
 	public MedicalExamination infoSymptoms(Symptoms s) {

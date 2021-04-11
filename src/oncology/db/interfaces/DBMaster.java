@@ -17,7 +17,7 @@ public interface DBMaster {
     public void removePatient(int id);
     public List<Patient> searchPatientByName(String name,String surname);
    
-    public void patientSymptoms(int id, String symptoms);
+    //public void patientSymptoms(int id, String symptoms);
     public MedicalExamination infoSymptoms(Symptoms s);
     public Cancer resultMedExamination (MedicalExamination m);//the result will be cancer (type) of not (sane patient)
     public Treatment assesTreatment(Cancer c);
@@ -26,7 +26,7 @@ public interface DBMaster {
     public void update_patient_state(int id, String actual_state);
     public void addSymptoms(Symptoms s, int id_patient); //New method
     public void newMedExam(MedicalExamination m);
-    //public void Diagnosis(MedicalExamination m, Cancer can); Lo comento porque da error
+    public void Diagnosis(MedicalExamination m, Cancer can); 
    
 
    
