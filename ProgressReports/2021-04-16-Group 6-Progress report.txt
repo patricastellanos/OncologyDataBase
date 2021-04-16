@@ -1,0 +1,17 @@
+This week we expected to be able to do...
+Continue developing the methods and organize our project.
+
+Optional: Reasons why
+We had only one practice class.
+
+This week we did...
+Create some methods and solve some errors in our code.
+
+Optional: Reasons why
+We work on it during Friday's class and we were able to fix the problems.
+
+Next weeks we will do...
+Organize our code and database and keep developing the methods in java.
+
+Optional: Reasons why
+Time to work in class and at home.  
