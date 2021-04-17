@@ -100,7 +100,7 @@ public class UserInteraction {
 		dbmaster.addPatient(new Patient(name, surname, sex, Date.valueOf(date_birth), location, actual_state));//review
 	}
 
-	public static void removePatientMenu() throws Exception {
+	public static void removePatientMenu() throws Exception{
 		printPatientsMenu();
 		System.out.println("Please, input the id of the patient:");
 		Integer id= Integer.parseInt(reader.readLine());

@@ -59,11 +59,21 @@ public class SQLMaster implements DBMaster {
 		Statement stmt1;
 		try {
 			stmt1 = c.createStatement();
+			// Create table family_history
+			String sql1 = "CREATE TABLE family_history " + "( id_famHistory INTEGER PRIMARY KEY AUTOINCREMENT, "
+								+ "  type TEXT, " + "  member TEXT )";
+			stmt1.executeUpdate(sql1);
+						
 			// Create table patient
-			String sql1 = "CREATE TABLE patient " + "( id_patient INTEGER  PRIMARY KEY AUTOINCREMENT, "
+			 sql1 = "CREATE TABLE patient " + "( id INTEGER  PRIMARY KEY AUTOINCREMENT, "
 					+ " name TEXT NOT NULL, " + " surname TEXT NOT NULL, " + " sex TEXT NOT NULL, "
 					+ " date_birth DATE NOT NULL, " + " location TEXT NOT NULL, " + " actual_state TEXT NOT NULL, "
 					+ " id_famHistory INTEGER REFERENCES family_history (id_famHistory) ON DELETE SET NULL )";
+			stmt1.executeUpdate(sql1);
+			
+			//Create the table medical examination
+			sql1= "CREATE TABLE medical_examination " + "(id_medExam INTEGER PRIMARY KEY AUTOINCREMENT, "
+			      + " medExam_type TEXT NOT NULL, " + " dateMedExam DATE NOT NULL, " + " diagnosis TEXT NOT NULL)";
 			stmt1.executeUpdate(sql1);
 
 			// Create table cancer
@@ -72,7 +82,16 @@ public class SQLMaster implements DBMaster {
 					+ " type TEXT NOT NULL )";
 			// sql = "INSERT INTO cancer (type) "
 			// + "VALUES ('Liver');";
-
+			stmt1.executeUpdate(sql1);
+			
+			// Create table treatment
+			sql1 = "CREATE TABLE treatment " + "( id_treat   INTEGER  PRIMARY KEY AUTOINCREMENT,"
+				    + " type    TEXT     NOT NULL, " + " startdate     DATE NOT NULL, " + " enddate DATE NOT NULL )";
+			stmt1.executeUpdate(sql1);
+			
+			// Create table symptoms
+			sql1 = "CREATE TABLE symptoms " + "( id_symp  INTEGER  PRIMARY KEY AUTOINCREMENT,"
+				   + " detail    TEXT     NOT NULL )";
 			stmt1.executeUpdate(sql1);
 
 			// Create table cancer_treatment
@@ -81,34 +100,18 @@ public class SQLMaster implements DBMaster {
 					+ " PRIMARY KEY (id_cancer, id_treat ))";
 			stmt1.executeUpdate(sql1);
 
-			// Create table symptoms
-			sql1 = "CREATE TABLE symptomps " + "( id_symp  INTEGER  PRIMARY KEY AUTOINCREMENT,"
-					+ " detail    TEXT     NOT NULL )";
-			stmt1.executeUpdate(sql1);
-
-			// Create table treatment
-			sql1 = "CREATE TABLE treatment " + "( id_treat   INTEGER  PRIMARY KEY AUTOINCREMENT,"
-					+ " type    TEXT     NOT NULL, " + " startdate     DATE NOT NULL, " + " enddate DATE NOT NULL )";
-			stmt1.executeUpdate(sql1);
-
 			// Create table patient_symptoms
 			sql1 = "CREATE TABLE patient_symptoms"
-					+ "( id_patient INTEGER REFERENCES patient(id_patient) ON DELETE SET NULL, "
+					+ "( id INTEGER REFERENCES patient(id) ON DELETE SET NULL, "
 					+ " id_symp INTEGER REFERENCES symptoms(id_symp) ON DELETE SET NULL, "
-					+ " PRIMARY KEY (id_patient, id_symp) )";
-
-			stmt1.executeUpdate(sql1);
-
-			// Create table family_history
-			sql1 = "CREATE TABLE family_history " + "( id_famHistory INTEGER PRIMARY KEY AUTOINCREMENT, "
-					+ "  type TEXT, " + "  member TEXT )";
+					+ " PRIMARY KEY (id, id_symp) )";
 
 			stmt1.executeUpdate(sql1);
 
 			// Create table cancer_patient
 			sql1 = "CREATE TABLE cancer_patient " + "( id_cancer INTEGER REFERENCES cancer (id_cancer), "
-					+ " id_patient INTEGER REFERENCES patient (id_patient), "
-					+ " PRIMARY KEY (id_cancer, id_patient) )";
+					+ " id INTEGER REFERENCES patient (id), "
+					+ " PRIMARY KEY (id_cancer, id) )";
 
 			stmt1.executeUpdate(sql1);
 			stmt1.close();
@@ -139,12 +142,63 @@ public class SQLMaster implements DBMaster {
 
 	}
 	
-	public void removePatient(int id_patient) {
+	//New method 
+	public void addSymptoms(Symptoms s, int id_patient) {
+		try {
+			String sql;
+			sql= "INSERT INTO symptoms (details) VALUES(?)";
+			sql= "INSERT INTO patient_symptoms (id_patient, id_symp) VALUES (?,?)";
+			PreparedStatement prep = c.prepareStatement(sql);
+			prep.setString(1, s.getDetails());
+			prep.setInt(2, id_patient);
+			prep.setInt(3, s.getId_symp());
+			prep.executeUpdate();
+			prep.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	//New method 
+	public void newMedExam(MedicalExamination m) {
+		try {
+			String sql="INSERT INTO medical_examination (details) VALUES(?,?,?)";
+		    PreparedStatement prep = c.prepareStatement(sql);
+			prep.setString(1, m.getMedExam_type());
+			prep.setDate(2, (Date) m.getDateMedExam());
+			prep.setString(3, m.getDiagnosis());
+			prep.executeUpdate();
+			prep.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	//New method
+	public void Diagnosis(MedicalExamination m, Cancer can) {
+		try {
+			if(m.getDiagnosis().equals("Cancer")) {
+				String sql="INSERT INTO cancer (type, id_medExam) VALUES(?,?)";
+			    PreparedStatement prep = c.prepareStatement(sql);
+				prep.setString(1, can.getCancer_type());
+				prep.setInt(2, m.getId_medExam());
+				//Habría que asignárselo también al paciente 
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	
+	public void removePatient(int id) {
 		// TODO Unsafe method, update later
 		try {
 			String sql = "DELETE FROM patient WHERE id= ?";
 			PreparedStatement prep = c.prepareStatement(sql);
-			prep.setInt(1, id_patient);
+			prep.setInt(1, id);
 			prep.executeUpdate();
 			prep.close();
 		} catch (Exception e) {
@@ -203,6 +257,8 @@ public class SQLMaster implements DBMaster {
 		}
 
 	}
+	
+	
 
 
 	public List<Patient> searchPatientByName(String name, String surname) {
@@ -261,11 +317,11 @@ public class SQLMaster implements DBMaster {
 		return null;
 	}
 
-	@Override
-	public void patientSymptoms(int id, String symptoms) {
-		String sql = "INSERT INTO patient (symptoms) VALUES(?) WHERE id= ?";
-		PreparedStatement prep;
-		try {
+	//@Override
+	//public void patientSymptoms(int id, String symptoms) {
+		//String sql = "INSERT INTO patient (symptoms) VALUES(?) WHERE id= ?";
+		//PreparedStatement prep;
+		/*try {
 			prep = c.prepareStatement(sql);
 			prep.setString(1, symptoms);
 			prep.setInt(2, id);
@@ -273,7 +329,7 @@ public class SQLMaster implements DBMaster {
 			e.printStackTrace();
 		}
 
-	}
+	}*/
 
 	@Override
 	public MedicalExamination infoSymptoms(Symptoms s) {
