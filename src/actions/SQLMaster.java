@@ -240,8 +240,6 @@ public class SQLMaster implements DBMaster {
 
 
 
-//Crear una enum con los posibles diagnositicos de la examination(buscar en internet) y en base a eso
-	//devolver un tipo de cancer asociado
 	@Override
 	public Cancer resultMedExamination(MedicalExamination m) {
 		// TODO Auto-generated method stub
