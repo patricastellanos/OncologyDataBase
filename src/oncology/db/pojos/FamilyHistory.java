@@ -8,6 +8,7 @@ public class FamilyHistory implements Serializable{
 	private Integer id_famHistory;
 	private String type_cancerFam;
 	private String member;
+	private Patient p;
 	
 	//constructor
 	public FamilyHistory(Integer id_famHistory, String type_cancerFam, String member) {

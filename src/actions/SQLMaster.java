@@ -141,58 +141,6 @@ public class SQLMaster implements DBMaster {
 		}
 
 	}
-	
-	//New method 
-	public void addSymptoms(Symptoms s, int id_patient) {
-		try {
-			String sql;
-			sql= "INSERT INTO symptoms (details) VALUES(?)";
-			sql= "INSERT INTO patient_symptoms (id_patient, id_symp) VALUES (?,?)";
-			PreparedStatement prep = c.prepareStatement(sql);
-			prep.setString(1, s.getDetails());
-			prep.setInt(2, id_patient);
-			prep.setInt(3, s.getId_symp());
-			prep.executeUpdate();
-			prep.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
-	
-	//New method 
-	public void newMedExam(MedicalExamination m) {
-		try {
-			String sql="INSERT INTO medical_examination (details) VALUES(?,?,?)";
-		    PreparedStatement prep = c.prepareStatement(sql);
-			prep.setString(1, m.getMedExam_type());
-			prep.setDate(2, (Date) m.getDateMedExam());
-			prep.setString(3, m.getDiagnosis());
-			prep.executeUpdate();
-			prep.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
-	
-	//New method
-	public void Diagnosis(MedicalExamination m, Cancer can) {
-		try {
-			if(m.getDiagnosis().equals("Cancer")) {
-				String sql="INSERT INTO cancer (type, id_medExam) VALUES(?,?)";
-			    PreparedStatement prep = c.prepareStatement(sql);
-				prep.setString(1, can.getCancer_type());
-				prep.setInt(2, m.getId_medExam());
-				//Habría que asignárselo también al paciente 
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
-	
-	
 	public void removePatient(int id) {
 		// TODO Unsafe method, update later
 		try {
@@ -206,60 +154,6 @@ public class SQLMaster implements DBMaster {
 		}
 	}
 	
-	public List<Patient> printPatients() {
-		
-		List <Patient> patient_list=new ArrayList<Patient>();
-		try {
-			Statement stmt = c.createStatement();
-			String sql = "SELECT * FROM patient";
-			ResultSet rs = stmt.executeQuery(sql);
-			while (rs.next()) {
-				Integer id_patient = rs.getInt("id");
-				String name = rs.getString("name");
-				String surname = rs.getString("surname");
-				String sex = rs.getString("sex");
-				Date birth_date = rs.getDate("date_birth");
-				String location = rs.getString("location");
-				String actual_state = rs.getString("actual_state");
-				
-							
-				Patient p= new Patient ( id_patient, name, surname,sex,birth_date,location,actual_state);
-				patient_list.add(p);
-				
-				
-			}
-			
-			rs.close();
-			stmt.close();
-		
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return patient_list;
-	
-		
-	}
-
-//Update patient state
-	public void update_patient_state(int id, String actual_state) {
-		try {
-			String sql = "UPDATE patient SET actual_state=? WHERE id=?";
-			PreparedStatement prep = c.prepareStatement(sql);
-			prep.setString(1, actual_state);
-			prep.setInt(2, id);
-			prep.executeUpdate();
-			System.out.println("Update finished.");
-			prep.close();
-			//System.out.println("Database connection closed."); ask
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
-	
-	
-
 
 	public List<Patient> searchPatientByName(String name, String surname) {
 		// TODO Unsafe method, update later
@@ -294,49 +188,156 @@ public class SQLMaster implements DBMaster {
 		return patient_list;
 	}
 
+	//Update patient state
+		public void update_patient_state(int id, String actual_state) {
+			try {
+				String sql = "UPDATE patient SET actual_state=? WHERE id=?";
+				PreparedStatement prep = c.prepareStatement(sql);
+				prep.setString(1, actual_state);
+				prep.setInt(2, id);
+				prep.executeUpdate();
+				System.out.println("Update finished.");
+				prep.close();
+				//System.out.println("Database connection closed."); ask
 
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+		}
+		public List<Patient> printPatients() {
+			
+			List <Patient> patient_list=new ArrayList<Patient>();
+			try {
+				Statement stmt = c.createStatement();
+				String sql = "SELECT * FROM patient";
+				ResultSet rs = stmt.executeQuery(sql);
+				while (rs.next()) {
+					Integer id_patient = rs.getInt("id");
+					String name = rs.getString("name");
+					String surname = rs.getString("surname");
+					String sex = rs.getString("sex");
+					Date birth_date = rs.getDate("date_birth");
+					String location = rs.getString("location");
+					String actual_state = rs.getString("actual_state");
+					
+								
+					Patient p= new Patient ( id_patient, name, surname,sex,birth_date,location,actual_state);
+					patient_list.add(p);
+					
+					
+				}
+				
+				rs.close();
+				stmt.close();
+			
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return patient_list;
+		
+			
+		}
+		
+	public void printFamHistory(Patient p) {}
+	public void addFamHistory(Patient p) {}
+	    
+	@Override
+	public List<Symptoms> printPatientSymptoms(int id) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+	
+	//New method 
+	public void addSymptoms(Symptoms s, int id_patient) {
+		try {
+			String sql;
+			sql= "INSERT INTO symptoms (details) VALUES( ?)";
+			sql= "INSERT INTO patient_symptoms (id_patient, id_symp, intensity) VALUES ( ?, ?, ?)";
+			PreparedStatement prep = c.prepareStatement(sql);
+			prep.setString(1, s.getDetails());
+			prep.setString(2, s.getIntensity());
+			prep.setInt(3, id_patient);
+			prep.setInt(4, s.getId_symp());
+			prep.executeUpdate();
+			prep.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	@Override
+	public void update_patient_symptoms(Symptoms s) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 
 	@Override
-	public Cancer resultMedExamination(MedicalExamination m) {
+	public void printMedExamination(int id) {
 		// TODO Auto-generated method stub
-
-		return null;
+		
 	}
+	
+	//New method 
+	public void addMedExam(MedicalExamination m) {
+		try {
+			String sql="INSERT INTO medical_examination (details) VALUES(?,?,?)";
+		    PreparedStatement prep = c.prepareStatement(sql);
+			prep.setString(1, m.getMedExam_type());
+			prep.setDate(2, (Date) m.getDateMedExam());
+			prep.setString(3, m.getDiagnosis());
+			prep.executeUpdate();
+			prep.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-	@Override
-	public Treatment assesTreatment(Cancer c) {
-		// Se le pasa un cancer y devuelve el tipo de tratamiento y su duración
-
-		// TODO Auto-generated method stub
-		return null;
 	}
-
-	@Override
-	public List<FamilyHistory> showFamHistorial(Patient p) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	//@Override
-	//public void patientSymptoms(int id, String symptoms) {
-		//String sql = "INSERT INTO patient (symptoms) VALUES(?) WHERE id= ?";
-		//PreparedStatement prep;
-		/*try {
-			prep = c.prepareStatement(sql);
-			prep.setString(1, symptoms);
-			prep.setInt(2, id);
+	
+	//New method
+	/*public void Diagnosis(MedicalExamination m, Cancer can) {
+		try {
+			if(m.getDiagnosis().equals("Cancer")) {
+				String sql="INSERT INTO cancer (type, id_medExam) VALUES(?,?)";
+			    PreparedStatement prep = c.prepareStatement(sql);
+				prep.setString(1, can.getCancer_type());
+				prep.setInt(2, m.getId_medExam());
+				//Habría que asignárselo también al paciente 
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 	}*/
 
+
+
 	@Override
-	public MedicalExamination infoSymptoms(Symptoms s) {
+	public boolean diagnosis(Patient p, MedicalExamination m) {
 		// TODO Auto-generated method stub
-		// demasiados metodos que hacen lo mismo basicamente, cambiar los printf y listo
+		return false;
+	}
+	@Override
+	public void addCancer(Cancer cancer, Patient p) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public Treatment assesTreatment(Cancer cancer) {
+		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public boolean treatment_worked(Patient p) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	
+
+	
 
 
 

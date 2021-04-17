@@ -16,17 +16,27 @@ public interface DBMaster {
     public void addPatient(Patient p);
     public void removePatient(int id);
     public List<Patient> searchPatientByName(String name,String surname);
-   
-    //public void patientSymptoms(int id, String symptoms);
-    public MedicalExamination infoSymptoms(Symptoms s);
-    public Cancer resultMedExamination (MedicalExamination m);//the result will be cancer (type) of not (sane patient)
-    public Treatment assesTreatment(Cancer c);
-    public List<FamilyHistory> showFamHistorial(Patient p);
-    public List<Patient> printPatients();
     public void update_patient_state(int id, String actual_state);
-    public void addSymptoms(Symptoms s, int id_patient); //New method
-    public void newMedExam(MedicalExamination m);
-    public void Diagnosis(MedicalExamination m, Cancer can); 
+    public List<Patient> printPatients();
+    
+    public void printFamHistory(Patient p);
+    public void addFamHistory(Patient p); //Modificar ER, DDL y createTables() y añadir foreign key en famHistory 
+    
+    public List<Symptoms> printPatientSymptoms(int id);
+    public void addSymptoms(Symptoms s, int id_patient); 
+    public void update_patient_symptoms(Symptoms s);
+   
+    public void printMedExamination (int id);
+    public void addMedExam(MedicalExamination m);
+    
+    public boolean diagnosis(Patient p, MedicalExamination m); //si no tiene cancer remove de db
+    public void addCancer(Cancer cancer, Patient p);
+    
+    public Treatment assesTreatment(Cancer cancer); //hay que hacer un insert de los treatments
+    public boolean treatment_worked(Patient p);  
+    
+    
+
    
 
    
