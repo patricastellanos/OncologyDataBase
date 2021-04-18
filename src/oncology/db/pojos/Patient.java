@@ -7,7 +7,7 @@ import java.util.List;
 public class Patient implements Serializable {
 
 private static final long serialVersionUID = 1L;
-private Integer id_patient;
+private Integer id;
  private String name;
  private String surname;
  private String sex;
@@ -20,9 +20,9 @@ private Integer id_patient;
  
  
 //Constructor for the method searchPatientByName
-	public Patient(Integer id_patient, String name,String surname) {
+	public Patient(Integer id, String name,String surname) {
 	super();
-	this.id_patient = id_patient;
+	this.id = id;
 	this.name = name;
 	this.surname = surname;
 }
@@ -31,9 +31,9 @@ private Integer id_patient;
 	
 
 //Constructor for addPatient (name, surname,sex,Date.valueOf(date_birth),actual_state,location)
-	public Patient(Integer id_patient,String name, String surname, String sex, Date birth_date,String location, String actual_state) {
+	public Patient(Integer id,String name, String surname, String sex, Date birth_date,String location, String actual_state) {
 		super();
-		this.id_patient=id_patient;
+		this.id=id;
 		this.name = name;
 		this.surname = surname;
 		this.sex=sex;
@@ -44,7 +44,7 @@ private Integer id_patient;
 	}
 	public Patient(String name, String surname, String sex, Date birth_date,String location, String actual_state) {
 		super();
-		this.id_patient=id_patient;
+		this.id=id;
 		this.name = name;
 		this.surname = surname;
 		this.sex=sex;
@@ -54,10 +54,10 @@ private Integer id_patient;
 		
 	}
 
-public Patient(Integer id_patient, String name, String surname, String sex, Date birth_date, String location,
+public Patient(Integer id, String name, String surname, String sex, Date birth_date, String location,
 		String actual_state, List<Cancer> cancer_list, List<Symptoms> symptoms_list) {
 	super();
-	this.id_patient = id_patient;
+	this.id = id;
 	this.name = name;
 	this.surname = surname;
 	this.sex = sex;
@@ -71,7 +71,7 @@ public Patient(Integer id_patient, String name, String surname, String sex, Date
 
 //getters and setters
 public Integer getId_patient() {
-	return id_patient;
+	return id;
 }
 
 
@@ -130,7 +130,7 @@ public String toString() {
 
 @Override
 public String toString() {
-	return "Patient"+", "+ "[id_patient=" + id_patient + ", " +"name=" + name +", " +"surname=" + surname 
+	return "Patient"+", "+ "[id_patient=" + id + ", " +"name=" + name +", " +"surname=" + surname 
 			+ ", "+"sex=" + sex+", "+ "birth_date=" + birth_date +", "+"location=" 
 			+ location +", "+"actual_state=" + actual_state + "]";
 }
@@ -140,7 +140,7 @@ public String toString() {
 public int hashCode() {
 	final int prime = 31;
 	int result = 1;
-	result = prime * result + ((id_patient == null) ? 0 : id_patient.hashCode());
+	result = prime * result + ((id == null) ? 0 : id.hashCode());
 	result = prime * result + ((location == null) ? 0 : location.hashCode());
 	result = prime * result + ((name == null) ? 0 : name.hashCode());
 	result = prime * result + ((sex == null) ? 0 : sex.hashCode());
@@ -157,10 +157,10 @@ public boolean equals(Object obj) {
 	if (getClass() != obj.getClass())
 		return false;
 	Patient other = (Patient) obj;
-	if (id_patient == null) {
-		if (other.id_patient != null)
+	if (id == null) {
+		if (other.id != null)
 			return false;
-	} else if (!id_patient.equals(other.id_patient))
+	} else if (!id.equals(other.id))
 		return false;
 	if (location == null) {
 		if (other.location != null)
