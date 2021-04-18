@@ -392,16 +392,46 @@ public class SQLMaster implements DBMaster {
 
 
 	@Override
-	public boolean diagnosis(Patient p, MedicalExamination m) {
-		// TODO Auto-generated method stub
+	public boolean diagnosis(Patient p, MedicalExamination m) { //revisar el return
+		try {
+		String sql = "SELECT * FROM medical_examination AS m JOIN symptoms AS s ON m.id_medExam=s.id_symp JOIN patient AS p ON p.id_patient=s.id_symp WHERE p.id_patient= ?";
+		PreparedStatement prep = c.prepareStatement(sql);
+		prep.setInt(1, p.getId_patient());
+		ResultSet rs = prep.executeQuery();
+		while(rs.next()) {
+			String diagnosis = rs.getString("diagnosis");
+			if(diagnosis.equalsIgnoreCase("cancer")) {
+				return true;
+				
+			}else {
+				return false;
+			}
+		}
+		rs.close();
+		prep.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}return false;
 		
-		return false;
+		
 	}
 	@Override
 	public void addCancer(Cancer cancer, Patient p) {
-		// TODO Auto-generated method stub
+		try {
+		String sql;
+		sql = "INSERT INTO cancer (id_cancer, type) VALUES (?,?)";
+		sql = "INSERT INTO cancer_patient (id_cancer, id) VALUES (?,?)";
+		PreparedStatement prep = c.prepareStatement(sql);
+		prep.setInt(1, cancer.getId_cancer());
+		prep.setString(2, cancer.getCancer_type());
+		prep.setInt(3, cancer.getId_cancer());
+		prep.setInt(4, p.getId_patient());
 		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
+		
 	@Override
 	public Treatment assesTreatment(Cancer cancer) {
 		// TODO Auto-generated method stub
