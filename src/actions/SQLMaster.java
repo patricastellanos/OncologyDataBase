@@ -86,7 +86,7 @@ public class SQLMaster implements DBMaster {
 			
 			// Create table treatment
 			sql1 = "CREATE TABLE treatment " + "( id_treat   INTEGER  PRIMARY KEY AUTOINCREMENT,"
-				    + " type    TEXT     NOT NULL, " + " startdate     DATE NOT NULL, " + " enddate DATE NOT NULL )";
+				    + " type    TEXT     NOT NULL, " + " startdate     DATE NOT NULL, " + " duration INTEGER )";
 			stmt1.executeUpdate(sql1);
 			
 			// Create table symptoms
@@ -353,7 +353,8 @@ public class SQLMaster implements DBMaster {
 		MedicalExamination m= null;
 		try {
 			Statement stmt = c.createStatement();
-			String sql = "SELECT * FROM medical_examination AS m JOIN symptoms AS s ON m.id_medExam=s.id_symp JOIN patient AS p ON p.id_patient=s.id_symp WHERE p.id_patient= ?";
+			String sql = "SELECT * FROM medical_examination AS m JOIN symptoms AS s ON m.id_medExam=s.id_symp"
+					+ " JOIN patient AS p ON p.id_patient=s.id_symp WHERE p.id_patient= ?";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Integer id_medExam = rs.getInt("id_medExam");
@@ -392,13 +393,15 @@ public class SQLMaster implements DBMaster {
 
 
 	@Override
-	public boolean diagnosis(Patient p, MedicalExamination m) { //revisar el return
+	public boolean diagnosis(Patient p, MedicalExamination m) { //revisar el return: (N) Yo creo que está bien 
 		try {
-		String sql = "SELECT * FROM medical_examination AS m JOIN symptoms AS s ON m.id_medExam=s.id_symp JOIN patient AS p ON p.id_patient=s.id_symp WHERE p.id_patient= ?";
+		String sql = "SELECT * FROM medical_examination AS m JOIN symptoms AS s ON m.id_medExam=s.id_symp "
+				+ "JOIN patient AS p ON p.id_patient=s.id_symp WHERE p.id_patient= ?";
 		PreparedStatement prep = c.prepareStatement(sql);
 		prep.setInt(1, p.getId_patient());
 		ResultSet rs = prep.executeQuery();
 		while(rs.next()) {
+			
 			String diagnosis = rs.getString("diagnosis");
 			if(diagnosis.equalsIgnoreCase("cancer")) {
 				return true;
@@ -415,6 +418,7 @@ public class SQLMaster implements DBMaster {
 		
 		
 	}
+	
 	@Override
 	public void addCancer(Cancer cancer, Patient p) {
 		try {
@@ -433,22 +437,64 @@ public class SQLMaster implements DBMaster {
 	}
 		
 	@Override
-	public Treatment assesTreatment(Cancer cancer) {
-		// TODO Auto-generated method stub
-		return null;
+	public Treatment assessTreatment(Cancer cancer) {
+		
+		Treatment treatment=null;
+		try {
+			
+			Statement stmt=c.createStatement();
+			String sql="SELECT * FROM treatment AS t JOIN cancer_treatment AS ct ON t.id_treat=ct.id_treat JOIN cancer AS c ON "
+					+ "c.id_cancer=ct.id_cancer WHERE c.id_cancer= ?";
+			ResultSet rs=stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				
+				int id = rs.getInt("id_treat");
+				String type = rs.getString("type"); 
+				Date startdate = rs.getDate("startdate");
+				int duration = rs.getInt("duration");		
+				treatment=new Treatment(id, type, startdate, duration);		
+			}
+			
+			rs.close();
+			stmt.close();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}
+		return treatment;
 	}
 	
-	public boolean treatment_worked(Patient p) {
-		// TODO Auto-generated method stub
-		return false;
+	
+	public boolean treatment_worked(int id_patient) { //review return 
+		
+		try{
+			Statement stmt=c.createStatement();
+		String sql= "SELECT actual_state FROM patient WHERE id LIKE '%" + id_patient + "%'";
+		ResultSet rs= stmt.executeQuery(sql);
+		
+		String actual_state = null;
+		
+		while(rs.next()) {
+			
+			actual_state= rs.getString("actual_state");
+		}
+		
+		if (!actual_state.equalsIgnoreCase("RECOVERED")
+				&& !actual_state.equalsIgnoreCase("DEATH")) {
+			return false;
+			
+		}else {
+			return true;
+		}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		return true;
 	}
-
-	
-
-	
-
-
-
-	
+		
+		
 
 }

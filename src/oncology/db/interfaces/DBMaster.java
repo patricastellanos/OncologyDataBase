@@ -32,8 +32,8 @@ public interface DBMaster {
     public boolean diagnosis(Patient p, MedicalExamination m); //si no tiene cancer remove de db
     public void addCancer(Cancer cancer, Patient p);
     
-    public Treatment assesTreatment(Cancer cancer); //hay que hacer un insert de los treatments
-    public boolean treatment_worked(Patient p);  
+    public Treatment assessTreatment(Cancer cancer); //hay que hacer un insert de los treatments
+    public boolean treatment_worked(int id_patient);  
     
     
 

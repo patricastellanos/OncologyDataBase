@@ -52,7 +52,10 @@ public class UserInteraction {
 				&& !actual_state.equalsIgnoreCase("SLOWSTREAM_REHABILITATION")
 				&& !actual_state.equalsIgnoreCase("COMPLEX_CARE") 
 				&& !actual_state.equalsIgnoreCase("CONVALESCENT_CARE")
-				&& !actual_state.equalsIgnoreCase("PALLIATIVE_RESPITE"));
+				&& !actual_state.equalsIgnoreCase("PALLIATIVE_RESPITE")
+				&& !actual_state.equalsIgnoreCase("RECOVERED")
+				&& !actual_state.equalsIgnoreCase("DEATH")
+				);
 		return actual_state;
 	}
 
