@@ -14,6 +14,7 @@ private Integer id_patient;
  private Date birth_date; 
  private String location;
  private String actual_state;
+ private List<FamilyHistory> famHistory_list;
  private List<Cancer> cancer_list;
  private List<Symptoms> symptoms_list;
  

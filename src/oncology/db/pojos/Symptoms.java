@@ -8,17 +8,17 @@ public class Symptoms implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id_symp;
-	private String intensity; //fixed values for future
+	//private String intensity; //fixed values for future
 	private String details;
 	private List<Patient> patient_list;
 	private MedicalExamination m;
 	
 	//constructor
 	
-	public Symptoms(Integer id_symp, String intensity, String details) {
+	public Symptoms(Integer id_symp, /*String intensity*/ String details) {
 		super();
 		this.id_symp = id_symp;
-		this.intensity = intensity;
+		/*this.intensity = intensity;*/
 		this.details = details;
 		
 			
@@ -28,13 +28,13 @@ public class Symptoms implements Serializable{
 		return id_symp;
 	}
 
-	public String getIntensity() {
+	/*public String getIntensity() {
 		return intensity;
 	}
 
 	public void setIntensity(String intensity) {
 		this.intensity = intensity;
-	}
+	}*/
 
 	public String getDetails() {
 		return details;
@@ -48,7 +48,7 @@ public class Symptoms implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "Symptomps [id_symp=" + id_symp + ", intensity=" + intensity + ", details=" + details + "]";
+		return "Symptomps [id_symp=" + id_symp + ", details=" + details + "]";
 	}
 
 	//hashcode
@@ -58,7 +58,7 @@ public class Symptoms implements Serializable{
 		int result = 1;
 		result = prime * result + ((details == null) ? 0 : details.hashCode());
 		result = prime * result + ((id_symp == null) ? 0 : id_symp.hashCode());
-		result = prime * result + ((intensity == null) ? 0 : intensity.hashCode());
+		//result = prime * result + ((intensity == null) ? 0 : intensity.hashCode());
 		return result;
 	}
 
@@ -81,11 +81,11 @@ public class Symptoms implements Serializable{
 				return false;
 		} else if (!id_symp.equals(other.id_symp))
 			return false;
-		if (intensity == null) {
+		/*if (intensity == null) {
 			if (other.intensity != null)
 				return false;
 		} else if (!intensity.equals(other.intensity))
-			return false;
+			return false;*/
 		return true;
 	}
 	

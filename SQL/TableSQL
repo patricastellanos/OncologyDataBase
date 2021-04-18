@@ -16,11 +16,10 @@ CREATE TABLE patient (
 
 )
 
-CREATE TABLE medical_examinations (
+CREATE TABLE medical_examination (
     id_medExam INTEGER PRIMARY KEY AUTOINCREMENT ,
     type TEXT NOT NULL ,
     date DATE NOT NULL ,
-    diagnosis TEXT NOT NULL,
 )
 
 CREATE TABLE cancer (

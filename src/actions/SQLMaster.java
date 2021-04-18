@@ -61,7 +61,7 @@ public class SQLMaster implements DBMaster {
 			stmt1 = c.createStatement();
 			// Create table family_history
 			String sql1 = "CREATE TABLE family_history " + "( id_famHistory INTEGER PRIMARY KEY AUTOINCREMENT, "
-								+ "  type TEXT, " + "  member TEXT )";
+								+ "  type TEXT, " + "  member TEXT ," + "patient_id REFERENCES patient (id) ON DELETE SET NULL )";
 			stmt1.executeUpdate(sql1);
 						
 			// Create table patient
@@ -73,7 +73,7 @@ public class SQLMaster implements DBMaster {
 			
 			//Create the table medical examination
 			sql1= "CREATE TABLE medical_examination " + "(id_medExam INTEGER PRIMARY KEY AUTOINCREMENT, "
-			      + " medExam_type TEXT NOT NULL, " + " dateMedExam DATE NOT NULL, " + " diagnosis TEXT NOT NULL)";
+			      + " medExam_type TEXT NOT NULL, " + " dateMedExam DATE NOT NULL )";
 			stmt1.executeUpdate(sql1);
 
 			// Create table cancer
@@ -198,7 +198,7 @@ public class SQLMaster implements DBMaster {
 				prep.executeUpdate();
 				System.out.println("Update finished.");
 				prep.close();
-				//System.out.println("Database connection closed."); ask
+				
 
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -219,14 +219,10 @@ public class SQLMaster implements DBMaster {
 					String sex = rs.getString("sex");
 					Date birth_date = rs.getDate("date_birth");
 					String location = rs.getString("location");
-					String actual_state = rs.getString("actual_state");
-					
-								
+					String actual_state = rs.getString("actual_state");				
 					Patient p= new Patient ( id_patient, name, surname,sex,birth_date,location,actual_state);
-					patient_list.add(p);
-					
-					
-				}
+					patient_list.add(p);	
+					}
 				
 				rs.close();
 				stmt.close();
@@ -239,26 +235,53 @@ public class SQLMaster implements DBMaster {
 			
 		}
 		
-	public void printFamHistory(Patient p) {}
-	public void addFamHistory(Patient p) {}
-	    
-	@Override
-	public List<Symptoms> printPatientSymptoms(int id) {
-			// TODO Auto-generated method stub
-			return null;
+	
+	public void addFamHistory(FamilyHistory famhyst) {
+		try {
+			String sql = "INSERT INTO family_history (type, member) VALUES( ?, ?)";
+			PreparedStatement prep = c.prepareStatement(sql);
+			prep.setString(1, famhyst.getType_cancerFam());
+			prep.setString(2, famhyst.getMember());
+			prep.executeUpdate();
+			prep.close();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+	}
+	public FamilyHistory printFamHistory(int id) {
+		FamilyHistory famHist=null;
+		try {
+			Statement stmt = c.createStatement();
+			String sql = "SELECT * FROM family_history WHERE id_patient= ? ";
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				Integer id_famHistory = rs.getInt("id_famHistory");
+				String type = rs.getString("type");
+				String member = rs.getString("member");
+				famHist=new FamilyHistory(id_famHistory,type, member);	
+				
+			}
+			rs.close();
+			stmt.close();
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return famHist;
+		
+	}
+
 	
 	//New method 
 	public void addSymptoms(Symptoms s, int id_patient) {
 		try {
 			String sql;
 			sql= "INSERT INTO symptoms (details) VALUES( ?)";
-			sql= "INSERT INTO patient_symptoms (id_patient, id_symp, intensity) VALUES ( ?, ?, ?)";
+			sql= "INSERT INTO patient_symptoms (id_patient, id_symp) VALUES ( ?, ?)";
 			PreparedStatement prep = c.prepareStatement(sql);
 			prep.setString(1, s.getDetails());
-			prep.setString(2, s.getIntensity());
-			prep.setInt(3, id_patient);
-			prep.setInt(4, s.getId_symp());
+			prep.setInt(2, id_patient);
+			prep.setInt(3, s.getId_symp());
 			prep.executeUpdate();
 			prep.close();
 		} catch (Exception e) {
@@ -268,32 +291,86 @@ public class SQLMaster implements DBMaster {
 	}
 	
 	@Override
-	public void update_patient_symptoms(Symptoms s) {
-		// TODO Auto-generated method stub
+	public void update_patient_symptoms(int id, String type, String detail) {
+		try {
+			String sql = "UPDATE symptoms SET type=?, detail=? WHERE id_symp= SELECT id_symp FROM patient_symptoms WHERE id= ?";
+			PreparedStatement prep = c.prepareStatement(sql);
+			prep.setString(1, type);
+			prep.setString(2, detail);
+			prep.setInt(3, id);
+			prep.executeUpdate();
+			System.out.println("Update finished.");
+			prep.close();
+			
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
-
 	@Override
-	public void printMedExamination(int id) {
-		// TODO Auto-generated method stub
+	public List<Symptoms> printPatientSymptoms(int id) {
+			
+		List <Symptoms> symptoms_list=new ArrayList<Symptoms>();
+		try {
+			Statement stmt = c.createStatement();
+			String sql = "SELECT * FROM symptoms AS s JOIN patient_symptoms AS ps ON ps.id_symp=s.id_symp WHERE ps.id= ?";
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				Integer id_symp = rs.getInt("id_symp");
+				String detail = rs.getString("detail");
+				Symptoms s= new Symptoms ( id_symp, detail);
+				symptoms_list.add(s);				
+			}
+			rs.close();
+			stmt.close();
 		
-	}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return symptoms_list;
+		}
 	
 	//New method 
 	public void addMedExam(MedicalExamination m) {
 		try {
-			String sql="INSERT INTO medical_examination (details) VALUES(?,?,?)";
+			String sql="INSERT INTO medical_examination (medExam_type, dateMedExam ) VALUES( ?, ?)";
 		    PreparedStatement prep = c.prepareStatement(sql);
 			prep.setString(1, m.getMedExam_type());
 			prep.setDate(2, (Date) m.getDateMedExam());
-			prep.setString(3, m.getDiagnosis());
 			prep.executeUpdate();
 			prep.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
+	}
+	
+
+	@Override
+	public MedicalExamination printMedExamination(int id) {//ver
+		MedicalExamination m= null;
+		try {
+			Statement stmt = c.createStatement();
+			String sql = "SELECT * FROM medical_examination AS m JOIN symptoms AS s ON m.id_medExam=s.id_symp JOIN patient AS p ON p.id_patient=s.id_symp WHERE p.id_patient= ?";
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				Integer id_medExam = rs.getInt("id_medExam");
+				String medExam_type = rs.getString("medExam_type");
+				Date dateMedExam = rs.getDate("dateMedExam");
+			    m=new MedicalExamination(id_medExam,medExam_type,dateMedExam);	
+				
+			}
+			rs.close();
+			stmt.close();
+			
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return m;
+			
 	}
 	
 	//New method
@@ -317,6 +394,7 @@ public class SQLMaster implements DBMaster {
 	@Override
 	public boolean diagnosis(Patient p, MedicalExamination m) {
 		// TODO Auto-generated method stub
+		
 		return false;
 	}
 	@Override

@@ -19,14 +19,14 @@ public interface DBMaster {
     public void update_patient_state(int id, String actual_state);
     public List<Patient> printPatients();
     
-    public void printFamHistory(Patient p);
-    public void addFamHistory(Patient p); //Modificar ER, DDL y createTables() y añadir foreign key en famHistory 
+    public FamilyHistory printFamHistory(int id);
+    public void addFamHistory(FamilyHistory famHist); //Modificar ER, DDL y createTables() y añadir foreign key en famHistory 
     
     public List<Symptoms> printPatientSymptoms(int id);
     public void addSymptoms(Symptoms s, int id_patient); 
-    public void update_patient_symptoms(Symptoms s);
+    public void update_patient_symptoms(int id_patient, String type, String detail);
    
-    public void printMedExamination (int id);
+    public MedicalExamination printMedExamination (int id);
     public void addMedExam(MedicalExamination m);
     
     public boolean diagnosis(Patient p, MedicalExamination m); //si no tiene cancer remove de db

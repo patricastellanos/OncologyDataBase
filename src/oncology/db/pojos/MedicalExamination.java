@@ -10,17 +10,15 @@ public class MedicalExamination implements Serializable{
 	private Integer id_medExam;
 	private String medExam_type;
 	private Date dateMedExam;
-	private String diagnosis;
 	private List<Cancer> cancer_list;
 	private List<Symptoms> symptoms_list;
 	
 	//constructor
-	public MedicalExamination(Integer id_medExam, String medExam_type, Date dateMedExam, String diagnosis) {
+	public MedicalExamination(Integer id_medExam, String medExam_type, Date dateMedExam) {
 		super();
 		this.id_medExam = id_medExam;
 		this.medExam_type = medExam_type;
 		this.dateMedExam = dateMedExam;
-		this.diagnosis = diagnosis;
 	}
 	
 	//getters and setters
@@ -40,18 +38,12 @@ public class MedicalExamination implements Serializable{
 	public void setDateMedExam(Date dateMedExam) {
 		this.dateMedExam = dateMedExam;
 	}
-	public String getDiagnosis() {
-		return diagnosis;
-	}
-	public void setDiagnosis(String diagnosis) {
-		this.diagnosis = diagnosis;
-	}
 	
 	//to String
 	@Override
 	public String toString() {
 		return "Medical_examination [id_medExam=" + id_medExam + ", medExam_type=" + medExam_type + ", dateMedExam="
-				+ dateMedExam + ", diagnosis=" + diagnosis + "]";
+				+ dateMedExam + "]";
 	}
 	//hashcode
 	
@@ -61,7 +53,6 @@ public class MedicalExamination implements Serializable{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((dateMedExam == null) ? 0 : dateMedExam.hashCode());
-		result = prime * result + ((diagnosis == null) ? 0 : diagnosis.hashCode());
 		result = prime * result + ((id_medExam == null) ? 0 : id_medExam.hashCode());
 		result = prime * result + ((medExam_type == null) ? 0 : medExam_type.hashCode());
 		return result;
@@ -79,11 +70,6 @@ public class MedicalExamination implements Serializable{
 			if (other.dateMedExam != null)
 				return false;
 		} else if (!dateMedExam.equals(other.dateMedExam))
-			return false;
-		if (diagnosis == null) {
-			if (other.diagnosis != null)
-				return false;
-		} else if (!diagnosis.equals(other.diagnosis))
 			return false;
 		if (id_medExam == null) {
 			if (other.id_medExam != null)
