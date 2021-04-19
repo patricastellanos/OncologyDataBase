@@ -24,7 +24,7 @@ public interface DBMaster {
     
     public List<Symptoms> printPatientSymptoms(int id);
     public void addSymptoms(Symptoms s, int id_patient); 
-    public void update_patient_symptoms(int id_patient, String type, String detail);
+    public void update_patient_symptoms(int id_patient, String detail);
    
     public MedicalExamination printMedExamination (int id);
     public void addMedExam(MedicalExamination m);
@@ -37,9 +37,5 @@ public interface DBMaster {
     
     
 
-   
-
-   
-    
 
 }

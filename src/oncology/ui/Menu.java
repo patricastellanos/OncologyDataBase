@@ -25,10 +25,15 @@ public class Menu {
 			System.out.println("4. Update patient´s cancer state");
 			System.out.println("5. Type of cancer according to the medical examination");
 			System.out.println("6. See the patients");
+			System.out.println("7. Add a family history");
+			System.out.println("8. See the family history of a patient");
+			System.out.println("9. Add symptoms to a patient");
+			System.out.println("10. Update symptoms of a patient");
+			System.out.println("11. See the symptoms of a patient");
 			System.out.println("0. Exit");
 			try {
 				int choice = Integer.parseInt(reader.readLine());
-				while (choice < 0 || choice > 6) {
+				while (choice < 0 || choice > 8) {
 					System.out.println("Choose an option within the range:");
                     choice =Integer.parseInt(reader.readLine());
                 }
@@ -48,11 +53,25 @@ public class Menu {
 					UserInteraction.update_patient_stateMenu();
 					break;
 				case 5:
-					UserInteraction.resultMedExaminationMenu();
+					//complete
 					break;
 				case 6:
 					UserInteraction.printPatientsMenu();
 					break;
+				case 7:
+					UserInteraction.addFamilyHistoryMenu();
+					break;
+				case 8: 
+					UserInteraction.seeFamilyHistoryMenu();
+					break;
+					
+				case 9:
+					UserInteraction.addSymptomsMenu();
+					break;
+				case 10: 
+					UserInteraction. update_patient_symptoms_Menu();
+				case 11:
+					UserInteraction.printSymptomsMenu();
 				case 0:
 					dbmaster.disconnect();
 					System.out.println("Data base closed");

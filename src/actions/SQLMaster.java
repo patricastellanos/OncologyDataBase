@@ -9,7 +9,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 import oncology.db.interfaces.DBMaster;
 import oncology.db.pojos.Cancer;
 import oncology.db.pojos.FamilyHistory;
@@ -291,13 +290,12 @@ public class SQLMaster implements DBMaster {
 	}
 	
 	@Override
-	public void update_patient_symptoms(int id, String type, String detail) {
+	public void update_patient_symptoms(int id, String detail) {
 		try {
-			String sql = "UPDATE symptoms SET type=?, detail=? WHERE id_symp= SELECT id_symp FROM patient_symptoms WHERE id= ?";
+			String sql = "UPDATE symptoms SET detail=? WHERE id_symp= SELECT id_symp FROM patient_symptoms WHERE id= ?";
 			PreparedStatement prep = c.prepareStatement(sql);
-			prep.setString(1, type);
-			prep.setString(2, detail);
-			prep.setInt(3, id);
+			prep.setString(1, detail);
+			prep.setInt(2, id);
 			prep.executeUpdate();
 			System.out.println("Update finished.");
 			prep.close();

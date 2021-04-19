@@ -5,6 +5,8 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 import oncology.db.pojos.Patient;
+import oncology.db.pojos.Symptoms;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.time.format.DateTimeFormatter;
@@ -90,6 +92,13 @@ public class UserInteraction {
 		return date_birth;
 	}
 	
+	public static String printSymptomsDetailMenu() throws IOException {
+		System.out.println("Please, input the symptoms' detail:");
+		String detail=reader.readLine();
+		
+		return detail;
+	}
+	
 	
 	public static void addPatientMenu() throws Exception {
 
@@ -138,22 +147,56 @@ public class UserInteraction {
 		System.out.println("Choose the id of the patient which you want to modify");
 		Integer id = Integer.parseInt(reader.readLine());
 		String actual_state = printPatientStateMenu();
-
 		dbmaster.update_patient_state(id, actual_state);
 		//printPatientsMenu();
 
 	}
 
-	// method in order to know the type of cancer according to the medical
-	// examination result
-	public static void resultMedExaminationMenu() throws Exception {
+	
+	public static void addFamilyHistoryMenu() throws Exception {
 		printPatientsMenu();
-		System.out.println("Choose the id of the patient from which you want to know the type of cancer");
+		System.out.println("Choose the id of the patient from which you want to add the family history");
 		int id = Integer.parseInt(reader.readLine());
-		// complete
+		dbmaster.addFamHistory(null);//revisar
 
 	}
+	
+	public static void seeFamilyHistoryMenu()throws Exception{
+		printPatientsMenu();
+		System.out.println("Choose the id of the patient from which you want see its family history");
+		int id = Integer.parseInt(reader.readLine());
+		dbmaster.printFamHistory(id);
+	}
 
+	public static void addSymptomsMenu()throws Exception {
+		
+		printPatientsMenu();
+		System.out.println("Choose the id of the patient from which you want to add the symptoms");
+		int id = Integer.parseInt(reader.readLine());
 
-
+		String detail=printSymptomsDetailMenu();
+		Symptoms s= new Symptoms(id,detail);
+		
+		dbmaster.addSymptoms(s, id);
+		
+	}
+	
+	public static void update_patient_symptoms_Menu()throws Exception {
+		printPatientsMenu();
+		System.out.println("Choose the id of the patient which you want to modify");
+		Integer id = Integer.parseInt(reader.readLine());
+		String detail= reader.readLine().toUpperCase();
+		dbmaster.update_patient_symptoms(id,  detail);
+		
+	}
+	
+	public static void printSymptomsMenu() throws Exception {
+		printPatientsMenu();
+		System.out.println("Choose the id of the patient from which you want see its symptoms");
+		int id = Integer.parseInt(reader.readLine());
+		dbmaster.printPatientSymptoms(id);
+			
+	}
+	// method in order to know the type of cancer according to the medical
+		// examination result
 }
