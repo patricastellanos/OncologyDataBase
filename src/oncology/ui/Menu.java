@@ -30,10 +30,12 @@ public class Menu {
 			System.out.println("9. Add symptoms to a patient");
 			System.out.println("10. Update symptoms of a patient");
 			System.out.println("11. See the symptoms of a patient");
+			System.out.println("12. Add a medical examination");
+			System.out.println("13. See the medical examination of a patient");
 			System.out.println("0. Exit");
 			try {
 				int choice = Integer.parseInt(reader.readLine());
-				while (choice < 0 || choice > 8) {
+				while (choice < 0 || choice > 13) {
 					System.out.println("Choose an option within the range:");
                     choice =Integer.parseInt(reader.readLine());
                 }
@@ -72,6 +74,8 @@ public class Menu {
 					UserInteraction. update_patient_symptoms_Menu();
 				case 11:
 					UserInteraction.printSymptomsMenu();
+				case 12:
+				case 13:
 				case 0:
 					dbmaster.disconnect();
 					System.out.println("Data base closed");
