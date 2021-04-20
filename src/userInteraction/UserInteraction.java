@@ -199,4 +199,11 @@ public class UserInteraction {
 	}
 	// method in order to know the type of cancer according to the medical
 		// examination result
+	public static void printMedicalExaminationMenu() throws Exception {
+		printPatientsMenu();
+		System.out.println("Choose the id of the patient from which you want see its medical examination");
+		int id = Integer.parseInt(reader.readLine());
+		dbmaster.printMedExamination(id);
+			
+	}
 }

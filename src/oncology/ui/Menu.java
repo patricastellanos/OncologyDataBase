@@ -72,10 +72,14 @@ public class Menu {
 					break;
 				case 10: 
 					UserInteraction. update_patient_symptoms_Menu();
+					break;
 				case 11:
 					UserInteraction.printSymptomsMenu();
+					break;
 				case 12:
 				case 13:
+					UserInteraction.printMedicalExaminationMenu();
+					break;
 				case 0:
 					dbmaster.disconnect();
 					System.out.println("Data base closed");
