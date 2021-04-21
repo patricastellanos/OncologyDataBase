@@ -27,10 +27,11 @@ public interface DBMaster {
     public void update_patient_symptoms(int id_patient, String detail);
    
     public MedicalExamination printMedExamination (int id);
-    public void addMedExam(MedicalExamination m);
+    public void addMedExam(MedicalExamination m);//deberíamos cambiarlo y pasarle tmb el id
     
-    public boolean diagnosis(Patient p, MedicalExamination m); //si no tiene cancer remove de db
     public void addCancer(Cancer cancer, Patient p);
+    public boolean diagnosis(Patient p, MedicalExamination m); //si no tiene cancer remove de db, //No en el menú(?)
+   
     
     public Treatment assessTreatment(Cancer cancer); //hay que hacer un insert de los treatments
     public boolean treatment_worked(int id_patient);  

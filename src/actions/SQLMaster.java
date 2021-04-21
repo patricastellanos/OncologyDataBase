@@ -331,7 +331,7 @@ public class SQLMaster implements DBMaster {
 		}
 	
 	//New method 
-	public void addMedExam(MedicalExamination m) {
+	public void addMedExam(MedicalExamination m) {//le deberíamos pasar el id del paciente tmb 
 		try {
 			String sql="INSERT INTO medical_examination (medExam_type, dateMedExam ) VALUES( ?, ?)";
 		    PreparedStatement prep = c.prepareStatement(sql);
@@ -391,7 +391,7 @@ public class SQLMaster implements DBMaster {
 
 
 	@Override
-	public boolean diagnosis(Patient p, MedicalExamination m) { //revisar el return: (N) Yo creo que está bien 
+	public boolean diagnosis(Patient p, MedicalExamination m) { //revisar el return: (N) Yo creo que está bien , (M) está bien
 		try {
 		String sql = "SELECT * FROM medical_examination AS m JOIN symptoms AS s ON m.id_medExam=s.id_symp "
 				+ "JOIN patient AS p ON p.id_patient=s.id_symp WHERE p.id_patient= ?";

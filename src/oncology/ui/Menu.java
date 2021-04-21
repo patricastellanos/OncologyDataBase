@@ -32,10 +32,11 @@ public class Menu {
 			System.out.println("11. See the symptoms of a patient");
 			System.out.println("12. Add a medical examination");
 			System.out.println("13. See the medical examination of a patient");
+			System.out.println("14. Add patient's cancer");
 			System.out.println("0. Exit");
 			try {
 				int choice = Integer.parseInt(reader.readLine());
-				while (choice < 0 || choice > 13) {
+				while (choice < 0 || choice > 14) {
 					System.out.println("Choose an option within the range:");
                     choice =Integer.parseInt(reader.readLine());
                 }
@@ -77,8 +78,12 @@ public class Menu {
 					UserInteraction.printSymptomsMenu();
 					break;
 				case 12:
+					UserInteraction.addMedicalExaminationMenu();
 				case 13:
 					UserInteraction.printMedicalExaminationMenu();
+					break;
+				case 14:
+					UserInteraction.addCancerMenu();
 					break;
 				case 0:
 					dbmaster.disconnect();
