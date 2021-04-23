@@ -235,12 +235,13 @@ public class SQLMaster implements DBMaster {
 		}
 		
 	
-	public void addFamHistory(FamilyHistory famhyst) {
+	public void addFamHistory(int id, FamilyHistory famhyst) {
 		try {
-			String sql = "INSERT INTO family_history (type, member) VALUES( ?, ?)";
+			String sql = "INSERT INTO family_history (type, member, patient_id) VALUES(?, ?, ?)";
 			PreparedStatement prep = c.prepareStatement(sql);
 			prep.setString(1, famhyst.getType_cancerFam());
 			prep.setString(2, famhyst.getMember());
+			prep.setInt(3, id);
 			prep.executeUpdate();
 			prep.close();
 		} catch (Exception e) {
@@ -251,18 +252,21 @@ public class SQLMaster implements DBMaster {
 		FamilyHistory famHist=null;
 		try {
 			Statement stmt = c.createStatement();
-			String sql = "SELECT * FROM family_history WHERE id_patient= ? ";
-			ResultSet rs = stmt.executeQuery(sql);
+			String sql = "SELECT * FROM family_history WHERE patient_id= ? ";
+			PreparedStatement prep = c.prepareStatement(sql);
+			prep.setInt(1, id);
+			ResultSet rs = prep.executeQuery();
 			while (rs.next()) {
 				Integer id_famHistory = rs.getInt("id_famHistory");
 				String type = rs.getString("type");
 				String member = rs.getString("member");
+				
 				famHist=new FamilyHistory(id_famHistory,type, member);	
 				
 			}
 			rs.close();
 			stmt.close();
-		
+			prep.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -271,18 +275,22 @@ public class SQLMaster implements DBMaster {
 	}
 
 	
-	//New method 
+
 	public void addSymptoms(Symptoms s, int id_patient) {
 		try {
-			String sql;
-			sql= "INSERT INTO symptoms (details) VALUES( ?)";
-			sql= "INSERT INTO patient_symptoms (id_patient, id_symp) VALUES ( ?, ?)";
-			PreparedStatement prep = c.prepareStatement(sql);
-			prep.setString(1, s.getDetails());
-			prep.setInt(2, id_patient);
-			prep.setInt(3, s.getId_symp());
-			prep.executeUpdate();
-			prep.close();
+			String sql1;
+			sql1= "INSERT INTO symptoms (detail) VALUES( ?)";
+			String sql2;
+			sql2= "INSERT INTO patient_symptoms (id, id_symp) VALUES (?, ?)";
+			PreparedStatement prep1 = c.prepareStatement(sql1);
+			PreparedStatement prep2 = c.prepareStatement(sql2);
+			prep1.setString(1, s.getDetails());
+			prep2.setInt(1, id_patient);
+			prep2.setInt(2, s.getId_symp());
+			prep1.executeUpdate();
+			prep2.executeUpdate();
+			prep1.close();
+			prep2.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -313,13 +321,15 @@ public class SQLMaster implements DBMaster {
 		List <Symptoms> symptoms_list=new ArrayList<Symptoms>();
 		try {
 			Statement stmt = c.createStatement();
-			String sql = "SELECT * FROM symptoms AS s JOIN patient_symptoms AS ps ON ps.id_symp=s.id_symp WHERE ps.id= ?";
+			String sql = "SELECT * FROM symptoms AS s JOIN patient_symptoms AS ps ON ps.id_symp=s.id_symp WHERE ps.id= " +id;
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
-				Integer id_symp = rs.getInt("id_symp");
+				Integer id_symp = rs.getInt(1);
 				String detail = rs.getString("detail");
 				Symptoms s= new Symptoms ( id_symp, detail);
-				symptoms_list.add(s);				
+				
+				symptoms_list.add(s);	
+				
 			}
 			rs.close();
 			stmt.close();
@@ -435,7 +445,7 @@ public class SQLMaster implements DBMaster {
 	}
 		
 	@Override
-	public Treatment assessTreatment(Cancer cancer) {
+	public Treatment assessTreatment(Cancer cancer) {//id needed5
 		
 		Treatment treatment=null;
 		try {

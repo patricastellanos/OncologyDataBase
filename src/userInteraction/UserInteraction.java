@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
+
+import oncology.db.pojos.FamilyHistory;
 import oncology.db.pojos.Patient;
 import oncology.db.pojos.Symptoms;
 
@@ -157,7 +159,14 @@ public class UserInteraction {
 		printPatientsMenu();
 		System.out.println("Choose the id of the patient from which you want to add the family history");
 		int id = Integer.parseInt(reader.readLine());
-		dbmaster.addFamHistory(null);//revisar
+		System.out.println("Please, input the member's type of cancer:");
+
+		String type_cancerFam = reader.readLine();
+		
+		System.out.println("Please, input the member with cancer:");
+		String member = reader.readLine();
+		FamilyHistory famHist= new FamilyHistory(null, type_cancerFam, member);
+		dbmaster.addFamHistory(id,famHist);
 
 	}
 	
@@ -165,8 +174,9 @@ public class UserInteraction {
 		printPatientsMenu();
 		System.out.println("Choose the id of the patient from which you want see its family history");
 		int id = Integer.parseInt(reader.readLine());
-		dbmaster.printFamHistory(id);
+		System.out.println(dbmaster.printFamHistory(id));
 	}
+	
 
 	public static void addSymptomsMenu()throws Exception {
 		
@@ -191,10 +201,15 @@ public class UserInteraction {
 	}
 	
 	public static void printSymptomsMenu() throws Exception {
+		List <Symptoms> symptom_listMenu=null;
 		printPatientsMenu();
 		System.out.println("Choose the id of the patient from which you want see its symptoms");
 		int id = Integer.parseInt(reader.readLine());
-		dbmaster.printPatientSymptoms(id);
+		System.out.println(symptom_listMenu = dbmaster.printPatientSymptoms(id));
+//		for (int i = 0; i < symptom_listMenu.size(); i++) {
+//			System.out.println(symptom_listMenu.get(i));
+//
+//		}
 			
 	}
 	// method in order to know the type of cancer according to the medical

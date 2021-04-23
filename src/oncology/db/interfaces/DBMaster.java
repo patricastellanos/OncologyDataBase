@@ -20,7 +20,7 @@ public interface DBMaster {
     public List<Patient> printPatients();
     
     public FamilyHistory printFamHistory(int id);
-    public void addFamHistory(FamilyHistory famHist); //Modificar ER, DDL y createTables() y añadir foreign key en famHistory 
+    public void addFamHistory(int id,FamilyHistory famHist); //Modificar ER, DDL y createTables() y añadir foreign key en famHistory 
     
     public List<Symptoms> printPatientSymptoms(int id);
     public void addSymptoms(Symptoms s, int id_patient); 
