@@ -28,7 +28,7 @@ public class Menu {
 			System.out.println("7. Add a family history");
 			System.out.println("8. See the family history of a patient");
 			System.out.println("9. Add symptoms to a patient");
-			System.out.println("10. Update symptoms of a patient");
+			System.out.println("10. Delete symptoms of a patient");
 			System.out.println("11. See the symptoms of a patient");
 			System.out.println("12. Add a medical examination");
 			System.out.println("13. See the medical examination of a patient");
@@ -72,7 +72,7 @@ public class Menu {
 					UserInteraction.addSymptomsMenu();
 					break;
 				case 10: 
-					UserInteraction. update_patient_symptoms_Menu();
+					//delete symptoms
 					break;
 				case 11:
 					UserInteraction.printSymptomsMenu();

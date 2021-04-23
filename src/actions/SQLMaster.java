@@ -279,16 +279,25 @@ public class SQLMaster implements DBMaster {
 		try {
 			String sql1;
 			sql1= "INSERT INTO symptoms (detail) VALUES( ?)";
+			PreparedStatement prep1 = c.prepareStatement(sql1);
+			prep1.setString(1, s.getDetails());
+			prep1.executeUpdate();
+			prep1.close();
+
+			String query = "SELECT last_insert_rowid() AS lastId";
+			PreparedStatement p = c.prepareStatement(query);
+			ResultSet rs = p.executeQuery();
+			Integer lastId = rs.getInt("lastId");
+			p.close();
+			rs.close();
+			
 			String sql2;
 			sql2= "INSERT INTO patient_symptoms (id, id_symp) VALUES (?, ?)";
-			PreparedStatement prep1 = c.prepareStatement(sql1);
 			PreparedStatement prep2 = c.prepareStatement(sql2);
-			prep1.setString(1, s.getDetails());
 			prep2.setInt(1, id_patient);
-			prep2.setInt(2, s.getId_symp());
-			prep1.executeUpdate();
+			prep2.setInt(2, lastId);
+		
 			prep2.executeUpdate();
-			prep1.close();
 			prep2.close();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -296,24 +305,9 @@ public class SQLMaster implements DBMaster {
 
 	}
 	
-	@Override
-	public void update_patient_symptoms(int id, String detail) {
-		try {
-			String sql = "UPDATE symptoms SET detail=? WHERE id_symp= SELECT id_symp FROM patient_symptoms WHERE id= ?";
-			PreparedStatement prep = c.prepareStatement(sql);
-			prep.setString(1, detail);
-			prep.setInt(2, id);
-			prep.executeUpdate();
-			System.out.println("Update finished.");
-			prep.close();
-			
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	public void removeSymptoms(Symptoms s, int id_patient) {//complete
 		
 	}
-	
 	@Override
 	public List<Symptoms> printPatientSymptoms(int id) {
 			
@@ -326,7 +320,7 @@ public class SQLMaster implements DBMaster {
 				Integer id_symp = rs.getInt(1);
 				String detail = rs.getString("detail");
 				Symptoms s= new Symptoms ( id_symp, detail);
-				
+				System.out.println(s);
 				symptoms_list.add(s);	
 				
 			}

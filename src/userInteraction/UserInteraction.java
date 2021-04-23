@@ -191,14 +191,7 @@ public class UserInteraction {
 		
 	}
 	
-	public static void update_patient_symptoms_Menu()throws Exception {
-		printPatientsMenu();
-		System.out.println("Choose the id of the patient which you want to modify");
-		Integer id = Integer.parseInt(reader.readLine());
-		String detail= reader.readLine().toUpperCase();
-		dbmaster.update_patient_symptoms(id,  detail);
-		
-	}
+	
 	
 	public static void printSymptomsMenu() throws Exception {
 		List <Symptoms> symptom_listMenu=null;
