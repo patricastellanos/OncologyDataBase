@@ -1,0 +1,17 @@
+This week we expected to be able to do...
+Reorganize all the database and finish programming our methods.
+
+Optional: Reasons why
+We had time to work in class and we also spent time at home.
+
+This week we did...
+Finish all the methods and start working with java effects.
+
+Optional: Reasons why
+We work on it during class.
+
+Next weeks we will do...
+Work with the ui and solve all the possibles mistakes with the code. 
+
+Optional: Reasons why
+Time to work in class and at home.  
