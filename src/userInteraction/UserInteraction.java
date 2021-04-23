@@ -49,7 +49,7 @@ public class UserInteraction {
 		do {
 			System.out.println("Please, input the patient's actual state: ");
 					System.out.println("ACUTE_REHABILITATION, SLOWSTREAM_REHABILITATION, "
-							+ "COMPLEX_CARE, CONVALESCENT_CARE, PALLIATIVE_RESPITE");
+							+ "COMPLEX_CARE, CONVALESCENT_CARE, PALLIATIVE_RESPITE, RECOVERED, DEATH");
 			actual_state = reader.readLine().toUpperCase();
 
 		} while (!actual_state.equalsIgnoreCase("ACUTE_REHABILITATION")
