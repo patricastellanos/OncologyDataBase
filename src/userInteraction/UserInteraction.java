@@ -194,6 +194,7 @@ public class UserInteraction {
 	
 	
 	public static void printSymptomsMenu() throws Exception {
+		
 		List <Symptoms> symptom_listMenu=null;
 		printPatientsMenu();
 		System.out.println("Choose the id of the patient from which you want see its symptoms");
