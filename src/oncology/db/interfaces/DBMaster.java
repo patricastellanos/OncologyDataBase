@@ -30,7 +30,7 @@ public interface DBMaster {
     public void addMedExam(MedicalExamination m, int id);//deberíamos cambiarlo y pasarle tmb el id
     
     public void addCancer(Cancer cancer, Patient p);
-    public boolean diagnosis(Patient p, MedicalExamination m); //si no tiene cancer remove de db, //No en el menú(?)
+    public boolean diagnosis(MedicalExamination m, int id); //si no tiene cancer remove de db, //No en el menú(?)
    
     
     public Treatment assessTreatment(Cancer cancer); //hay que hacer un insert de los treatments

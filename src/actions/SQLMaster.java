@@ -351,7 +351,7 @@ public class SQLMaster implements DBMaster {
 			prep.setString(1, m.getMedExam_type());
 			prep.setDate(2, (Date) m.getDateMedExam());
 			prep.setString(3, m.getDiagnosis());
-			prep.setInt(4, id);
+			prep.setInt(id, id);
 			prep.executeUpdate();
 			prep.close();
 		} catch (Exception e) {
@@ -409,12 +409,13 @@ public class SQLMaster implements DBMaster {
 
 
 	@Override
-	public boolean diagnosis(Patient p, MedicalExamination m) { //revisar el return: (N) Yo creo que está bien , (M) está bien
+	public boolean diagnosis( MedicalExamination m, int id) { //revisar el return: (N) Yo creo que está bien , (M) está bien
 		try {
-		String sql = "SELECT * FROM medical_examination AS m JOIN symptoms AS s ON m.id_medExam=s.id_symp "
-				+ "JOIN patient AS p ON p.id_patient=s.id_symp WHERE p.id_patient= ?";
+		String sql = "SELECT * FROM mediacal_examination WHERE patient_id= ?";
+				/*"SELECT * FROM medical_examination AS m JOIN symptoms AS s ON m.id_medExam=s.id_symp "
+				+ "JOIN patient AS p ON p.id_patient=s.id_symp WHERE p.id_patient= ?";*/
 		PreparedStatement prep = c.prepareStatement(sql);
-		prep.setInt(1, p.getId_patient());
+		prep.setInt(1, id);
 		ResultSet rs = prep.executeQuery();
 		while(rs.next()) {
 			
@@ -424,6 +425,7 @@ public class SQLMaster implements DBMaster {
 				
 			}else {
 				return false;
+				//removePatient(id);
 			}
 		}
 		rs.close();
