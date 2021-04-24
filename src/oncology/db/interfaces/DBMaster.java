@@ -24,7 +24,7 @@ public interface DBMaster {
     
     public List<Symptoms> printPatientSymptoms(int id);
     public void addSymptoms(Symptoms s, int id_patient); 
-    public void removeSymptoms(Symptoms s, int id_patient);
+    public void removeSymptoms(int id_patient);
    
     public MedicalExamination printMedExamination (int id);
     public void addMedExam(MedicalExamination m);//deberíamos cambiarlo y pasarle tmb el id

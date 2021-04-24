@@ -181,6 +181,7 @@ public class UserInteraction {
 	public static void addSymptomsMenu()throws Exception {
 		
 		printPatientsMenu();
+
 		System.out.println("Choose the id of the patient from which you want to add the symptoms");
 		int id = Integer.parseInt(reader.readLine());
 
@@ -191,7 +192,12 @@ public class UserInteraction {
 		
 	}
 	
-	
+	public static void removeSymptomsMenu() throws Exception {
+		printPatientsMenu();
+		System.out.println("Choose the id of the patient from which you want to delete the symptoms");//revisar 
+		int id = Integer.parseInt(reader.readLine());
+		dbmaster.removeSymptoms(id);
+	}
 	
 	public static void printSymptomsMenu() throws Exception {
 		List <Symptoms> symptom_listMenu=null;

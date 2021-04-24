@@ -72,7 +72,7 @@ public class Menu {
 					UserInteraction.addSymptomsMenu();
 					break;
 				case 10: 
-					//delete symptoms
+					UserInteraction.removeSymptomsMenu();
 					break;
 				case 11:
 					UserInteraction.printSymptomsMenu();
