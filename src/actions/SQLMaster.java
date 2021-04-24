@@ -59,8 +59,8 @@ public class SQLMaster implements DBMaster {
 		try {
 			stmt1 = c.createStatement();
 			// Create table family_history
-			String sql1 = "CREATE TABLE family_history " + "( id_famHistory INTEGER PRIMARY KEY AUTOINCREMENT, "
-								+ "  type TEXT, " + "  member TEXT ," + "patient_id REFERENCES patient (id) ON DELETE SET NULL)";
+			String sql1 = "CREATE TABLE family_history " + "(id_famHistory INTEGER PRIMARY KEY AUTOINCREMENT, "
+								+ "  type TEXT, " + "  member TEXT , " + " patient_id REFERENCES patient (id) ON DELETE SET NULL)";
 			stmt1.executeUpdate(sql1);
 						
 			// Create table patient
@@ -71,45 +71,45 @@ public class SQLMaster implements DBMaster {
 			
 			//Create the table medical examination
 			sql1= "CREATE TABLE medical_examination " + "(id_medExam INTEGER PRIMARY KEY AUTOINCREMENT, "
-			      + " medExam_type TEXT NOT NULL, " + " dateMedExam DATE NOT NULL, " + " patient_id INTEGER REFERENCES patient (id) ON DELETE SET NULL )";
+			      + " medExam_type TEXT NOT NULL, " + " dateMedExam DATE NOT NULL, " + " patient_id INTEGER REFERENCES patient (id) ON DELETE SET NULL)";
 			stmt1.executeUpdate(sql1);
 
 			// Create table cancer
-			sql1 = "CREATE TABLE cancer " + "( id_cancer INTEGER PRIMARY KEY AUTOINCREMENT, "
+			sql1 = "CREATE TABLE cancer " + "(id_cancer INTEGER PRIMARY KEY AUTOINCREMENT, "
 					+ " id_medExam REFERENCES medical_examinations (id_medExam) ON DELETE SET NULL, "
-					+ " type TEXT NOT NULL )";
+					+ " type TEXT NOT NULL)";
 			// sql = "INSERT INTO cancer (type) "
 			// + "VALUES ('Liver');";
 			stmt1.executeUpdate(sql1);
 			
 			// Create table treatment
-			sql1 = "CREATE TABLE treatment " + "( id_treat   INTEGER  PRIMARY KEY AUTOINCREMENT,"
-				    + " type    TEXT     NOT NULL, " + " startdate     DATE NOT NULL, " + " duration INTEGER )";
+			sql1 = "CREATE TABLE treatment " + "(id_treat   INTEGER  PRIMARY KEY AUTOINCREMENT, "
+				    + " type    TEXT  NOT NULL, " + " startdate DATE NOT NULL, " + " duration INTEGER)";
 			stmt1.executeUpdate(sql1);
 			
 			// Create table symptoms
 			sql1 = "CREATE TABLE symptoms " + "( id_symp  INTEGER  PRIMARY KEY AUTOINCREMENT,"
-				   + " detail    TEXT     NOT NULL )";
+				   + " detail TEXT NOT NULL)";
 			stmt1.executeUpdate(sql1);
 
 			// Create table cancer_treatment
-			sql1 = "CREATE TABLE cancer_treatment " + "( id_cancer INTEGER REFERENCES cancer (id_cancer), "
+			sql1 = "CREATE TABLE cancer_treatment " + "(id_cancer INTEGER REFERENCES cancer (id_cancer), "
 					+ " id_treat INTEGER REFERENCES treatment (id_treatment), "
-					+ " PRIMARY KEY (id_cancer, id_treat ))";
+					+ " PRIMARY KEY (id_cancer, id_treat))";
 			stmt1.executeUpdate(sql1);
 
 			// Create table patient_symptoms
 			sql1 = "CREATE TABLE patient_symptoms"
-					+ "( id INTEGER REFERENCES patient(id) ON DELETE SET NULL, "
+					+ "(id INTEGER REFERENCES patient(id) ON DELETE SET NULL, "
 					+ " id_symp INTEGER REFERENCES symptoms(id_symp) ON DELETE SET NULL, "
-					+ " PRIMARY KEY (id, id_symp) )";
+					+ " PRIMARY KEY (id, id_symp))";
 
 			stmt1.executeUpdate(sql1);
 
 			// Create table cancer_patient
-			sql1 = "CREATE TABLE cancer_patient " + "( id_cancer INTEGER REFERENCES cancer (id_cancer), "
+			sql1 = "CREATE TABLE cancer_patient " + "(id_cancer INTEGER REFERENCES cancer (id_cancer), "
 					+ " id INTEGER REFERENCES patient (id), "
-					+ " PRIMARY KEY (id_cancer, id) )";
+					+ " PRIMARY KEY (id_cancer, id))";
 
 			stmt1.executeUpdate(sql1);
 			stmt1.close();
