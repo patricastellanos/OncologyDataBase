@@ -344,12 +344,14 @@ public class SQLMaster implements DBMaster {
 		}
 	
 	//New method 
-	public void addMedExam(MedicalExamination m) {//le deberíamos pasar el id del paciente tmb 
+	public void addMedExam(MedicalExamination m, int id) {//le deberíamos pasar el id del paciente tmb 
 		try {
-			String sql="INSERT INTO medical_examination (medExam_type, dateMedExam ) VALUES( ?, ?)";
+			String sql="INSERT INTO medical_examination (medExam_type, dateMedExam, diagnosis, patient_id) VALUES( ?, ?, ?, ?)";
 		    PreparedStatement prep = c.prepareStatement(sql);
 			prep.setString(1, m.getMedExam_type());
 			prep.setDate(2, (Date) m.getDateMedExam());
+			prep.setString(3, m.getDiagnosis());
+			prep.setInt(4, id);
 			prep.executeUpdate();
 			prep.close();
 		} catch (Exception e) {
@@ -364,14 +366,17 @@ public class SQLMaster implements DBMaster {
 		MedicalExamination m= null;
 		try {
 			Statement stmt = c.createStatement();
-			String sql = "SELECT * FROM medical_examination AS m JOIN symptoms AS s ON m.id_medExam=s.id_symp"
-					+ " JOIN patient AS p ON p.id_patient=s.id_symp WHERE p.id_patient= ?";
+			String sql = "SELECT * FROM medical_examination WHERE patient_id = "+ id;
+			
+					//"SELECT * FROM medical_examination AS m JOIN symptoms AS s ON m.id_medExam=s.id_symp"
+					//+ " JOIN patient AS p ON p.id_patient=s.id_symp WHERE p.id_patient= ?";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Integer id_medExam = rs.getInt("id_medExam");
 				String medExam_type = rs.getString("medExam_type");
 				Date dateMedExam = rs.getDate("dateMedExam");
-			    m=new MedicalExamination(id_medExam,medExam_type,dateMedExam);	
+				String diagnosis = rs.getString("diagnosis");
+			    m=new MedicalExamination(id_medExam,medExam_type,dateMedExam,diagnosis);	
 				
 			}
 			rs.close();

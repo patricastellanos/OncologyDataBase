@@ -76,6 +76,7 @@ public class Menu {
 					break;
 				case 12:
 					UserInteraction.addMedicalExaminationMenu();
+					break;
 				case 13:
 					UserInteraction.printMedicalExaminationMenu();
 					break;

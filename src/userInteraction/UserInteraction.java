@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import oncology.db.pojos.FamilyHistory;
+import oncology.db.pojos.MedicalExamination;
 import oncology.db.pojos.Patient;
 import oncology.db.pojos.Symptoms;
 
@@ -308,15 +309,23 @@ public class UserInteraction {
 	//this method adds a new medical examination but WE HAVE TO DO ITTTTTTT!!!!!
 	public static void addMedicalExaminationMenu(){//revisar el SQL
 		try {
-		/*printPatientsMenu();
-		System.out.println("Choose the id of the patient from which you want to add the symptoms");
+		printPatientsMenu();
+		System.out.println("Choose the id of the patient from which you want to add the medical examination");
 		int id = Integer.parseInt(reader.readLine());
-
-		private Integer id_medExam;
-		private String medExam_type;
-		private Date dateMedExam;
 		
-		dbmaster.addMedExam(s, id);*/
+		System.out.println("Please, input the type of medical examination");
+		String medExam_type= reader.readLine();
+		
+		System.out.println("Please, input the medical examination's date (yyyy-MM-dd):");
+	    LocalDate dateMedExam = LocalDate.parse(reader.readLine(), formatter);
+	    
+	    System.out.println("Please, input the diagnosis of the medical examination");
+	    String diagnosis = reader.readLine();
+	    
+	    MedicalExamination m = new MedicalExamination(medExam_type, Date.valueOf(dateMedExam), diagnosis);
+		
+
+		dbmaster.addMedExam(m, id);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -328,7 +337,7 @@ public class UserInteraction {
 		printPatientsMenu();
 		System.out.println("Choose the id of the patient from which you want see its medical examination");
 		int id = Integer.parseInt(reader.readLine());
-		dbmaster.printMedExamination(id);
+		System.out.println(dbmaster.printMedExamination(id));
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

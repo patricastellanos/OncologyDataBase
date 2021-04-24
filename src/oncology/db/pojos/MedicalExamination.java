@@ -23,6 +23,12 @@ public class MedicalExamination implements Serializable{
 		this.diagnosis= diagnosis;
 	}
 	
+	public MedicalExamination(String medExam_type, Date dateMedExam, String diagnosis) {
+		super();
+		this.medExam_type = medExam_type;
+		this.dateMedExam = dateMedExam;
+		this.diagnosis= diagnosis;
+	}
 	//getters and setters
 	
 	public String getDiagnosis() {
