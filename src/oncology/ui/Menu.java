@@ -11,9 +11,6 @@ public class Menu {
 	
 	private static DBMaster dbmaster = new SQLMaster();
 	private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-	/*private static List<Patient> patient_list = new ArrayList();
-	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");*/
-
 	public static void main(String[] args) throws Exception {
 		dbmaster.connect();
 		UserInteraction.setDBMaster(dbmaster);
@@ -32,7 +29,7 @@ public class Menu {
 			System.out.println("11. See the symptoms of a patient");
 			System.out.println("12. Add a medical examination");
 			System.out.println("13. See the medical examination of a patient");
-			System.out.println("14. Add patient's cancer");
+			System.out.println("14. Add patient's cancer");//does not work
 			System.out.println("0. Exit");
 			try {
 				int choice = Integer.parseInt(reader.readLine());
