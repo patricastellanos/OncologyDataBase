@@ -212,15 +212,18 @@ public class UserInteraction {
 		// examination result
 	
 	public static void addMedicalExaminationMenu() throws Exception {//revisar el SQL
-		/*printPatientsMenu();
+		printPatientsMenu();
 		System.out.println("Choose the id of the patient from which you want to add the symptoms");
 		int id = Integer.parseInt(reader.readLine());
-
-		private Integer id_medExam;
-		private String medExam_type;
-		private Date dateMedExam;
+		System.out.println("Tyoe of medical examination performed");
+		String medExam_type=reader.readLine();
+		Date medExam
+		String diagnosis=printSymptomsDetailMenu();
 		
-		dbmaster.addMedExam(s, id);*/
+		MedicalExamination m= new MedicalExamination();
+		
+		
+		dbmaster.addMedExam(s, id);
 		
 	}
 	
