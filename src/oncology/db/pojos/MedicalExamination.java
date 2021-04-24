@@ -10,19 +10,29 @@ public class MedicalExamination implements Serializable{
 	private Integer id_medExam;
 	private String medExam_type;
 	private Date dateMedExam;
+	private String diagnosis; 
 	private List<Cancer> cancer_list;
 	private List<Symptoms> symptoms_list;
 	
 	//constructor
-	public MedicalExamination(Integer id_medExam, String medExam_type, Date dateMedExam) {
+	public MedicalExamination(Integer id_medExam, String medExam_type, Date dateMedExam, String diagnosis) {
 		super();
 		this.id_medExam = id_medExam;
 		this.medExam_type = medExam_type;
 		this.dateMedExam = dateMedExam;
+		this.diagnosis= diagnosis;
 	}
 	
 	//getters and setters
 	
+	public String getDiagnosis() {
+		return diagnosis;
+	}
+
+	public void setDiagnosis(String diagnosis) {
+		this.diagnosis = diagnosis;
+	}
+
 	public Integer getId_medExam() {
 		return id_medExam;
 	}
@@ -39,22 +49,24 @@ public class MedicalExamination implements Serializable{
 		this.dateMedExam = dateMedExam;
 	}
 	
-	//to String
 	@Override
 	public String toString() {
-		return "Medical_examination [id_medExam=" + id_medExam + ", medExam_type=" + medExam_type + ", dateMedExam="
-				+ dateMedExam + "]";
+		return "MedicalExamination [id_medExam=" + id_medExam + ", medExam_type=" + medExam_type + ", dateMedExam="
+				+ dateMedExam + ", diagnosis=" + diagnosis + ", cancer_list=" + cancer_list + ", symptoms_list="
+				+ symptoms_list + "]";
 	}
-	//hashcode
 	
 	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((cancer_list == null) ? 0 : cancer_list.hashCode());
 		result = prime * result + ((dateMedExam == null) ? 0 : dateMedExam.hashCode());
+		result = prime * result + ((diagnosis == null) ? 0 : diagnosis.hashCode());
 		result = prime * result + ((id_medExam == null) ? 0 : id_medExam.hashCode());
 		result = prime * result + ((medExam_type == null) ? 0 : medExam_type.hashCode());
+		result = prime * result + ((symptoms_list == null) ? 0 : symptoms_list.hashCode());
 		return result;
 	}
 	@Override
@@ -66,10 +78,20 @@ public class MedicalExamination implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		MedicalExamination other = (MedicalExamination) obj;
+		if (cancer_list == null) {
+			if (other.cancer_list != null)
+				return false;
+		} else if (!cancer_list.equals(other.cancer_list))
+			return false;
 		if (dateMedExam == null) {
 			if (other.dateMedExam != null)
 				return false;
 		} else if (!dateMedExam.equals(other.dateMedExam))
+			return false;
+		if (diagnosis == null) {
+			if (other.diagnosis != null)
+				return false;
+		} else if (!diagnosis.equals(other.diagnosis))
 			return false;
 		if (id_medExam == null) {
 			if (other.id_medExam != null)
@@ -80,6 +102,11 @@ public class MedicalExamination implements Serializable{
 			if (other.medExam_type != null)
 				return false;
 		} else if (!medExam_type.equals(other.medExam_type))
+			return false;
+		if (symptoms_list == null) {
+			if (other.symptoms_list != null)
+				return false;
+		} else if (!symptoms_list.equals(other.symptoms_list))
 			return false;
 		return true;
 	}

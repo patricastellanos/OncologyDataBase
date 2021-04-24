@@ -60,18 +60,18 @@ public class SQLMaster implements DBMaster {
 			stmt1 = c.createStatement();
 			// Create table family_history
 			String sql1 = "CREATE TABLE family_history " + "( id_famHistory INTEGER PRIMARY KEY AUTOINCREMENT, "
-								+ "  type TEXT, " + "  member TEXT ," + "patient_id REFERENCES patient (id) ON DELETE SET NULL )";
+								+ "  type TEXT, " + "  member TEXT ," + "patient_id REFERENCES patient (id) ON DELETE SET NULL)";
 			stmt1.executeUpdate(sql1);
 						
 			// Create table patient
 			 sql1 = "CREATE TABLE patient " + "( id INTEGER  PRIMARY KEY AUTOINCREMENT, "
 					+ " name TEXT NOT NULL, " + " surname TEXT NOT NULL, " + " sex TEXT NOT NULL, "
-					+ " date_birth DATE NOT NULL, " + " location TEXT NOT NULL, " + " actual_state TEXT NOT NULL, ";					
+					+ " date_birth DATE NOT NULL, " + " location TEXT NOT NULL, " + " actual_state TEXT NOT NULL)";					
 			stmt1.executeUpdate(sql1);
 			
 			//Create the table medical examination
 			sql1= "CREATE TABLE medical_examination " + "(id_medExam INTEGER PRIMARY KEY AUTOINCREMENT, "
-			      + " medExam_type TEXT NOT NULL, " + " dateMedExam DATE NOT NULL )";
+			      + " medExam_type TEXT NOT NULL, " + " dateMedExam DATE NOT NULL, " + " patient_id INTEGER REFERENCES patient (id) ON DELETE SET NULL )";
 			stmt1.executeUpdate(sql1);
 
 			// Create table cancer
