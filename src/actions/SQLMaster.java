@@ -305,7 +305,17 @@ public class SQLMaster implements DBMaster {
 
 	}
 	
-	public void removeSymptoms(Symptoms s, int id_patient) {//complete
+	public void removeSymptoms(int id_patient) {
+		try {
+				String sql = "DELETE FROM symptoms AS s JOIN patient_symptoms AS ps ON ps.id_symp=s.id_symp WHERE ps.id= ?";
+				PreparedStatement prep = c.prepareStatement(sql);
+				prep.setInt(1, id_patient);
+				prep.executeUpdate();
+				prep.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		
 		
 	}
 	@Override

@@ -190,6 +190,12 @@ public class UserInteraction {
 		dbmaster.addSymptoms(s, id);
 		
 	}
+	public static void removeSymptomsMenu() throws Exception{
+		printPatientsMenu();
+		System.out.println("Choose the id of the patient from which you delete the symptoms");
+		int id=Integer.parseInt(reader.readLine());
+		dbmaster.removeSymptoms(id);
+	}
 	
 	
 	
@@ -200,10 +206,6 @@ public class UserInteraction {
 		System.out.println("Choose the id of the patient from which you want see its symptoms");
 		int id = Integer.parseInt(reader.readLine());
 		System.out.println(symptom_listMenu = dbmaster.printPatientSymptoms(id));
-//		for (int i = 0; i < symptom_listMenu.size(); i++) {
-//			System.out.println(symptom_listMenu.get(i));
-//
-//		}
 			
 	}
 	// method in order to know the type of cancer according to the medical
