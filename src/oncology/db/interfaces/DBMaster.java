@@ -26,10 +26,10 @@ public interface DBMaster {
     public void addSymptoms(Symptoms s, int id_patient); 
     public void removeSymptoms(int id_patient);
    
-    public MedicalExamination printMedExamination (int id);
-    public void addMedExam(MedicalExamination m);//deberíamos cambiarlo y pasarle tmb el id
+   // public MedicalExamination printMedExamination (int id);
+    public void addMedExam(int id,MedicalExamination m);
     
-    public void addCancer(Cancer cancer, Patient p);
+    public void addCancer(Cancer cancer, int id_patient);
     public boolean diagnosis(Patient p, MedicalExamination m); //si no tiene cancer remove de db, //No en el menú(?)
    
     

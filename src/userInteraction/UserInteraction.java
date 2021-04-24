@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
+import oncology.db.pojos.Cancer;
 import oncology.db.pojos.FamilyHistory;
 import oncology.db.pojos.Patient;
 import oncology.db.pojos.Symptoms;
@@ -193,10 +194,10 @@ public class UserInteraction {
 	}
 	
 	public static void removeSymptomsMenu() throws Exception {
-		printPatientsMenu();
-		System.out.println("Choose the id of the patient from which you want to delete the symptoms");//revisar 
+		/*printPatientsMenu();
+		System.out.println("Choose the id of the patient from which you want to delete the symptoms");// revisar
 		int id = Integer.parseInt(reader.readLine());
-		dbmaster.removeSymptoms(id);
+		dbmaster.removeSymptoms(id);*/
 	}
 	
 	public static void printSymptomsMenu() throws Exception {
@@ -205,10 +206,6 @@ public class UserInteraction {
 		System.out.println("Choose the id of the patient from which you want see its symptoms");
 		int id = Integer.parseInt(reader.readLine());
 		System.out.println(symptom_listMenu = dbmaster.printPatientSymptoms(id));
-//		for (int i = 0; i < symptom_listMenu.size(); i++) {
-//			System.out.println(symptom_listMenu.get(i));
-//
-//		}
 			
 	}
 	// method in order to know the type of cancer according to the medical
@@ -228,14 +225,24 @@ public class UserInteraction {
 	}
 	
 	public static void printMedicalExaminationMenu() throws Exception {
-		printPatientsMenu();
+		/*printPatientsMenu();
 		System.out.println("Choose the id of the patient from which you want see its medical examination");
 		int id = Integer.parseInt(reader.readLine());
-		dbmaster.printMedExamination(id);
+		dbmaster.printMedExamination(id);*/
 			
 	}
 	
 	public static void addCancerMenu()throws Exception{
+		printPatientsMenu();
+
+		System.out.println("Choose the id of the patient from which you want to add the cancer");
+		int id = Integer.parseInt(reader.readLine());
+		System.out.println("Cancer's type");
+		String type_cancer=reader.readLine();
+		
+		Cancer cancer= new Cancer(id,type_cancer);
+		
+		dbmaster.addCancer(cancer, id);
 		
 	}
 }

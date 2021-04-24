@@ -71,7 +71,7 @@ public class SQLMaster implements DBMaster {
 			
 			//Create the table medical examination
 			sql1= "CREATE TABLE medical_examination " + "(id_medExam INTEGER PRIMARY KEY AUTOINCREMENT, "
-			      + " medExam_type TEXT NOT NULL, " + " dateMedExam DATE NOT NULL, " + " patient_id INTEGER REFERENCES patient (id) ON DELETE SET NULL)";
+			      + " medExam_type TEXT NOT NULL, " + " dateMedExam DATE NOT NULL, " + " diagnosis TEXT NOT NULL, " + " patient_id INTEGER REFERENCES patient (id) ON DELETE SET NULL)";
 			stmt1.executeUpdate(sql1);
 
 			// Create table cancer
@@ -342,13 +342,15 @@ public class SQLMaster implements DBMaster {
 		return symptoms_list;
 		}
 	
-	//New method 
-	public void addMedExam(MedicalExamination m) {//le deberíamos pasar el id del paciente tmb 
+	
+	public void addMedExam(int id, MedicalExamination m) {
 		try {
-			String sql="INSERT INTO medical_examination (medExam_type, dateMedExam ) VALUES( ?, ?)";
+			String sql="INSERT INTO medical_examination (medExam_type, dateMedExam, diagnosis ) VALUES( ?, ?, ?)";
 		    PreparedStatement prep = c.prepareStatement(sql);
 			prep.setString(1, m.getMedExam_type());
 			prep.setDate(2, (Date) m.getDateMedExam());
+			prep.setString(3, m.getDiagnosis());
+			prep.setInt(3, id);
 			prep.executeUpdate();
 			prep.close();
 		} catch (Exception e) {
@@ -358,9 +360,9 @@ public class SQLMaster implements DBMaster {
 	}
 	
 
-	@Override
-	public MedicalExamination printMedExamination(int id) {//ver
-		MedicalExamination m= null;
+	
+	//public MedicalExamination printMedExamination(int id) {}//ver
+		/*MedicalExamination m= null;
 		try {
 			Statement stmt = c.createStatement();
 			String sql = "SELECT * FROM medical_examination AS m JOIN symptoms AS s ON m.id_medExam=s.id_symp"
@@ -380,9 +382,9 @@ public class SQLMaster implements DBMaster {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return m;
+		return m;*/
 			
-	}
+//}
 	
 	//New method
 	/*public void Diagnosis(MedicalExamination m, Cancer can) {
@@ -430,20 +432,34 @@ public class SQLMaster implements DBMaster {
 	}
 	
 	@Override
-	public void addCancer(Cancer cancer, Patient p) {
+	public void addCancer(Cancer cancer, int id) {
 		try {
-		String sql;
-		sql = "INSERT INTO cancer (id_cancer, type) VALUES (?,?)";
-		sql = "INSERT INTO cancer_patient (id_cancer, id) VALUES (?,?)";
-		PreparedStatement prep = c.prepareStatement(sql);
-		prep.setInt(1, cancer.getId_cancer());
-		prep.setString(2, cancer.getCancer_type());
-		prep.setInt(3, cancer.getId_cancer());
-		prep.setInt(4, p.getId_patient());
+		String sql1 = "INSERT INTO cancer (id_cancer, type) VALUES (?,?)";
+		PreparedStatement prep1 = c.prepareStatement(sql1);
+		prep1.setInt(1, cancer.getId_cancer());
+		prep1.setString(2, cancer.getCancer_type());
+		prep1.executeUpdate();
+		prep1.close();
 		
+		String query = "SELECT last_insert_rowid() AS lastId";
+		PreparedStatement p = c.prepareStatement(query);
+		ResultSet rs = p.executeQuery();
+		Integer lastId = rs.getInt("lastId");
+		p.close();
+		rs.close();
+		
+		String sql2 = "INSERT INTO cancer_patient (id, id_cancer) VALUES (?,?)";
+		PreparedStatement prep2 = c.prepareStatement(sql2);
+		prep2.setInt(1, id);
+		prep2.setInt(2, lastId);
+		
+		prep2.executeUpdate();
+		prep2.close();
+
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		
 	}
 		
 	@Override
