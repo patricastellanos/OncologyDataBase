@@ -11,9 +11,6 @@ public class Menu {
 	
 	private static DBMaster dbmaster = new SQLMaster();
 	private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-	/*private static List<Patient> patient_list = new ArrayList();
-	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");*/
-
 	public static void main(String[] args) throws Exception {
 		dbmaster.connect();
 		UserInteraction.setDBMaster(dbmaster);
@@ -23,16 +20,16 @@ public class Menu {
 			System.out.println("2. Search patient");
 			System.out.println("3. Remove patient");
 			System.out.println("4. Update patient´s cancer state");
-			System.out.println("5. Type of cancer according to the medical examination");
+			System.out.println("5. Type of cancer according to the medical examination");//to do
 			System.out.println("6. See the patients");
 			System.out.println("7. Add a family history");
 			System.out.println("8. See the family history of a patient");
 			System.out.println("9. Add symptoms to a patient");
-			System.out.println("10. Delete symptoms of a patient");
+			System.out.println("10. Delete symptoms of a patient");//does not work
 			System.out.println("11. See the symptoms of a patient");
 			System.out.println("12. Add a medical examination");
 			System.out.println("13. See the medical examination of a patient");
-			System.out.println("14. Add patient's cancer");
+			System.out.println("14. Add patient's cancer");//does not work
 			System.out.println("0. Exit");
 			try {
 				int choice = Integer.parseInt(reader.readLine());
@@ -72,7 +69,7 @@ public class Menu {
 					UserInteraction.addSymptomsMenu();
 					break;
 				case 10: 
-					//delete symptoms
+					UserInteraction.removeSymptomsMenu();
 					break;
 				case 11:
 					UserInteraction.printSymptomsMenu();
