@@ -455,14 +455,14 @@ public class SQLMaster implements DBMaster {
 	}
 		
 	@Override
-	public Treatment assessTreatment(Cancer cancer) {//id needed5
+	public Treatment assessTreatment(int id_patient) {//id needed5
 		
 		Treatment treatment=null;
 		try {
 			
 			Statement stmt=c.createStatement();
-			String sql="SELECT * FROM treatment AS t JOIN cancer_treatment AS ct ON t.id_treat=ct.id_treat JOIN cancer AS c ON "
-					+ "c.id_cancer=ct.id_cancer WHERE c.id_cancer= ?";
+			String sql="SELECT * FROM treatment AS t JOIN cancer_treatment AS ct ON t.id_treat=ct.id_treat JOIN cancer_patient AS cp "
+					+ "ON ct.id_cancer=cp.id WHERE cp.id = " +id_patient;
 			ResultSet rs=stmt.executeQuery(sql);
 			
 			while(rs.next()) {
@@ -485,7 +485,7 @@ public class SQLMaster implements DBMaster {
 	}
 	
 	
-	public boolean treatment_worked(int id_patient) { //review return 
+	public boolean treatment_worked(int id_patient) {  
 		
 		try{
 			Statement stmt=c.createStatement();

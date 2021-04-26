@@ -260,10 +260,12 @@ public class Menu {
 			System.out.println("12. Add a medical examination");
 			System.out.println("13. See the medical examination of a patient");
 			System.out.println("14. Add patient's cancer");
+			System.out.println("15. Asses a treatment from patient");
+			System.out.println("16. Check patient´s treatment");
 			System.out.println("0. Exit");
 			try {
 				int choice = Integer.parseInt(reader.readLine());
-				while (choice < 0 || choice > 14) {
+				while (choice < 0 || choice > 16) {
 					System.out.println("Choose an option within the range:");
                     choice =Integer.parseInt(reader.readLine());
                 }
@@ -312,6 +314,12 @@ public class Menu {
 					break;
 				case 14:
 					UserInteraction.addCancerMenu();
+					break;
+				case 15:
+					UserInteraction.assesTreatmentMenu();
+					break;
+				case 16:
+					UserInteraction.treatmentWorkoutMenu();;
 					break;
 				case 0:
 					dbmaster.disconnect();
