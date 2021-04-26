@@ -9,7 +9,7 @@ import javax.persistence.*;
 import oncology.db.interfaces.UserMaster;
 import oncology.db.pojos.users.*;
 
-public class JPAUserManager implements UserMaster {
+public class JPAUserMaster implements UserMaster {
 
 	private EntityManager em;
 
@@ -21,8 +21,9 @@ public class JPAUserManager implements UserMaster {
 		em.getTransaction().commit();
 		List<Role> existingRoles = this.getRoles();
 		if (existingRoles.size()<2) {
-			this.newRole(new Role("admin"));
-			this.newRole(new Role("user"));
+			this.newRole(new Role("patient"));
+			this.newRole(new Role("nurse"));
+			this.newRole(new Role("doctor"));
 		}
 	}
 
