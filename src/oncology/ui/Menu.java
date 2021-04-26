@@ -319,7 +319,7 @@ public class Menu {
 					UserInteraction.assesTreatmentMenu();
 					break;
 				case 16:
-					UserInteraction.treatmentWorkoutMenu();;
+					UserInteraction.treatmentWorkoutMenu();
 					break;
 				case 0:
 					dbmaster.disconnect();
