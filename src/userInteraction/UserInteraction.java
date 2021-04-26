@@ -9,6 +9,7 @@ import oncology.db.pojos.FamilyHistory;
 import oncology.db.pojos.MedicalExamination;
 import oncology.db.pojos.Patient;
 import oncology.db.pojos.Symptoms;
+import oncology.db.pojos.Treatment;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -354,4 +355,43 @@ public class UserInteraction {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void assesTreatmentMenu() {
+		try {
+			printPatientsMenu();
+			System.out.println("Choose the id of the patient which you want to asses");
+			int id_patient= Integer.parseInt(reader.readLine());
+			Treatment treat= dbmaster.assessTreatment(id_patient);
+			System.out.println(treat);
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void treatmentWorkoutMenu() {
+		try {
+			System.out.println("Choose the id of the patient which you want check the treatment");
+			int id_patient= Integer.parseInt(reader.readLine());
+			boolean result= dbmaster.treatment_worked(id_patient);
+			System.out.println(result);
+			/*if(result==true) {
+				
+			}else {
+				
+			}*/
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }
