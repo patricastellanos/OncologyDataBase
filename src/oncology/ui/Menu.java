@@ -12,6 +12,7 @@ public class Menu {
 	private static DBMaster dbmaster = new SQLMaster();
 	private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	public static void main(String[] args) throws Exception {
+		
 		//IT IS NOT USERMAN, WE HAVE TO DO IT AFTER DOING ALL THE METHODS
 		// TO DO THE ROLE CLASS
 		/*
