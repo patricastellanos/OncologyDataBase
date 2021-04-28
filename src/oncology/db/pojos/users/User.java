@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Arrays;
 
 import javax.management.relation.Role;
+import javax.persistence.*;
 
 @Entity
 @Table(name="users")
@@ -16,7 +17,7 @@ public class User implements Serializable{
 	private byte[] password;
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="role_id")
-	private Role roles; //1(user) to many(role) relationship
+	private Role role; //1(user) to many(role) relationship
 	public Integer getId() {
 		return id;
 	}
