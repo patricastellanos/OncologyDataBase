@@ -461,8 +461,10 @@ public class SQLMaster implements DBMaster {
 		try {
 			
 			Statement stmt=c.createStatement();
-			String sql="SELECT * FROM treatment AS t JOIN cancer_treatment AS ct ON t.id_treat=ct.id_treat JOIN cancer_patient AS cp "
-					+ "ON ct.id_cancer=cp.id WHERE cp.id = " +id_patient;
+			String sql= "SELECT * FROM treatment AS t JOIN cancer_treatment AS ct ON t.id_treat= ct.id_treat JOIN cancer AS c ON ct.id_cancer= c.id_cancer JOIN cancer_patient AS cp ON c.id_cancer= cp.id_cancer WHERE cp.id=  "+id_patient;
+					/*"SELECT * FROM treatment AS t JOIN cancer_treatment AS ct ON t.id_treat=ct.id_treat JOIN cancer_patient AS cp "
+					+ "ON ct.id_cancer=cp.id WHERE cp.id = " +id_patient;*/
+					
 			ResultSet rs=stmt.executeQuery(sql);
 			
 			while(rs.next()) {
