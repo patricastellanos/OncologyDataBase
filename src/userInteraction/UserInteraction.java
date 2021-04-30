@@ -410,13 +410,15 @@ public class UserInteraction {
 	
 	public static void treatmentWorkoutMenu() {
 		try {
+			printPatientsMenu();
 			System.out.println("Choose the id of the patient which you want check the treatment");
 			int id_patient= Integer.parseInt(reader.readLine());
 			boolean result= dbmaster.treatment_worked(id_patient);
-			System.out.println(result);
+			//System.out.println(result);
 			if(result==true) {
 				dbmaster.removePatient(id_patient);
-				System.out.println();
+				String patientState=dbmaster.printActualState(id_patient);
+				System.out.println("Patiente deleted because the state was"+patientState);
 			}else {
 				System.out.println();
 				
