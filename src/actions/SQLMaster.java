@@ -415,28 +415,42 @@ public class SQLMaster implements DBMaster {
 	@Override
 	public void addCancer(Cancer cancer, int id_patient) {
 		try {
-		String sql;
-		sql = "INSERT INTO cancer (id_cancer, type) VALUES (?,?)";
-		sql = "INSERT INTO cancer_patient (id_cancer, id) VALUES (?,?)";
-		PreparedStatement prep = c.prepareStatement(sql);
-		prep.setInt(1, cancer.getId_cancer());
-		prep.setString(2, cancer.getCancer_type());
-		prep.setInt(3, cancer.getId_cancer());
-		prep.setInt(4, id_patient);
+		String sql1 = "INSERT INTO cancer (id_cancer, type) VALUES ( ?, ?)";
+		PreparedStatement prep1 = c.prepareStatement(sql1);
+		prep1.setInt(1, cancer.getId_cancer());
+		prep1.setString(2, cancer.getCancer_type());
+		prep1.executeUpdate();
+		prep1.close();
+		
+		String query = "SELECT last_insert_rowid() AS lastId";
+		PreparedStatement p = c.prepareStatement(query);
+		ResultSet rs = p.executeQuery();
+		Integer lastId = rs.getInt("lastId");
+		p.close();
+		rs.close();
+		
+		String sql2 = "INSERT INTO cancer_patient (id_cancer, id) VALUES (?,?)";
+		PreparedStatement prep2 = c.prepareStatement(sql2);
+		prep2.setInt(1, cancer.getId_cancer());
+		prep2.setInt(2, id_patient);
+		prep2.executeUpdate();
+		prep2.close();
 		
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
+	
+	
 	 public void addTreatment(Treatment t, int id) {
-		 String sql = "INSERT INTO treatment (type, startDate, duration, patient_id) VALUES (?, ?, ?)";
+		 String sql = "INSERT INTO treatment (type, startDate, duration, patient_id) VALUES (?, ?, ?, ?)";
 		 PreparedStatement prep;
 		try {
 			prep = c.prepareStatement(sql);
 			prep.setString(1, t.getTreat_type());
 			prep.setDate(2, (Date) t.getStart_date());
 			prep.setInt(3, t.getDuration());
-			prep.setInt(id, id);
+			prep.setInt(4, id);
 			prep.executeUpdate();
 			prep.close();
 		} catch (SQLException e) {
@@ -446,7 +460,7 @@ public class SQLMaster implements DBMaster {
 		 
 	 }
 	@Override
-	public Treatment assessTreatment(int id_patient) {//id needed5
+	public Treatment assessTreatment(int id_patient) {
 		
 		Treatment treatment=null;
 		try {
@@ -464,7 +478,7 @@ public class SQLMaster implements DBMaster {
 				String type = rs.getString("type"); 
 				Date startdate = rs.getDate("startdate");
 				int duration = rs.getInt("duration");		
-				treatment=new Treatment(id, type, startdate, duration);		
+				return treatment=new Treatment(id, type, startdate, duration);		
 			}
 			
 			rs.close();

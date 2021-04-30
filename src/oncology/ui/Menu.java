@@ -231,17 +231,7 @@ public class Menu {
 			} while (true);
 		}*/
 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+			
 		
 		dbmaster.connect();
 		UserInteraction.setDBMaster(dbmaster);
