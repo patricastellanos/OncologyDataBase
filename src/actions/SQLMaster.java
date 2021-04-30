@@ -74,6 +74,7 @@ public class SQLMaster implements DBMaster {
 			      + " medExam_type TEXT NOT NULL, " + " dateMedExam DATE NOT NULL, " + " diagnosis TEXT NOT NULL, " + " patient_id INTEGER REFERENCES patient (id) ON DELETE SET NULL)";
 			stmt1.executeUpdate(sql1);
 
+			
 			// Create table cancer
 			sql1 = "CREATE TABLE cancer " + "(id_cancer INTEGER PRIMARY KEY AUTOINCREMENT, "
 					+ " id_medExam REFERENCES medical_examinations (id_medExam) ON DELETE SET NULL, "
