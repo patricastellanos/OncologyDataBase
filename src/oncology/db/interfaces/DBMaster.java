@@ -32,7 +32,7 @@ public interface DBMaster {
     public void addCancer(Cancer cancer, Patient p);
     public boolean diagnosis(MedicalExamination m, int id); //si no tiene cancer remove de db, //No en el menú(?)
    
-    
+    public void addTreatment(Treatment t, int id);
     public Treatment assessTreatment(int id_patient); //hay que hacer un insert de los treatments
     public boolean treatment_worked(int id_patient);  
     
