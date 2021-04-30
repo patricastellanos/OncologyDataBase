@@ -16,6 +16,7 @@ import oncology.db.pojos.MedicalExamination;
 import oncology.db.pojos.Patient;
 import oncology.db.pojos.Symptoms;
 import oncology.db.pojos.Treatment;
+import userInteraction.UserInteraction;
 
 public class SQLMaster implements DBMaster {
 
@@ -369,8 +370,6 @@ public class SQLMaster implements DBMaster {
 			Statement stmt = c.createStatement();
 			String sql = "SELECT * FROM medical_examination WHERE patient_id = "+ id;
 			
-					//"SELECT * FROM medical_examination AS m JOIN symptoms AS s ON m.id_medExam=s.id_symp"
-					//+ " JOIN patient AS p ON p.id_patient=s.id_symp WHERE p.id_patient= ?";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Integer id_medExam = rs.getInt("id_medExam");
@@ -391,52 +390,6 @@ public class SQLMaster implements DBMaster {
 			
 	}
 	
-	//New method
-	/*public void Diagnosis(MedicalExamination m, Cancer can) {
-		try {
-			if(m.getDiagnosis().equals("Cancer")) {
-				String sql="INSERT INTO cancer (type, id_medExam) VALUES(?,?)";
-			    PreparedStatement prep = c.prepareStatement(sql);
-				prep.setString(1, can.getCancer_type());
-				prep.setInt(2, m.getId_medExam());
-				//Habría que asignárselo también al paciente 
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}*/
-
-
-
-	@Override
-	public boolean diagnosis( MedicalExamination m, int id) { //revisar el return: (N) Yo creo que está bien , (M) está bien
-		try {
-		String sql = "SELECT * FROM mediacal_examination WHERE patient_id= ?";
-				/*"SELECT * FROM medical_examination AS m JOIN symptoms AS s ON m.id_medExam=s.id_symp "
-				+ "JOIN patient AS p ON p.id_patient=s.id_symp WHERE p.id_patient= ?";*/
-		PreparedStatement prep = c.prepareStatement(sql);
-		prep.setInt(1, id);
-		ResultSet rs = prep.executeQuery();
-		while(rs.next()) {
-			
-			String diagnosis = rs.getString("diagnosis");
-			if(diagnosis.equalsIgnoreCase("cancer")) {
-				return true;
-				
-			}else {
-				return false;
-				//removePatient(id);
-			}
-		}
-		rs.close();
-		prep.close();
-		}catch (Exception e) {
-			e.printStackTrace();
-		}return false;
-		
-		
-	}
 	
 	@Override
 	public void addCancer(Cancer cancer, int id_patient) {
