@@ -25,6 +25,7 @@ public class Treatment implements Serializable {
 	
 	public Treatment(String treat_type, Date start_date, Integer duration) {
 		super();
+		this.id_treat = id_treat;
 		this.treat_type = treat_type;
 		this.start_date = start_date;
 		this.duration = duration;

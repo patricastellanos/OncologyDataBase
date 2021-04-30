@@ -22,6 +22,7 @@ public class Cancer implements Serializable{
 	
 	public Cancer(String cancer_type) {
 		super();
+		this.id_cancer = id_cancer;
 		this.cancer_type = cancer_type;
 	}
 
