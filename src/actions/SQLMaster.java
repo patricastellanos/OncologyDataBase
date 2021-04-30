@@ -85,7 +85,7 @@ public class SQLMaster implements DBMaster {
 			
 			// Create table treatment
 			sql1 = "CREATE TABLE treatment " + "(id_treat   INTEGER  PRIMARY KEY AUTOINCREMENT, "
-				    + " type    TEXT  NOT NULL, " + " startdate DATE NOT NULL, " + " duration INTEGER, " + " id_patient INTEGER REFERENCES patient(id) ON DELETE SET NULL)";
+				    + " type    TEXT  NOT NULL, " + " startdate DATE NOT NULL, " + " duration INTEGER, " + " patient_id INTEGER REFERENCES patient(id) ON DELETE SET NULL)";
 			stmt1.executeUpdate(sql1);
 			
 			// Create table symptoms
@@ -455,7 +455,7 @@ public class SQLMaster implements DBMaster {
 		}
 	}
 	 public void addTreatment(Treatment t, int id) {
-		 String sql = "INSERT INTO treatment (type, startDate, duration) VALUES (?, ?, ?)";
+		 String sql = "INSERT INTO treatment (type, startDate, duration, patient_id) VALUES (?, ?, ?)";
 		 PreparedStatement prep;
 		try {
 			prep = c.prepareStatement(sql);

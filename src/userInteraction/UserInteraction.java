@@ -402,7 +402,6 @@ public class UserInteraction {
 	
 	public static void treatmentWorkoutMenu() {
 		try {
-			printPatientsMenu();
 			System.out.println("Choose the id of the patient which you want check the treatment");
 			int id_patient= Integer.parseInt(reader.readLine());
 			boolean result= dbmaster.treatment_worked(id_patient);
