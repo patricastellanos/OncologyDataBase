@@ -443,14 +443,14 @@ public class SQLMaster implements DBMaster {
 	
 	
 	 public void addTreatment(Treatment t, int id) {
-		 String sql = "INSERT INTO treatment (type, startDate, duration, patient_id) VALUES (?, ?, ?)";
+		 String sql = "INSERT INTO treatment (type, startDate, duration, patient_id) VALUES (?, ?, ?, ?)";
 		 PreparedStatement prep;
 		try {
 			prep = c.prepareStatement(sql);
 			prep.setString(1, t.getTreat_type());
 			prep.setDate(2, (Date) t.getStart_date());
 			prep.setInt(3, t.getDuration());
-			prep.setInt(id, id);
+			prep.setInt(4, id);
 			prep.executeUpdate();
 			prep.close();
 		} catch (SQLException e) {

@@ -18,6 +18,7 @@ public interface DBMaster {
     public List<Patient> searchPatientByName(String name,String surname);
     public void update_patient_state(int id, String actual_state);
     public List<Patient> printPatients();
+    public String printActualState(int id_patient);
     
     public FamilyHistory printFamHistory(int id);
     public void addFamHistory(int id,FamilyHistory famHist); //Modificar ER, DDL y createTables() y añadir foreign key en famHistory 
