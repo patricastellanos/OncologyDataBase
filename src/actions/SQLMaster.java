@@ -453,7 +453,22 @@ public class SQLMaster implements DBMaster {
 			e.printStackTrace();
 		}
 	}
-		
+	 public void addTreatment(Treatment t, int id) {
+		 String sql = "INSERT INTO treatment (type, startDate, duration) VALUES (?, ?, ?)";
+		 PreparedStatement prep;
+		try {
+			prep = c.prepareStatement(sql);
+			prep.setString(1, t.getTreat_type());
+			prep.setDate(2, (Date) t.getStart_date());
+			prep.setInt(3, t.getDuration());
+			prep.executeUpdate();
+			prep.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+			
+		 
+	 }
 	@Override
 	public Treatment assessTreatment(int id_patient) {//id needed5
 		
