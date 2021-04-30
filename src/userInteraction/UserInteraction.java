@@ -406,11 +406,13 @@ public class UserInteraction {
 			int id_patient= Integer.parseInt(reader.readLine());
 			boolean result= dbmaster.treatment_worked(id_patient);
 			System.out.println(result);
-			/*if(result==true) {
-				
+			if(result==true) {
+				dbmaster.removePatient(id_patient);
+				System.out.println();
 			}else {
+				System.out.println();
 				
-			}*/
+			}
 			
 		}catch(Exception e) {
 			e.printStackTrace();
