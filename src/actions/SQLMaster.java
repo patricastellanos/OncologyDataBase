@@ -439,7 +439,7 @@ public class SQLMaster implements DBMaster {
 	}
 	
 	@Override
-	public void addCancer(Cancer cancer, Patient p) {
+	public void addCancer(Cancer cancer, int id_patient) {
 		try {
 		String sql;
 		sql = "INSERT INTO cancer (id_cancer, type) VALUES (?,?)";
@@ -448,7 +448,7 @@ public class SQLMaster implements DBMaster {
 		prep.setInt(1, cancer.getId_cancer());
 		prep.setString(2, cancer.getCancer_type());
 		prep.setInt(3, cancer.getId_cancer());
-		prep.setInt(4, p.getId_patient());
+		prep.setInt(4, id_patient);
 		
 		}catch(Exception e) {
 			e.printStackTrace();
