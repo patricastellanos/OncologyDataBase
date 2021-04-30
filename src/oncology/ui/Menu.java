@@ -286,7 +286,7 @@ public class Menu {
 					UserInteraction.update_patient_stateMenu();
 					break;
 				case 5:
-					//complete
+					UserInteraction.addCancerMenu();
 					break;
 				case 6:
 					UserInteraction.printPatientsMenu();

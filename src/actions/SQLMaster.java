@@ -234,6 +234,13 @@ public class SQLMaster implements DBMaster {
 			
 		}
 		
+		
+	/*public void printActualState(int id_patient) {
+		String sql= "SELECT actual_state FROM patient WHERE id_patient="+id_patient;
+		 PreparedStatement prep = c.prepareStatement(sql);
+		prep.setStr(id_patient));
+		ResultSet rs = prep.executeQuery();
+	}*/
 	
 	public void addFamHistory(int id, FamilyHistory famhyst) {
 		try {

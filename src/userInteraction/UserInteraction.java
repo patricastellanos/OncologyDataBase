@@ -232,12 +232,18 @@ public class UserInteraction {
 	
 	public static void addCancerMenu() {
 		
-		System.out.println("Please insert the id of the patient you want to add a cancer");
-		int id_patient= Integer.parseInt(reader.readLine());
-		System.out.println("Please insert the type of cancer");
-		String cancer_type= reader.readLine();
-		Cancer cancer=new Cancer(cancer_type);
-		dbmaster.addCancer(cancer, id_patient);
+		try {
+			printPatientsMenu();
+			System.out.println("Please insert the id of the patient you want to add a cancer");
+			int id_patient= Integer.parseInt(reader.readLine());
+			System.out.println("Please insert the type of cancer");
+			String cancer_type= reader.readLine();
+			Cancer cancer=new Cancer(cancer_type);
+			dbmaster.addCancer(cancer, id_patient);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
 		
 	}
 
