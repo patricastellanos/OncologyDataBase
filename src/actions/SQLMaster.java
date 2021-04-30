@@ -460,7 +460,7 @@ public class SQLMaster implements DBMaster {
 		 
 	 }
 	@Override
-	public Treatment assessTreatment(int id_patient) {//id needed5
+	public Treatment assessTreatment(int id_patient) {
 		
 		Treatment treatment=null;
 		try {
@@ -478,7 +478,7 @@ public class SQLMaster implements DBMaster {
 				String type = rs.getString("type"); 
 				Date startdate = rs.getDate("startdate");
 				int duration = rs.getInt("duration");		
-				treatment=new Treatment(id, type, startdate, duration);		
+				return treatment=new Treatment(id, type, startdate, duration);		
 			}
 			
 			rs.close();
