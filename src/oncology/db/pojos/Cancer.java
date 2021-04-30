@@ -19,6 +19,13 @@ public class Cancer implements Serializable{
 		this.cancer_type = cancer_type;
 	}
 	
+	
+	public Cancer(String cancer_type) {
+		super();
+		this.cancer_type = cancer_type;
+	}
+
+
 	//getters and setters
 	public Integer getId_cancer() {
 		return id_cancer;

@@ -22,6 +22,14 @@ public class Treatment implements Serializable {
 		this.start_date = start_date;
 		this.duration = duration;
 	}
+	
+	public Treatment(String treat_type, Date start_date, Integer duration) {
+		super();
+		this.treat_type = treat_type;
+		this.start_date = start_date;
+		this.duration = duration;
+	}
+
 	//Gets and sets
 	public Integer getId_treat() {
 		return id_treat;
