@@ -96,7 +96,7 @@ public class SQLMaster implements DBMaster {
 
 			// Create table cancer_treatment
 			sql1 = "CREATE TABLE cancer_treatment " + "(id_cancer INTEGER REFERENCES cancer (id_cancer), "
-					+ " id_treat INTEGER REFERENCES treatment (id_treatment), "
+					+ " id_treat INTEGER REFERENCES treatment (id_treat), "
 					+ " PRIMARY KEY (id_cancer, id_treat))";
 			stmt1.executeUpdate(sql1);
 
@@ -240,7 +240,7 @@ public class SQLMaster implements DBMaster {
 		
 		String actual_state=null;
 		try {
-		String sql= "SELECT actual_state FROM patient WHERE id_patient="+id_patient;
+		String sql= "SELECT * FROM patient WHERE id="+id_patient;
 		Statement stmt = c.createStatement();
 		ResultSet rs = stmt.executeQuery(sql);
 		
@@ -481,7 +481,7 @@ public class SQLMaster implements DBMaster {
 	public boolean treatment_worked(int id_patient) {  
 		
 		try{
-			Statement stmt=c.createStatement();
+		Statement stmt=c.createStatement();
 		String sql= "SELECT actual_state FROM patient WHERE id LIKE '%" + id_patient + "%'";
 		ResultSet rs= stmt.executeQuery(sql);
 		
