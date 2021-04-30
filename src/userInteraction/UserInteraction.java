@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
+import oncology.db.pojos.Cancer;
 import oncology.db.pojos.FamilyHistory;
 import oncology.db.pojos.MedicalExamination;
 import oncology.db.pojos.Patient;
@@ -228,6 +229,17 @@ public class UserInteraction {
 		}
 
 	}
+	
+	public static void addCancerMenu() {
+		
+		System.out.println("Please insert the id of the patient you want to add a cancer");
+		int id_patient= Integer.parseInt(reader.readLine());
+		System.out.println("Please insert the type of cancer");
+		String cancer_type= reader.readLine();
+		Cancer cancer=new Cancer(cancer_type);
+		dbmaster.addCancer(cancer, id_patient);
+		
+	}
 
 	//this method is used in order to add a family history 
 	public static void addFamilyHistoryMenu(){
@@ -344,17 +356,7 @@ public class UserInteraction {
 		}
 			
 	}
-	//this method adds a new cancer to a patient
-	public static void addCancerMenu(){
-		try {
-			
-			
-			
-			
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
+	
 	
 	public static void addTreatmentMenu()  {
 		
