@@ -235,12 +235,26 @@ public class SQLMaster implements DBMaster {
 		}
 		
 		
-	/*public void printActualState(int id_patient) {
+	public String printActualState(int id_patient) {
+		
+		String actual_state=null;
+		try {
 		String sql= "SELECT actual_state FROM patient WHERE id_patient="+id_patient;
-		 PreparedStatement prep = c.prepareStatement(sql);
-		prep.setStr(id_patient));
-		ResultSet rs = prep.executeQuery();
-	}*/
+		Statement stmt = c.createStatement();
+		ResultSet rs = stmt.executeQuery(sql);
+		
+		while (rs.next()) {
+			actual_state=rs.getString("actual_state");
+					
+		}
+		stmt.close();
+		rs.close();
+		
+	}catch(Exception e) {
+		e.printStackTrace();
+	}
+		return actual_state;
+	}
 	
 	public void addFamHistory(int id, FamilyHistory famhyst) {
 		try {
@@ -538,6 +552,9 @@ public class SQLMaster implements DBMaster {
 		
 		return true;
 	}
+	
+	
+	
 		
 		
 
