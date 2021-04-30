@@ -356,6 +356,36 @@ public class UserInteraction {
 		}
 	}
 	
+	public static void addTreatmentMenu()  {
+		
+		try {
+			printPatientsMenu();
+			System.out.println("Choose the id of the patient which you want to add a treatment");
+			int id_patient = Integer.parseInt(reader.readLine());
+			System.out.println("Please, input the treatment's name:");
+
+			String type_treat = reader.readLine();
+			
+			System.out.println("Please, input the startdate of the treatment (yyyy-MM-dd):");
+			LocalDate startdate = LocalDate.parse(reader.readLine(), formatter);
+			
+			System.out.println("Please, input the duration of the treatment:");
+			int duration = Integer.parseInt(reader.readLine());
+			
+			Treatment t= new Treatment(type_treat,Date.valueOf(startdate),duration);
+			
+			dbmaster.addTreatment(t, id_patient);
+			
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
+	
 	public static void assesTreatmentMenu() {
 		try {
 			printPatientsMenu();

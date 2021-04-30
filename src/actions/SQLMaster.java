@@ -461,6 +461,7 @@ public class SQLMaster implements DBMaster {
 			prep.setString(1, t.getTreat_type());
 			prep.setDate(2, (Date) t.getStart_date());
 			prep.setInt(3, t.getDuration());
+			prep.setInt(id, id);
 			prep.executeUpdate();
 			prep.close();
 		} catch (SQLException e) {
