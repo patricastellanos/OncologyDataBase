@@ -340,6 +340,7 @@ public class SQLMaster implements DBMaster {
 			}
 		
 		
+		
 	}
 	@Override
 	public List<Symptoms> printPatientSymptoms(int id) {
