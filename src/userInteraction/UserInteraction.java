@@ -419,7 +419,7 @@ public class UserInteraction {
 			if(result==true) {
 				dbmaster.removePatient(id_patient);
 				String patientState=dbmaster.printActualState(id_patient);
-				System.out.println("Patiente deleted because the state was"+patientState);
+				System.out.println("Patiente deleted because the state was "+patientState);
 			}else {
 				System.out.println();
 				
