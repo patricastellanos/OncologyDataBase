@@ -4,19 +4,16 @@ import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
-
 import oncology.db.pojos.Cancer;
 import oncology.db.pojos.FamilyHistory;
 import oncology.db.pojos.MedicalExamination;
 import oncology.db.pojos.Patient;
 import oncology.db.pojos.Symptoms;
 import oncology.db.pojos.Treatment;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-
 import oncology.db.interfaces.DBMaster;
 
 public class UserInteraction {
