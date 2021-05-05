@@ -22,7 +22,6 @@ public class JPAUserMaster implements UserMaster {
 		List<Role> existingRoles = this.getRoles();
 		if (existingRoles.size()<2) {
 			this.newRole(new Role("patient"));
-			this.newRole(new Role("nurse"));
 			this.newRole(new Role("doctor"));
 		}
 	}

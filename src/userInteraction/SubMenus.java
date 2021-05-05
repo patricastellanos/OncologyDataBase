@@ -147,7 +147,7 @@ public class SubMenus {
 					UserInteraction.printMedicalExaminationMenu();
 					break;
 				case 3:
-					
+		
 					break;
 				
 				default:

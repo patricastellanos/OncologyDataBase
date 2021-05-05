@@ -5,9 +5,6 @@ import java.io.InputStreamReader;
 import actions.SQLMaster;
 import oncology.db.interfaces.DBMaster;
 import userInteraction.SubMenus;
-import userInteraction.UserInteraction;
-
-
 public class Menu {
 	
 	private static DBMaster dbmaster = new SQLMaster();
@@ -78,8 +75,6 @@ public class Menu {
 				adminMenu();
 			} else if (user.getRole().getName().equalsIgnoreCase("doctor")) {
 				userMenu();
-			}else if (user.getRole().getName().equalsIgnoreCase("nurse")) {
-				userMenu();
 			}
 			// Check the type of the user and redirect her to the proper menu
 		}
@@ -105,121 +100,50 @@ public class Menu {
 				}
 			} while (true);
 		}
-		
-		private static void NurseMenu() throws Exception {
-			do {
-				System.out.println("Choose an option:");
-				System.out.println("1. See the patients");
-				System.out.println("2. Search patient");
-				System.out.println("3. Update patient´s cancer state");
-				System.out.println("4. Type of cancer according to the medical examination");//to do
-				System.out.println("5. See the family history of a patient");
-				System.out.println("6. See the symptoms of a patient");
-				System.out.println("7. See the medical examination of a patient");
-				System.out.println("0. Exit");
-				int choice = Integer.parseInt(reader.readLine());
-				switch (choice) {
-				case 1:
-					UserInteraction.printPatientsMenu();
-					break;
-				case 2:
-					UserInteraction.searchPatientMenu();
-					break;
-				case 3:
-					UserInteraction.update_patient_stateMenu();
-					break;
-				case 4: TO DO
-				break;
-				case 5:
-				UserInteraction.seeFamilyHistoryMenu();
-				break;
-				case 6:
-				UserInteraction.printSymptomsMenu();
-				break;
-				case 7:
-				UserInteraction.printMedicalExaminationMenu();
-				break;
-					
-				case 0:
-					return;
-				default:
-					break;
-				}
-			} while (true);
-		}*/
-
-		
-		
+			
 		
 	/*	private static void DoctorMenu() throws Exception {
 			do {
-			System.out.println("1. Add a patient");
-			System.out.println("2. Search patient");
-			System.out.println("3. Remove patient");
-			System.out.println("4. Update patient´s cancer state");
-			System.out.println("5. Type of cancer according to the medical examination");//to do
-			System.out.println("6. See the patients");
-			System.out.println("7. Add a family history");
-			System.out.println("8. See the family history of a patient");
-			System.out.println("9. Add symptoms to a patient");
-			System.out.println("10. Delete symptoms of a patient");
-			System.out.println("11. See the symptoms of a patient");
-			System.out.println("12. Add a medical examination");
-			System.out.println("13. See the medical examination of a patient");
-			System.out.println("14. Add patient's cancer");
-			System.out.println("0. Exit");
+		System.out.println("Choose an option:");
+		System.out.println("1.Act on a patient");
+		System.out.println("2.See all the patients");
+		System.out.println("3.Act on family history");
+		System.out.println("4.Act on symptoms");
+		System.out.println("5.Act on medical examination");
+		System.out.println("6.Act on patient's cancer");
+		System.out.println("7.Act on patient's treatment");
+		System.out.println("0.Exit");
+			
 			try {
 				int choice = Integer.parseInt(reader.readLine());
-				while (choice < 0 || choice > 14) {
+				while (choice < 0 || choice > 7) {
 					System.out.println("Choose an option within the range:");
                     choice =Integer.parseInt(reader.readLine());
                 }
 
 				switch (choice) {
 				case 1:
-				
-					UserInteraction.addPatientMenu();
-					break;
-				case 2:
-					UserInteraction.searchPatientMenu();
-					break;
-				case 3:
-					UserInteraction.removePatientMenu();
-					break;
-				case 4:
-					UserInteraction.update_patient_stateMenu();
-					break;
-				case 5:
-					//complete
-					break;
-				case 6:
-					UserInteraction.printPatientsMenu();
-					break;
-				case 7:
-					UserInteraction.addFamilyHistoryMenu();
-					break;
-				case 8: 
-					UserInteraction.seeFamilyHistoryMenu();
-					break;
-					
-				case 9:
-					UserInteraction.addSymptomsMenu();
-					break;
-				case 10: 
-					UserInteraction.removeSymptomsMenu();
-					break;
-				case 11:
-					UserInteraction.printSymptomsMenu();
-					break;
-				case 12:
-					UserInteraction.addMedicalExaminationMenu();
-					break;
-				case 13:
-					UserInteraction.printMedicalExaminationMenu();
-					break;
-				case 14:
-					UserInteraction.addCancerMenu();
-					break;
+
+				SubMenus.PatientSubmenu();
+				break;
+			case 2:
+				SubMenus.ShowPatientsSubMenu();
+				break;
+			case 3:
+				SubMenus.FamilyHistorySubmenu();
+				break;
+			case 4:
+				SubMenus.SymptomsSubmenu();
+				break;
+			case 5:
+				SubMenus.MedicalExaminationSubmenu();
+				break;
+			case 6:
+				SubMenus.CancerSubmenu();
+				break;
+			case 7:
+				SubMenus.TreatmentSubmenu();
+				break;
 				case 0:
 					dbmaster.disconnect();
 					System.out.println("Data base closed");
