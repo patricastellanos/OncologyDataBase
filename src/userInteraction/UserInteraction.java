@@ -16,7 +16,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import actions.SQLMaster;
+
 import oncology.db.interfaces.DBMaster;
 
 public class UserInteraction {
@@ -24,10 +24,6 @@ public class UserInteraction {
 	private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	private static List<Patient> patient_list = new ArrayList<Patient>();
 	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
-	public static void setDBMaster(DBMaster dbm) {
-		dbmaster=dbm;
-	}
 
 	// this method asks for the patient's name
 	public static String printPatientNameMenu(){
@@ -325,8 +321,8 @@ public class UserInteraction {
 		}
 			
 	}
-	//this method adds a new medical examination but WE HAVE TO DO ITTTTTTT!!!!!
-	public static void addMedicalExaminationMenu(){//revisar el SQL
+	
+	public static void addMedicalExaminationMenu(){
 		try {
 		printPatientsMenu();
 		System.out.println("Choose the id of the patient from which you want to add the medical examination");

@@ -337,9 +337,7 @@ public class SQLMaster implements DBMaster {
 				prep.close();
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
-		
-		
+			}	
 		
 	}
 	@Override
@@ -456,8 +454,7 @@ public class SQLMaster implements DBMaster {
 			prep.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-			
+		}		
 		 
 	 }
 	@Override
@@ -493,36 +490,32 @@ public class SQLMaster implements DBMaster {
 	}
 	
 	
-	public boolean treatment_worked(int id_patient) {  
-		
-		try{
-		Statement stmt=c.createStatement();
-		String sql= "SELECT actual_state FROM patient WHERE id LIKE '%" + id_patient + "%'";
-		ResultSet rs= stmt.executeQuery(sql);
-		
-		String actual_state = null;
-		
-		while(rs.next()) {
-			
-			actual_state= rs.getString("actual_state");
-		}
-		
-		if (!actual_state.equalsIgnoreCase("RECOVERED")
-				&& !actual_state.equalsIgnoreCase("DEATH")) {
-			return false;
-			
-		}else {
-			return true;
-		}
-		}catch(Exception e) {
+	public boolean treatment_worked(int id_patient) {
+
+		try {
+			Statement stmt = c.createStatement();
+			String sql = "SELECT actual_state FROM patient WHERE id LIKE '%" + id_patient + "%'";
+			ResultSet rs = stmt.executeQuery(sql);
+
+			String actual_state = null;
+
+			while (rs.next()) {
+
+				actual_state = rs.getString("actual_state");
+			}
+
+			if (!actual_state.equalsIgnoreCase("RECOVERED") && !actual_state.equalsIgnoreCase("DEATH")) {
+				return false;
+
+			} else {
+				return true;
+			}
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return true;
 	}
-	
-	
-	
 		
 		
 

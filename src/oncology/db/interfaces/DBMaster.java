@@ -21,19 +21,19 @@ public interface DBMaster {
     public String printActualState(int id_patient);
     
     public FamilyHistory printFamHistory(int id);
-    public void addFamHistory(int id,FamilyHistory famHist); //Modificar ER, DDL y createTables() y añadir foreign key en famHistory 
+    public void addFamHistory(int id,FamilyHistory famHist); 
     
     public List<Symptoms> printPatientSymptoms(int id);
     public void addSymptoms(Symptoms s, int id_patient); 
     public void removeSymptoms(int id_patient);
    
     public MedicalExamination printMedExamination (int id);
-    public void addMedExam(MedicalExamination m, int id);//deberíamos cambiarlo y pasarle tmb el id
+    public void addMedExam(MedicalExamination m, int id);
     
     public void addCancer(Cancer cancer, int id_patient);
    
     public void addTreatment(Treatment t, int id);
-    public Treatment assessTreatment(int id_patient); //hay que hacer un insert de los treatments
+    public Treatment assessTreatment(int id_patient); 
     public boolean treatment_worked(int id_patient);  
     
     
