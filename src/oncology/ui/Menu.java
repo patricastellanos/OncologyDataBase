@@ -82,8 +82,8 @@ public class Menu {
 		private static void PatientMenu() throws Exception {
 			do {
 				System.out.println("Choose an option:");
-				System.out.println("1. See my family history");
-				System.out.println("2. See my medical examination");
+				System.out.println("1. Family History");
+				System.out.println("2. Medical Examination");
 				System.out.println("0. Exit");
 				int choice = Integer.parseInt(reader.readLine());
 				switch (choice) {
