@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
+
+import actions.SQLMaster;
 import oncology.db.pojos.Cancer;
 import oncology.db.pojos.FamilyHistory;
 import oncology.db.pojos.MedicalExamination;
@@ -17,7 +19,7 @@ import java.util.ArrayList;
 import oncology.db.interfaces.DBMaster;
 
 public class UserInteraction {
-	private static DBMaster dbmaster;
+	private static DBMaster dbmaster= new SQLMaster();
 	private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	private static List<Patient> patient_list = new ArrayList<Patient>();
 	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -239,6 +241,19 @@ public class UserInteraction {
 		
 		
 	}
+	
+	public static void printCancerMenu() {
+		
+		try {
+			printPatientsMenu();
+			System.out.println("Choose the id of the patient from which you want see its cancer");
+			int id = Integer.parseInt(reader.readLine());
+			System.out.println(dbmaster.printCancer(id));
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 	//this method is used in order to add a family history 
 	public static void addFamilyHistoryMenu(){
@@ -409,12 +424,13 @@ public class UserInteraction {
 			int id_patient= Integer.parseInt(reader.readLine());
 			boolean result= dbmaster.treatment_worked(id_patient);
 			//System.out.println(result);
+			String patientState=dbmaster.printActualState(id_patient);
+			
 			if(result==true) {
+				System.out.println("Patient deleted because the state was "+patientState);
 				dbmaster.removePatient(id_patient);
-				String patientState=dbmaster.printActualState(id_patient);
-				System.out.println("Patiente deleted because the state was "+patientState);
 			}else {
-				System.out.println();
+				System.out.println("Patient state:"+patientState+" (no modifications)");
 				
 			}
 			

@@ -79,13 +79,16 @@ public class Menu {
 			// Check the type of the user and redirect her to the proper menu
 		}
 
-		private static void PatientMenu() throws Exception {
+		private static void patientMenu() throws Exception {
 			do {
 				System.out.println("Choose an option:");
 				System.out.println("1. Family History");
 				System.out.println("2. Medical Examination");
 				System.out.println("0. Exit");
 				int choice = Integer.parseInt(reader.readLine());
+				while (choice < 0 || choice > 7) {
+					System.out.println("Choose an option within the range:");
+                    choice =Integer.parseInt(reader.readLine());
 				switch (choice) {
 				case 1:
 					UserInteraction.seeFamilyHistoryMenu();
@@ -93,6 +96,43 @@ public class Menu {
 				case 2:
 					UserInteraction.printMedicalExaminationMenu();
 					break;
+				case 0:
+					return;
+				default:
+					break;
+				}
+			} while (true);
+		}
+			
+			
+		private static void nurseMenu() throws Exception {
+			do {
+				System.out.println("Choose an option:");
+				System.out.println("1. Family History");
+				System.out.println("2. Medical Examination");
+				System.out.println("3. Cancer");
+				System.out.println("4. Treatment");
+				System.out.println("0. Exit");
+				int choice = Integer.parseInt(reader.readLine());
+				while (choice < 0 || choice > 4) {
+					System.out.println("Choose an option within the range:");
+                    choice =Integer.parseInt(reader.readLine());
+				switch (choice) {
+				case 1:
+					UserInteraction.seeFamilyHistoryMenu();
+					break;
+				case 2:
+					UserInteraction.printMedicalExaminationMenu();
+					break;
+					
+				case 3:
+					UserInteraction.printCancerMenu();
+					break;
+					
+				case 4:
+					UserInteraction.assesTreatmentMenu();
+					break;
+					
 				case 0:
 					return;
 				default:
@@ -180,25 +220,25 @@ public class Menu {
 			switch (choice) {
 			case 1:
 
-				SubMenus.PatientSubmenu();
+				SubMenus.patientSubmenu();
 				break;
 			case 2:
-				SubMenus.ShowPatientsSubMenu();
+				SubMenus.showPatientsSubMenu();
 				break;
 			case 3:
-				SubMenus.FamilyHistorySubmenu();
+				SubMenus.familyHistorySubmenu();
 				break;
 			case 4:
-				SubMenus.SymptomsSubmenu();
+				SubMenus.symptomsSubmenu();
 				break;
 			case 5:
-				SubMenus.MedicalExaminationSubmenu();
+				SubMenus.medicalExaminationSubmenu();
 				break;
 			case 6:
-				SubMenus.CancerSubmenu();
+				SubMenus.cancerSubmenu();
 				break;
 			case 7:
-				SubMenus.TreatmentSubmenu();
+				SubMenus.treatmentSubmenu();
 				break;
 
 			default:

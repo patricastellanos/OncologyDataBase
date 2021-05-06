@@ -2,17 +2,19 @@ package userInteraction;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+
+import actions.SQLMaster;
 import oncology.db.interfaces.DBMaster;
 
 
 public class SubMenus {
-	private static DBMaster dbmaster;
+	private static DBMaster dbmaster= new SQLMaster();
 	private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	public static void setDBMaster(DBMaster dbm) {
 		dbmaster=dbm;
 	}
 
-	public static void PatientSubmenu() {
+	public static void patientSubmenu() {
 		
 		while (true) {
 			System.out.println("Choose an option:");
@@ -54,13 +56,13 @@ public class SubMenus {
 		}
 	}
 	
-	public static void ShowPatientsSubMenu() {
+	public static void showPatientsSubMenu() {
 		UserInteraction.printPatientsMenu();
 	}
 	
 	
 	
-	public static void FamilyHistorySubmenu() {
+	public static void familyHistorySubmenu() {
 		while (true) {
 			System.out.println("1. Add a family history");
 			System.out.println("2. See the family history of a patient");
@@ -92,7 +94,7 @@ public class SubMenus {
 
 	}
 	
-	public static void SymptomsSubmenu() {
+	public static void symptomsSubmenu() {
 		while (true) {
 			System.out.println("1. Add symptoms to a patient");
 			System.out.println("2.Delete symptoms of a patient");
@@ -126,7 +128,7 @@ public class SubMenus {
 		}
 		
 	}
-	public static void MedicalExaminationSubmenu() {
+	public static void medicalExaminationSubmenu() {
 		
 		while (true) {
 			System.out.println("1.Add a medical examination");
@@ -159,13 +161,14 @@ public class SubMenus {
 		}
 	}
 	
-	public static void CancerSubmenu() {
+	public static void cancerSubmenu() {
 		while (true) {
 			System.out.println("1.Add patient's cancer");
-			System.out.println("2. Back to the main menu");
+			System.out.println("2.See cancer of a patient");
+			System.out.println("3. Back to the main menu");
 			try {
 				int choice = Integer.parseInt(reader.readLine());
-				while (choice < 0 || choice > 2) {
+				while (choice < 0 || choice > 3) {
 					System.out.println("Choose an option within the range:");
 					choice = Integer.parseInt(reader.readLine());
 				}
@@ -175,7 +178,9 @@ public class SubMenus {
 					UserInteraction.addCancerMenu();
 					break;
 				case 2:
-					
+					UserInteraction.printCancerMenu();
+					break;
+				case 3:
 					break;
 				default:
 					break;
@@ -186,7 +191,7 @@ public class SubMenus {
 		}
 		
 	}
-	public static void TreatmentSubmenu() {
+	public static void treatmentSubmenu() {
 		
 		
 		while (true) {
