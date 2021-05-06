@@ -441,6 +441,30 @@ public class SQLMaster implements DBMaster {
 	}
 	
 	
+	public Cancer printCancer(int id_patient) {
+		
+		Cancer cancer= null;
+		try {
+			Statement stmt = c.createStatement();
+			String sql = "SELECT * FROM cancer AS c JOIN cancer_patient AS cp ON cp.id_cancer=c.id_cancer WHERE cp.id= " +id_patient;
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				Integer id_cancer = rs.getInt(1);
+				String type = rs.getString("detail");
+				cancer= new Cancer ( id_cancer, type);
+				
+			}
+			rs.close();
+			stmt.close();
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+			
+		return null;
+	}
+	
+	
 	 public void addTreatment(Treatment t, int id) {
 		 String sql = "INSERT INTO treatment (type, startDate, duration, patient_id) VALUES (?, ?, ?, ?)";
 		 PreparedStatement prep;

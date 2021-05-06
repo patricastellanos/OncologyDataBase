@@ -31,6 +31,7 @@ public interface DBMaster {
     public void addMedExam(MedicalExamination m, int id);
     
     public void addCancer(Cancer cancer, int id_patient);
+    public Cancer printCancer(int id_cancer);
    
     public void addTreatment(Treatment t, int id);
     public Treatment assessTreatment(int id_patient); 
