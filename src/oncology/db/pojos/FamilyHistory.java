@@ -2,7 +2,7 @@ package oncology.db.pojos;
 
 import java.io.Serializable;
 
-import org.eclipse.persistence.jaxb.xmlmodel.XmlAccessType;
+
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name= "FamilyHistory")
@@ -27,6 +27,14 @@ public class FamilyHistory implements Serializable{
 		this.type_cancerFam = type_cancerFam;
 		this.member = member;
 	}
+	
+
+	public FamilyHistory(String type_cancerFam, String member) {
+		super();
+		this.type_cancerFam = type_cancerFam;
+		this.member = member;
+	}
+
 
 	//getters and setter
 	public Integer getId_famHistory() {

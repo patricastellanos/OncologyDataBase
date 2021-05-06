@@ -1,5 +1,6 @@
 package actions;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -9,6 +10,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Query;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+
 import oncology.db.interfaces.DBMaster;
 import oncology.db.pojos.Cancer;
 import oncology.db.pojos.FamilyHistory;
@@ -295,6 +302,33 @@ public class SQLMaster implements DBMaster {
 		return famHist;
 		
 	}
+	
+	public void familyHistoryToXml(int patient_id) {
+		try {
+			Statement stmt = c.createStatement();
+			String sql = "SELECT * FROM family_history WHERE patient_id = " + patient_id;
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				Integer id = rs.getInt(1);
+				String type = rs.getString("type");
+				String member = rs.getString("member");
+				FamilyHistory fh= new FamilyHistory (type, member);
+			
+				JAXBContext jaxbContext = JAXBContext.newInstance(FamilyHistory.class);
+				Marshaller marshaller = jaxbContext.createMarshaller();
+				marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,Boolean.TRUE);
+				File file = new File("./xmls/FamilyHistory.xml");
+				marshaller.marshal(fh, file);
+				marshaller.marshal(fh, System.out);
+			}
+			rs.close();
+			stmt.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}catch(JAXBException j) {
+				j.printStackTrace();
+			}
+	}
 
 	
 
@@ -464,8 +498,34 @@ public class SQLMaster implements DBMaster {
 		return null;
 	}
 	
+	public void cancerToXml(int id) {
+		try {
+			Statement stmt = c.createStatement();
+			String sql = "SELECT * FROM cancer WHERE id_cancer = " + id;
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				Integer id_cancer = rs.getInt(1);
+				String type = rs.getString("type");
+				Cancer can= new Cancer ( id_cancer, type);
+			
+				JAXBContext jaxbContext = JAXBContext.newInstance(Cancer.class);
+				Marshaller marshaller = jaxbContext.createMarshaller();
+				marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,Boolean.TRUE);
+				File file = new File("./xmls/Cancer.xml");
+				marshaller.marshal(can, file);
+				marshaller.marshal(can, System.out);
+			}
+			rs.close();
+			stmt.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}catch(JAXBException j) {
+				j.printStackTrace();
+			}
+			}
 	
-	 public void addTreatment(Treatment t, int id) {
+			
+		public void addTreatment(Treatment t, int id) {
 		 String sql = "INSERT INTO treatment (type, startDate, duration, patient_id) VALUES (?, ?, ?, ?)";
 		 PreparedStatement prep;
 		try {

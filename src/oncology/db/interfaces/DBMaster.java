@@ -22,6 +22,7 @@ public interface DBMaster {
     
     public FamilyHistory printFamHistory(int id);
     public void addFamHistory(int id,FamilyHistory famHist); 
+    public void familyHistoryToXml(int patient_id);
     
     public List<Symptoms> printPatientSymptoms(int id);
     public void addSymptoms(Symptoms s, int id_patient); 
@@ -32,6 +33,7 @@ public interface DBMaster {
     
     public void addCancer(Cancer cancer, int id_patient);
     public Cancer printCancer(int id_cancer);
+    public void cancerToXml(int id);
    
     public void addTreatment(Treatment t, int id);
     public Treatment assessTreatment(int id_patient); 
