@@ -3,13 +3,26 @@ package oncology.db.pojos;
 import java.io.Serializable;
 import java.util.List;
 
-public class Cancer implements Serializable{
+import org.eclipse.persistence.jaxb.xmlmodel.XmlAccessType;
 
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name= "Cancer")
+@XmlType(propOrder= {"cancer_type"})
+
+public class Cancer implements Serializable{
+	
 	private static final long serialVersionUID = 1L;
+	@XmlTransient
 	private Integer id_cancer;
+	@XmlElement
 	private String cancer_type;
+	@XmlElement(name= "Patient")
+	@XmlElementWrapper(name= "Patient_list")//PREGUNTAR
 	private List<Patient> patient_list;
+	@XmlElement(name= "Cancer")
+	@XmlElementWrapper(name= "Cancer_list")//PREGUNTAR
 	private List<Treatment>treat_list;	
+	@XmlTransient//to avois infinite loops
 	private MedicalExamination m;
 	//constructor
 	

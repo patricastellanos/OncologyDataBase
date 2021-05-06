@@ -2,12 +2,22 @@ package oncology.db.pojos;
 
 import java.io.Serializable;
 
+import org.eclipse.persistence.jaxb.xmlmodel.XmlAccessType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name= "FamilyHistory")
+@XmlType(propOrder= {"type_cancerFam", "member"})
+
 public class FamilyHistory implements Serializable{
 
 	private static final long serialVersionUID = 1L;
+	@XmlTransient
 	private Integer id_famHistory;
+	@XmlElement
 	private String type_cancerFam;
+	@XmlElement
 	private String member;
+	@XmlTransient//to avoid infinite loops
 	private Patient p;
 	
 	//constructor
