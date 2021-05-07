@@ -91,7 +91,7 @@ public class SQLMaster implements DBMaster {
 			
 			// Create table cancer
 			sql1 = "CREATE TABLE cancer " + "(id_cancer INTEGER PRIMARY KEY AUTOINCREMENT, "
-					+ " id_medExam REFERENCES medical_examinations (id_medExam) ON DELETE SET NULL, "
+					+ " id_medExam REFERENCES medical_examination (id_medExam) ON DELETE SET NULL, "
 					+ " type TEXT NOT NULL)";
 			// sql = "INSERT INTO cancer (type) "
 			// + "VALUES ('Liver');";

@@ -11,8 +11,8 @@ public class SubMenus {
 	private static DBMaster dbmasterSubMenu;
 	private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	
-	public static void setDBMaster(DBMaster dbm) {
-		dbmasterSubMenu=dbm;
+	public static void setDBMasterSubMenus(DBMaster dbm2) {
+		dbmasterSubMenu=dbm2;
 	}
 	
 	public static void patientSubmenu() {
@@ -27,7 +27,7 @@ public class SubMenus {
 
 			try {
 				int choice = Integer.parseInt(reader.readLine());
-				while (choice < 0 || choice > 4) {
+				while (choice < 0 || choice > 5) {
 					System.out.println("Choose an option within the range:");
 					choice = Integer.parseInt(reader.readLine());
 				}
@@ -45,15 +45,18 @@ public class SubMenus {
 				case 4:
 					UserInteraction.update_patient_stateMenu();
 					break;
+					
+				case 5:
+					return;
 			
-				default:
-					break;
 				}
 			} catch (Exception e) {
 				System.out.println("An error has ocurred");
 			}
 		}
 	}
+	
+
 	
 	public static void showPatientsSubMenu() {
 		UserInteraction.printPatientsMenu();
@@ -81,8 +84,7 @@ public class SubMenus {
 					UserInteraction.seeFamilyHistoryMenu();
 					break;
 				case 3:
-
-					break;
+					return;
 				default:
 					break;
 				}
@@ -117,9 +119,7 @@ public class SubMenus {
 					UserInteraction.printSymptomsMenu();
 					break;
 				case 4:
-					break;
-				default:
-					break;
+					return;
 				}
 			} catch (Exception e) {
 				System.out.println("An error has ocurred");
@@ -148,11 +148,7 @@ public class SubMenus {
 					UserInteraction.printMedicalExaminationMenu();
 					break;
 				case 3:
-		
-					break;
-				
-				default:
-					break;
+					return;
 				}
 			} catch (Exception e) {
 				System.out.println("An error has ocurred");
@@ -180,9 +176,7 @@ public class SubMenus {
 					UserInteraction.printCancerMenu();
 					break;
 				case 3:
-					break;
-				default:
-					break;
+					return;
 				}
 			} catch (Exception e) {
 				System.out.println("An error has ocurred");
@@ -216,9 +210,7 @@ public class SubMenus {
 					UserInteraction.treatmentWorkoutMenu();
 					break;
 				case 4:
-					break;
-				default:
-					break;
+					return;
 				}
 			} catch (Exception e) {
 				System.out.println("An error has ocurred");

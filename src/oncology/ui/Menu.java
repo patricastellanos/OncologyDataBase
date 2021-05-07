@@ -7,7 +7,7 @@ import oncology.db.interfaces.DBMaster;
 import userInteraction.SubMenus;
 public class Menu {
 	
-	private static DBMaster dbmaster = new SQLMaster();
+	private static DBMaster dbmasterMenu;
 	private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	public static void main(String[] args) throws Exception {
 		
@@ -199,7 +199,7 @@ public class Menu {
 			
 		
 	//dbmaster.connect();
-	SubMenus.setDBMaster(dbmaster);
+	SubMenus.setDBMasterSubMenus(dbmasterMenu);
 	while (true) {
 		System.out.println("Choose an option:");
 		System.out.println("1.Act on a patient");

@@ -25,7 +25,9 @@ public class UserInteraction {
 	private static List<Patient> patient_list = new ArrayList<Patient>();
 	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	
-	
+	public static void setDBMasterUI(DBMaster dbm) {
+		dbmaster=dbm;
+	}
 	
 	// this method asks for the patient's name
 	public static String printPatientNameMenu(){
