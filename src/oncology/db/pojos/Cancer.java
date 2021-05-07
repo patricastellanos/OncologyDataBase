@@ -9,8 +9,8 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.XmlAccessType;
 
-import org.eclipse.persistence.jaxb.xmlmodel.XmlAccessType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name= "Cancer")

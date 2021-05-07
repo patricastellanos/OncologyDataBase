@@ -29,6 +29,12 @@ public class SQLMaster implements DBMaster {
 
 	private Connection c;
 
+	
+	public SQLMaster() {
+		super();
+		this.connect();
+	}
+
 	@Override
 	public void connect() {
 		try {

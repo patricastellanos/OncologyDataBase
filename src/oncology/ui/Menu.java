@@ -198,7 +198,7 @@ public class Menu {
 
 			
 		
-	dbmaster.connect();
+	//dbmaster.connect();
 	SubMenus.setDBMaster(dbmaster);
 	while (true) {
 		System.out.println("Choose an option:");

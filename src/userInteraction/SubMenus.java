@@ -8,12 +8,13 @@ import oncology.db.interfaces.DBMaster;
 
 
 public class SubMenus {
-	private static DBMaster dbmaster= new SQLMaster();
+	private static DBMaster dbmasterSubMenu;
 	private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+	
 	public static void setDBMaster(DBMaster dbm) {
-		dbmaster=dbm;
+		dbmasterSubMenu=dbm;
 	}
-
+	
 	public static void patientSubmenu() {
 		
 		while (true) {
@@ -26,7 +27,7 @@ public class SubMenus {
 
 			try {
 				int choice = Integer.parseInt(reader.readLine());
-				while (choice < 0 || choice > 5) {
+				while (choice < 0 || choice > 4) {
 					System.out.println("Choose an option within the range:");
 					choice = Integer.parseInt(reader.readLine());
 				}
@@ -44,9 +45,7 @@ public class SubMenus {
 				case 4:
 					UserInteraction.update_patient_stateMenu();
 					break;
-				case 5:
-				
-					break;
+			
 				default:
 					break;
 				}

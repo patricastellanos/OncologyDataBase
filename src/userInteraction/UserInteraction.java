@@ -1,33 +1,22 @@
 package userInteraction;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Query;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-
 import actions.SQLMaster;
+import oncology.db.interfaces.DBMaster;
 import oncology.db.pojos.Cancer;
 import oncology.db.pojos.FamilyHistory;
 import oncology.db.pojos.MedicalExamination;
 import oncology.db.pojos.Patient;
 import oncology.db.pojos.Symptoms;
 import oncology.db.pojos.Treatment;
-import oncology.db.pojos.XmlTransient;
-import ongology.db.pojos.Cancer;
-
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.InputStreamReader;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import oncology.db.interfaces.DBMaster;
-import oncology.db.interfaces.UserMaster;
-import oncology.db.jpa.JPAUserMaster;
 
 public class UserInteraction {
 	private static DBMaster dbmaster= new SQLMaster();
@@ -35,7 +24,9 @@ public class UserInteraction {
 	private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	private static List<Patient> patient_list = new ArrayList<Patient>();
 	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
+	
+	
+	
 	// this method asks for the patient's name
 	public static String printPatientNameMenu(){
 		String name="";
