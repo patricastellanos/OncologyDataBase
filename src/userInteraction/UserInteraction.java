@@ -18,7 +18,7 @@ import oncology.db.pojos.Patient;
 import oncology.db.pojos.Symptoms;
 import oncology.db.pojos.Treatment;
 import oncology.db.pojos.XmlTransient;
-import sample.db.pojos.Report;
+import ongology.db.pojos.Cancer;
 
 import java.io.BufferedReader;
 import java.io.File;

@@ -19,7 +19,7 @@ import org.eclipse.persistence.jaxb.xmlmodel.XmlAccessType;
 public class Cancer implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	@XmlTransient
+	@XmlTransient //@XmlAtribute
 	private Integer id_cancer;
 	@XmlElement
 	private String cancer_type;
@@ -29,7 +29,7 @@ public class Cancer implements Serializable{
 	@XmlElement(name= "Cancer")
 	@XmlElementWrapper(name= "Cancer_list")//PREGUNTAR
 	private List<Treatment>treat_list;	
-	@XmlTransient//to avois infinite loops
+	@XmlTransient//to avoid infinite loops
 	private MedicalExamination m;
 	//constructor
 	
