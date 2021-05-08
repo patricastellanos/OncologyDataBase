@@ -524,10 +524,8 @@ public class SQLMaster implements DBMaster {
 			}
 			rs.close();
 			stmt.close();
-			}catch(SQLException e) {
+			}catch(Exception e) {
 				e.printStackTrace();
-			}catch(JAXBException j) {
-				j.printStackTrace();
 			}
 			}
 	
