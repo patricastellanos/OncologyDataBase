@@ -240,7 +240,7 @@ public class Menu {
 			case 7:
 				SubMenus.treatmentSubmenu();
 				break;
-
+			
 			default:
 				break;
 			}
