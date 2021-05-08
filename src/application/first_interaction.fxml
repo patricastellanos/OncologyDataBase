@@ -43,11 +43,11 @@
                </textFill>
             </Label>
             <TextField id="doctorb" floatText="Doctor" layoutX="60.0" layoutY="126.0" />
-            <Button id="pressd" layoutX="161.0" layoutY="137.0" mnemonicParsing="false" onAction="#accionD" style="-fx-background-color: grey;" text="D" textFill="#c431bb" />
+            <Button id="pressd" fx:id="D" layoutX="161.0" layoutY="137.0" mnemonicParsing="false" onAction="#accionD" style="-fx-background-color: grey;" text="D" textFill="#c431bb" />
             <TextField id="nurseb" floatText="Nurse" layoutX="60.0" layoutY="167.0" />
             <TextField id="patientb" floatText="Patient" layoutX="60.0" layoutY="208.0" />
-            <Button id="pressn" layoutX="161.0" layoutY="178.0" mnemonicParsing="false" onAction="#accionN" style="-fx-background-color: grey;" text="N" textFill="#c431bb" />
-            <Button id="pressp" layoutX="161.0" layoutY="220.0" mnemonicParsing="false" onAction="#accionP" style="-fx-background-color: grey;" text="P" textFill="#c431bb" />
+            <Button id="pressn" fx:id="N" layoutX="161.0" layoutY="178.0" mnemonicParsing="false" onAction="#accionN" style="-fx-background-color: grey;" text="N" textFill="#c431bb" />
+            <Button id="pressp" fx:id="P" layoutX="161.0" layoutY="220.0" mnemonicParsing="false" onAction="#accionP" style="-fx-background-color: grey;" text="P" textFill="#c431bb" />
          </children>
       </Pane>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="348.0" layoutY="68.0" prefHeight="79.0" prefWidth="340.0" text="Oncology">
