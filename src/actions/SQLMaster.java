@@ -270,12 +270,12 @@ public class SQLMaster implements DBMaster {
 		return actual_state;
 	}
 	
-	public void addFamHistory(int id, FamilyHistory famhyst) {
+	public void addFamHistory(int id, FamilyHistory famhist) {
 		try {
 			String sql = "INSERT INTO family_history (type, member, patient_id) VALUES(?, ?, ?)";
 			PreparedStatement prep = c.prepareStatement(sql);
-			prep.setString(1, famhyst.getType_cancerFam());
-			prep.setString(2, famhyst.getMember());
+			prep.setString(1, famhist.getType_cancerFam());
+			prep.setString(2, famhist.getMember());
 			prep.setInt(3, id);
 			prep.executeUpdate();
 			prep.close();
@@ -392,7 +392,7 @@ public class SQLMaster implements DBMaster {
 				Integer id_symp = rs.getInt(1);
 				String detail = rs.getString("detail");
 				Symptoms s= new Symptoms ( id_symp, detail);
-				System.out.println(s);
+				//System.out.println(s);
 				symptoms_list.add(s);	
 				
 			}
@@ -454,12 +454,13 @@ public class SQLMaster implements DBMaster {
 	@Override
 	public void addCancer(Cancer cancer, int id_patient) {
 		try {
-		String sql1 = "INSERT INTO cancer (id_cancer, type) VALUES ( ?, ?)";
+		String sql1 = "INSERT INTO cancer (type) VALUES ( ?)";
 		PreparedStatement prep1 = c.prepareStatement(sql1);
-		prep1.setInt(1, cancer.getId_cancer());
-		prep1.setString(2, cancer.getCancer_type());
+		prep1.setString(1, cancer.getCancer_type());
 		prep1.executeUpdate();
 		prep1.close();
+		//System.out.println(cancer.getCancer_type());
+		//System.out.println(cancer.getId_cancer());
 		
 		String query = "SELECT last_insert_rowid() AS lastId";
 		PreparedStatement p = c.prepareStatement(query);
@@ -468,9 +469,9 @@ public class SQLMaster implements DBMaster {
 		p.close();
 		rs.close();
 		
-		String sql2 = "INSERT INTO cancer_patient (id_cancer, id) VALUES (?,?)";
+		String sql2 = "INSERT INTO cancer_patient (id_cancer, id) VALUES ( ?,?)";
 		PreparedStatement prep2 = c.prepareStatement(sql2);
-		prep2.setInt(1, cancer.getId_cancer());
+		prep2.setInt(1, lastId);
 		prep2.setInt(2, id_patient);
 		prep2.executeUpdate();
 		prep2.close();
@@ -490,7 +491,7 @@ public class SQLMaster implements DBMaster {
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Integer id_cancer = rs.getInt(1);
-				String type = rs.getString("detail");
+				String type = rs.getString("type");
 				cancer= new Cancer ( id_cancer, type);
 				
 			}
@@ -501,7 +502,7 @@ public class SQLMaster implements DBMaster {
 			e.printStackTrace();
 		}
 			
-		return null;
+		return cancer;
 	}
 	
 	public void cancerToXml(int id) {
