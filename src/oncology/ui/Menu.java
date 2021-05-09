@@ -79,11 +79,11 @@ public class Menu {
 			if (user == null) {
 				System.out.println("Wrong email or password");
 				return;
-			} else if (user.getRole().getName().equalsIgnoreCase("patient")) {
+			} else if (user.getRole().getRoleName().equalsIgnoreCase("patient")) {
 				patientMenu();
-			} else if (user.getRole().getName().equalsIgnoreCase("doctor")) {
+			} else if (user.getRole().getRoleName().equalsIgnoreCase("doctor")) {
 				doctorMenu();
-			} else if (user.getRole().getName().equalsIgnoreCase("nurse")) {
+			} else if (user.getRole().getRoleName().equalsIgnoreCase("nurse")) {
 				nurseMenu();
 			}
 			// Check the type of the user and redirect her to the proper menu
