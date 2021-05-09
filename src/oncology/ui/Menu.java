@@ -2,18 +2,26 @@ package oncology.ui;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.security.MessageDigest;
+
 import actions.SQLMaster;
 import oncology.db.interfaces.DBMaster;
+import oncology.db.interfaces.UserMaster;
+import oncology.db.pojos.users.*;
+import oncology.db.jpa.JPAUserMaster;
 import userInteraction.SubMenus;
+import userInteraction.UserInteraction;
 public class Menu {
 	
 	private static DBMaster dbmasterMenu;
 	private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+	private static UserMaster userman = new JPAUserMaster();
+	
 	public static void main(String[] args) throws Exception {
 		
 		//IT IS NOT USERMAN, WE HAVE TO DO IT AFTER DOING ALL THE METHODS
 		// TO DO THE ROLE CLASS
-		/*
+		
 		do {
 			System.out.println("Choose an option:");
 			System.out.println("1. Register");
@@ -28,7 +36,7 @@ public class Menu {
 				login();
 				break;
 			case 0:
-				dbman.disconnect();
+				dbmasterMenu.disconnect();
 				userman.disconnect();
 				System.exit(0);
 				break;
@@ -36,30 +44,30 @@ public class Menu {
 				break;
 			}
 		} while (true);
-		*/
+	}
 		
-		/* 
+		
 		 private static void register() throws Exception {
-		// Ask the user for an email
+		
 		System.out.println("Please, write your email address:");
 		String email = reader.readLine();
-		// Ask the user for a password
 		System.out.println("Please write your password:");
 		String password = reader.readLine();
-		// List the roles
+		
 		System.out.println(userman.getRoles());
-		// Ask the user for a role
 		System.out.println("Type the chosen role ID:");
 		int id = Integer.parseInt(reader.readLine());
 		Role role = userman.getRole(id);
+		//System.out.println(role);
 		// Generate the hash
 		MessageDigest md = MessageDigest.getInstance("MD5");
 		md.update(password.getBytes());
 		byte[] hash = md.digest();
 		User user = new User(email, hash, role);
 		userman.newUser(user);
-	}*/
-	/*	
+	}
+	
+		 
 		private static void login() throws Exception {
 			// Ask the user for an email
 			System.out.println("Please, write your email address:");
@@ -72,9 +80,11 @@ public class Menu {
 				System.out.println("Wrong email or password");
 				return;
 			} else if (user.getRole().getName().equalsIgnoreCase("patient")) {
-				adminMenu();
+				patientMenu();
 			} else if (user.getRole().getName().equalsIgnoreCase("doctor")) {
-				userMenu();
+				doctorMenu();
+			} else if (user.getRole().getName().equalsIgnoreCase("nurse")) {
+				nurseMenu();
 			}
 			// Check the type of the user and redirect her to the proper menu
 		}
@@ -89,6 +99,7 @@ public class Menu {
 				while (choice < 0 || choice > 7) {
 					System.out.println("Choose an option within the range:");
                     choice =Integer.parseInt(reader.readLine());
+				}
 				switch (choice) {
 				case 1:
 					UserInteraction.seeFamilyHistoryMenu();
@@ -117,6 +128,7 @@ public class Menu {
 				while (choice < 0 || choice > 4) {
 					System.out.println("Choose an option within the range:");
                     choice =Integer.parseInt(reader.readLine());
+                    }
 				switch (choice) {
 				case 1:
 					UserInteraction.seeFamilyHistoryMenu();
@@ -135,15 +147,14 @@ public class Menu {
 					
 				case 0:
 					return;
-				default:
-					break;
+				
 				}
-			} while (true);
+			} while(true);
 		}
 			
 		
-	/*	private static void DoctorMenu() throws Exception {
-			do {
+	private static void doctorMenu() throws Exception {
+		while (true) {
 		System.out.println("Choose an option:");
 		System.out.println("1.Act on a patient");
 		System.out.println("2.See all the patients");
@@ -154,52 +165,57 @@ public class Menu {
 		System.out.println("7.Act on patient's treatment");
 		System.out.println("0.Exit");
 			
-			try {
+		try {
+				
 				int choice = Integer.parseInt(reader.readLine());
 				while (choice < 0 || choice > 7) {
 					System.out.println("Choose an option within the range:");
                     choice =Integer.parseInt(reader.readLine());
-                }
+                    }
 
 				switch (choice) {
 				case 1:
 
-				SubMenus.PatientSubmenu();
+				SubMenus.patientSubmenu();
 				break;
 			case 2:
-				SubMenus.ShowPatientsSubMenu();
+				SubMenus.showPatientsSubMenu();
 				break;
 			case 3:
-				SubMenus.FamilyHistorySubmenu();
+				SubMenus.familyHistorySubmenu();
 				break;
 			case 4:
-				SubMenus.SymptomsSubmenu();
+				SubMenus.symptomsSubmenu();
 				break;
 			case 5:
-				SubMenus.MedicalExaminationSubmenu();
+				SubMenus.medicalExaminationSubmenu();
 				break;
 			case 6:
-				SubMenus.CancerSubmenu();
+				SubMenus.cancerSubmenu();
 				break;
 			case 7:
-				SubMenus.TreatmentSubmenu();
+				SubMenus.treatmentSubmenu();
 				break;
-				case 0:
-					dbmaster.disconnect();
-					System.out.println("Data base closed");
-					System.exit(0);
-					break;
-				default:
-					break;
+			case 0:
+				dbmasterMenu.disconnect();
+				System.out.println("Data base closed");
+				System.exit(0);
+				break;
+			
 				}
-				}
-			} while (true);
-		}*/
+			 
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	}
+}
+
 
 			
 		
-	//dbmaster.connect();
-	SubMenus.setDBMasterSubMenus(dbmasterMenu);
+	/*//dbmaster.connect();
+	SubMenus.setDBMasterSubMenus(dbmasterMenu)
 	while (true) {
 		System.out.println("Choose an option:");
 		System.out.println("1.Act on a patient");
@@ -249,9 +265,9 @@ public class Menu {
 		}
 	}
 
-}
+}*/
 	
 	
 	
 
-}
+

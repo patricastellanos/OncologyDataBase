@@ -17,17 +17,18 @@ public class User implements Serializable{
 	private byte[] password;
 	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="role_id")
-	private Role role; //1(user) to many(role) relationship
+	private Role role; //1(user) to many(role) 
+	
+	
+	public User(String email, byte[] password, Role role) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.role = role;
+	}
 	public Integer getId() {
 		return id;
-	}
-	
-
-	public User() {
-		super();
-	}
-
-
+	}	
 	public void setId(Integer id) {
 		this.id = id;
 	}

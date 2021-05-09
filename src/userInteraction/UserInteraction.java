@@ -3,6 +3,7 @@ package userInteraction;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.security.MessageDigest;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -10,7 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import actions.SQLMaster;
+import oncology.db.pojos.users.Role;
+import oncology.db.pojos.users.User;
 import oncology.db.interfaces.DBMaster;
+import oncology.db.interfaces.UserMaster;
+import oncology.db.jpa.JPAUserMaster;
 import oncology.db.pojos.Cancer;
 import oncology.db.pojos.FamilyHistory;
 import oncology.db.pojos.MedicalExamination;
@@ -24,10 +29,13 @@ public class UserInteraction {
 	private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	private static List<Patient> patient_list = new ArrayList<Patient>();
 	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+	private static UserMaster userman = new JPAUserMaster();
+	
 	
 	public static void setDBMasterUI(DBMaster dbm) {
 		dbmaster=dbm;
 	}
+	
 	
 	// this method asks for the patient's name
 	public static String printPatientNameMenu(){
