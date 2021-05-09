@@ -23,13 +23,13 @@ public class first_interactionController extends Application {
 	
 	@FXML
     void accionD(ActionEvent event) throws IOException {
-		Parent loginParent = FXMLLoader.load(getClass().getResource("login.fxml"));
+		/*Parent loginParent = FXMLLoader.load(getClass().getResource("login.fxml"));
 		Scene loginScene= new Scene(loginParent);
 		
 		Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
 		window.setScene(loginScene);
-		window.show();
+		window.show();*/
 		
 		
 
@@ -52,8 +52,7 @@ public class first_interactionController extends Application {
 	}
 
 	@Override
-	public void start(Stage arg0) throws Exception {
-		// TODO Auto-generated method stub
+	public void start(Stage stage) throws Exception {
 		
 	}
 }

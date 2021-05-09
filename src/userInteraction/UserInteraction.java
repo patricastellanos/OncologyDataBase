@@ -259,7 +259,7 @@ public class UserInteraction {
 		
 		try {
 			printPatientsMenu();
-			System.out.println("Choose the id of the patient from which you want see its cancer");
+			System.out.println("Choose the id of the patient");
 			int id = Integer.parseInt(reader.readLine());
 			System.out.println(dbmaster.printCancer(id));
 			
@@ -313,7 +313,7 @@ public class UserInteraction {
 		}
 	}
 	
-	public static void familyHistoryToXml() {
+	public static void familyHistoryToXmlMenu() {
 		try {
 			printPatientsMenu();
 			System.out.print("Choose a patient to turn its family history into an XML file:");
