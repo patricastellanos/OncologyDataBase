@@ -13,6 +13,10 @@ public class JPAUserMaster implements UserMaster {
 
 	private EntityManager em;
 
+	public JPAUserMaster() {
+		super();
+		this.connect();
+	}
 	@Override
 	public void connect() {
 		em = Persistence.createEntityManagerFactory("user-provider").createEntityManager();
