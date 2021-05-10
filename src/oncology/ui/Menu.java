@@ -63,7 +63,7 @@ public class Menu {
 		MessageDigest md = MessageDigest.getInstance("MD5");
 		md.update(password.getBytes());
 		byte[] hash = md.digest();
-		User user = new User(email, hash, role);
+		User user = new User(email,hash,role);
 		userman.newUser(user);
 	}
 	
