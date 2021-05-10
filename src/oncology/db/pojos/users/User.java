@@ -3,14 +3,19 @@ package oncology.db.pojos.users;
 import java.io.Serializable;
 import java.util.Arrays;
 
-import javax.management.relation.Role;
 import javax.persistence.*;
 
 @Entity
 @Table(name="users")
 
 public class User implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8245386723645005777L;
 	@Id
+	@GeneratedValue(generator = "users")
+	@TableGenerator(name = "users", table="sqlite_sequence", pkColumnName= "name", valueColumnName="seq", pkColumnValue="users")
 	private Integer id;
 	String email;
 	@Lob
@@ -20,11 +25,11 @@ public class User implements Serializable{
 	private Role role; //1(user) to many(role) 
 	
 	
-	public User(String email, byte[] password, Role role) {
+	public User(String email, byte[] password, Role role2) {
 		super();
 		this.email = email;
 		this.password = password;
-		this.role = role;
+		this.role = role2;
 	}
 	
 	public Integer getId() {

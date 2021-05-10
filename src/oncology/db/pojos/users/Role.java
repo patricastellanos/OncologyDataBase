@@ -11,6 +11,8 @@ import javax.persistence.*;
 public class Role implements Serializable  {
 	
 	@Id
+	@GeneratedValue(generator = "roles")
+	@TableGenerator(name = "roles", table="sqlite_sequence", pkColumnName= "name", valueColumnName="seq", pkColumnValue="roles")
 	private Integer id;
 	private String name;
 	@OneToMany(mappedBy="role")

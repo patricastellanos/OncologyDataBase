@@ -31,11 +31,11 @@ public class Main extends Application {
 	@Override
 	public void start(Stage firstStage) {
 		 try{
-			 dbmaster.connect();
+			 //dbmaster.connect();
 			
 			Parent root = FXMLLoader.load(getClass().getResource("first_interaction.fxml"));
 			Scene scene = new Scene(root,500,500);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			firstStage.setScene(scene);
 			firstStage.show();
 		} catch(Exception e) {
