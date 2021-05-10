@@ -33,7 +33,7 @@ public class Main extends Application {
 		 try{
 			 dbmaster.connect();
 			
-			Pane root = (Pane)FXMLLoader.load(getClass().getResource("first_interaction.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("first_interaction.fxml"));
 			Scene scene = new Scene(root,500,500);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			firstStage.setScene(scene);
