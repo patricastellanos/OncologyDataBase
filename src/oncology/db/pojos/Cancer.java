@@ -33,6 +33,8 @@ public class Cancer implements Serializable{
 	private MedicalExamination m;
 	//constructor
 	
+	
+	
 	public Cancer(Integer id_cancer, String cancer_type) {
 		super();
 		this.id_cancer = id_cancer;
@@ -40,6 +42,11 @@ public class Cancer implements Serializable{
 	}
 	
 	
+	public Cancer() {
+		super();
+	}
+
+
 	public Cancer(String cancer_type) {
 		super();
 		this.id_cancer = id_cancer;

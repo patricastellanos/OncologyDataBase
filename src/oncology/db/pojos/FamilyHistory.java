@@ -22,6 +22,13 @@ public class FamilyHistory implements Serializable{
 	@XmlTransient//to avoid infinite loops
 	private Patient p;
 	
+	
+	
+	public FamilyHistory() {
+		super();
+	}
+
+
 	//constructor
 	public FamilyHistory(Integer id_famHistory, String type_cancerFam, String member) {
 		super();
