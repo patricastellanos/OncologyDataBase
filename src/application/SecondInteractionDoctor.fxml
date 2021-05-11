@@ -7,8 +7,8 @@
    <children>
       <AnchorPane prefHeight="446.0" prefWidth="671.0" style="-fx-background-color: pink;">
          <children>
-            <Button fx:id="login" alignment="CENTER" contentDisplay="CENTER" layoutX="252.0" layoutY="166.0" mnemonicParsing="false" onAction="#actionLogin" prefHeight="38.0" prefWidth="168.0" text="Log in" />
-            <Button fx:id="login1" alignment="CENTER" contentDisplay="CENTER" layoutX="252.0" layoutY="217.0" mnemonicParsing="false" onAction="#actionRegister" prefHeight="38.0" prefWidth="168.0" text="Register" />
+            <Button fx:id="loginDoctor" alignment="CENTER" contentDisplay="CENTER" layoutX="252.0" layoutY="166.0" mnemonicParsing="false" onAction="#actionLoginDoctor" prefHeight="38.0" prefWidth="168.0" text="Log in" />
+            <Button fx:id="registerDoctor" alignment="CENTER" contentDisplay="CENTER" layoutX="252.0" layoutY="217.0" mnemonicParsing="false" onAction="#actionRegisterDoctor" prefHeight="38.0" prefWidth="168.0" text="Register" />
          </children>
       </AnchorPane>
    </children>

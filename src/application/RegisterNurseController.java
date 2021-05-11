@@ -12,33 +12,39 @@ import javafx.stage.Stage;
 
 public class RegisterNurseController {
 
-    @FXML
-    private Button login;
+	 @FXML
+	    private Button registerNurse;
 
-    @FXML
-    private Button login1;
+	    @FXML
+	    void actionConfirmPassword(ActionEvent event) {
 
-	@FXML
-	void actionLogin(ActionEvent event) {
-		try {
+	    }
 
-			Parent root = FXMLLoader.load(getClass().getResource("RegisterNurse.fxml"));
-			Scene scene = new Scene(root);
-			// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	    @FXML
+	    void actionPassword(ActionEvent event) {
 
-			stage.setScene(scene);
-			stage.show();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	    }
+
+	    @FXML
+	    void actionRegisterNurse(ActionEvent event) {
+	    	try {
+
+				Parent root = FXMLLoader.load(getClass().getResource("LogInNurse.fxml"));
+				Scene scene = new Scene(root);
+				// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+				Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+				stage.setScene(scene);
+				stage.show();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+
+	    }
 
 	}
 
-    @FXML
-    void actionRegister(ActionEvent event) {
 
-    }
 
-}
 

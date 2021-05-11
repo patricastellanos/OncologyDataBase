@@ -12,47 +12,50 @@ import javafx.stage.Stage;
 
 public class SecondInteractionPatientController {
 
-    @FXML
-    private Button login;
+	   @FXML
+	    private Button loginPatient;
 
-    @FXML
-    private Button login1;
+	    @FXML
+	    private Button registerPatient;
 
-    @FXML
-    void actionLogin(ActionEvent event) {
-        try{
-			
-    			Parent root = FXMLLoader.load(getClass().getResource("LogInPatient.fxml"));
-    			Scene scene = new Scene(root);
-    			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-    			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-    		
-    			stage.setScene(scene);
-    			stage.show();
-    		} catch(Exception e) {
-    			e.printStackTrace();
-    		}
+	    @FXML
+	    void actionLoginPatient(ActionEvent event) {
+          /*try{
+	 			
+	 			Parent root = FXMLLoader.load(getClass().getResource("LoginPatient.fxml"));
+	 			Scene scene = new Scene(root);
+	 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+	 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+	 		
+	 			stage.setScene(scene);
+	 			stage.show();
+	 		} catch(Exception e) {
+	 			e.printStackTrace();
+	 		}*/
+
+	     }
+
+	    
+
+	    @FXML
+	    void actionregisterPatient(ActionEvent event) {
+            try{
+	 			
+	 			Parent root = FXMLLoader.load(getClass().getResource("RegisterPatient.fxml"));
+	 			Scene scene = new Scene(root);
+	 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+	 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+	 		
+	 			stage.setScene(scene);
+	 			stage.show();
+	 		} catch(Exception e) {
+	 			e.printStackTrace();
+	 		}
+
+	     }
+
+	    }
 
 
-    }
-
-    @FXML
-    void actionRegister(ActionEvent event) {
-    	 try{
- 			
- 			Parent root = FXMLLoader.load(getClass().getResource("RegisterPatient.fxml"));
- 			Scene scene = new Scene(root);
- 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
- 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
- 		
- 			stage.setScene(scene);
- 			stage.show();
- 		} catch(Exception e) {
- 			e.printStackTrace();
- 		}
-
-    }
-
-}
 
 
