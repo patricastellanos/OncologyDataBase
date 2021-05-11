@@ -1,6 +1,7 @@
 package userInteraction;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.security.MessageDigest;
@@ -10,9 +11,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
+
 import actions.SQLMaster;
 import oncology.db.pojos.users.Role;
 import oncology.db.pojos.users.User;
+
 import oncology.db.interfaces.DBMaster;
 import oncology.db.interfaces.UserMaster;
 import oncology.db.jpa.JPAUserMaster;
@@ -279,6 +284,26 @@ public class UserInteraction {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void XmlToCancerMenu() {
+		try {
+			JAXBContext jaxbContext = JAXBContext.newInstance(Cancer.class);
+		    Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+
+			File file = new File("./xmls/External-Cancer.xml");
+			Cancer can = (Cancer) unmarshaller.unmarshal(file);
+			
+			System.out.println("Cancer:");
+			System.out.println("Type: " + can.getCancer_type());
+			List<Patient> p = can.getPatients();
+			List<Treatment> t = can.getTreatments();
+		    System.out.println(p);
+		    System.out.println(t);
+		    
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 		
 		
 		
@@ -327,6 +352,24 @@ public class UserInteraction {
 		
 		
 		
+	}
+	
+	public static void XmlToFamilyHistoryMenu() {
+		try {
+			JAXBContext jaxbContext = JAXBContext.newInstance(FamilyHistory.class);
+		    Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+
+			File file = new File("./xmls/External-Cancer.xml");
+			FamilyHistory famhist = (FamilyHistory) unmarshaller.unmarshal(file);
+			
+			System.out.println("Family History:");
+			System.out.println("Type: " + famhist.getType_cancerFam());
+			System.out.println("Member: " + famhist.getMember());
+			
+		    
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	//this method is used to add new symptoms

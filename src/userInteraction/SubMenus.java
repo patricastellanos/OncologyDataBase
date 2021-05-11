@@ -70,9 +70,10 @@ public class SubMenus {
 			System.out.println("2. See the family history of a patient");
 			System.out.println("3. Back to the main menu");
 			System.out.println("4. Convert to XML file");
+			System.out.println("5. Convert from XML to FamilyHistory");
 			try {
 				int choice = Integer.parseInt(reader.readLine());
-				while (choice < 0 || choice > 4) {
+				while (choice < 0 || choice > 5) {
 					System.out.println("Choose an option within the range:");
 					choice = Integer.parseInt(reader.readLine());
 				}
@@ -88,6 +89,8 @@ public class SubMenus {
 					return;
 				case 4:
 					UserInteraction.familyHistoryToXmlMenu();
+				case 5: 
+					UserInteraction.XmlToFamilyHistoryMenu();
 				default:
 					break;
 				}
@@ -165,9 +168,10 @@ public class SubMenus {
 			System.out.println("2.See cancer of a patient");
 			System.out.println("3. Back to the main menu");
 			System.out.println("4. Convert to XML");
+			System.out.println("5. Convert from XML to Cancer");
 			try {
 				int choice = Integer.parseInt(reader.readLine());
-				while (choice < 0 || choice > 4) {
+				while (choice < 0 || choice > 5) {
 					System.out.println("Choose an option within the range:");
 					choice = Integer.parseInt(reader.readLine());
 				}
@@ -183,7 +187,9 @@ public class SubMenus {
 					return;
 				case 4:
 					UserInteraction.cancerToXmlMenu();
-					return;
+					
+				case 5:
+					UserInteraction.XmlToCancerMenu();
 				}
 				
 			} catch (Exception e) {

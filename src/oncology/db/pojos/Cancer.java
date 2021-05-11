@@ -66,6 +66,12 @@ public class Cancer implements Serializable{
 		this.cancer_type = cancer_type;
 	}
 	
+	public List<Patient> getPatients(){
+		return patient_list;
+	}
+	public List<Treatment> getTreatments(){
+		return treat_list;
+	}
 	//tostring
 	
 	@Override
