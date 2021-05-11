@@ -9,7 +9,7 @@ import oncology.db.interfaces.DBMaster;
 import oncology.db.interfaces.UserMaster;
 import oncology.db.pojos.users.*;
 import oncology.db.jpa.JPAUserMaster;
-import userInteraction.SubMenus;
+import userInteraction.SubMenusDoctor;
 import userInteraction.UserInteraction;
 public class Menu {
 	
@@ -176,25 +176,25 @@ public class Menu {
 				switch (choice) {
 				case 1:
 
-				SubMenus.patientSubmenu();
+				SubMenusDoctor.patientSubmenu();
 				break;
 			case 2:
-				SubMenus.showPatientsSubMenu();
+				SubMenusDoctor.showPatientsSubMenu();
 				break;
 			case 3:
-				SubMenus.familyHistorySubmenu();
+				SubMenusDoctor.familyHistorySubmenu();
 				break;
 			case 4:
-				SubMenus.symptomsSubmenu();
+				SubMenusDoctor.symptomsSubmenu();
 				break;
 			case 5:
-				SubMenus.medicalExaminationSubmenu();
+				SubMenusDoctor.medicalExaminationSubmenu();
 				break;
 			case 6:
-				SubMenus.cancerSubmenu();
+				SubMenusDoctor.cancerSubmenu();
 				break;
 			case 7:
-				SubMenus.treatmentSubmenu();
+				SubMenusDoctor.treatmentSubmenu();
 				break;
 			case 0:
 				dbmasterMenu.disconnect();
