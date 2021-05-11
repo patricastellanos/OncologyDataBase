@@ -20,7 +20,7 @@ public class SecondInteractionNurseController {
 
 	    @FXML
 	    void actionLoginNurse(ActionEvent event) {
-	    	/* try{
+	    	try{
 	 			
 	 			Parent root = FXMLLoader.load(getClass().getResource("LoginNurse.fxml"));
 	 			Scene scene = new Scene(root);
@@ -31,7 +31,7 @@ public class SecondInteractionNurseController {
 	 			stage.show();
 	 		} catch(Exception e) {
 	 			e.printStackTrace();
-	 		}*/
+	 		}
 
 	     
 
