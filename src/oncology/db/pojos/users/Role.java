@@ -1,9 +1,12 @@
 package oncology.db.pojos.users;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
+
+import oncology.db.pojos.users.User;
 
 @Entity
 @Table(name="roles")
@@ -12,7 +15,8 @@ public class Role implements Serializable  {
 	
 	@Id
 	@GeneratedValue(generator = "roles")
-	@TableGenerator(name = "roles", table="sqlite_sequence", pkColumnName= "name", valueColumnName="seq", pkColumnValue="roles")
+	@TableGenerator(name = "roles", table="sqlite_sequence", pkColumnName= "name", 
+	valueColumnName="seq", pkColumnValue="roles")
 	private Integer id;
 	private String name;
 	@OneToMany(mappedBy="role")
@@ -22,9 +26,13 @@ public class Role implements Serializable  {
 	
 	public Role() {
 		super();
+		this.user = new ArrayList<User>();
 	}
-	public Role(String string) {
+	
+	public Role(String name) {
 		super();
+		this.name = name;
+		this.user = new ArrayList<User>();
 	}
 	public Integer getId() {
 		return id;

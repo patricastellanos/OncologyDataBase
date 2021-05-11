@@ -23,8 +23,9 @@ public class JPAUserMaster implements UserMaster {
 		em.getTransaction().begin();
 		em.createNativeQuery("PRAGMA foreign_keys=ON").executeUpdate();
 		em.getTransaction().commit();
-		List<Role> existingRoles = this.getRoles();
-		if (existingRoles.size()<2) {
+		List<Role> existingRoles = this.getRolesList();
+	
+		if (existingRoles.size()<3) {
 			this.newRole(new Role("patient"));
 			this.newRole(new Role("doctor"));
 			this.newRole(new Role("nurse"));
@@ -59,7 +60,7 @@ public class JPAUserMaster implements UserMaster {
 	}
 
 	@Override
-	public List<Role> getRoles() {
+	public List<Role> getRolesList() {
 		Query q = em.createNativeQuery("SELECT * FROM roles", Role.class);
 		return (List<Role>) q.getResultList();
 	}

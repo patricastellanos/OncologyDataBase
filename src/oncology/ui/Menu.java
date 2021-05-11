@@ -54,7 +54,7 @@ public class Menu {
 		System.out.println("Please write your password:");
 		String password = reader.readLine();
 		
-		System.out.println(userman.getRoles());
+		System.out.println(userman.getRolesList());
 		System.out.println("Type the chosen role ID:");
 		int id = Integer.parseInt(reader.readLine());
 		Role role = userman.getRole(id);
