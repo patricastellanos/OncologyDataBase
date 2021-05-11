@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Cancer>
-   <type>Lung</type>
+  <type>Lung</type>
   <Patients>
-     <Patient name="Pepe" surname="García">
+     <Patient id="1" name="Pepe" surname="García">
      <dob>1991-05-03</dob>
      <sex>male</sex>
      <location>home</location>
@@ -12,7 +12,7 @@
   </Patients>
   <Treatments>
      <Treatment>
-     <type>chemotherapy</type>
+     <treatType>chemotherapy</treatType>
      <startDate>2018.03.02</startDate>
      <duration>6</duration>
      </Treatment>
