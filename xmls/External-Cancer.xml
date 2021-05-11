@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Cancer>
+   <type>Lung</type>
+  <Patients>
+     <Patient name="Pepe" surname="García">
+     <dob>1991-05-03</dob>
+     <sex>male</sex>
+     <location>home</location>
+     <actualState>paliativecare</actualState>
+     </Patient>
+  </Patients>
+  <Treatments>
+     <Treatment>
+     <type>chemotherapy</type>
+     <startDate>2018.03.02</startDate>
+     <duration>6</duration>
+     </Treatment>
+   </Treatments>
+</Cancer>
