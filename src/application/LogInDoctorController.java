@@ -1,5 +1,7 @@
 package application;
 
+import java.sql.SQLException;
+
 import com.gluonhq.charm.glisten.control.TextField;
 
 import javafx.event.ActionEvent;
@@ -34,7 +36,8 @@ public class LogInDoctorController {
     
     @FXML
     private Button loginButton;
-    void actionLogin(ActionEvent event) {
+    
+    public void actionLogin(ActionEvent event) throws SQLException{
     	/*if(userText.getText().equals("")&& passText.getText().equals("123")) {
 			try {
 
