@@ -1,18 +1,19 @@
 package userInteraction;
 
 import java.io.BufferedReader;
+
 import java.io.InputStreamReader;
 
 import actions.SQLMaster;
 import oncology.db.interfaces.DBMaster;
 
 
-public class SubMenus {
-	private static DBMaster dbmasterSubMenu;
+public class SubMenusDoctor {
+	private static DBMaster dbmasterSubMenuDoctor;
 	private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	
 	public static void setDBMasterSubMenus(DBMaster dbm2) {
-		dbmasterSubMenu=dbm2;
+		dbmasterSubMenuDoctor=dbm2;
 	}
 	
 	public static void patientSubmenu() {
