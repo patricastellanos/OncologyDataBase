@@ -24,7 +24,7 @@ public class first_interactionController {
     void accionD(ActionEvent event) {
     	try{
 			
-			Parent root = FXMLLoader.load(getClass().getResource("LogIn.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("LogInDoctor.fxml"));
 			Scene scene = new Scene(root);
 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -41,7 +41,7 @@ public class first_interactionController {
     void accionN(ActionEvent event) {
         try{
 			
-			Parent root = FXMLLoader.load(getClass().getResource("LogIn.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("LogInNurse.fxml"));
 			Scene scene = new Scene(root);
 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -59,7 +59,7 @@ public class first_interactionController {
     void accionP(ActionEvent event) {
        try{
 			
-			Parent root = FXMLLoader.load(getClass().getResource("LogIn.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("LogInPatient.fxml"));
 			Scene scene = new Scene(root);
 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();

@@ -3,7 +3,7 @@ package application;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class LoginController {
+public class LogInNurseController {
 
     @FXML
     private Button login;
