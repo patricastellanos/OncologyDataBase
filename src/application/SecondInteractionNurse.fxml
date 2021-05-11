@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SecondInteractionNurseController">
+   <children>
+      <AnchorPane prefHeight="446.0" prefWidth="671.0" style="-fx-background-color: pink;">
+         <children>
+            <Button fx:id="login" alignment="CENTER" contentDisplay="CENTER" layoutX="260.0" layoutY="177.0" mnemonicParsing="false" onAction="#actionLogin" prefHeight="38.0" prefWidth="168.0" text="Log in" />
+            <Button fx:id="register" alignment="CENTER" contentDisplay="CENTER" layoutX="260.0" layoutY="223.0" mnemonicParsing="false" onAction="#accionRegister" prefHeight="38.0" prefWidth="168.0" text="Register" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
