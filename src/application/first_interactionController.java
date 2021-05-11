@@ -1,7 +1,6 @@
 package application;
 
 import javafx.event.ActionEvent;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,7 +23,7 @@ public class first_interactionController {
     void accionD(ActionEvent event) {
     	try{
 			
-			Parent root = FXMLLoader.load(getClass().getResource("LogInDoctor.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("SecondInteractionDoctor.fxml"));
 			Scene scene = new Scene(root);
 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -36,6 +35,7 @@ public class first_interactionController {
 		}
 
     }
+    
 
     @FXML
     void accionN(ActionEvent event) {
