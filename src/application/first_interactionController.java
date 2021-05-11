@@ -9,8 +9,13 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 public class first_interactionController {
+	
 
-    @FXML
+    public first_interactionController() {
+	
+	}
+
+	@FXML
     private Button D;
 
     @FXML

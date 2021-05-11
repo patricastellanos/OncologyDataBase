@@ -11,10 +11,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class SecondInteracionDoctorController {
+public class SecondInteractionDoctorController {
 
 
-    @FXML
+    public SecondInteractionDoctorController() {
+		
+	}
+
+	@FXML
     private Button loginDoctor;
 
     @FXML

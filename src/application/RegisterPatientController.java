@@ -11,6 +11,10 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class RegisterPatientController {
+	
+	  public RegisterPatientController() {
+			
+		}
 	   @FXML
 	    private Button registerPatient;
 

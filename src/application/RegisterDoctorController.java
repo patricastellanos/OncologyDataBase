@@ -13,8 +13,13 @@ import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 
 public class RegisterDoctorController {
+	
 
-    @FXML
+    public RegisterDoctorController() {
+		
+	}
+
+	@FXML
     private PasswordField doctorPassword;
 
     @FXML
