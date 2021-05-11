@@ -43,7 +43,6 @@ public class MainMenuNurseController {
     void actionCancer(ActionEvent event) {
 
     }
-
     @FXML
     void actionExit(ActionEvent event) {
     	System.exit(0);
