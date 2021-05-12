@@ -1,5 +1,8 @@
 package application;
 
+import java.security.MessageDigest;
+
+
 import javafx.event.ActionEvent;
 
 import javafx.fxml.FXML;
@@ -8,16 +11,19 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+
 import javafx.scene.control.PasswordField;
+import com.gluonhq.charm.glisten.control.TextField;
+
 import javafx.stage.Stage;
+import oncology.db.interfaces.UserMaster;
+import oncology.db.jpa.JPAUserMaster;
+import oncology.db.pojos.users.Role;
+import oncology.db.pojos.users.User;
 
 public class RegisterDoctorController {
 	
-
-    public RegisterDoctorController() {
-		
-	}
+	private static UserMaster userman = new JPAUserMaster();
 
 	@FXML
     private PasswordField doctorPassword;
@@ -29,7 +35,7 @@ public class RegisterDoctorController {
     private Button RegisterDoctor;
 
     @FXML
-    private Label UserNameLabel;
+    private TextField username;
 
     @FXML
     void actionConfirmPassword(ActionEvent event) {
@@ -40,10 +46,25 @@ public class RegisterDoctorController {
     void actionPassword(ActionEvent event) {
 
     }
+    
+    //public void register() throws Exception{
+    	
 
     @FXML
     void actionRegister(ActionEvent event) {
     	try {
+    		String usern = username.getText();
+        	String password = doctorPassword.getText();
+        	String confirmpassword = doctorConfirmPassword.getText();
+        	Role role = new Role("doctor");
+        	
+        	MessageDigest md = MessageDigest.getInstance("MD5");
+    		md.update(password.getBytes());
+    		byte[] hash = md.digest();
+        	
+        	User user = new User(usern, hash, role);
+        	
+        	userman.newUser(user);
 
 			Parent root = FXMLLoader.load(getClass().getResource("LogInDoctor.fxml"));
 			Scene scene = new Scene(root);
