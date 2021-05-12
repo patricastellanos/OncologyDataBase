@@ -6,15 +6,10 @@ import com.gluonhq.charm.glisten.control.TextField;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
-import javafx.stage.Stage;
 import javafx.stage.Window;
 import oncology.db.interfaces.UserMaster;
 import oncology.db.jpa.JPAUserMaster;
@@ -23,9 +18,9 @@ import oncology.db.pojos.users.User;
 public class LogInDoctorController {
 	
 
-    /*public LogInDoctorController() {
+    public LogInDoctorController() {
 		
-	}*/
+	}
 	private static UserMaster userman = new JPAUserMaster();
 
 	@FXML
