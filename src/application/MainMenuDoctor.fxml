@@ -8,12 +8,14 @@
    <children>
       <AnchorPane prefHeight="446.0" prefWidth="671.0" style="-fx-background-color: pink;">
          <children>
-            <Label layoutX="159.0" layoutY="85.0" prefHeight="26.0" prefWidth="47.0" text="Choose" />
-            <Button fx:id="medExamButton" layoutX="157.0" layoutY="161.0" mnemonicParsing="false" onAction="#actionMedicalExamination" text="Medical Examination" />
-            <Button fx:id="famHistoryButton" layoutX="155.0" layoutY="122.0" mnemonicParsing="false" onAction="#actionFamilyHistory" text="Family History" />
-            <Button fx:id="cancerButton" layoutX="157.0" layoutY="197.0" mnemonicParsing="false" onAction="#actionCancer" text="Cancer" />
-            <Button fx:id="treatButton" layoutX="157.0" layoutY="232.0" mnemonicParsing="false" onAction="#actionTreatment" text="Treatment" />
+            <Label layoutX="158.0" layoutY="87.0" prefHeight="26.0" prefWidth="47.0" text="Choose" />
+            <Button fx:id="medExamButton" layoutX="156.0" layoutY="223.0" mnemonicParsing="false" onAction="#actionMedicalExamination" text="Medical Examination" />
+            <Button fx:id="famHistoryButton" layoutX="155.0" layoutY="187.0" mnemonicParsing="false" onAction="#actionFamilyHistory" text="Family History" />
+            <Button fx:id="cancerButton" layoutX="156.0" layoutY="259.0" mnemonicParsing="false" onAction="#actionCancer" text="Cancer" />
+            <Button fx:id="treatButton" layoutX="155.0" layoutY="294.0" mnemonicParsing="false" onAction="#actionTreatment" text="Treatment" />
             <Button fx:id="exitButton" layoutX="549.0" layoutY="347.0" mnemonicParsing="false" onAction="#actionExit" prefHeight="26.0" prefWidth="47.0" text="Exit" />
+            <Button fx:id="famHistoryButton1" layoutX="155.0" layoutY="121.0" mnemonicParsing="false" onAction="#actionFamilyHistory" text="Patient" />
+            <Button fx:id="famHistoryButton2" layoutX="155.0" layoutY="155.0" mnemonicParsing="false" onAction="#actionFamilyHistory" text="See all patients" />
          </children>
       </AnchorPane>
    </children>
