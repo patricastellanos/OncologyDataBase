@@ -13,7 +13,7 @@ import userInteraction.SubMenusDoctor;
 import userInteraction.UserInteraction;
 public class Menu {
 	
-	private static DBMaster dbmasterMenu;
+	private static SQLMaster dbmasterMenu =new SQLMaster();
 	private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	private static UserMaster userman = new JPAUserMaster();
 	
@@ -36,6 +36,7 @@ public class Menu {
 				login();
 				break;
 			case 0:
+				System.out.println("Data base closed");
 				dbmasterMenu.disconnect();
 				userman.disconnect();
 				System.exit(0);
@@ -94,7 +95,7 @@ public class Menu {
 				System.out.println("Choose an option:");
 				System.out.println("1. Family History");
 				System.out.println("2. Medical Examination");
-				System.out.println("0. Exit");
+				System.out.println("0. Back to the main menu");
 				int choice = Integer.parseInt(reader.readLine());
 				while (choice < 0 || choice > 7) {
 					System.out.println("Choose an option within the range:");
@@ -123,7 +124,7 @@ public class Menu {
 				System.out.println("2. Medical Examination");
 				System.out.println("3. Cancer");
 				System.out.println("4. Treatment");
-				System.out.println("0. Exit");
+				System.out.println("0. Back to the main menu");
 				int choice = Integer.parseInt(reader.readLine());
 				while (choice < 0 || choice > 4) {
 					System.out.println("Choose an option within the range:");
@@ -163,7 +164,7 @@ public class Menu {
 		System.out.println("5.Act on medical examination");
 		System.out.println("6.Act on patient's cancer");
 		System.out.println("7.Act on patient's treatment");
-		System.out.println("0.Exit");
+		System.out.println("0.Back to the main menu");
 			
 		try {
 				

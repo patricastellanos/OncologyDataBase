@@ -49,6 +49,8 @@ public class SubMenusDoctor {
 					
 				case 5:
 					return;
+				default:
+					break;
 			
 				}
 			} catch (Exception e) {
@@ -69,9 +71,9 @@ public class SubMenusDoctor {
 		while (true) {
 			System.out.println("1. Add a family history");
 			System.out.println("2. See the family history of a patient");
-			System.out.println("3. Back to the main menu");
-			System.out.println("4. Convert to XML file");
-			System.out.println("5. Convert from XML to FamilyHistory");
+			System.out.println("3. Convert to XML file");
+			System.out.println("4. Convert from XML to FamilyHistory");
+			System.out.println("5. Back to the main menu");
 			try {
 				int choice = Integer.parseInt(reader.readLine());
 				while (choice < 0 || choice > 5) {
@@ -87,11 +89,11 @@ public class SubMenusDoctor {
 					UserInteraction.seeFamilyHistoryMenu();
 					break;
 				case 3:
-					return;
-				case 4:
 					UserInteraction.familyHistoryToXmlMenu();
-				case 5: 
+				case 4: 
 					UserInteraction.XmlToFamilyHistoryMenu();
+				case 5:
+					return;
 				default:
 					break;
 				}
@@ -127,6 +129,8 @@ public class SubMenusDoctor {
 					break;
 				case 4:
 					return;
+				default:
+					break;
 				}
 			} catch (Exception e) {
 				System.out.println("An error has ocurred");
@@ -156,6 +160,8 @@ public class SubMenusDoctor {
 					break;
 				case 3:
 					return;
+				default:
+					break;
 				}
 			} catch (Exception e) {
 				System.out.println("An error has ocurred");
@@ -167,9 +173,9 @@ public class SubMenusDoctor {
 		while (true) {
 			System.out.println("1.Add patient's cancer");
 			System.out.println("2.See cancer of a patient");
-			System.out.println("3. Back to the main menu");
-			System.out.println("4. Convert to XML");
-			System.out.println("5. Convert from XML to Cancer");
+			System.out.println("3. Convert to XML");
+			System.out.println("4. Convert from XML to Cancer");
+			System.out.println("5. Back to the main menu");
 			try {
 				int choice = Integer.parseInt(reader.readLine());
 				while (choice < 0 || choice > 5) {
@@ -184,13 +190,16 @@ public class SubMenusDoctor {
 				case 2:
 					UserInteraction.printCancerMenu();
 					break;
+				
 				case 3:
-					return;
-				case 4:
 					UserInteraction.cancerToXmlMenu();
 					
-				case 5:
+				case 4:
 					UserInteraction.XmlToCancerMenu();
+				case 5:
+					return;
+				default:
+					break;
 				}
 				
 			} catch (Exception e) {
@@ -226,6 +235,8 @@ public class SubMenusDoctor {
 					break;
 				case 4:
 					return;
+				default:
+					break;
 				}
 			} catch (Exception e) {
 				System.out.println("An error has ocurred");
