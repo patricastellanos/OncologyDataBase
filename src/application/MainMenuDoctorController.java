@@ -12,12 +12,12 @@ import oncology.db.jpa.JPAUserMaster;
 import oncology.db.pojos.Patient;
 import oncology.ui.Menu;
 
-public class MainMenuNurseController {
+public class MainMenuDoctorController {
 	private static Menu Menu_manager_object;
 	private static SQLMaster SQL_manager_object;
 	private static JPAUserMaster JPA_manager_object;
 	
-    public MainMenuNurseController() {
+    public MainMenuDoctorController() {
 		
 	}
     public static void setValues(SQLMaster SQL_manager, JPAUserMaster JPA_manager, Menu menu) {
