@@ -1,8 +1,12 @@
 package application;
 
+import java.io.IOException;
+
 import actions.SQLMaster;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import oncology.db.jpa.JPAUserMaster;
 import oncology.db.pojos.Patient;
@@ -38,6 +42,9 @@ public class MainMenuNurseController {
 
     @FXML
     private Button exitButton;
+    
+    @FXML
+    private Button backButton;
 
     @FXML
     void actionCancer(ActionEvent event) {
@@ -47,6 +54,11 @@ public class MainMenuNurseController {
     void actionExit(ActionEvent event) {
     	System.exit(0);
 
+    }
+    @FXML
+    void actionBack(ActionEvent event) throws IOException {
+    	Parent root = FXMLLoader.load(getClass().getResource("LogInNurse.fxml"));
+		
     }
 
     @FXML

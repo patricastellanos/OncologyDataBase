@@ -29,6 +29,18 @@ public class LogInNurseController {
     
     @FXML
     private Button loginButton;
+    
+    @FXML
+    private Button exitButton;
+    
+    @FXML
+    private Button backButton;
+    
+    @FXML
+    void actionExit(ActionEvent event) {
+    	System.exit(0);
+
+    }
 
     @FXML
 	void actionLogin(ActionEvent event) {

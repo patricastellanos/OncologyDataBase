@@ -14,5 +14,7 @@
             <TextField fx:id="userText" layoutX="232.0" layoutY="183.0" prefHeight="26.0" prefWidth="186.0" promptText="Username" />
          </children>
       </AnchorPane>
+      <Button fx:id="exitButton" layoutX="78.0" layoutY="375.0" mnemonicParsing="false" onAction="#actionExit" text="Exit" />
+      <Button fx:id="backButton" layoutX="526.0" layoutY="375.0" mnemonicParsing="false" onAction="#actionBack" text="Back" />
    </children>
 </AnchorPane>

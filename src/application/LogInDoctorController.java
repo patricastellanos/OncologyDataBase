@@ -32,6 +32,17 @@ public class LogInDoctorController {
     @FXML
     private Button loginButton;
     
+    @FXML
+    private Button exitButton;
+    
+    @FXML
+    private Button backButton;
+    
+    @FXML
+    void actionExit(ActionEvent event) {
+    	System.exit(0);
+
+    }
     public void actionLogin(ActionEvent event) throws SQLException{
     	/*if(userText.getText().equals("")&& passText.getText().equals("123")) {
 			try {
