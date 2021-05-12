@@ -2,6 +2,7 @@ package application;
 
 import javafx.event.ActionEvent;
 
+import com.gluonhq.charm.glisten.control.Alert;
 import com.gluonhq.charm.glisten.control.TextField;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,6 +40,52 @@ public class RegisterNurseController {
 		}
 
     }
+    
+    @FXML
+    public void register(ActionEvent event) {
+
+        Window owner = registerNurse.getScene().getWindow();
+
+        System.out.println(registerNurse.getText());
+        System.out.println(userName.getText());
+        System.out.println(passwordField.getText());
+        if (fullNameField.getText().isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                "Please enter your name");
+            return;
+        }
+
+        if (emailIdField.getText().isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                "Please enter your email id");
+            return;
+        }
+        if (passwordField.getText().isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, owner, "Form Error!",
+                "Please enter a password");
+            return;
+        }
+
+        String fullName = fullNameField.getText();
+        String emailId = emailIdField.getText();
+        String password = passwordField.getText();
+
+        JdbcDao jdbcDao = new JdbcDao();
+        jdbcDao.insertRecord(fullName, emailId, password);
+
+        showAlert(Alert.AlertType.CONFIRMATION, owner, "Registration Successful!",
+            "Welcome " + fullNameField.getText());
+    }
+
+    private static void showAlert(Alert.AlertType alertType, Window owner, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.initOwner(owner);
+        alert.show();
+    }
+}
     
    
     public void start(Stage stage) throws Exception {
