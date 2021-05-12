@@ -24,10 +24,10 @@ public class Cancer implements Serializable{
 	@XmlElement
 	private String cancer_type;
 	@XmlElement(name= "Patient")
-	@XmlElementWrapper(name= "Patient_list")//PREGUNTAR
+	@XmlElementWrapper(name= "Patients")//PREGUNTAR
 	private List<Patient> patient_list;
-	@XmlElement(name= "Cancer")
-	@XmlElementWrapper(name= "Cancer_list")//PREGUNTAR
+	@XmlElement(name= "Treatment")
+	@XmlElementWrapper(name= "Treatments")//PREGUNTAR
 	private List<Treatment>treat_list;	
 	@XmlTransient//to avoid infinite loops
 	private MedicalExamination m;

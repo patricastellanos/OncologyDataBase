@@ -13,6 +13,7 @@ import oncology.db.pojos.users.User;
 
 public class Role implements Serializable  {
 	
+	private static final long serialVersionUID = 1238946238129527126L;
 	@Id
 	@GeneratedValue(generator = "roles")
 	@TableGenerator(name = "roles", table="sqlite_sequence", pkColumnName= "name", 
