@@ -1,6 +1,7 @@
 package oncology.db.pojos;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -12,8 +13,14 @@ public class Treatment implements Serializable {
 	private String treat_type;
 	private Date start_date;
 	private Integer duration;
-	private List<Cancer> cancer_list;
+	private List<Cancer> cancer_list=new ArrayList<>();//initialize
 	
+	
+	
+	public Treatment() {
+		super();
+	}
+
 	//Constructor
 	public Treatment(Integer id_treat, String treat_type, Date start_date, Integer duration) {
 		super();

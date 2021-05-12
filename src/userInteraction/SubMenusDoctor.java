@@ -107,8 +107,8 @@ public class SubMenusDoctor {
 	public static void symptomsSubmenu() {
 		while (true) {
 			System.out.println("1. Add symptoms to a patient");
-			System.out.println("2.Delete symptoms of a patient");
-			System.out.println("3.See the symptoms of a patient");
+			System.out.println("2. Delete symptoms of a patient");
+			System.out.println("3. See the symptoms of a patient");
 			System.out.println("4. Back to the main menu");
 			try {
 				int choice = Integer.parseInt(reader.readLine());

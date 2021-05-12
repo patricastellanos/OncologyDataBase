@@ -359,7 +359,7 @@ public class UserInteraction {
 			JAXBContext jaxbContext = JAXBContext.newInstance(FamilyHistory.class);
 		    Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 
-			File file = new File("./xmls/External-Cancer.xml");
+			File file = new File("./xmls/External-FamilyHistory.xml");
 			FamilyHistory famhist = (FamilyHistory) unmarshaller.unmarshal(file);
 			
 			System.out.println("Family History:");

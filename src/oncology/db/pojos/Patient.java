@@ -4,21 +4,55 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name= "Patient")
+@XmlType(propOrder= {"name", "surname","sex","birth_date","location","actual_state","famHistory_list","cancer_list"})
+
 public class Patient implements Serializable {
 
 private static final long serialVersionUID = 1L;
+@XmlTransient
  private Integer id;
+@XmlElement
  private String name;
+@XmlElement
  private String surname;
+@XmlElement
  private String sex;
+@XmlElement
  private Date birth_date; 
+@XmlElement
  private String location;
+@XmlElement
  private String actual_state;
+@XmlElement(name= "FamilyHistory")
+@XmlElementWrapper(name= "FamilyHistorials")
  private List<FamilyHistory> famHistory_list;
+@XmlElement(name= "Cancer")
+@XmlElementWrapper(name= "Cancers")
  private List<Cancer> cancer_list;
+ @XmlTransient
  private List<Symptoms> symptoms_list;
  
  
+ 
+ 
+ 
+public Patient() {
+	super();
+}
+
+
+
+
 //Constructor for the method searchPatientByName
 	public Patient(Integer id, String name,String surname) {
 	super();
