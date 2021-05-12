@@ -9,6 +9,8 @@
          <children>
             <Button fx:id="loginPatient" alignment="CENTER" contentDisplay="CENTER" layoutX="263.0" layoutY="171.0" mnemonicParsing="false" onAction="#actionLoginPatient" prefHeight="38.0" prefWidth="168.0" text="Log in" />
             <Button fx:id="registerPatient" alignment="CENTER" contentDisplay="CENTER" layoutX="263.0" layoutY="216.0" mnemonicParsing="false" onAction="#actionregisterPatient" prefHeight="38.0" prefWidth="168.0" text="Register" />
+            <Button fx:id="backButton" layoutX="594.0" layoutY="385.0" mnemonicParsing="false" onAction="#actionBack" text="Back" />
+            <Button fx:id="exitButton" layoutX="48.0" layoutY="388.0" mnemonicParsing="false" onAction="#actionExit" text="Exit" />
          </children>
       </AnchorPane>
    </children>

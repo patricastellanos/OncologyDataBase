@@ -21,6 +21,33 @@ public class SecondInteractionNurseController {
 
 	    @FXML
 	    private Button registerNurse;
+	    
+	    @FXML
+	    private Button backButton;
+
+	    @FXML
+	    private Button exitButton;
+
+	    @FXML
+	    void actionBack(ActionEvent event) {
+	    	try{
+				Parent root = FXMLLoader.load(getClass().getResource("first_interaction.fxml"));
+				Scene scene = new Scene(root);
+				Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			
+				stage.setScene(scene);
+				stage.show();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+
+	    }
+
+	    @FXML
+	    void actionExit(ActionEvent event) {
+	    	System.exit(0);
+
+	    }
 
 	    @FXML
 	    void actionLoginNurse(ActionEvent event) {
