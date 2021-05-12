@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 
 public class RegisterPatientController {
@@ -31,6 +32,13 @@ public class RegisterPatientController {
 	    
 	    @FXML
 	    private Button backButton;
+	    
+	    @FXML
+	    private PasswordField password;
+
+	    @FXML
+	    private PasswordField confirmPassword;
+
 	    
 	    @FXML
 	    void actionExit(ActionEvent event) {

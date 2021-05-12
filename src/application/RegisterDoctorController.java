@@ -31,6 +31,13 @@ public class RegisterDoctorController {
 
     @FXML
     private Button backButton;
+    
+    @FXML
+    private PasswordField password;
+
+    @FXML
+    private PasswordField confirmPassword;
+
 
     @FXML
     void actionBack(ActionEvent event) {
