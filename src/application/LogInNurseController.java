@@ -1,9 +1,8 @@
 package application;
 
-import java.security.MessageDigest;
+
 
 import com.gluonhq.charm.glisten.control.TextField;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,20 +11,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+//import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import oncology.db.interfaces.MenuMaster;
 import oncology.db.interfaces.UserMaster;
 import oncology.db.jpa.JPAUserMaster;
-import oncology.db.pojos.users.Role;
 import oncology.db.pojos.users.User;
 import oncology.ui.Menu;
 
 public class LogInNurseController {
 	private static UserMaster userman = new JPAUserMaster();
-	private static MenuMaster menuman =new Menu();
 	
 
     public LogInNurseController() {
@@ -55,7 +52,7 @@ public class LogInNurseController {
     @FXML
     void actionBack(ActionEvent event) {
     	 try{
- 			Parent root = FXMLLoader.load(getClass().getResource("SecondInteractionNurse.fxml"));
+ 			Parent root = FXMLLoader.load(getClass().getResource("SecondInteractionNurse.fxml")); //falta fxml de menunurse
  			Scene scene = new Scene(root);
  			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
  		
@@ -88,11 +85,11 @@ public class LogInNurseController {
 			infoMessage("Successfull log in !!", null, "Failed");
 		}
 		
-		try {
+		/*try {
 		menuman.login();
 		}catch(Exception e) {
 			e.printStackTrace();
-		}
+		}*/
 		
 		
 	}
