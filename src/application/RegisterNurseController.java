@@ -3,7 +3,7 @@ package application;
 import javafx.event.ActionEvent;
 import java.security.MessageDigest;
 
-import com.gluonhq.charm.glisten.control.TextField;
+
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +18,6 @@ import javafx.scene.control.PasswordField;
 //import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import oncology.db.interfaces.MenuMaster;
 import oncology.db.interfaces.UserMaster;
 import oncology.db.jpa.JPAUserMaster;
 import oncology.db.pojos.users.Role;
@@ -98,6 +97,15 @@ public class RegisterNurseController {
    		
    		
    	}
+    
+    public static void showAlert(Alert.AlertType alertType, Window owner, String title, String message ) {
+    	Alert alert = new Alert(alertType);
+    	alert.setTitle(title);
+    	alert.setHeaderText(null);
+    	alert.setContentText(message);
+    	alert.initOwner(owner);
+    	alert.show();
+    }
 
    
    
