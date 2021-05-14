@@ -2,6 +2,7 @@ package application;
 
 import java.sql.SQLException;
 
+
 import com.gluonhq.charm.glisten.control.TextField;
 
 import javafx.event.ActionEvent;
@@ -23,9 +24,7 @@ import oncology.db.pojos.users.User;
 public class LogInDoctorController {
 	
 
-    public LogInDoctorController() {
-		
-	}
+   
 	private static UserMaster userman = new JPAUserMaster();
 
 	@FXML
@@ -85,10 +84,10 @@ public class LogInDoctorController {
 		}*/
     	
     	Window owner = loginButton.getScene().getWindow();
-    	if (userText.getText().isEmpty()) {
+    	/*if (userText.getText().isEmpty()) {
     		showAlert(Alert.AlertType.ERROR, owner,"Error!", "Please enter your email");
     		return;
-    	}
+    	}*/
     	if (passText.getText().isEmpty()) {
     		showAlert(Alert.AlertType.ERROR, owner,"Error!", "Please enter your password again");
     		return;
@@ -101,6 +100,18 @@ public class LogInDoctorController {
     	   infoMessage("Please enter correct username or password", null, "Failed");
        }else {
     	   infoMessage("Successfull log in !!", null, "Failed");
+    	   try{
+   			
+   			Parent root = FXMLLoader.load(getClass().getResource("DoctorOptions.fxml"));
+   			Scene scene = new Scene(root);
+   			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+   			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+   		
+   			stage.setScene(scene);
+   			stage.show();
+   		} catch(Exception e) {
+   			e.printStackTrace();
+   		}
        }
 
     }

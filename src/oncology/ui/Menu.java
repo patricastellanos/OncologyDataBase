@@ -11,11 +11,14 @@ import oncology.db.pojos.users.*;
 import oncology.db.jpa.JPAUserMaster;
 import userInteraction.SubMenusDoctor;
 import userInteraction.UserInteraction;
+
 public class Menu {
 	
 	private static SQLMaster dbmasterMenu =new SQLMaster();
 	private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	private static UserMaster userman = new JPAUserMaster();
+	
+
 	
 	public static void main(String[] args) throws Exception {
 		
@@ -47,49 +50,48 @@ public class Menu {
 		} while (true);
 	}
 		
-		
-		 private static void register() throws Exception {
-		
+	 public static void register() throws Exception {
+			
+	System.out.println("Please, write your email address:");
+	String email = reader.readLine();
+	System.out.println("Please write your password:");
+	String password = reader.readLine();
+	
+	System.out.println(userman.getRolesList());
+	System.out.println("Type the chosen role ID:");
+	int id = Integer.parseInt(reader.readLine());
+	Role role = userman.getRole(id);
+	//System.out.println(role);
+	// Generate the hash
+	MessageDigest md = MessageDigest.getInstance("MD5");
+	md.update(password.getBytes());
+	byte[] hash = md.digest();
+	User user = new User(email,hash,role);
+	userman.newUser(user);
+}
+
+	 
+	public static void login() throws Exception {
+		// Ask the user for an email
 		System.out.println("Please, write your email address:");
 		String email = reader.readLine();
+		// Ask the user for a password
 		System.out.println("Please write your password:");
 		String password = reader.readLine();
-		
-		System.out.println(userman.getRolesList());
-		System.out.println("Type the chosen role ID:");
-		int id = Integer.parseInt(reader.readLine());
-		Role role = userman.getRole(id);
-		//System.out.println(role);
-		// Generate the hash
-		MessageDigest md = MessageDigest.getInstance("MD5");
-		md.update(password.getBytes());
-		byte[] hash = md.digest();
-		User user = new User(email,hash,role);
-		userman.newUser(user);
-	}
-	
-		 
-		private static void login() throws Exception {
-			// Ask the user for an email
-			System.out.println("Please, write your email address:");
-			String email = reader.readLine();
-			// Ask the user for a password
-			System.out.println("Please write your password:");
-			String password = reader.readLine();
-			User user = userman.checkPassword(email, password);
-			if (user == null) {
-				System.out.println("Wrong email or password");
-				return;
-			} else if (user.getRole().getName().equalsIgnoreCase("patient")) {
-				patientMenu();
-			} else if (user.getRole().getName().equalsIgnoreCase("doctor")) {
-				doctorMenu();
-			} else if (user.getRole().getName().equalsIgnoreCase("nurse")) {
-				nurseMenu();
-			}
-			// Check the type of the user and redirect her to the proper menu
+		User user = userman.checkPassword(email, password);
+		if (user == null) {
+			System.out.println("Wrong email or password");
+			return;
+		} else if (user.getRole().getName().equalsIgnoreCase("patient")) {
+			patientMenu();
+		} else if (user.getRole().getName().equalsIgnoreCase("doctor")) {
+			doctorMenu();
+		} else if (user.getRole().getName().equalsIgnoreCase("nurse")) {
+			nurseMenu();
 		}
-
+		// Check the type of the user and redirect her to the proper menu
+	}
+		
 		private static void patientMenu() throws Exception {
 			do {
 				System.out.println("Choose an option:");
