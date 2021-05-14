@@ -4,10 +4,10 @@
   <type>Lung</type>
   <Patients>
      <Patient id="1" name="Pepe" surname="García">
-     <dob>1991-05-03</dob>
      <sex>male</sex>
+     <dob>1991-05-03</dob>
      <location>home</location>
-     <actualState>paliativecare</actualState>
+     <actual_state>paliativecare</actual_state>
      </Patient>
   </Patients>
   <Treatments>

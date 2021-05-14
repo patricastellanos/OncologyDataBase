@@ -21,7 +21,7 @@ public class Cancer implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@XmlTransient
 	private Integer id_cancer;
-	@XmlElement
+	@XmlElement(name= "Type")
 	private String cancer_type;
 	@XmlElement(name= "Patient")
 	@XmlElementWrapper(name= "Patients")

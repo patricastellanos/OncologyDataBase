@@ -1,6 +1,7 @@
 package oncology.db.pojos;
 
 import java.io.Serializable;
+
 import java.sql.Date;
 import java.util.List;
 
@@ -11,6 +12,9 @@ import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import oncology.xml.utils.SQLDateAdapter;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name= "Patient")
@@ -27,7 +31,9 @@ private static final long serialVersionUID = 1L;
  private String surname;
 @XmlElement
  private String sex;
-@XmlElement
+@XmlElement(name = "dob")
+@XmlJavaTypeAdapter(SQLDateAdapter.class)
+
  private Date birth_date; 
 @XmlElement
  private String location;

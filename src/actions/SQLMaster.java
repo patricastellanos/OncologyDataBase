@@ -506,14 +506,41 @@ public class SQLMaster implements DBMaster {
 	}
 	
 	public void cancerToXml(int id) {
+		List<Patient> patient_list = new ArrayList<Patient>();
 		try {
 			Statement stmt = c.createStatement();
-			String sql = "SELECT * FROM cancer WHERE id_cancer = " + id;
+			String sql = "SELECT * FROM cancer AS can JOIN cancer_patient AS cp ON can.id_cancer=cp.id_cancer JOIN patient AS p ON cp.id = p.id WHERE can.id_cancer = " + id;
 			ResultSet rs = stmt.executeQuery(sql);
+			// Create a null cancer
+			Cancer can = new Cancer ();
 			while (rs.next()) {
-				Integer id_cancer = rs.getInt(1);
-				String type = rs.getString("type");
-				Cancer can= new Cancer ( id_cancer, type);
+				// If cancer is null, this means is the first record, get the cancer and the first patient
+				if(can == null) {
+					Integer id_cancer = rs.getInt(1);
+					String type = rs.getString(3);
+					Integer id_patient = rs.getInt(6);
+					String name = rs.getString(7);
+					String surname = rs.getString(8);
+					String sex = rs.getString(9);
+					Date dob = rs.getDate(10);
+					String location = rs.getString(11);
+					String actual_state = rs.getString(12);
+					Patient p = new Patient(name,surname,sex,dob,location,actual_state);
+					patient_list.add(p);
+					
+				}else {
+					String name = rs.getString(7);
+					String surname = rs.getString(8);
+					String sex = rs.getString(9);
+					Date dob = rs.getDate(10);
+					String location = rs.getString(11);
+					String actual_state = rs.getString(12);
+					Patient p = new Patient(name,surname,sex,dob,location,actual_state);
+					patient_list.add(p);
+				// If it´s not, then get the patient and add it to the list of patients of the cancer
+				
+				}
+				
 			
 				JAXBContext jaxbContext = JAXBContext.newInstance(Cancer.class);
 				Marshaller marshaller = jaxbContext.createMarshaller();
