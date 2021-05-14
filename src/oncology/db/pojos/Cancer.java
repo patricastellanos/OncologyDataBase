@@ -19,15 +19,15 @@ import javax.xml.bind.annotation.XmlAccessType;
 public class Cancer implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	@XmlTransient //@XmlAtribute
+	@XmlTransient
 	private Integer id_cancer;
 	@XmlElement
 	private String cancer_type;
 	@XmlElement(name= "Patient")
-	@XmlElementWrapper(name= "Patients")//PREGUNTAR
+	@XmlElementWrapper(name= "Patients")
 	private List<Patient> patient_list;
 	@XmlElement(name= "Treatment")
-	@XmlElementWrapper(name= "Treatments")//PREGUNTAR
+	@XmlElementWrapper(name= "Treatments")
 	private List<Treatment>treat_list;	
 	@XmlTransient//to avoid infinite loops
 	private MedicalExamination m;
