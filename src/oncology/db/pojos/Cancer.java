@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name= "Cancer")
-@XmlType(propOrder= {"cancer_type", "patient_list", "treat_list"})
+@XmlType(propOrder= {"cancer_type", "patient_list"})
 
 public class Cancer implements Serializable{
 	
@@ -26,8 +26,7 @@ public class Cancer implements Serializable{
 	@XmlElement(name= "Patient")
 	@XmlElementWrapper(name= "Patients")
 	private List<Patient> patient_list;
-	@XmlElement(name= "Treatment")
-	@XmlElementWrapper(name= "Treatments")
+	@XmlTransient
 	private List<Treatment>treat_list;	
 	@XmlTransient//to avoid infinite loops
 	private MedicalExamination m;
@@ -48,8 +47,9 @@ public class Cancer implements Serializable{
 	
 
 
-	public Cancer(String cancer_type, List<Patient> patient_list) {
+	public Cancer(int id_cancer,String cancer_type, List<Patient> patient_list) {
 		super();
+		this.id_cancer=id_cancer;
 		this.cancer_type = cancer_type;
 		this.patient_list = patient_list;
 	}
