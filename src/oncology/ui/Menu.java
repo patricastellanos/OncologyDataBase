@@ -10,6 +10,8 @@ import oncology.db.interfaces.UserMaster;
 import oncology.db.pojos.users.*;
 import oncology.db.jpa.JPAUserMaster;
 import userInteraction.SubMenusDoctor;
+import userInteraction.SubMenusNurse;
+import userInteraction.SubMenusPatient;
 import userInteraction.UserInteraction;
 
 public class Menu {
@@ -105,10 +107,10 @@ public class Menu {
 				}
 				switch (choice) {
 				case 1:
-					UserInteraction.seeFamilyHistoryMenu();
+					SubMenusPatient.familyHistorySubmenuPatient();
 					break;
 				case 2:
-					UserInteraction.printMedicalExaminationMenu();
+					SubMenusPatient.medicalExaminationSubmenuNurse();
 					break;
 				case 0:
 					return;
@@ -125,27 +127,30 @@ public class Menu {
 				System.out.println("1. Family History");
 				System.out.println("2. Medical Examination");
 				System.out.println("3. Cancer");
-				System.out.println("4. Treatment");
+				System.out.println("4.See all the cancers");
+				System.out.println("5. Treatment");
 				System.out.println("0. Back to the main menu");
 				int choice = Integer.parseInt(reader.readLine());
-				while (choice < 0 || choice > 4) {
+				while (choice < 0 || choice > 5) {
 					System.out.println("Choose an option within the range:");
                     choice =Integer.parseInt(reader.readLine());
                     }
 				switch (choice) {
 				case 1:
-					UserInteraction.seeFamilyHistoryMenu();
+					SubMenusNurse.familyHistorySubmenuNurse();
 					break;
 				case 2:
-					UserInteraction.printMedicalExaminationMenu();
+					SubMenusNurse.medicalExaminationSubmenuNurse();
 					break;
 					
 				case 3:
-					UserInteraction.printCancerMenu();
+					SubMenusNurse.cancerSubmenuNurse();
 					break;
-					
 				case 4:
-					UserInteraction.assesTreatmentMenu();
+					SubMenusNurse.showCancersSubMenuNurse();
+					break;
+				case 5:
+					SubMenusNurse.treatmentSubmenuNurse();
 					break;
 					
 				case 0:
@@ -165,13 +170,14 @@ public class Menu {
 		System.out.println("4.Act on symptoms");
 		System.out.println("5.Act on medical examination");
 		System.out.println("6.Act on patient's cancer");
-		System.out.println("7.Act on patient's treatment");
+		System.out.println("7.See all the cancers");
+		System.out.println("8.Act on patient's treatment");
 		System.out.println("0.Back to the main menu");
 			
 		try {
 				
 				int choice = Integer.parseInt(reader.readLine());
-				while (choice < 0 || choice > 7) {
+				while (choice < 0 || choice > 8) {
 					System.out.println("Choose an option within the range:");
                     choice =Integer.parseInt(reader.readLine());
                     }
@@ -197,6 +203,9 @@ public class Menu {
 				SubMenusDoctor.cancerSubmenu();
 				break;
 			case 7:
+				SubMenusDoctor.showCancersSubMenuDoctor();
+				break;
+			case 8:
 				SubMenusDoctor.treatmentSubmenu();
 				break;
 			case 0:

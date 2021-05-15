@@ -65,6 +65,9 @@ public class SubMenusDoctor {
 		UserInteraction.printPatientsMenu();
 	}
 	
+	public static void showCancersSubMenuDoctor() {
+		UserInteraction.printCancersMenu();
+	}
 	
 	
 	public static void familyHistorySubmenu() {

@@ -104,8 +104,11 @@ public class SubMenusNurse {
   		}
   		
   	}
+      public static void showCancersSubMenuNurse() {
+  		UserInteraction.printCancersMenu();
+  	}
       
-      public static void treatmentSubmenu() {
+      public static void treatmentSubmenuNurse() {
   		
   		
   		while (true) {
