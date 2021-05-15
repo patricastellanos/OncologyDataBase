@@ -509,6 +509,30 @@ public class SQLMaster implements DBMaster {
 		return cancer;
 	}
 	
+	@Override
+	public List<Cancer> printCancers() {
+		 List<Cancer> cancer_list=new ArrayList<Cancer>();
+		
+			try {
+				Statement stmt = c.createStatement();
+				String sql = "SELECT * FROM cancer";
+				ResultSet rs = stmt.executeQuery(sql);
+				while (rs.next()) {
+					Integer id_cancer = rs.getInt("id_cancer");
+					String type = rs.getString("type");
+								
+					Cancer cancer= new Cancer (id_cancer,type);
+					cancer_list.add(cancer);	
+					}
+				rs.close();
+				stmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		return cancer_list;
+	}
+	
+	
 	public void cancerToXml(int id) {
 		List<Patient> patient_list = new ArrayList<Patient>();
 		try {
@@ -647,7 +671,8 @@ public class SQLMaster implements DBMaster {
 
 		return true;
 	}
-	
+
+
 	
 		
 		
