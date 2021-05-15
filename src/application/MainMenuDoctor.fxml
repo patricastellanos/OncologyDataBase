@@ -2,9 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -24,34 +21,16 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <MenuBar>
-              <menus>
-                <Menu mnemonicParsing="false" text="File">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Delete" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
-                  </items>
-                </Menu>
-              </menus>
-            </MenuBar>
+            <Button fx:id="patientButton" layoutX="229.0" layoutY="131.0" mnemonicParsing="false" onAction="#actionPatient" text="Patient" />
+            <Button fx:id="allPatientsButton" layoutX="227.0" layoutY="165.0" mnemonicParsing="false" onAction="#actionAllPatients" text="See all patients" />
+            <Button fx:id="famHistoryButton" layoutX="229.0" layoutY="201.0" mnemonicParsing="false" onAction="#actionFamilyHistory" text="Family History" />
+            <Button fx:id="medExamButton" layoutX="229.0" layoutY="235.0" mnemonicParsing="false" onAction="#actionMedicalExamination" text="Medical Examination" />
+            <Button fx:id="cancerButton" layoutX="229.0" layoutY="268.0" mnemonicParsing="false" onAction="#actionCancer" text="Cancer" />
+            <Button fx:id="treatButton" layoutX="229.0" layoutY="336.0" mnemonicParsing="false" onAction="#actionTreatment" text="Treatment" />
+            <Button fx:id="allPatientsButton1" layoutX="227.0" layoutY="303.0" mnemonicParsing="false" onAction="#actionAllPatients" text="See all cancers" />
          </children>
       </AnchorPane>
-      <Button fx:id="medExamButton" layoutX="166.0" layoutY="233.0" mnemonicParsing="false" onAction="#actionMedicalExamination" text="Medical Examination" />
-      <Button fx:id="famHistoryButton" layoutX="165.0" layoutY="197.0" mnemonicParsing="false" onAction="#actionFamilyHistory" text="Family History" />
-      <Button fx:id="cancerButton" layoutX="166.0" layoutY="269.0" mnemonicParsing="false" onAction="#actionCancer" text="Cancer" />
-      <Button fx:id="treatButton" layoutX="165.0" layoutY="304.0" mnemonicParsing="false" onAction="#actionTreatment" text="Treatment" />
       <Button fx:id="exitButton" layoutX="559.0" layoutY="357.0" mnemonicParsing="false" onAction="#actionExit" prefHeight="26.0" prefWidth="47.0" text="Exit" />
-      <Button fx:id="patientButton" layoutX="165.0" layoutY="131.0" mnemonicParsing="false" onAction="#actionPatient" text="Patient" />
-      <Button fx:id="allPatientsButton" layoutX="165.0" layoutY="165.0" mnemonicParsing="false" onAction="#actionAllPatients" text="See all patients" />
       <Button fx:id="backButton" layoutX="101.0" layoutY="357.0" mnemonicParsing="false" onAction="#actionBack" prefHeight="26.0" prefWidth="47.0" text="Back" />
    </children>
 </AnchorPane>

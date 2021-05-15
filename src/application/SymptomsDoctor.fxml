@@ -17,46 +17,50 @@
                   <Image url="@../../../../OneDrive/Imágenes/oncology.jpg" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" layoutX="221.0" layoutY="35.0" prefHeight="68.0" prefWidth="214.0" style="-fx-background-color: 0000;" text="CHOOSE AN OPTION">
+            <Label alignment="CENTER" layoutX="206.0" layoutY="21.0" prefHeight="68.0" prefWidth="214.0" style="-fx-background-color: 0000;" text="CHOOSE AN OPTION">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button layoutX="209.0" layoutY="124.0" mnemonicParsing="false" text="Add a patient" />
-            <Button layoutX="209.0" layoutY="163.0" mnemonicParsing="false" text="Remove a patient" />
-            <Button layoutX="209.0" layoutY="211.0" mnemonicParsing="false" text="Search a patient" />
-            <Button layoutX="209.0" layoutY="255.0" mnemonicParsing="false" text="Update cancer's patient state" />
-            <Text layoutX="65.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="P" wrappingWidth="17.487091064453125">
+            <Button layoutX="231.0" layoutY="130.0" mnemonicParsing="false" text=" Add symptoms to a patient" />
+            <Button layoutX="227.0" layoutY="183.0" mnemonicParsing="false" text="Delete symptoms of a patient" />
+            <Button layoutX="224.0" layoutY="244.0" mnemonicParsing="false" text="See the symptoms of a patient" />
+            <Text layoutX="70.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S" wrappingWidth="17.487091064453125">
                <font>
                   <Font size="30.0" />
                </font>
             </Text>
-            <Text layoutX="65.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A" wrappingWidth="17.487091064453125">
+            <Text layoutX="70.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Y" wrappingWidth="17.487091064453125">
                <font>
                   <Font size="30.0" />
                </font>
             </Text>
-            <Text layoutX="65.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="T" wrappingWidth="17.487091064453125">
+            <Text layoutX="70.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="T" wrappingWidth="17.487091064453125">
                <font>
                   <Font size="30.0" />
                </font>
             </Text>
-            <Text layoutX="68.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" I" wrappingWidth="11.08709716796875">
+            <Text layoutX="68.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="M" wrappingWidth="11.08709716796875">
                <font>
                   <Font size="30.0" />
                </font>
             </Text>
-            <Text layoutX="65.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E" wrappingWidth="17.487091064453125">
+            <Text layoutX="70.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="O" wrappingWidth="17.487091064453125">
                <font>
                   <Font size="30.0" />
                </font>
             </Text>
-            <Text layoutX="65.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="T" wrappingWidth="17.487091064453125">
+            <Text layoutX="65.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="M" wrappingWidth="17.487091064453125">
                <font>
                   <Font size="30.0" />
                </font>
             </Text>
-            <Text layoutX="65.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N" wrappingWidth="17.487091064453125">
+            <Text layoutX="70.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="P" wrappingWidth="17.487091064453125">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Text layoutX="70.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S" wrappingWidth="17.487091064453125">
                <font>
                   <Font size="30.0" />
                </font>

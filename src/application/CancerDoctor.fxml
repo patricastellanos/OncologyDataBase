@@ -17,50 +17,46 @@
                   <Image url="@../../../../OneDrive/Imágenes/oncology.jpg" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" layoutX="221.0" layoutY="35.0" prefHeight="68.0" prefWidth="214.0" style="-fx-background-color: 0000;" text="CHOOSE AN OPTION">
+            <Text layoutX="83.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="C" wrappingWidth="17.487091064453125">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Text layoutX="83.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="R" wrappingWidth="17.487091064453125">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Text layoutX="83.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E" wrappingWidth="17.487091064453125">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Text layoutX="83.0" layoutY="235.0" strokeType="OUTSIDE" strokeWidth="0.0" text="C" wrappingWidth="17.487091064453125">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Text layoutX="83.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N" wrappingWidth="17.487091064453125">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Text layoutX="83.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A" wrappingWidth="17.487091064453125">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Label alignment="CENTER" layoutX="202.0" layoutY="27.0" prefHeight="68.0" prefWidth="214.0" style="-fx-background-color: 0000;" text="CHOOSE AN OPTION">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button layoutX="209.0" layoutY="124.0" mnemonicParsing="false" text="Add a patient" />
-            <Button layoutX="209.0" layoutY="163.0" mnemonicParsing="false" text="Remove a patient" />
-            <Button layoutX="209.0" layoutY="211.0" mnemonicParsing="false" text="Search a patient" />
-            <Button layoutX="209.0" layoutY="255.0" mnemonicParsing="false" text="Update cancer's patient state" />
-            <Text layoutX="65.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="P" wrappingWidth="17.487091064453125">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Text>
-            <Text layoutX="65.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A" wrappingWidth="17.487091064453125">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Text>
-            <Text layoutX="65.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="T" wrappingWidth="17.487091064453125">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Text>
-            <Text layoutX="68.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" I" wrappingWidth="11.08709716796875">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Text>
-            <Text layoutX="65.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E" wrappingWidth="17.487091064453125">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Text>
-            <Text layoutX="65.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" text="T" wrappingWidth="17.487091064453125">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Text>
-            <Text layoutX="65.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="N" wrappingWidth="17.487091064453125">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Text>
+            <Button layoutX="237.0" layoutY="111.0" mnemonicParsing="false" text="Add patient's cancer" />
+            <Button layoutX="237.0" layoutY="151.0" mnemonicParsing="false" text="See cancer of a patient" />
+            <Button layoutX="237.0" layoutY="190.0" mnemonicParsing="false" text="Convert to XML" />
+            <Button layoutX="237.0" layoutY="230.0" mnemonicParsing="false" text="Convert from XML to Cancer" />
+            <Button layoutX="237.0" layoutY="275.0" mnemonicParsing="false" text="Convert the XML file created to HTML" />
          </children>
       </AnchorPane>
       <Button fx:id="exitButton" layoutX="78.0" layoutY="375.0" mnemonicParsing="false" onAction="#actionExit" text="Exit" />
