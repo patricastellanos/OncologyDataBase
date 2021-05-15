@@ -45,6 +45,14 @@ public class Cancer implements Serializable{
 	public Cancer() {
 		super();
 	}
+	
+
+
+	public Cancer(String cancer_type, List<Patient> patient_list) {
+		super();
+		this.cancer_type = cancer_type;
+		this.patient_list = patient_list;
+	}
 
 
 	public Cancer(String cancer_type) {

@@ -527,6 +527,7 @@ public class SQLMaster implements DBMaster {
 					String actual_state = rs.getString(12);
 					Patient p = new Patient(name,surname,sex,dob,location,actual_state);
 					patient_list.add(p);
+				
 					
 				}else {
 					String name = rs.getString(7);
@@ -540,7 +541,7 @@ public class SQLMaster implements DBMaster {
 				// If it´s not, then get the patient and add it to the list of patients of the cancer
 				
 				}
-				
+				//Cancer cancer = new Cancer(type, patient_list);
 			
 				JAXBContext jaxbContext = JAXBContext.newInstance(Cancer.class);
 				Marshaller marshaller = jaxbContext.createMarshaller();
