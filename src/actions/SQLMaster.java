@@ -318,7 +318,7 @@ public class SQLMaster implements DBMaster {
 				Integer id = rs.getInt(1);
 				String type = rs.getString("type");
 				String member = rs.getString("member");
-				FamilyHistory fh= new FamilyHistory (id,type, member);//pass id?
+				FamilyHistory fh= new FamilyHistory (type, member);
 			
 				JAXBContext jaxbContext = JAXBContext.newInstance(FamilyHistory.class);
 				Marshaller marshaller = jaxbContext.createMarshaller();
@@ -511,7 +511,8 @@ public class SQLMaster implements DBMaster {
 			Statement stmt = c.createStatement();
 			String sql = "SELECT * FROM cancer AS can JOIN cancer_patient AS cp ON can.id_cancer=cp.id_cancer JOIN patient AS p ON cp.id = p.id WHERE can.id_cancer = " + id;
 			ResultSet rs = stmt.executeQuery(sql);
-			Cancer can = null;
+			// Create a null cancer
+			Cancer can = new Cancer ();
 			while (rs.next()) {
 				// If cancer is null, this means is the first record, get the cancer and the first patient
 				if(can == null) {
@@ -524,9 +525,8 @@ public class SQLMaster implements DBMaster {
 					Date dob = rs.getDate(10);
 					String location = rs.getString(11);
 					String actual_state = rs.getString(12);
-					Patient p = new Patient(id_patient,name,surname,sex,dob,location,actual_state);
+					Patient p = new Patient(name,surname,sex,dob,location,actual_state);
 					patient_list.add(p);
-					can=new Cancer(id_cancer,type,patient_list);//pass id?
 				
 					
 				}else {
@@ -538,13 +538,10 @@ public class SQLMaster implements DBMaster {
 					String actual_state = rs.getString(12);
 					Patient p = new Patient(name,surname,sex,dob,location,actual_state);
 					patient_list.add(p);
-					String type = rs.getString(3);
-					Integer id_cancer = rs.getInt(1);
-					can=new Cancer(id_cancer,type,patient_list);//pass id?
-				
 				// If it´s not, then get the patient and add it to the list of patients of the cancer
 				
 				}
+				//Cancer cancer = new Cancer(type, patient_list);
 			
 				JAXBContext jaxbContext = JAXBContext.newInstance(Cancer.class);
 				Marshaller marshaller = jaxbContext.createMarshaller();
