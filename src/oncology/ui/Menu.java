@@ -127,7 +127,7 @@ public class Menu {
 				System.out.println("1. Family History");
 				System.out.println("2. Medical Examination");
 				System.out.println("3. Cancer");
-				System.out.println("4.See all the cancers");
+				System.out.println("4. See all the cancers");
 				System.out.println("5. Treatment");
 				System.out.println("0. Back to the main menu");
 				int choice = Integer.parseInt(reader.readLine());
@@ -226,58 +226,7 @@ public class Menu {
 
 			
 		
-	/*//dbmaster.connect();
-	SubMenus.setDBMasterSubMenus(dbmasterMenu)
-	while (true) {
-		System.out.println("Choose an option:");
-		System.out.println("1.Act on a patient");
-		System.out.println("2.See all the patients");
-		System.out.println("3.Act on family history");
-		System.out.println("4.Act on symptoms");
-		System.out.println("5.Act on medical examination");
-		System.out.println("6.Act on patient's cancer");
-		System.out.println("7.Act on patient's treatment");
-		System.out.println("0.Exit");
-		try {
-			int choice = Integer.parseInt(reader.readLine());
-			while (choice < 0 || choice > 7) {
-				System.out.println("Choose an option within the range:");
-				choice = Integer.parseInt(reader.readLine());
-			}
-
-			switch (choice) {
-			case 1:
-
-				SubMenus.patientSubmenu();
-				break;
-			case 2:
-				SubMenus.showPatientsSubMenu();
-				break;
-			case 3:
-				SubMenus.familyHistorySubmenu();
-				break;
-			case 4:
-				SubMenus.symptomsSubmenu();
-				break;
-			case 5:
-				SubMenus.medicalExaminationSubmenu();
-				break;
-			case 6:
-				SubMenus.cancerSubmenu();
-				break;
-			case 7:
-				SubMenus.treatmentSubmenu();
-				break;
-			
-			default:
-				break;
-			}
-		} catch (Exception e) {
-			System.out.println("An error has ocurred");
-		}
-	}
-
-}*/
+	
 	
 	
 	

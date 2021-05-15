@@ -28,6 +28,7 @@
             <Button fx:id="cancerButton" layoutX="229.0" layoutY="268.0" mnemonicParsing="false" onAction="#actionCancer" text="Cancer" />
             <Button fx:id="treatButton" layoutX="229.0" layoutY="336.0" mnemonicParsing="false" onAction="#actionTreatment" text="Treatment" />
             <Button fx:id="allPatientsButton1" layoutX="227.0" layoutY="303.0" mnemonicParsing="false" onAction="#actionAllPatients" text="See all cancers" />
+            <Button layoutX="230.0" layoutY="374.0" mnemonicParsing="false" text="Symptoms" />
          </children>
       </AnchorPane>
       <Button fx:id="exitButton" layoutX="559.0" layoutY="357.0" mnemonicParsing="false" onAction="#actionExit" prefHeight="26.0" prefWidth="47.0" text="Exit" />
