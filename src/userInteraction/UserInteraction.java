@@ -304,6 +304,10 @@ public class UserInteraction {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void cancerXmlToHtml () {
+		dbmaster.simpleTransform("./xmls/Cancer.xml", "./xmls/Cancer.xslt", "./xmls/Cancer.html");
+	}
 		
 		
 		

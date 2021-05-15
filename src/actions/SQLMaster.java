@@ -15,6 +15,10 @@ import javax.persistence.Query;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
 
 import oncology.db.interfaces.DBMaster;
 import oncology.db.pojos.Cancer;
@@ -556,6 +560,16 @@ public class SQLMaster implements DBMaster {
 				e.printStackTrace();
 			}
 			}
+	
+	public void simpleTransform(String sourcePath, String xsltPath,String resultDir) {
+		TransformerFactory tFactory = TransformerFactory.newInstance();
+		try {
+			Transformer transformer = tFactory.newTransformer(new StreamSource(new File(xsltPath)));
+			transformer.transform(new StreamSource(new File(sourcePath)),new StreamResult(new File(resultDir)));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 			
 		public void addTreatment(Treatment t, int id) {

@@ -34,6 +34,7 @@ public interface DBMaster {
     public void addCancer(Cancer cancer, int id_patient);
     public Cancer printCancer(int id_cancer);
     public void cancerToXml(int id);
+    public void simpleTransform(String sourcePath, String xsltPath,String resultDir);
    
     public void addTreatment(Treatment t, int id);
     public Treatment assessTreatment(int id_patient); 
