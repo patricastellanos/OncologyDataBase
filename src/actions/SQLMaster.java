@@ -485,6 +485,19 @@ public class SQLMaster implements DBMaster {
 		}
 	}
 	
+	public void addExistingCancer(int id_cancer, int id_patient) {
+		try {
+		String sql = "INSERT INTO cancer_patient (id_cancer, id) VALUES ( ?,?)";
+		PreparedStatement prep = c.prepareStatement(sql);
+		prep.setInt(1, id_cancer);
+		prep.setInt(2, id_patient);
+		prep.executeUpdate();
+		prep.close();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	
 	public Cancer printCancer(int id_patient) {
 		
@@ -555,6 +568,7 @@ public class SQLMaster implements DBMaster {
 					String actual_state = rs.getString(12);
 					Patient p = new Patient(name,surname,sex,dob,location,actual_state);
 					patient_list.add(p);
+				
 				
 					
 				}else {
