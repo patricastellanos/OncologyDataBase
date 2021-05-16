@@ -2,27 +2,23 @@ package application;
 
 import javafx.event.ActionEvent;
 import java.security.MessageDigest;
-
-
-
+import java.security.NoSuchAlgorithmException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
-
-//import javafx.scene.control.TextField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import oncology.db.interfaces.UserMaster;
 import oncology.db.jpa.JPAUserMaster;
 import oncology.db.pojos.users.Role;
 import oncology.db.pojos.users.User;
-import oncology.ui.Menu;
+
 
 
 public class RegisterNurseController {
@@ -79,9 +75,9 @@ public class RegisterNurseController {
    			showAlert(Alert.AlertType.ERROR, owner, "Error!", "Please enter your password again");
    			return;
    		}
-   		String username = username.getText();
-   		String password = password.getText();
-   		String confirmPassword = confirmPassword.getText();
+   		String username = this.username.getText();
+   		String password = this.password.getText();
+   		String confirmPassword = this.confirmPassword.getText();
    		
    		if(!password.equals(confirmPassword)) {
    			showAlert(Alert.AlertType.ERROR, owner, "Error!", "Please enter your password again");
@@ -89,11 +85,18 @@ public class RegisterNurseController {
    		}
    		
    		Role nurse=new Role();
-   		MessageDigest md = MessageDigest.getInstance("MD5");
-   		md.update(password.getBytes());
-   		byte[] hash = md.digest();
-   		User user = new User(username,hash,nurse);
-   		userman.newUser(user);
+   		MessageDigest md;
+		try {
+			md = MessageDigest.getInstance("MD5");
+			md.update(password.getBytes());
+	   		byte[] hash = md.digest();
+	   		User user = new User(username,hash,nurse);
+	   		userman.newUser(user);
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+   		
    		
    		
    	}
