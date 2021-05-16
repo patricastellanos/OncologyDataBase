@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LogInDoctorController">
+<AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CancerDoctorController">
    <children>
       <AnchorPane prefHeight="446.0" prefWidth="671.0" style="-fx-background-color: pink;">
          <children>
@@ -52,11 +52,11 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button layoutX="237.0" layoutY="111.0" mnemonicParsing="false" text="Add patient's cancer" />
-            <Button layoutX="237.0" layoutY="151.0" mnemonicParsing="false" text="See cancer of a patient" />
-            <Button layoutX="237.0" layoutY="190.0" mnemonicParsing="false" text="Convert to XML" />
-            <Button layoutX="237.0" layoutY="230.0" mnemonicParsing="false" text="Convert from XML to Cancer" />
-            <Button layoutX="237.0" layoutY="275.0" mnemonicParsing="false" text="Convert the XML file created to HTML" />
+            <Button fx:id="addCancer" layoutX="237.0" layoutY="111.0" mnemonicParsing="false" onAction="#actionAddCancer" text="Add patient's cancer" />
+            <Button fx:id="seeCancer" layoutX="237.0" layoutY="151.0" mnemonicParsing="false" onAction="#actionSeeCancer" text="See cancer of a patient" />
+            <Button fx:id="convertXML" layoutX="237.0" layoutY="190.0" mnemonicParsing="false" onAction="#actionConvertXML" text="Convert to XML" />
+            <Button fx:id="convertXMLtoCancer" layoutX="237.0" layoutY="230.0" mnemonicParsing="false" onAction="#actionConvertXMLtoCancer" text="Convert from XML to Cancer" />
+            <Button fx:id="ConvertXMLtoHTML" layoutX="237.0" layoutY="275.0" mnemonicParsing="false" onAction="#actionXMLtoHTML" text="Convert the XML file created to HTML" />
          </children>
       </AnchorPane>
       <Button fx:id="exitButton" layoutX="78.0" layoutY="375.0" mnemonicParsing="false" onAction="#actionExit" text="Exit" />

@@ -22,10 +22,10 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button layoutX="209.0" layoutY="124.0" mnemonicParsing="false" text="Add a patient" />
-            <Button layoutX="209.0" layoutY="163.0" mnemonicParsing="false" text="Remove a patient" />
-            <Button layoutX="209.0" layoutY="211.0" mnemonicParsing="false" text="Search a patient" />
-            <Button layoutX="209.0" layoutY="255.0" mnemonicParsing="false" text="Update cancer's patient state" />
+            <Button fx:id="addP" layoutX="209.0" layoutY="124.0" mnemonicParsing="false" onAction="#actionAddP" text="Add a patient" />
+            <Button fx:id="removeP" layoutX="209.0" layoutY="163.0" mnemonicParsing="false" onAction="#actionRemoveP" text="Remove a patient" />
+            <Button fx:id="searchP" layoutX="209.0" layoutY="211.0" mnemonicParsing="false" onAction="#actionSearchP" text="Search a patient" />
+            <Button fx:id="updateP" layoutX="209.0" layoutY="255.0" mnemonicParsing="false" onAction="#actionUpdateP" text="Update cancer's patient state" />
             <Text layoutX="65.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="P" wrappingWidth="17.487091064453125">
                <font>
                   <Font size="30.0" />

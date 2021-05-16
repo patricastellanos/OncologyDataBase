@@ -5,19 +5,13 @@ import java.awt.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
-public class PatientDoctorController {
+public class MedicalActionDoctorController {
 
     @FXML
-    private Button addP;
+    private Button addMedExam;
 
     @FXML
-    private Button removeP;
-
-    @FXML
-    private Button searchP;
-
-    @FXML
-    private Button updateP;
+    private Button seeMedExam;
 
     @FXML
     private Button exitButton;
@@ -26,7 +20,7 @@ public class PatientDoctorController {
     private Button backButton;
 
     @FXML
-    void actionAddP(ActionEvent event) {
+    void actionAddMedExam(ActionEvent event) {
 
     }
 
@@ -41,17 +35,7 @@ public class PatientDoctorController {
     }
 
     @FXML
-    void actionRemoveP(ActionEvent event) {
-
-    }
-
-    @FXML
-    void actionSearchP(ActionEvent event) {
-
-    }
-
-    @FXML
-    void actionUpdateP(ActionEvent event) {
+    void actionSeeMedExam(ActionEvent event) {
 
     }
 
