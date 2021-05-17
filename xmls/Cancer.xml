@@ -10,5 +10,13 @@
             <location>HOME</location>
             <actual_state>RECOVERED</actual_state>
         </Patient>
+        <Patient>
+            <name>juana</name>
+            <surname>laloca</surname>
+            <sex>FEMALE</sex>
+            <dob>2000-02-02</dob>
+            <location>HOSPITAL</location>
+            <actual_state>ACUTE_REHABILITATION</actual_state>
+        </Patient>
     </Patients>
 </Cancer>

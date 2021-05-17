@@ -292,7 +292,7 @@ public class UserInteraction {
 	
 	public static void cancerToXmlMenu() {
 		try {
-			printCancerMenu();
+			printCancersMenu();
 			System.out.print("Choose a cancer to turn into an XML file:");
 			int can_id = Integer.parseInt(reader.readLine());
 			dbmaster.cancerToXml(can_id);

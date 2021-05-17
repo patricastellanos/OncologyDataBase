@@ -53,6 +53,12 @@ public class Cancer implements Serializable{
 		this.cancer_type = cancer_type;
 		this.patient_list = patient_list;
 	}
+	public Cancer(String cancer_type, List<Patient> patient_list) {
+		super();
+		
+		this.cancer_type = cancer_type;
+		this.patient_list = patient_list;
+	}
 
 
 	public Cancer(String cancer_type) {
@@ -80,8 +86,20 @@ public class Cancer implements Serializable{
 	public List<Treatment> getTreatments(){
 		return treat_list;
 	}
+	
+	
 	//tostring
 	
+	public List<Patient> getPatient_list() {
+		return patient_list;
+	}
+
+
+	public void setPatient_list(List<Patient> patient_list) {
+		this.patient_list = patient_list;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Cancer [id_cancer=" + id_cancer + ", cancer_type=" + cancer_type + "]";
