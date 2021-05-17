@@ -3,7 +3,7 @@
 
 <xsl:template match="/">
   <html>
-   <p><b><xsl:value-of select="//Type" /></b></p>
+   <p><b>Type of cancer: </b><xsl:value-of select="//Type" /></p>
    <p><b>Patients with this type of cancer:</b></p>
    <table border="1">
     <xsl:for-each select="Cancer/Patients/Patient">

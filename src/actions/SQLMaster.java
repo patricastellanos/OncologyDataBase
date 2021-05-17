@@ -553,7 +553,7 @@ public class SQLMaster implements DBMaster {
 			String sql = "SELECT * FROM cancer AS can JOIN cancer_patient AS cp ON can.id_cancer=cp.id_cancer JOIN patient AS p ON cp.id = p.id WHERE can.id_cancer = " + id;
 			ResultSet rs = stmt.executeQuery(sql);
 			// Create a null cancer
-			Cancer can = new Cancer ();
+			Cancer can = null;
 			while (rs.next()) {
 				// If cancer is null, this means is the first record, get the cancer and the first patient
 				if(can == null) {
@@ -568,6 +568,7 @@ public class SQLMaster implements DBMaster {
 					String actual_state = rs.getString(12);
 					Patient p = new Patient(name,surname,sex,dob,location,actual_state);
 					patient_list.add(p);
+					can = new Cancer (type, patient_list);
 				
 				
 					
@@ -580,6 +581,7 @@ public class SQLMaster implements DBMaster {
 					String actual_state = rs.getString(12);
 					Patient p = new Patient(name,surname,sex,dob,location,actual_state);
 					patient_list.add(p);
+					can.setPatient_list(patient_list);
 				// If it´s not, then get the patient and add it to the list of patients of the cancer
 				
 				}

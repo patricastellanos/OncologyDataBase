@@ -197,11 +197,14 @@ public class SubMenusDoctor {
 				
 				case 3:
 					UserInteraction.cancerToXmlMenu();
+					break;
 					
 				case 4:
 					UserInteraction.XmlToCancerMenu();
+					break;
 				case 5:
 					UserInteraction.cancerXmlToHtml();
+					break;
 				case 6:
 					return;
 				default:
