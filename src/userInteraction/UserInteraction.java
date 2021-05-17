@@ -292,8 +292,8 @@ public class UserInteraction {
 	
 	public static void cancerToXmlMenu() {
 		try {
-			printCancersMenu();
 			System.out.print("Choose a cancer to turn into an XML file:");
+			printCancersMenu();
 			int can_id = Integer.parseInt(reader.readLine());
 			dbmaster.cancerToXml(can_id);
 			
@@ -391,6 +391,10 @@ public class UserInteraction {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public static void familyHistoryXmlToHtml () {
+		dbmaster.simpleTransform("./xmls/FamilyHistory.xml", "./xmls/FamilyHistory.xslt", "./xmls/FamilyHistory.html");
 	}
 	
 	//this method is used to add new symptoms

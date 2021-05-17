@@ -76,10 +76,11 @@ public class SubMenusDoctor {
 			System.out.println("2. See the family history of a patient");
 			System.out.println("3. Convert to XML file");
 			System.out.println("4. Convert from XML to FamilyHistory");
-			System.out.println("5. Back to the main menu");
+			System.out.println("5. Convert the XML file to HTML");
+			System.out.println("6. Back to the main menu");
 			try {
 				int choice = Integer.parseInt(reader.readLine());
-				while (choice < 0 || choice > 5) {
+				while (choice < 0 || choice > 6) {
 					System.out.println("Choose an option within the range:");
 					choice = Integer.parseInt(reader.readLine());
 				}
@@ -93,9 +94,14 @@ public class SubMenusDoctor {
 					break;
 				case 3:
 					UserInteraction.familyHistoryToXmlMenu();
+					break;
 				case 4: 
 					UserInteraction.XmlToFamilyHistoryMenu();
+					break;
 				case 5:
+					UserInteraction.familyHistoryXmlToHtml();
+					break;
+				case 6:
 					return;
 				default:
 					break;
