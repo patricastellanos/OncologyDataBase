@@ -9,7 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AddPatientDoctorController">
+<AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UpdatePatientDoctorController">
    <children>
       <AnchorPane prefHeight="446.0" prefWidth="671.0" style="-fx-background-color: pink;">
          <children>
@@ -20,44 +20,22 @@
                </image>
             </ImageView>
             <Button fx:id="backButton" layoutX="546.0" layoutY="395.0" mnemonicParsing="false" onAction="#actionBack" text="Back" />
-            <TextField layoutX="150.0" layoutY="100.0" text="Name" />
-            <TextField layoutX="337.0" layoutY="100.0" text="Surname" />
-            <MenuBar layoutX="150.0" layoutY="176.0">
+            <TextField layoutX="241.0" layoutY="171.0" text="id" />
+            <Button fx:id="searchP" layoutX="535.0" layoutY="312.0" mnemonicParsing="false" onAction="#actionSearch" text="Update" />
+            <MenuBar layoutX="241.0" layoutY="210.0">
                <menus>
-                  <Menu mnemonicParsing="false" text="Sex">
+                  <Menu mnemonicParsing="false" text="Actual state">
                      <items>
-                        <MenuItem mnemonicParsing="false" text="Male" />
-                        <MenuItem mnemonicParsing="false" text="Hospital" />
-                     </items>
-                  </Menu>
-               </menus>
-            </MenuBar>
-            <TextField layoutX="150.0" layoutY="137.0" text="Date of birth" />
-            <MenuBar layoutX="150.0" layoutY="210.0">
-              <menus>
-                <Menu mnemonicParsing="false" text="Location">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Home" />
-                        <MenuItem mnemonicParsing="false" text="Hospital" />
-                  </items>
-                </Menu>
-              </menus>
-            </MenuBar>
-            <MenuBar layoutX="150.0" layoutY="249.0">
-              <menus>
-                <Menu mnemonicParsing="false" text="Actual state">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="1.Acute_rehabilitation" />
+                        <MenuItem mnemonicParsing="false" text="1.Acute_rehabilitation" />
                         <MenuItem mnemonicParsing="false" text="2.Lowstream_rehabilitation" />
                         <MenuItem mnemonicParsing="false" text="3.Complex_care" />
                         <MenuItem mnemonicParsing="false" text="4.Convalescent_care" />
                         <MenuItem mnemonicParsing="false" text="5.Palliative_respite" />
                         <MenuItem mnemonicParsing="false" text="6.Recovered" />
-                  </items>
-                </Menu>
-              </menus>
+                     </items>
+                  </Menu>
+               </menus>
             </MenuBar>
-            <Button fx:id="addP" layoutX="547.0" layoutY="311.0" mnemonicParsing="false" onAction="#actionAdd" text="Add" />
          </children>
       </AnchorPane>
       <Button fx:id="exitButton" layoutX="88.0" layoutY="385.0" mnemonicParsing="false" onAction="#actionExit" text="Exit" />
