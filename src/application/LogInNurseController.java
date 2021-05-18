@@ -52,7 +52,7 @@ public class LogInNurseController {
     @FXML
     void actionBack(ActionEvent event) {
     	 try{
- 			Parent root = FXMLLoader.load(getClass().getResource("SecondInteractionNurse.fxml")); //falta fxml de menunurse
+ 			Parent root = FXMLLoader.load(getClass().getResource("SecondInteractionNurse.fxml")); 
  			Scene scene = new Scene(root);
  			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
  		
@@ -66,6 +66,7 @@ public class LogInNurseController {
 
     @FXML
 	void actionLogin(ActionEvent event) {
+    	
 		Window owner = loginButton.getScene().getWindow();
 		if (userText.getText().isEmpty()) {
 			showAlert(Alert.AlertType.ERROR, owner, "Error!", "Please enter your email");
@@ -79,17 +80,22 @@ public class LogInNurseController {
 		String password = passText.getText();
 
 		User user = userman.checkPassword(username, password);
-		if (user == null) {
+		/*if (user == null) {
 			infoMessage("Please enter correct username or password", null, "Failed");
 		} else {
-			infoMessage("Successfull log in !!", null, "Failed");
-		}
-		
-		/*try {
-		menuman.login();
-		}catch(Exception e) {
-			e.printStackTrace();
+			infoMessage("Successfull log in !!", null, "Message");
 		}*/
+		
+		 try{
+	  			Parent root = FXMLLoader.load(getClass().getResource("MainMenuDoctor.fxml")); 
+	  			Scene scene = new Scene(root);
+	  			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+	  		
+	  			stage.setScene(scene);
+	  			stage.show();
+	  		} catch(Exception e) {
+	  			e.printStackTrace();
+	  		}
 		
 		
 	}

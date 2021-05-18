@@ -72,7 +72,7 @@ public class SecondInteractionNurseController {
 	    void actionRegisterNurse(ActionEvent event) {
 	    	 try{
 	 			
-	 			Parent root = FXMLLoader.load(getClass().getResource("RegisterNurse.fxml"));
+	    		 Parent root = FXMLLoader.load(getClass().getResource("RegisterNurse.fxml"));
 	 			Scene scene = new Scene(root);
 	 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 	 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();

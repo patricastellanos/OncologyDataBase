@@ -61,7 +61,9 @@ public class RegisterNurseController {
     
    
     @FXML
-   	void actionRegister(ActionEvent event) {
+   	void actionRegisterNurse(ActionEvent event) {
+    	
+
    		Window owner = registerNurse.getScene().getWindow();
    		if((username.getText().isEmpty())) {
    			showAlert(Alert.AlertType.ERROR, owner, "Error!", "Please enter your email");
@@ -84,16 +86,27 @@ public class RegisterNurseController {
    			return;
    		}
    		
-   		Role nurse=new Role();
+   		Role nurseRole=new Role(3, "nurse");
    		MessageDigest md;
 		try {
 			md = MessageDigest.getInstance("MD5");
 			md.update(password.getBytes());
 	   		byte[] hash = md.digest();
-	   		User user = new User(username,hash,nurse);
+	   		User user = new User(username,hash,nurseRole);
 	   		userman.newUser(user);
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try{
+			Parent root = FXMLLoader.load(getClass().getResource("MainMenuDoctor.fxml")); //nurse 
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
    		
@@ -128,9 +141,11 @@ public class RegisterNurseController {
     }
 
     @FXML
-    void actionRegisterNurse(ActionEvent event) {
+    void actionUsername(ActionEvent event) {
 
     }
+    
+    
 
 }
 
