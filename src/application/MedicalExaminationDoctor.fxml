@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LogInDoctorController">
+<AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MedicalExaminationDoctorController">
    <children>
       <AnchorPane prefHeight="446.0" prefWidth="671.0" style="-fx-background-color: pink;">
          <children>
@@ -101,7 +101,8 @@
                   <Font size="30.0" />
                </font>
             </Text>
-            <Button layoutX="369.0" layoutY="79.0" mnemonicParsing="false" text="See the medical examination of a patient" />
+            <Button fx:id="seeMedExam" layoutX="369.0" layoutY="79.0" mnemonicParsing="false" onAction="#actionSeeMedExam" text="See the medical examination of a patient" />
+            <Button fx:id="addMedExam" layoutX="369.0" layoutY="134.0" mnemonicParsing="false" onAction="#actionAddMedExam" text="Add a medical examination" />
          </children>
       </AnchorPane>
       <Button fx:id="exitButton" layoutX="78.0" layoutY="375.0" mnemonicParsing="false" onAction="#actionExit" text="Exit" />

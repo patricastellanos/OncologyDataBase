@@ -10,7 +10,6 @@
    <children>
       <AnchorPane prefHeight="446.0" prefWidth="671.0" style="-fx-background-color: pink;">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fitHeight="446.0" fitWidth="674.0" layoutX="-1.0" opacity="0.58">
                <image>
                   <Image url="@../../../../OneDrive/Imágenes/methods.jpg" />
