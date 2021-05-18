@@ -20,9 +20,9 @@
                </image>
             </ImageView>
             <Button fx:id="backButton" layoutX="546.0" layoutY="395.0" mnemonicParsing="false" onAction="#actionBack" text="Back" />
-            <TextField layoutX="150.0" layoutY="100.0" text="Name" />
-            <TextField layoutX="337.0" layoutY="100.0" text="Surname" />
-            <MenuBar layoutX="150.0" layoutY="176.0">
+            <TextField fx:id="name" layoutX="150.0" layoutY="100.0" text="Name" />
+            <TextField fx:id="surname" layoutX="337.0" layoutY="100.0" text="Surname" />
+            <MenuBar fx:id="sex" layoutX="150.0" layoutY="176.0">
                <menus>
                   <Menu mnemonicParsing="false" text="Sex">
                      <items>
@@ -32,8 +32,8 @@
                   </Menu>
                </menus>
             </MenuBar>
-            <TextField layoutX="150.0" layoutY="137.0" text="Date of birth" />
-            <MenuBar layoutX="150.0" layoutY="210.0">
+            <TextField fx:id="dob" layoutX="150.0" layoutY="137.0" text="Date of birth" />
+            <MenuBar fx:id="location" layoutX="150.0" layoutY="210.0">
               <menus>
                 <Menu mnemonicParsing="false" text="Location">
                   <items>
@@ -43,7 +43,7 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <MenuBar layoutX="150.0" layoutY="249.0">
+            <MenuBar fx:id="actualState" layoutX="150.0" layoutY="249.0">
               <menus>
                 <Menu mnemonicParsing="false" text="Actual state">
                   <items>

@@ -7,37 +7,30 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class AddPatientDoctorController {
+public class AddMedicalExaminationDoctorController {
 
     @FXML
     private Button backButton;
 
     @FXML
-    private Button addP;
+    private Button add;
 
     @FXML
     private Button exitButton;
+    
     @FXML
-    private TextField name;
+    private TextField id;
 
     @FXML
-    private TextField surname;
+    private TextField date;
 
     @FXML
-    private MenuBar sex;
-
+    private TextField type;
     @FXML
-    private TextField dob;
-
-    @FXML
-    private MenuBar location;
-
-    @FXML
-    private MenuBar actualState;
+    private TextField diagnosis;
 
     @FXML
     void actionAdd(ActionEvent event) {
@@ -47,7 +40,7 @@ public class AddPatientDoctorController {
     @FXML
     void actionBack(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("PatientDoctor.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsDoctor.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
@@ -57,6 +50,7 @@ public class AddPatientDoctorController {
 			e.printStackTrace();
 		}
 
+
     }
 
     @FXML
@@ -64,5 +58,4 @@ public class AddPatientDoctorController {
     	System.exit(0);
 
     }
-
 }
