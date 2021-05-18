@@ -64,55 +64,36 @@ public class LogInDoctorController {
 
     
     public void actionLogin(ActionEvent event) throws SQLException{
-    	/*if(userText.getText().equals("")&& passText.getText().equals("123")) {
-			try {
-
-				Parent root = FXMLLoader.load(getClass().getResource("LoginDoctor.fxml"));
-				Scene scene = new Scene(root);
-				// scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-				Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-				stage.setScene(scene);
-				stage.show();
-				
-				passText.clear();
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-		}*/
     	
     	Window owner = loginButton.getScene().getWindow();
-    	/*if (userText.getText().isEmpty()) {
-    		showAlert(Alert.AlertType.ERROR, owner,"Error!", "Please enter your email");
-    		return;
-    	}*/
-    	if (passText.getText().isEmpty()) {
-    		showAlert(Alert.AlertType.ERROR, owner,"Error!", "Please enter your password again");
-    		return;
-    	}
-    	String username = userText.getText();
-    	String password = passText.getText();
-    	
-       User doctor = userman.checkPassword(username, password);
-       if(doctor==null) {
-    	   infoMessage("Please enter correct username or password", null, "Failed");
-       }else {
-    	   infoMessage("Successfull log in !!", null, "Failed");
-    	   try{
-   			
-   			Parent root = FXMLLoader.load(getClass().getResource("DoctorOptions.fxml"));
-   			Scene scene = new Scene(root);
-   			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-   			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-   		
-   			stage.setScene(scene);
-   			stage.show();
-   		} catch(Exception e) {
-   			e.printStackTrace();
-   		}
-       }
+		if (userText.getText().isEmpty()) {
+			showAlert(Alert.AlertType.ERROR, owner, "Error!", "Please enter your email");
+			return;
+		}
+		if (passText.getText().isEmpty()) {
+			showAlert(Alert.AlertType.ERROR, owner, "Error!", "Please enter your password again");
+			return;
+		}
+		String username = userText.getText();
+		String password = passText.getText();
+
+		User user = userman.checkPassword(username, password);
+		if (user == null) {
+			infoMessage("Please enter correct username or password", null, "Failed");
+		} else {
+			infoMessage("Successfull log in !!", null, "Message");
+		}
+		
+		 try{
+	  			Parent root = FXMLLoader.load(getClass().getResource("MainMenuDoctor.fxml")); 
+	  			Scene scene = new Scene(root);
+	  			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+	  		
+	  			stage.setScene(scene);
+	  			stage.show();
+	  		} catch(Exception e) {
+	  			e.printStackTrace();
+	  		}
 
     }
 

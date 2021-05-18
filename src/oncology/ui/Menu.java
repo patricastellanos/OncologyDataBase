@@ -3,6 +3,7 @@ package oncology.ui;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.security.MessageDigest;
+import java.util.List;
 
 import actions.SQLMaster;
 import oncology.db.interfaces.DBMaster;
@@ -65,12 +66,31 @@ public class Menu {
 	Role role = userman.getRole(id);
 	//System.out.println(role);
 	// Generate the hash
+	
+	List<User> usersList= role.getUser();
+	
+	for (int i = 0; i < usersList.size(); i++) {
+		for (int j = i + 1; j < usersList.size(); j++) {
+			if (usersList.get(i).getEmail().equalsIgnoreCase(usersList.get(j).getEmail())) {
+				
+				break;
+			}
+			else {
+				continue;
+			}
+		}
+		System.out.println("ERROR, existing user");//TODO
+		
+	} 
+
 	MessageDigest md = MessageDigest.getInstance("MD5");
 	md.update(password.getBytes());
 	byte[] hash = md.digest();
-	User user = new User(email,hash,role);
+	User user = new User(email, hash, role);
 	userman.newUser(user);
 }
+
+
 
 	 
 	public static void login() throws Exception {

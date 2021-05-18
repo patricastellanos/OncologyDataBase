@@ -80,11 +80,11 @@ public class LogInNurseController {
 		String password = passText.getText();
 
 		User user = userman.checkPassword(username, password);
-		/*if (user == null) {
+		if (user == null) {
 			infoMessage("Please enter correct username or password", null, "Failed");
 		} else {
 			infoMessage("Successfull log in !!", null, "Message");
-		}*/
+		}
 		
 		 try{
 	  			Parent root = FXMLLoader.load(getClass().getResource("MainMenuDoctor.fxml")); 

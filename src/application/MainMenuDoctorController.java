@@ -40,12 +40,6 @@ public class MainMenuDoctorController {
 
     @FXML
     private Button backButton;
-
-    @FXML
-    void actionAllPatients(ActionEvent event) {
-
-    }
-
     @FXML
     void actionBack(ActionEvent event) {
     	try{
@@ -60,12 +54,6 @@ public class MainMenuDoctorController {
 		}
 
     }
-
-    @FXML
-    void actionCancer(ActionEvent event) {
-
-    }
-
     @FXML
     void actionExit(ActionEvent event) {
     	System.exit(0);
@@ -73,27 +61,116 @@ public class MainMenuDoctorController {
     }
 
     @FXML
+    void actionAllPatients(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsDoctor.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+    	
+    }
+
+
+
+    @FXML
+    void actionCancer(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("CancerDoctor.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+
+    }
+
+
+
+    @FXML
     void actionFamilyHistory(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("FamilyHistoryDoctor.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+    	
 
     }
 
     @FXML
     void actionMedicalExamination(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("MedicalExaminationDoctor.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+    	
 
     }
 
     @FXML
     void actionPatient(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("PatientDoctor.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+    	
 
     }
 
     @FXML
     void actionSymp(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("SymptomsDoctor.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+    	
 
     }
 
     @FXML
     void actionTreatment(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("TreatmentDoctor.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+    	
 
     }
 

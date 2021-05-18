@@ -1,3 +1,4 @@
+
 package oncology.db.jpa;
 
 import java.security.MessageDigest;
@@ -80,9 +81,9 @@ public class JPAUserMaster implements UserMaster {
 		} catch (NoResultException nre) {
 			return null;
 		}
-		return null;
+		return null ;
 	}
-
+ 
 
 
 }
