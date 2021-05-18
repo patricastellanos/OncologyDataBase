@@ -72,6 +72,7 @@ public class RegisterDoctorController {
 
     @FXML
     void actionRegister(ActionEvent event) {
+    	
 
     }
 

@@ -1,17 +1,19 @@
 package application;
 
-import java.awt.event.ActionEvent;
-
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 public class MainMenuDoctorController {
 
     @FXML
-    private Button medExamButton;
+    private Button allPatientsButton;
 
     @FXML
     private Button famHistoryButton;
+
+    @FXML
+    private Button medExamButton;
 
     @FXML
     private Button cancerButton;
@@ -20,13 +22,16 @@ public class MainMenuDoctorController {
     private Button treatButton;
 
     @FXML
+    private Button allCancersButton;
+
+    @FXML
+    private Button PatientButton;
+
+    @FXML
+    private Button SympButton;
+
+    @FXML
     private Button exitButton;
-
-    @FXML
-    private Button patientButton;
-
-    @FXML
-    private Button allPatientsButton;
 
     @FXML
     private Button backButton;
@@ -63,6 +68,11 @@ public class MainMenuDoctorController {
 
     @FXML
     void actionPatient(ActionEvent event) {
+
+    }
+
+    @FXML
+    void actionSymp(ActionEvent event) {
 
     }
 

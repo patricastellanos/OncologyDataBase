@@ -100,7 +100,7 @@ public class RegisterNurseController {
 		}
 		
 		try{
-			Parent root = FXMLLoader.load(getClass().getResource("MainMenuDoctor.fxml")); //nurse 
+			Parent root = FXMLLoader.load(getClass().getResource("LogInNurse.fxml")); //nurse 
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
