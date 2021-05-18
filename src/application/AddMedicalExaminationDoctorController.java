@@ -40,7 +40,7 @@ public class AddMedicalExaminationDoctorController {
     @FXML
     void actionBack(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsDoctor.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("MedicalExaminationDoctor.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
