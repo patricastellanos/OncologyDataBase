@@ -22,8 +22,6 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button fx:id="addP" layoutX="209.0" layoutY="124.0" mnemonicParsing="false" onAction="#actionAddP" text="Add a patient" />
-            <Button fx:id="removeP" layoutX="209.0" layoutY="163.0" mnemonicParsing="false" onAction="#actionRemoveP" text="Remove a patient" />
             <Button fx:id="searchP" layoutX="209.0" layoutY="211.0" mnemonicParsing="false" onAction="#actionSearchP" text="Search a patient" />
             <Button fx:id="updateP" layoutX="209.0" layoutY="255.0" mnemonicParsing="false" onAction="#actionUpdateP" text="Update cancer's patient state" />
             <Text layoutX="65.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="P" wrappingWidth="17.487091064453125">
@@ -61,6 +59,8 @@
                   <Font size="30.0" />
                </font>
             </Text>
+            <Button fx:id="removeP" layoutX="209.0" layoutY="172.0" mnemonicParsing="false" onAction="#actionRemoveP" text="Remove a patient" />
+            <Button fx:id="addP" layoutX="209.0" layoutY="133.0" mnemonicParsing="false" onAction="#actionAddP" text="Add a patient" />
          </children>
       </AnchorPane>
       <Button fx:id="exitButton" layoutX="78.0" layoutY="375.0" mnemonicParsing="false" onAction="#actionExit" text="Exit" />

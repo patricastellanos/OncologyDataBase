@@ -19,9 +19,6 @@
                   <Image url="@../../../../OneDrive/Imágenes/methods.jpg" />
                </image>
             </ImageView>
-            <Button fx:id="backButton" layoutX="546.0" layoutY="395.0" mnemonicParsing="false" onAction="#actionBack" text="Back" />
-            <TextField fx:id="name" layoutX="150.0" layoutY="100.0" text="Name" />
-            <TextField fx:id="surname" layoutX="337.0" layoutY="100.0" text="Surname" />
             <MenuBar fx:id="sex" layoutX="150.0" layoutY="176.0">
                <menus>
                   <Menu mnemonicParsing="false" text="Sex">
@@ -58,6 +55,9 @@
               </menus>
             </MenuBar>
             <Button fx:id="addP" layoutX="547.0" layoutY="311.0" mnemonicParsing="false" onAction="#actionAdd" text="Add" />
+            <Button fx:id="backButton" layoutX="546.0" layoutY="395.0" mnemonicParsing="false" onAction="#actionBack" text="Back" />
+            <TextField fx:id="name" layoutX="150.0" layoutY="100.0" text="Name" />
+            <TextField fx:id="surname" layoutX="337.0" layoutY="100.0" text="Surname" />
          </children>
       </AnchorPane>
       <Button fx:id="exitButton" layoutX="88.0" layoutY="385.0" mnemonicParsing="false" onAction="#actionExit" text="Exit" />

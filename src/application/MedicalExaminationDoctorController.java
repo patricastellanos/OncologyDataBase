@@ -60,8 +60,6 @@ public class MedicalExaminationDoctorController {
 
     }
 
- 
-
     @FXML
     void actionSeeMedExam(ActionEvent event) {
     	try{
