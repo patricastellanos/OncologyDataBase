@@ -52,6 +52,11 @@ public class CancerDoctorController {
 		}
 
     }
+    @FXML
+    void actionExit(ActionEvent event) {
+    	System.exit(0);
+
+    }
 
     @FXML
     void actionConvertXML(ActionEvent event) {
@@ -63,11 +68,7 @@ public class CancerDoctorController {
 
     }
 
-    @FXML
-    void actionExit(ActionEvent event) {
-    	System.exit(0);
-
-    }
+   
 
     @FXML
     void actionSeeCancer(ActionEvent event) {

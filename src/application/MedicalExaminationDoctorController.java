@@ -1,6 +1,6 @@
 package application;
 
-import java.awt.event.ActionEvent;
+import javafx.event.ActionEvent;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,12 +23,6 @@ public class MedicalExaminationDoctorController {
 
     @FXML
     private Button backButton;
-
-    @FXML
-    void actionAddMedExam(ActionEvent event) {
-
-    }
-
     @FXML
     void actionBack(ActionEvent event) {
     	try{
@@ -51,7 +45,35 @@ public class MedicalExaminationDoctorController {
     }
 
     @FXML
+    void actionAddMedExam(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("AddMedicalExaminationDoctor.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+    	
+
+    }
+
+ 
+
+    @FXML
     void actionSeeMedExam(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("SeeMedicalExaminationDoctor.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 
     }
 
