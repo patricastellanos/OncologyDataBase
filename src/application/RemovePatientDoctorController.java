@@ -54,9 +54,8 @@ public class RemovePatientDoctorController {
 	@FXML
 	void actionRemove(ActionEvent event) {
 		db = new SQLMaster();
-		//db.removePatient(Integer.parseInt(id));
+		db.removePatient(Integer.parseInt(id.getText()));
 		
-
 	}
     @FXML
     void actionSeeP(ActionEvent event) {
