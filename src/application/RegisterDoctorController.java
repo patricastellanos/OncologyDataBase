@@ -99,54 +99,51 @@ public class RegisterDoctorController {
    			return;
    		}
    		
+   		try{
    		Role doctorRole=new Role(2, "doctor");
-   		List<User> usersList= doctorRole.getUser();
+   		boolean userRepeated= userman.userNameTaken(username);
    		
-   		for (int i = 0; i < usersList.size(); i++) {
-   			for (int j = i + 1; j < usersList.size(); j++) {
-   				if (usersList.get(i).getEmail().equalsIgnoreCase(usersList.get(j).getEmail())) {	
-   					break;
-   				}
-   				else {
-   					continue;
-   				}
-   			}
+   		if(userRepeated) {
+   			infoMessage("ERROR, existing user", null, "Failed");
    			
-   			infoMessage("Existing user", null, "Failed");
-   		} 
-   		MessageDigest md;
-		try {
-			md = MessageDigest.getInstance("MD5");
-			md.update(password.getBytes());
-	   		byte[] hash = md.digest();
-	   		User user = new User(username,hash,doctorRole);
-	   		userman.newUser(user);
-		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+   			
+   		}else {
+
+   		MessageDigest md = MessageDigest.getInstance("MD5");
+   		md.update(password.getBytes());
+   		byte[] hash = md.digest();
+   		User user = new User(username, hash, doctorRole);
+   		userman.newUser(user);
+   		
+   		
+		Parent root = FXMLLoader.load(getClass().getResource("MainMenuDoctor.fxml")); 
+		Scene scene = new Scene(root);
+		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
-		try{
-			Parent root = FXMLLoader.load(getClass().getResource("MainMenuDoctor.fxml")); 
-			Scene scene = new Scene(root);
-			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		
-			stage.setScene(scene);
-			stage.show();
+		stage.setScene(scene);
+		stage.show();
+   		}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 
     }
 
-	private void infoMessage(String string, Object object, String string2) {
-		// TODO Auto-generated method stub
-		
-	}
+    public static void infoMessage(String infoMessage, String headerText, String title) {
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setContentText(infoMessage);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.showAndWait();
+    }
 
-	private void showAlert(AlertType error, Window owner, String string, String string2) {
-		// TODO Auto-generated method stub
-		
-	}
+    public static void showAlert(Alert.AlertType alertType, Window owner, String title, String message ) {
+    	Alert alert = new Alert(alertType);
+    	alert.setTitle(title);
+    	alert.setHeaderText(null);
+    	alert.setContentText(message);
+    	alert.initOwner(owner);
+    	alert.show();
+    }
 
 }

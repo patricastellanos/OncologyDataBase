@@ -59,6 +59,20 @@ public class JPAUserMaster implements UserMaster {
 		return (Role) q.getSingleResult();
 
 	}
+	
+	@Override
+	public boolean userNameTaken(String username) {
+		Query q = em.createNativeQuery("SELECT * FROM users WHERE email = ?", User.class);
+		q.setParameter(1, username);
+		List<User> userList= (List) q.getResultList();
+		if(userList.isEmpty()) {
+			return false;
+		}
+		else {
+			return true;
+		}
+		
+	}
 
 	@Override
 	public List<Role> getRolesList() {

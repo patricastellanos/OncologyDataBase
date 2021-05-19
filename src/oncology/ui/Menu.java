@@ -67,26 +67,17 @@ public class Menu {
 	//System.out.println(role);
 	// Generate the hash
 	
-	List<User> usersList= role.getUser();
-	
-	for (int i = 0; i < usersList.size(); i++) {
-		for (int j = i + 1; j < usersList.size(); j++) {
-			if (usersList.get(i).getEmail().equalsIgnoreCase(usersList.get(j).getEmail())) {	
-				break;
-			}
-			else {
-				continue;
-			}
-		}
-		System.out.println("ERROR, existing user");//TODO
-		
-	} 
+	boolean userRepeated= userman.userNameTaken(email);
+	if(userRepeated==true) {
+		System.out.println("ERROR, exiting user");
+	}else {
 
 	MessageDigest md = MessageDigest.getInstance("MD5");
 	md.update(password.getBytes());
 	byte[] hash = md.digest();
 	User user = new User(email, hash, role);
 	userman.newUser(user);
+	}
 }
 
 
