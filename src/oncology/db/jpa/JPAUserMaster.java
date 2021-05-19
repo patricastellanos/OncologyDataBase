@@ -68,20 +68,24 @@ public class JPAUserMaster implements UserMaster {
 
 	@Override
 	public User checkPassword(String email, String password) {
+		
+		Query q=null;
+		
 		try {
 			MessageDigest md = MessageDigest.getInstance("MD5");
 			md.update(password.getBytes());
 			byte[] hash = md.digest();
-			Query q = em.createNativeQuery("SELECT * FROM users WHERE email = ? AND password = ?", User.class);
+			 q = em.createNativeQuery("SELECT * FROM users WHERE email = ? AND password = ?", User.class);
 			q.setParameter(1, email);
 			q.setParameter(2, hash);
+			
 			return (User) q.getSingleResult();
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		} catch (NoResultException nre) {
 			return null;
 		}
-		return null ;
+		return (User) q.getSingleResult();
 	}
  
 

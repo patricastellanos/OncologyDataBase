@@ -78,6 +78,7 @@ public class LogInDoctorController {
 		String password = passText.getText();
 
 		User user = userman.checkPassword(username, password);
+		
 		if (user == null) {
 			infoMessage("Please enter correct username or password", null, "Failed");
 		} else {

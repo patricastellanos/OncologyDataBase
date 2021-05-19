@@ -79,11 +79,11 @@ public class RegisterNurseController {
    			showAlert(Alert.AlertType.ERROR, owner, "Error!", "Please enter your password again");
    			return;
    		}
-   		String username = this.username.getText();
-   		String password = this.password.getText();
-   		String confirmPassword = this.confirmPassword.getText();
+   		String name = username.getText();
+   		String pass = password.getText();
+   		String confirmPass = confirmPassword.getText();
    		
-   		if(!password.equals(confirmPassword)) {
+   		if(!pass.equals(confirmPass)) {
    			showAlert(Alert.AlertType.ERROR, owner, "Error!", "Please enter your password again");
    			return;
    		}
@@ -92,9 +92,9 @@ public class RegisterNurseController {
    		MessageDigest md;
 		try {
 			md = MessageDigest.getInstance("MD5");
-			md.update(password.getBytes());
+			md.update(pass.getBytes());
 	   		byte[] hash = md.digest();
-	   		User user = new User(username,hash,nurseRole);
+	   		User user = new User(name,hash,nurseRole);
 	   		userman.newUser(user);
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
