@@ -29,7 +29,7 @@
                </menus>
             </MenuBar>
             <TextField fx:id="dob" layoutX="150.0" layoutY="137.0" text="Date of birth" />
-            <MenuBar fx:id="location" layoutX="150.0" layoutY="210.0">
+            <MenuBar fx:id="loc" layoutX="150.0" layoutY="210.0">
               <menus>
                 <Menu mnemonicParsing="false" text="Location">
                   <items>

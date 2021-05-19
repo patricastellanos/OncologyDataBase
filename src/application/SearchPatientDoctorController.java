@@ -1,5 +1,8 @@
 package application;
 
+import com.gluonhq.charm.glisten.control.TextField;
+
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +22,13 @@ public class SearchPatientDoctorController {
 
     @FXML
     private Button exitButton;
+    
+    @FXML
+    private TextField name;
+
+    @FXML
+    private TextField surname;
+
 
     @FXML
     void actionBack(ActionEvent event) {

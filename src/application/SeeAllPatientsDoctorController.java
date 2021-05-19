@@ -1,6 +1,7 @@
 package application;
 
 import javafx.application.Application;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -54,6 +55,7 @@ public class SeeAllPatientsDoctorController {
     	sexCol.setCellValueFactory(new PropertyValueFactory<>("sex"));
     	locationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
     	actualStateCol.setCellValueFactory(new PropertyValueFactory<>("actual_state"));
+    	
     	
         tableP.getColumns().addAll( idCol, nameCol, surNameCol, doBCol, sexCol, locationCol, actualStateCol);
         tableP.getItems().add(new Patient("pepe", "perez", "male", new Date(1935, 05, 06),"home","complex_care"));
