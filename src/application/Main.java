@@ -28,6 +28,10 @@ public class Main extends Application {
 	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	private static UserMaster userman = new JPAUserMaster();
 	
+	public static DBMaster getdbMaster() {
+		return dbmaster;
+		
+	}
 	@Override
 	public void start(Stage firstStage) {
 		 try{
