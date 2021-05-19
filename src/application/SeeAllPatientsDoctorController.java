@@ -1,7 +1,7 @@
 package application;
 
 import javafx.application.Application;
-
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +17,11 @@ import oncology.db.pojos.Patient;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.List;
 
 import actions.SQLMaster;
@@ -38,29 +43,31 @@ public class SeeAllPatientsDoctorController {
     	db = new SQLMaster();
     	List<Patient> patients_list = db.printPatients();
     	
+    	
     	tableP.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     	
-    	TableColumn<Patient, Integer> idCol = new TableColumn<>("ID");
+    	TableColumn<Patient, String> idCol = new TableColumn<>("ID");
     	TableColumn<Patient, String> nameCol = new TableColumn<>("Name");
     	TableColumn<Patient, String> surNameCol = new TableColumn<>("SurName");
-    	TableColumn<Patient, Date> doBCol = new TableColumn<>("Date of birth");
+    	TableColumn<Patient, String> doBCol = new TableColumn<>("Date of birth");
     	TableColumn<Patient, String> sexCol = new TableColumn<>("Sex");
     	TableColumn<Patient, String> locationCol = new TableColumn<>("Location");
     	TableColumn<Patient, String> actualStateCol = new TableColumn<>("Actual State");
     	
-    	idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+    	idCol.setCellValueFactory(data -> new SimpleStringProperty(Integer.toString(data.getValue().getId_patient())));
     	nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
     	surNameCol.setCellValueFactory(new PropertyValueFactory<>("surname"));
-    	doBCol.setCellValueFactory(new PropertyValueFactory<>("birth_date"));
+    	DateFormat dateformat=new SimpleDateFormat("yyyy-mm-dd");
+    	doBCol.setCellValueFactory(data -> new SimpleStringProperty(dateformat.format(data.getValue().getDate_birth())));
     	sexCol.setCellValueFactory(new PropertyValueFactory<>("sex"));
     	locationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
     	actualStateCol.setCellValueFactory(new PropertyValueFactory<>("actual_state"));
     	
     	
         tableP.getColumns().addAll( idCol, nameCol, surNameCol, doBCol, sexCol, locationCol, actualStateCol);
-        tableP.getItems().add(new Patient("pepe", "perez", "male", new Date(1935, 05, 06),"home","complex_care"));
+        //tableP.getItems().add(new Patient(1,"pepe", "perez", "male", new Date(1935, 05, 06),"home","complex_care"));
         tableP.getItems().addAll(patients_list);
-        System.out.println("Nombre primer paciente" + patients_list.get(0).getName());
+        //System.out.println("Nombre primer paciente" + patients_list.get(0).getName());
     }
     
     @FXML

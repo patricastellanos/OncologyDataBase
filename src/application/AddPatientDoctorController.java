@@ -1,5 +1,6 @@
 package application;
 
+import actions.SQLMaster;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,12 +39,15 @@ public class AddPatientDoctorController {
 
     @FXML
     private MenuBar actualState;
+    
+    private SQLMaster db;
 
     @FXML
     void actionAdd(ActionEvent event) {
+    	
 
     }
-
+    
     @FXML
     void actionBack(ActionEvent event) {
     	try{
