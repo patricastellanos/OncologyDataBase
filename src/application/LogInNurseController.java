@@ -25,10 +25,6 @@ public class LogInNurseController {
 	private static UserMaster userman = new JPAUserMaster();
 	
 
-    public LogInNurseController() {
-		
-	}
-
 	@FXML
     private PasswordField passText;
 
@@ -83,11 +79,11 @@ public class LogInNurseController {
 		if (user == null) {
 			infoMessage("Please enter correct username or password", null, "Failed");
 		} else {
-			infoMessage("Successfull log in !!", null, "Message");
+			infoMessage("Successfull log in!!", null, "Message");
 		}
 		
 		 try{
-	  			Parent root = FXMLLoader.load(getClass().getResource("MainMenuDoctor.fxml")); 
+	  			Parent root = FXMLLoader.load(getClass().getResource("MainMenuNurse.fxml")); 
 	  			Scene scene = new Scene(root);
 	  			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 	  		
@@ -99,10 +95,7 @@ public class LogInNurseController {
 		
 		
 	}
-		
-
-
-    
+		 
 
     @FXML
     void actionPassword(ActionEvent event) {

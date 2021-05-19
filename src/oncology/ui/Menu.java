@@ -71,8 +71,7 @@ public class Menu {
 	
 	for (int i = 0; i < usersList.size(); i++) {
 		for (int j = i + 1; j < usersList.size(); j++) {
-			if (usersList.get(i).getEmail().equalsIgnoreCase(usersList.get(j).getEmail())) {
-				
+			if (usersList.get(i).getEmail().equalsIgnoreCase(usersList.get(j).getEmail())) {	
 				break;
 			}
 			else {
