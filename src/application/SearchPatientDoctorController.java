@@ -2,7 +2,7 @@ package application;
 
 import com.gluonhq.charm.glisten.control.TextField;
 
-
+import actions.SQLMaster;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,7 +28,8 @@ public class SearchPatientDoctorController {
 
     @FXML
     private TextField surname;
-
+    
+    private SQLMaster db;
 
     @FXML
     void actionBack(ActionEvent event) {
@@ -53,6 +54,7 @@ public class SearchPatientDoctorController {
 
     @FXML
     void actionSearch(ActionEvent event) {
+    	db.searchPatientByName(name.getText(), surname.getText());
 
     }
 
