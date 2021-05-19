@@ -34,7 +34,7 @@ public class AddPatientDoctorController {
     private TextField dob;
 
     @FXML
-    private MenuBar location;
+    private MenuBar loc;
 
     @FXML
     private MenuBar actualState;
