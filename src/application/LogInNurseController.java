@@ -25,10 +25,6 @@ public class LogInNurseController {
 	private static UserMaster userman = new JPAUserMaster();
 	
 
-    public LogInNurseController() {
-		
-	}
-
 	@FXML
     private PasswordField passText;
 
@@ -83,7 +79,7 @@ public class LogInNurseController {
 		if (user == null) {
 			infoMessage("Please enter correct username or password", null, "Failed");
 		} else {
-			infoMessage("Successfull log in !!", null, "Message");
+			infoMessage("Successfull log in!!", null, "Message");
 		}
 		
 		 try{
