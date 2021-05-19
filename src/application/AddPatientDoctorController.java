@@ -1,5 +1,7 @@
 package application;
 
+import java.sql.Date;
+
 import actions.SQLMaster;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,7 +12,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import oncology.db.pojos.Patient;
 
 public class AddPatientDoctorController {
 
@@ -44,6 +48,11 @@ public class AddPatientDoctorController {
 
     @FXML
     void actionAdd(ActionEvent event) {
+    	db = new SQLMaster();
+    	Patient p=null;
+
+    	p= new Patient(name.getText(), surname.getText(),sex.getAccessibleText(),Date.valueOf(dob.getText()),loc.getTypeSelector(),actualState.getTypeSelector());
+    	db.addPatient(p);
     	
 
     }
