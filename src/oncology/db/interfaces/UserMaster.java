@@ -10,6 +10,7 @@ public interface UserMaster {
 	public void newUser(User u);
 	public void newRole(Role r);
 	public Role getRole(int id);
+	public boolean userNameTaken(String userName);
 	public List<Role> getRolesList();
 	public User checkPassword(String email, String password);
 }
