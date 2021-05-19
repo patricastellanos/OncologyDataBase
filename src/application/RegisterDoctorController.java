@@ -2,6 +2,7 @@ package application;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import com.gluonhq.charm.glisten.control.TextField;
 
@@ -45,6 +46,17 @@ public class RegisterDoctorController {
 
     @FXML
     void actionBack(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("SecondInteractionDoctor.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+
 
     }
 
@@ -55,7 +67,7 @@ public class RegisterDoctorController {
 
     @FXML
     void actionExit(ActionEvent event) {
-
+    	System.exit(0);
     }
 
     @FXML
@@ -88,6 +100,20 @@ public class RegisterDoctorController {
    		}
    		
    		Role doctorRole=new Role(2, "doctor");
+   		List<User> usersList= doctorRole.getUser();
+   		
+   		for (int i = 0; i < usersList.size(); i++) {
+   			for (int j = i + 1; j < usersList.size(); j++) {
+   				if (usersList.get(i).getEmail().equalsIgnoreCase(usersList.get(j).getEmail())) {	
+   					break;
+   				}
+   				else {
+   					continue;
+   				}
+   			}
+   			
+   			infoMessage("Existing user", null, "Failed");
+   		} 
    		MessageDigest md;
 		try {
 			md = MessageDigest.getInstance("MD5");
@@ -112,6 +138,11 @@ public class RegisterDoctorController {
 		}
 
     }
+
+	private void infoMessage(String string, Object object, String string2) {
+		// TODO Auto-generated method stub
+		
+	}
 
 	private void showAlert(AlertType error, Window owner, String string, String string2) {
 		// TODO Auto-generated method stub

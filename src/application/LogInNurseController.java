@@ -83,7 +83,7 @@ public class LogInNurseController {
 		}
 		
 		 try{
-	  			Parent root = FXMLLoader.load(getClass().getResource("MainMenuDoctor.fxml")); 
+	  			Parent root = FXMLLoader.load(getClass().getResource("MainMenuNurse.fxml")); 
 	  			Scene scene = new Scene(root);
 	  			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 	  		
@@ -95,10 +95,7 @@ public class LogInNurseController {
 		
 		
 	}
-		
-
-
-    
+		 
 
     @FXML
     void actionPassword(ActionEvent event) {
