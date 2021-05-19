@@ -49,9 +49,8 @@ public class AddPatientDoctorController {
     @FXML
     void actionAdd(ActionEvent event) {
     	db = new SQLMaster();
-    	Patient p=null;
 
-    	p= new Patient(name.getText(), surname.getText(),sex.getAccessibleText(),Date.valueOf(dob.getText()),loc.getTypeSelector(),actualState.getTypeSelector());
+    	Patient p= new Patient(name.getText(), surname.getText(),sex.getTypeSelector(),Date.valueOf(dob.getText()),loc.getTypeSelector(),actualState.getTypeSelector());
     	db.addPatient(p);
     	
 
