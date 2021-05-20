@@ -44,13 +44,22 @@ public class AddPatientDoctorController {
     @FXML
     private MenuBar actualState;
     
+    @FXML
+    private TextField patientSex;
+
+    @FXML
+    private TextField patientLocation;
+
+    @FXML
+    private TextField patientState;
+    
     private SQLMaster db;
 
     @FXML
     void actionAdd(ActionEvent event) {
     	db = new SQLMaster();
 
-    	Patient p= new Patient(name.getText(), surname.getText(),sex.getTypeSelector(),Date.valueOf(dob.getText()),loc.getTypeSelector(),actualState.getTypeSelector());
+    	Patient p= new Patient(name.getText(), surname.getText(),patientSex.getText(),Date.valueOf(dob.getText()),patientLocation.getText(),patientState.getText());
     	db.addPatient(p);
     	
 
