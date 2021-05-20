@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import oncology.db.interfaces.DBMaster;
 
 public class SearchPatientDoctorController {
 
@@ -29,8 +30,8 @@ public class SearchPatientDoctorController {
     @FXML
     private TextField surname;
     
-    private SQLMaster db;
-
+    private DBMaster db = Main.getdbMaster();
+    
     @FXML
     void actionBack(ActionEvent event) {
     	try{
@@ -54,6 +55,7 @@ public class SearchPatientDoctorController {
 
     @FXML
     void actionSearch(ActionEvent event) {
+    	
     	db.searchPatientByName(name.getText(), surname.getText());
 
     }

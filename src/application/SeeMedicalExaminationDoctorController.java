@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import oncology.db.interfaces.DBMaster;
 
 public class SeeMedicalExaminationDoctorController {
 
@@ -23,10 +24,15 @@ public class SeeMedicalExaminationDoctorController {
 
     @FXML
     private Button exitButton;
+    
+    @FXML
+    private Button seeP;
+    
+    private DBMaster db = Main.getdbMaster();
 
     @FXML
     void actionBack(ActionEvent event) {try{
-		Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsDoctor.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("MedicalExaminationDoctor.fxml"));
 		Scene scene = new Scene(root);
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 	
@@ -46,6 +52,23 @@ public class SeeMedicalExaminationDoctorController {
 
     @FXML
     void actionSee(ActionEvent event) {
+    	
+    	
+
+    	
+    }
+    @FXML
+    void actionSeeP(ActionEvent event) {
+    	try {
+    	Parent root = FXMLLoader.load(getClass().getResource("MedicalExaminationDoctor.fxml"));
+		Scene scene = new Scene(root);
+		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+	
+		stage.setScene(scene);
+		stage.show();
+	} catch(Exception e) {
+		e.printStackTrace();
+	}
 
     }
 

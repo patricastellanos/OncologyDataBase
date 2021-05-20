@@ -23,7 +23,7 @@
                   <Menu mnemonicParsing="false" text="Sex">
                      <items>
                         <MenuItem mnemonicParsing="false" text="Male" />
-                        <MenuItem mnemonicParsing="false" text="Hospital" />
+                        <MenuItem mnemonicParsing="false" text="Female" />
                      </items>
                   </Menu>
                </menus>
@@ -57,6 +57,9 @@
             <Button fx:id="backButton" layoutX="546.0" layoutY="395.0" mnemonicParsing="false" onAction="#actionBack" text="Back" />
             <TextField fx:id="name" layoutX="150.0" layoutY="100.0" text="Name" />
             <TextField fx:id="surname" layoutX="337.0" layoutY="100.0" text="Surname" />
+            <TextField fx:id="patientSex" layoutX="336.0" layoutY="176.0" />
+            <TextField fx:id="patientLocation" layoutX="336.0" layoutY="210.0" />
+            <TextField fx:id="patientState" layoutX="336.0" layoutY="249.0" />
          </children>
       </AnchorPane>
       <Button fx:id="exitButton" layoutX="88.0" layoutY="385.0" mnemonicParsing="false" onAction="#actionExit" text="Exit" />

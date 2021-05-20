@@ -4,10 +4,10 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import com.gluonhq.charm.glisten.control.TextField?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.UpdatePatientDoctorController">
    <children>
@@ -20,8 +20,8 @@
                </image>
             </ImageView>
             <Button fx:id="backButton" layoutX="546.0" layoutY="395.0" mnemonicParsing="false" onAction="#actionBack" text="Back" />
-            <TextField layoutX="241.0" layoutY="171.0" text="id" />
-            <Button fx:id="searchP" layoutX="535.0" layoutY="312.0" mnemonicParsing="false" onAction="#actionSearch" text="Update" />
+            <TextField fx:id="idPatient" layoutX="241.0" layoutY="171.0" promptText="id" />
+            <Button fx:id="updateP" layoutX="535.0" layoutY="312.0" mnemonicParsing="false" onAction="#actionUpdate" text="Update" />
             <MenuBar layoutX="241.0" layoutY="210.0">
                <menus>
                   <Menu mnemonicParsing="false" text="Actual state">
@@ -36,6 +36,8 @@
                   </Menu>
                </menus>
             </MenuBar>
+            <TextField fx:id="newState" layoutX="241.0" layoutY="246.0" promptText="NewState" />
+            <Button fx:id="seePatients" layoutX="539.0" layoutY="171.0" mnemonicParsing="false" onAction="#actionSeeP" text="See all patients" />
          </children>
       </AnchorPane>
       <Button fx:id="exitButton" layoutX="88.0" layoutY="385.0" mnemonicParsing="false" onAction="#actionExit" text="Exit" />
