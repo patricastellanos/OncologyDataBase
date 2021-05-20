@@ -87,35 +87,53 @@ public class RegisterNurseController {
    			return;
    		}
    		
-   		Role nurseRole=new Role(3, "nurse");
-   		MessageDigest md;
-		try {
-			md = MessageDigest.getInstance("MD5");
-			md.update(password.getBytes());
-	   		byte[] hash = md.digest();
-	   		User user = new User(username,hash,nurseRole);
-	   		userman.newUser(user);
-		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		try{
-			Parent root = FXMLLoader.load(getClass().getResource("MainMenuNurse.fxml")); 
-			Scene scene = new Scene(root);
-			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		
-			stage.setScene(scene);
-			stage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+   		try{
+   			Role nurseRole=new Role(3, "nurse");
+   	   		boolean userRepeated= userman.userNameTaken(username);
+   	   		
+   	   		if(userRepeated) {
+   	   			infoMessage("ERROR, existing user", null, "Failed");
+   	   			
+   	   			
+   	   		}else {
+
+   	   		MessageDigest md = MessageDigest.getInstance("MD5");
+   	   		md.update(password.getBytes());
+   	   		byte[] hash = md.digest();
+   	   		User user = new User(username, hash, nurseRole);
+   	   		userman.newUser(user);
+   	   		
+   	   		
+   			Parent root = FXMLLoader.load(getClass().getResource("MainMenuNurse.fxml")); 
+   			Scene scene = new Scene(root);
+   			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+   			
+   			stage.setScene(scene);
+   			stage.show();
+   	   		}
+   			} catch(Exception e) {
+   				e.printStackTrace();
+   			}
+
+
 
     }
 
-	private void showAlert(AlertType error, Window owner, String string, String string2) {
-		// TODO Auto-generated method stub
-		
-	}
+    public static void infoMessage(String infoMessage, String headerText, String title) {
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setContentText(infoMessage);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.showAndWait();
+    }
+
+    public static void showAlert(Alert.AlertType alertType, Window owner, String title, String message ) {
+    	Alert alert = new Alert(alertType);
+    	alert.setTitle(title);
+    	alert.setHeaderText(null);
+    	alert.setContentText(message);
+    	alert.initOwner(owner);
+    	alert.show();
+    }
 
 }

@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RegisterNurseController">
+<AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RegisterPatientController">
    <children>
       <AnchorPane prefHeight="446.0" prefWidth="671.0" style="-fx-background-color: pink;">
          <children>
@@ -20,9 +20,9 @@
       </AnchorPane>
       <PasswordField fx:id="password" layoutX="242.0" layoutY="233.0" onAction="#actionPassword" prefHeight="26.0" prefWidth="186.0" promptText="Password" />
       <PasswordField fx:id="confirmPassword" layoutX="242.0" layoutY="276.0" onAction="#actionConfirmPassword" prefHeight="26.0" prefWidth="186.0" promptText="Confirm Password" />
-      <Button fx:id="registerNurse" layoutX="242.0" layoutY="316.0" mnemonicParsing="false" onAction="#actionRegisterNurse" text="Register" />
+      <Button id="registerPatient" fx:id="registerNurse" layoutX="242.0" layoutY="316.0" mnemonicParsing="false" onAction="#actionRegisterNurse" text="Register" />
       <Button fx:id="exitButton" layoutX="91.0" layoutY="377.0" mnemonicParsing="false" onAction="#actionExit" text="Exit" />
       <Button fx:id="backButton" layoutX="550.0" layoutY="377.0" mnemonicParsing="false" onAction="#actionBack" text="Back" />
-      <TextField fx:id="username" layoutX="242.0" layoutY="200.0" prefHeight="26.0" prefWidth="186.0" promptText="Username" />
+      <TextField id="username" fx:id="username" layoutX="242.0" layoutY="200.0" prefHeight="26.0" prefWidth="186.0" promptText="Username" />
    </children>
 </AnchorPane>

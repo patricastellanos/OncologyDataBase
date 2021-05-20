@@ -75,12 +75,25 @@ public class LogInPatientController {
 		String username = userText.getText();
 		String password = passText.getText();
 
-		User patient = userman.checkPassword(username, password);
-		if (patient == null) {
+		User user = userman.checkPassword(username, password);
+		
+		if (user == null) {
 			infoMessage("Please enter correct username or password", null, "Failed");
 		} else {
-			infoMessage("Successfull log in !!", null, "Failed");
+			infoMessage("Successfull log in !!", null, "Message");
 		}
+		
+		 try{
+	  			Parent root = FXMLLoader.load(getClass().getResource("MainMenuPatient.fxml")); 
+	  			Scene scene = new Scene(root);
+	  			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+	  		
+	  			stage.setScene(scene);
+	  			stage.show();
+	  		} catch(Exception e) {
+	  			e.printStackTrace();
+	  		}
+
 	}
     
 
