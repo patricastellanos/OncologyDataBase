@@ -23,7 +23,7 @@
                   <Menu mnemonicParsing="false" text="Sex">
                      <items>
                         <MenuItem mnemonicParsing="false" text="Male" />
-                        <MenuItem mnemonicParsing="false" text="Hospital" />
+                        <MenuItem mnemonicParsing="false" text="Female" />
                      </items>
                   </Menu>
                </menus>

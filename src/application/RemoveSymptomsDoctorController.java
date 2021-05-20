@@ -1,7 +1,5 @@
 package application;
 
-import java.sql.Date;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,62 +10,36 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import oncology.db.interfaces.DBMaster;
-import oncology.db.pojos.MedicalExamination;
 
-
-public class AddMedicalExaminationDoctorController {
+public class RemoveSymptomsDoctorController {
 
     @FXML
     private Button backButton;
 
     @FXML
-    private Button add;
+    private TextField id;
+
+    @FXML
+    private Button remove;
+
+    @FXML
+    private Button seeP;
 
     @FXML
     private Button exitButton;
     
-    @FXML
-    private TextField id;
-
-    @FXML
-    private TextField date;
-
-    @FXML
-    private TextField type;
-    
-    @FXML
-    private TextField diagnosis;
-    
-    @FXML
-    private Button seeP;
-    
     private DBMaster db = Main.getdbMaster();
-    @FXML
-    void actionAdd(ActionEvent event) {
-    	
-    	MedicalExamination medExam= new MedicalExamination( type.getText(),Date.valueOf(date.getText()),diagnosis.getText());
-    	int id= Integer.parseInt(this.id.getText());
-    	db.addMedExam(medExam, id);
 
-    }
     @FXML
-    void actionSeeAllP(ActionEvent event) {
-    	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsDoctor.fxml"));
-			Scene scene = new Scene(root);
-			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		
-			stage.setScene(scene);
-			stage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+    void actionRemove(ActionEvent event) {
+    	db.removePatient(Integer.parseInt(id.getText()));
+
     }
 
     @FXML
     void actionBack(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("MedicalExaminationDoctor.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("SymptomsDoctor.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
@@ -76,7 +48,6 @@ public class AddMedicalExaminationDoctorController {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-
 
     }
 
@@ -85,4 +56,20 @@ public class AddMedicalExaminationDoctorController {
     	System.exit(0);
 
     }
+
+    @FXML
+    void actionSeeAllP(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsSymptoms.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+
+    }
+
 }

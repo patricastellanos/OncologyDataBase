@@ -15,26 +15,22 @@ public class Symptoms implements Serializable{
 	
 	//constructor
 	
-	public Symptoms(Integer id_symp, /*String intensity*/ String details) {
+	public Symptoms(Integer id_symp, String details) {
 		super();
 		this.id_symp = id_symp;
-		/*this.intensity = intensity;*/
 		this.details = details;
-		
-			
+				
+	}
+	public Symptoms( String details) {
+		super();
+		this.details = details;
+				
 	}
 	//getters and setters
 	public Integer getId_symp() {
 		return id_symp;
 	}
-
-	/*public String getIntensity() {
-		return intensity;
-	}
-
-	public void setIntensity(String intensity) {
-		this.intensity = intensity;
-	}*/
+	
 
 	public String getDetails() {
 		return details;
