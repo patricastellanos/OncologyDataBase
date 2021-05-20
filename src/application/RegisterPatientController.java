@@ -2,6 +2,7 @@ package application;
 
 import java.security.MessageDigest;
 
+
 import com.gluonhq.charm.glisten.control.TextField;
 
 import javafx.event.ActionEvent;
@@ -58,20 +59,12 @@ public class RegisterPatientController {
 
     }
 
-    @FXML
-    void actionConfirmPassword(ActionEvent event) {
-
-    }
 
     @FXML
     void actionExit(ActionEvent event) {
     	System.exit(0);
     }
 
-    @FXML
-    void actionPassword(ActionEvent event) {
-
-    }
 
     @FXML
     void actionRegisterPatient(ActionEvent event) {

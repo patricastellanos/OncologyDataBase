@@ -17,7 +17,7 @@
                   <Image url="@../../../../OneDrive/Imágenes/imaegnLoginRegister.jpg" />
                </image>
             </ImageView>
-            <PasswordField fx:id="passText" layoutX="232.0" layoutY="229.0" onAction="#actionPassword" prefHeight="26.0" prefWidth="186.0" promptText="Password" />
+            <PasswordField fx:id="passText" layoutX="232.0" layoutY="229.0" prefHeight="26.0" prefWidth="186.0" promptText="Password" />
             <TextField fx:id="userText" layoutX="231.0" layoutY="187.0" prefHeight="26.0" prefWidth="186.0" promptText="Username" />
             <Button fx:id="loginButton" layoutX="237.0" layoutY="292.0" mnemonicParsing="false" onAction="#actionLogin" text="Log in" />
          </children>

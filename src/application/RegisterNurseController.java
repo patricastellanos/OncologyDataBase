@@ -1,7 +1,8 @@
 package application;
 
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+
+
 
 import com.gluonhq.charm.glisten.control.TextField;
 
@@ -32,7 +33,7 @@ public class RegisterNurseController {
     private PasswordField confirmPassword;
 
     @FXML
-    private Button registerDoctor;
+    private Button registerNurse;
 
     @FXML
     private Button exitButton;
@@ -45,27 +46,31 @@ public class RegisterNurseController {
 
     @FXML
     void actionBack(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("SecondInteractionNurse.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 
     }
 
-    @FXML
-    void actionConfirmPassword(ActionEvent event) {
-
-    }
+   
 
     @FXML
     void actionExit(ActionEvent event) {
     	System.exit(0);
     }
 
-    @FXML
-    void actionPassword(ActionEvent event) {
 
-    }
 
     @FXML
-    void actionRegisterDoctor(ActionEvent event) {
-    	Window owner = registerDoctor.getScene().getWindow();
+    void actionRegisterNurse(ActionEvent event) {
+    	Window owner = registerNurse.getScene().getWindow();
    		if((username.getText().isEmpty())) {
    			showAlert(Alert.AlertType.ERROR, owner, "Error!", "Please enter your email");
 			return;

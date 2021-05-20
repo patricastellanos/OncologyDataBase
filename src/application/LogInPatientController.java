@@ -81,18 +81,19 @@ public class LogInPatientController {
 			infoMessage("Please enter correct username or password", null, "Failed");
 		} else {
 			infoMessage("Successfull log in !!", null, "Message");
+			 try{
+		  			Parent root = FXMLLoader.load(getClass().getResource("MainMenuPatient.fxml")); 
+		  			Scene scene = new Scene(root);
+		  			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		  		
+		  			stage.setScene(scene);
+		  			stage.show();
+		  		} catch(Exception e) {
+		  			e.printStackTrace();
+		  		}
 		}
 		
-		 try{
-	  			Parent root = FXMLLoader.load(getClass().getResource("MainMenuPatient.fxml")); 
-	  			Scene scene = new Scene(root);
-	  			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-	  		
-	  			stage.setScene(scene);
-	  			stage.show();
-	  		} catch(Exception e) {
-	  			e.printStackTrace();
-	  		}
+		
 
 	}
     
