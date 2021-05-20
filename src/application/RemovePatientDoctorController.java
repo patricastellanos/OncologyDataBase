@@ -29,6 +29,8 @@ public class RemovePatientDoctorController {
 
 	@FXML
 	private Button exitButton;
+	
+	
 
 	@FXML
 	void actionBack(ActionEvent event) {
