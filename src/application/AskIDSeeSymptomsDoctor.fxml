@@ -16,7 +16,7 @@
                </image>
             </ImageView>
             <Button fx:id="backButton" layoutX="546.0" layoutY="395.0" mnemonicParsing="false" onAction="#actionBack" text="Back" />
-            <TextField fx:id="id" layoutX="216.0" layoutY="131.0" text="id" />
+            <TextField fx:id="id" layoutX="216.0" layoutY="131.0" promptText="id" />
             <Button fx:id="add" layoutX="440.0" layoutY="306.0" mnemonicParsing="false" onAction="#actionAdd" text="See Symptoms associated" />
             <Button fx:id="seeP" layoutX="505.0" layoutY="131.0" mnemonicParsing="false" onAction="#actionSeeAllP" text="See Patients" />
          </children>

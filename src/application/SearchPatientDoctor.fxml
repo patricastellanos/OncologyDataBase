@@ -18,8 +18,8 @@
                </image>
             </ImageView>
             <Button fx:id="backButton" layoutX="546.0" layoutY="395.0" mnemonicParsing="false" onAction="#actionBack" text="Back" />
-            <TextField fx:id="name" layoutX="244.0" layoutY="166.0" text="Name" />
-            <TextField fx:id="surname" layoutX="244.0" layoutY="204.0" text="Surname" />
+            <TextField fx:id="name" layoutX="244.0" layoutY="166.0" promptText="Name" />
+            <TextField fx:id="surname" layoutX="244.0" layoutY="204.0" promptText="Surname" />
             <Button fx:id="searchP" layoutX="540.0" layoutY="179.0" mnemonicParsing="false" onAction="#actionSearch" text="Search" />
             <TableView fx:id="tableselectedpatient" layoutX="25.0" layoutY="237.0" prefHeight="75.0" prefWidth="587.0" />
          </children>

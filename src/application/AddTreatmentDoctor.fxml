@@ -16,11 +16,11 @@
                </image>
             </ImageView>
             <Button fx:id="backButton" layoutX="546.0" layoutY="395.0" mnemonicParsing="false" onAction="#actionBack" text="Back" />
-            <TextField fx:id="id" layoutX="242.0" layoutY="131.0" text="id" />
-            <TextField fx:id="startDate" layoutX="242.0" layoutY="211.0" text=" Start date (yyyy-MM-dd)" />
-            <TextField fx:id="type" layoutX="242.0" layoutY="170.0" text="Type" />
+            <TextField fx:id="id" layoutX="242.0" layoutY="131.0" promptText="id" />
+            <TextField fx:id="startDate" layoutX="242.0" layoutY="211.0" promptText=" Start date (yyyy-MM-dd)" />
+            <TextField fx:id="type" layoutX="242.0" layoutY="170.0" promptText="Type" />
             <Button fx:id="add" layoutX="547.0" layoutY="311.0" mnemonicParsing="false" onAction="#actionAdd" text="Add" />
-            <TextField fx:id="duration" layoutX="242.0" layoutY="245.0" text="Duration" />
+            <TextField fx:id="duration" layoutX="242.0" layoutY="245.0" promptText="Duration" />
             <Button fx:id="seeP" layoutX="526.0" layoutY="131.0" mnemonicParsing="false" onAction="#actionSeeAllP" text="See Patients" />
          </children>
       </AnchorPane>
