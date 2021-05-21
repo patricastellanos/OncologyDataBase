@@ -13,7 +13,7 @@
          <children>
             <ImageView fitHeight="467.0" fitWidth="782.0" layoutX="-2.0" layoutY="-13.0" opacity="0.67">
                <image>
-                  <Image url="@../../../../OneDrive/Imágenes/Imagen1.jpg" />
+                  <Image url="@Imagen1.jpg" />
                </image>
             </ImageView>
             <Label alignment="CENTER" layoutX="283.0" layoutY="33.0" prefHeight="68.0" prefWidth="214.0" style="-fx-background-color: 0000;" text="DOCTOR'S OPTIONS">
