@@ -49,6 +49,7 @@ public class AssesTreatmentDoctorController {
 
     @FXML
     void actionExit(ActionEvent event) {
+    	System.exit(0);
 
     }
 

@@ -2,6 +2,8 @@
 
 <?import com.gluonhq.charm.glisten.control.TextField?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -19,7 +21,13 @@
             <Button fx:id="backButton" layoutX="546.0" layoutY="395.0" mnemonicParsing="false" onAction="#actionBack" text="Back" />
             <TextField fx:id="name" layoutX="244.0" layoutY="166.0" text="Name" />
             <TextField fx:id="surname" layoutX="244.0" layoutY="204.0" text="Surname" />
-            <Button fx:id="searchP" layoutX="535.0" layoutY="312.0" mnemonicParsing="false" onAction="#actionSearch" text="Search" />
+            <Button fx:id="searchP" layoutX="540.0" layoutY="179.0" mnemonicParsing="false" onAction="#actionSearch" text="Search" />
+            <TableView fx:id="tableselectedpatient" layoutX="25.0" layoutY="237.0" prefHeight="75.0" prefWidth="587.0">
+               <columns>
+                  <TableColumn prefWidth="75.0" />
+                  <TableColumn prefWidth="75.0" />
+               </columns>
+            </TableView>
          </children>
       </AnchorPane>
       <Button fx:id="exitButton" layoutX="88.0" layoutY="385.0" mnemonicParsing="false" onAction="#actionExit" text="Exit" />
