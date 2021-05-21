@@ -14,7 +14,7 @@
          <children>
             <ImageView fitHeight="448.0" fitWidth="691.0" layoutY="-1.0" opacity="0.35">
                <image>
-                  <Image url="@../../../../OneDrive/Imágenes/oncology.jpg" />
+                  <Image url="@oncology.jpg" />
                </image>
             </ImageView>
             <Text layoutX="83.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="C" wrappingWidth="17.487091064453125">
