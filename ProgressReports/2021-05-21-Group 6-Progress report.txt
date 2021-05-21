@@ -1,0 +1,17 @@
+This week we expected to be able to do...
+XML, java fx, xslt and check everything works.
+
+Optional: Reasons why
+We had time to work in class and we also spent time at home.
+
+This week we did...
+Work in java fx and xslt and check that the menu is working.
+
+Optional: Reasons why
+We work on it during class and at home.
+
+Next weeks we will do...
+Work with the ui and prepare the video.
+
+Optional: Reasons why
+Time to work in class and also at home.
