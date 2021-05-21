@@ -52,7 +52,7 @@ public class SeeAllMedicalExaminationController {
 	    	dateCol.setCellValueFactory(data -> new SimpleStringProperty(dateformat.format(data.getValue().getDateMedExam())));
 	    	diagnosisCol.setCellValueFactory(new PropertyValueFactory<>("diagnosis"));
 	    	
-	        tableP.getColumns().addAll( idCol, typeCol, dateCol, diagnosisCol);
+	        tableP.getColumns().addAll(idCol, typeCol, dateCol, diagnosisCol);
 	        tableP.getItems().addAll(medExList);
 	        
 	    }
