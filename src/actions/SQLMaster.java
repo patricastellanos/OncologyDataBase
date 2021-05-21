@@ -460,7 +460,7 @@ public class SQLMaster implements DBMaster {
 		List <MedicalExamination> medExam_list=new ArrayList<MedicalExamination>();
 		try {
 			Statement stmt = c.createStatement();
-			String sql = "SELECT * FROM medical_examiantion";
+			String sql = "SELECT * FROM medical_examination";
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Integer id_medExam = rs.getInt("id_medExam");

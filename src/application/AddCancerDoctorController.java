@@ -12,11 +12,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import oncology.db.interfaces.DBMaster;
-import oncology.db.pojos.Treatment;
+import oncology.db.pojos.Cancer;
 
-public class AddTreatmentDoctorController {
-	
+
+public class AddCancerDoctorController {
 	private DBMaster db = Main.getdbMaster();
+
     @FXML
     private Button backButton;
 
@@ -24,16 +25,10 @@ public class AddTreatmentDoctorController {
     private TextField id;
 
     @FXML
-    private TextField startDate;
-
-    @FXML
     private TextField type;
 
     @FXML
     private Button add;
-
-    @FXML
-    private TextField duration;
 
     @FXML
     private Button seeP;
@@ -44,18 +39,18 @@ public class AddTreatmentDoctorController {
     @FXML
     void actionAdd(ActionEvent event) {
     	int id= Integer.parseInt(this.id.getText());
-    	int duration= Integer.parseInt(this.duration.getText());
     	
-    	Treatment treat= new Treatment( type.getText(),Date.valueOf(startDate.getText()),duration);
+    	Cancer cancer= new Cancer( type.getText());
     	
-    	db.addTreatment(treat, id);
+    	db.addCancer(cancer, id);
+
 
     }
 
     @FXML
     void actionBack(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("TreatmentDoctor.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("CancerDoctor.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
@@ -76,7 +71,7 @@ public class AddTreatmentDoctorController {
     @FXML
     void actionSeeAllP(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsTreatment.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsCancerDoctor.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
