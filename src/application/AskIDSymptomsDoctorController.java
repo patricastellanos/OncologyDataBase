@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class AskIDSymptomsDoctorController {
@@ -56,7 +57,7 @@ public class AskIDSymptomsDoctorController {
     @FXML
     void actionSeeAllP(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsSymptoms.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("SeeSymptomsDoctor.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
@@ -67,5 +68,10 @@ public class AskIDSymptomsDoctorController {
 		}
 
     }
+    
+    int idSymp =id.getAnchor();
+
+    public void setData(int idSymp ) {
+        target.setText(data);
 
 }
