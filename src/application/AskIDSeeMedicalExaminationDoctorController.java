@@ -11,7 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import oncology.db.interfaces.DBMaster;
 
-public class SeeMedicalExaminationDoctorController {
+public class AskIDSeeMedicalExaminationDoctorController {
 
     @FXML
     private Button backButton;
@@ -52,7 +52,16 @@ public class SeeMedicalExaminationDoctorController {
 
     @FXML
     void actionSee(ActionEvent event) {
+    	try {
+        	Parent root = FXMLLoader.load(getClass().getResource("SeeAllMedicalExamination.fxml"));
+    		Scene scene = new Scene(root);
+    		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
     	
+    		stage.setScene(scene);
+    		stage.show();
+    	} catch(Exception e) {
+    		e.printStackTrace();
+    	}
     	
 
     	

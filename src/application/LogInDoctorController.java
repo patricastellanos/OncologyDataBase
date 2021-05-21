@@ -83,9 +83,7 @@ public class LogInDoctorController {
 			infoMessage("Please enter correct username or password", null, "Failed");
 		} else {
 			infoMessage("Successfull log in !!", null, "Message");
-		}
-		
-		 try{
+			try{
 	  			Parent root = FXMLLoader.load(getClass().getResource("MainMenuDoctor.fxml")); 
 	  			Scene scene = new Scene(root);
 	  			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -95,6 +93,9 @@ public class LogInDoctorController {
 	  		} catch(Exception e) {
 	  			e.printStackTrace();
 	  		}
+		}
+		
+		 
 
     }
 
