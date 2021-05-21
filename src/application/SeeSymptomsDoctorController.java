@@ -7,35 +7,24 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 public class SeeSymptomsDoctorController {
 
     @FXML
-    private Button backButton;
-
-    @FXML
-    private TextField id;
-
-    @FXML
-    private Button add;
-
-    @FXML
-    private Button seeP;
+    private TableView<?> tableP;
 
     @FXML
     private Button exitButton;
 
     @FXML
-    void actionAdd(ActionEvent event) {
-
-    }
+    private Button backButton;
 
     @FXML
     void actionBack(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SymptomsDoctor.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("AskIDsymptomsDoctor.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
@@ -44,6 +33,7 @@ public class SeeSymptomsDoctorController {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+
 
     }
 
@@ -53,19 +43,5 @@ public class SeeSymptomsDoctorController {
 
     }
 
-    @FXML
-    void actionSeeAllP(ActionEvent event) {
-    	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsSymptoms.fxml"));
-			Scene scene = new Scene(root);
-			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		
-			stage.setScene(scene);
-			stage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-
-    }
-
 }
+
