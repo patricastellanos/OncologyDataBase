@@ -12,7 +12,7 @@ public class MedicalExamination implements Serializable{
 	private Date dateMedExam;
 	private String diagnosis; 
 	private List<Cancer> cancer_list;
-	private List<Symptoms> symptoms_list;
+	
 	
 	//constructor
 	public MedicalExamination(Integer id_medExam, String medExam_type, Date dateMedExam, String diagnosis) {
@@ -58,8 +58,7 @@ public class MedicalExamination implements Serializable{
 	@Override
 	public String toString() {
 		return "MedicalExamination [id_medExam=" + id_medExam + ", medExam_type=" + medExam_type + ", dateMedExam="
-				+ dateMedExam + ", diagnosis=" + diagnosis + ", cancer_list=" + cancer_list + ", symptoms_list="
-				+ symptoms_list + "]";
+				+ dateMedExam + ", diagnosis=" + diagnosis + ", cancer_list=" + cancer_list +"]";
 	}
 	
 	
@@ -72,7 +71,6 @@ public class MedicalExamination implements Serializable{
 		result = prime * result + ((diagnosis == null) ? 0 : diagnosis.hashCode());
 		result = prime * result + ((id_medExam == null) ? 0 : id_medExam.hashCode());
 		result = prime * result + ((medExam_type == null) ? 0 : medExam_type.hashCode());
-		result = prime * result + ((symptoms_list == null) ? 0 : symptoms_list.hashCode());
 		return result;
 	}
 	@Override
@@ -109,12 +107,9 @@ public class MedicalExamination implements Serializable{
 				return false;
 		} else if (!medExam_type.equals(other.medExam_type))
 			return false;
-		if (symptoms_list == null) {
-			if (other.symptoms_list != null)
-				return false;
-		} else if (!symptoms_list.equals(other.symptoms_list))
-			return false;
 		return true;
+		
+		
 	}
 	
 }

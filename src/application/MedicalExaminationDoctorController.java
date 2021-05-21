@@ -63,7 +63,7 @@ public class MedicalExaminationDoctorController {
     @FXML
     void actionSeeMedExam(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeMedicalExaminationDoctor.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("SeeAllMedicalExamination.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		

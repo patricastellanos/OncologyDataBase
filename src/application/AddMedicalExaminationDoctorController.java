@@ -48,6 +48,16 @@ public class AddMedicalExaminationDoctorController {
     	MedicalExamination medExam= new MedicalExamination( type.getText(),Date.valueOf(date.getText()),diagnosis.getText());
     	int id= Integer.parseInt(this.id.getText());
     	db.addMedExam(medExam, id);
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("SeeAllMedicalExamination.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 
     }
     @FXML
