@@ -12,7 +12,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import oncology.db.interfaces.DBMaster;
-import oncology.db.pojos.MedicalExamination;
 import oncology.db.pojos.Treatment;
 
 public class AddTreatmentDoctorController {

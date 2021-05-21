@@ -7,35 +7,24 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
-public class AssesTreatmentDoctorController {
+public class SeeCancerDoctorController {
 
     @FXML
     private Button backButton;
 
     @FXML
-    private TextField id;
-
-    @FXML
-    private Button asses;
-
-    @FXML
-    private Button seeP;
+    private TableView<?> tableC;
 
     @FXML
     private Button exitButton;
 
     @FXML
-    void actionAsses(ActionEvent event) {
-
-    }
-
-    @FXML
     void actionBack(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("TreatmentDoctor.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("AskIDSeeCancerDoctor.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
@@ -44,27 +33,13 @@ public class AssesTreatmentDoctorController {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+
 
     }
 
     @FXML
     void actionExit(ActionEvent event) {
     	System.exit(0);
-
-    }
-
-    @FXML
-    void actionSeeAllP(ActionEvent event) {
-    	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsTreatmentDoctor.fxml"));
-			Scene scene = new Scene(root);
-			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		
-			stage.setScene(scene);
-			stage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
 
     }
 

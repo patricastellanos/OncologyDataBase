@@ -32,12 +32,7 @@ public class CancerDoctorController {
 
     @FXML
     private Button backButton;
-
-    @FXML
-    void actionAddCancer(ActionEvent event) {
-
-    }
-
+    
     @FXML
     void actionBack(ActionEvent event) {
     	try{
@@ -59,6 +54,23 @@ public class CancerDoctorController {
     }
 
     @FXML
+    void actionAddCancer(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("AddCancerDoctor.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+
+
+    }
+
+  
+    @FXML
     void actionConvertXML(ActionEvent event) {
 
     }
@@ -72,6 +84,17 @@ public class CancerDoctorController {
 
     @FXML
     void actionSeeCancer(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("AskIDSeeCancerDoctor.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+
 
     }
 

@@ -1,5 +1,4 @@
 package application;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,41 +9,27 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class SearchedPatientController {
+public class AskIDSeeCancerDoctorController {
 
     @FXML
     private Button backButton;
 
     @FXML
-    private TextField nameP;
+    private TextField id;
 
     @FXML
-    private TextField surnameP;
+    private Button see;
 
     @FXML
-    private TextField actualStateP;
-
-    @FXML
-    private TextField sexP;
-
-    @FXML
-    private TextField dobP;
-
-    @FXML
-    private TextField locationP;
+    private Button seeP;
 
     @FXML
     private Button exitButton;
 
     @FXML
-    void actionActualStateP(ActionEvent event) {
-
-    }
-
-    @FXML
     void actionBack(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("PatientDoctor.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("CancerDoctor.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
@@ -57,33 +42,28 @@ public class SearchedPatientController {
     }
 
     @FXML
-    void actionDOB(ActionEvent event) {
-
-    }
-
-    @FXML
     void actionExit(ActionEvent event) {
     	System.exit(0);
 
     }
 
     @FXML
-    void actionLocation(ActionEvent event) {
+    void actionSee(ActionEvent event) {
 
     }
 
     @FXML
-    void actionName(ActionEvent event) {
-
-    }
-
-    @FXML
-    void actionSex(ActionEvent event) {
-
-    }
-
-    @FXML
-    void actionSurname(ActionEvent event) {
+    void actionSeeP(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsCancerDoctor.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 
     }
 
