@@ -16,7 +16,7 @@
                </image>
             </ImageView>
             <Button fx:id="backButton" layoutX="546.0" layoutY="395.0" mnemonicParsing="false" onAction="#actionBack" text="Back" />
-            <TableView layoutX="62.0" layoutY="106.0" prefHeight="200.0" prefWidth="568.0" />
+            <TableView fx:id="tableC" layoutX="62.0" layoutY="106.0" prefHeight="200.0" prefWidth="568.0" />
          </children>
       </AnchorPane>
       <Button fx:id="exitButton" layoutX="88.0" layoutY="385.0" mnemonicParsing="false" onAction="#actionExit" text="Exit" />
