@@ -2,6 +2,7 @@ package application;
 
 import java.sql.Date;
 
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -46,8 +47,8 @@ public class AddMedicalExaminationDoctorController {
     void actionAdd(ActionEvent event) {
     	
     	MedicalExamination medExam= new MedicalExamination( type.getText(),Date.valueOf(date.getText()),diagnosis.getText());
-    	int id= Integer.parseInt(this.id.getText());
-    	db.addMedExam(medExam, id);
+    	int id_patient= Integer.parseInt(id.getText());
+    	db.addMedExam(medExam, id_patient);
     	try{
 			Parent root = FXMLLoader.load(getClass().getResource("SeeAllMedicalExamination.fxml"));
 			Scene scene = new Scene(root);

@@ -1,5 +1,5 @@
 package application;
-import java.awt.event.ActionEvent;
+import javafx.event.ActionEvent;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -22,9 +22,6 @@ import oncology.db.pojos.MedicalExamination;
 public class SeeAllMedicalExaminationController {
 	
 
-	
-
-	public class SeeAllMedicalExamination {
 
 	    @FXML
 	    private TableView<MedicalExamination> tableP;
@@ -39,7 +36,7 @@ public class SeeAllMedicalExaminationController {
 	    
 	    public void initialize(){
 	    	
-	    	List<MedicalExamination> medExList = null;
+	    	List<MedicalExamination> medExList = db.printMedExam();
 	    	
 	    	
 	    	tableP.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
@@ -47,19 +44,20 @@ public class SeeAllMedicalExaminationController {
 	    	TableColumn<MedicalExamination, String> idCol = new TableColumn<>("ID");
 	    	TableColumn<MedicalExamination, String> typeCol = new TableColumn<>("Type");
 	    	TableColumn<MedicalExamination, String> dateCol = new TableColumn<>("Date");
-	    	TableColumn<MedicalExamination, String> locationCol = new TableColumn<>("Diagnosis");
+	    	TableColumn<MedicalExamination, String> diagnosisCol = new TableColumn<>("Diagnosis");
 	    	
 	    	idCol.setCellValueFactory(data -> new SimpleStringProperty(Integer.toString(data.getValue().getId_medExam())));
 	    	typeCol.setCellValueFactory(new PropertyValueFactory<>("medExam_type"));
 	    	DateFormat dateformat=new SimpleDateFormat("yyyy-mm-dd");
 	    	dateCol.setCellValueFactory(data -> new SimpleStringProperty(dateformat.format(data.getValue().getDateMedExam())));
-	    	locationCol.setCellValueFactory(new PropertyValueFactory<>("diagnosis"));
+	    	diagnosisCol.setCellValueFactory(new PropertyValueFactory<>("diagnosis"));
 	    	
-	        tableP.getColumns().addAll( idCol, typeCol, dateCol, locationCol);
+	        tableP.getColumns().addAll( idCol, typeCol, dateCol, diagnosisCol);
 	        tableP.getItems().addAll(medExList);
 	        
 	    }
-
+        
+	    @FXML
 	    void actionBack(ActionEvent event) {
 	    	try{
 				Parent root = FXMLLoader.load(getClass().getResource("MainMenuDoctor.fxml"));
@@ -84,4 +82,4 @@ public class SeeAllMedicalExaminationController {
 
 	}
 
-}
+
