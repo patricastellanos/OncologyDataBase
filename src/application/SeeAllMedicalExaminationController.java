@@ -1,5 +1,6 @@
 package application;
 import java.awt.event.ActionEvent;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -15,6 +16,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import oncology.db.interfaces.DBMaster;
 import oncology.db.pojos.MedicalExamination;
 
 public class SeeAllMedicalExaminationController {
@@ -25,13 +27,15 @@ public class SeeAllMedicalExaminationController {
 	public class SeeAllMedicalExamination {
 
 	    @FXML
-	    private TableView<?> tableP;
+	    private TableView<MedicalExamination> tableP;
 
 	    @FXML
 	    private Button exitButton;
 
 	    @FXML
 	    private Button backButton;
+	    
+	    private DBMaster db = Main.getdbMaster();
 	    
 	    public void initialize(){
 	    	

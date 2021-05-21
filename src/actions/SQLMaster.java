@@ -454,6 +454,34 @@ public class SQLMaster implements DBMaster {
 			
 	}
 	
+	@Override
+	public List<MedicalExamination> printMedExam() {
+		
+		List <MedicalExamination> medExam_list=new ArrayList<MedicalExamination>();
+		try {
+			Statement stmt = c.createStatement();
+			String sql = "SELECT * FROM medical_examiantion";
+			ResultSet rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				Integer id_medExam = rs.getInt("id_medExam");
+				String medExam_type = rs.getString("medExam_type");
+				Date dateMedExam = rs.getDate("dateMedExam");
+				String diagnosis = rs.getString("diagnosis");		
+				MedicalExamination m= new MedicalExamination (id_medExam, medExam_type, dateMedExam, diagnosis);
+				medExam_list.add(m);	
+				}
+			
+			rs.close();
+			stmt.close();
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return medExam_list;
+	
+		
+	}
+	
 	
 	@Override
 	public void addCancer(Cancer cancer, int id_patient) {

@@ -30,6 +30,7 @@ public class UserInteraction {
 	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	private static UserMaster userman = new JPAUserMaster();
 	private static List<Cancer> cancer_list = new ArrayList<Cancer>();
+	private static List<MedicalExamination> medExam_list = new ArrayList<MedicalExamination>();
 	
 	
 	public static void setDBMasterUI(DBMaster dbm) {
@@ -480,6 +481,18 @@ public class UserInteraction {
 			e.printStackTrace();
 		}
 			
+	}
+	
+	public static void printMedExamMenu(){
+		try {
+		medExam_list = dbmaster.printMedExam();
+		for (int i = 0; i < medExam_list.size(); i++) {
+			System.out.println(medExam_list.get(i));
+
+		}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	
