@@ -14,7 +14,7 @@
          <children>
             <ImageView fitHeight="448.0" fitWidth="691.0" layoutY="-1.0" opacity="0.35">
                <image>
-                  <Image url="@../../../../OneDrive/Imágenes/oncology.jpg" />
+                  <Image url="@oncology.jpg" />
                </image>
             </ImageView>
             <Label alignment="CENTER" layoutX="206.0" layoutY="21.0" prefHeight="68.0" prefWidth="214.0" style="-fx-background-color: 0000;" text="CHOOSE AN OPTION">

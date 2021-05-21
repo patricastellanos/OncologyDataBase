@@ -70,7 +70,6 @@ public class CancerDoctorController {
     }
 
   
-
     @FXML
     void actionConvertXML(ActionEvent event) {
 

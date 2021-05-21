@@ -14,7 +14,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="446.0" prefWidth="671.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.first_interactionController">
    <children>
-      <ImageView fitHeight="567.0" fitWidth="671.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="567.0" fitWidth="671.0" opacity="0.82" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Oncology-Information-System-Market.jpg" />
          </image>
