@@ -7,8 +7,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import javafx.stage.Window;
+import oncology.db.interfaces.DBMaster;
 
 public class CancerDoctorController {
 
@@ -33,6 +37,7 @@ public class CancerDoctorController {
     @FXML
     private Button backButton;
     
+    private DBMaster db = Main.getdbMaster();
     @FXML
     void actionBack(ActionEvent event) {
     	try{
@@ -68,24 +73,10 @@ public class CancerDoctorController {
 
 
     }
-
-  
-    @FXML
-    void actionConvertXML(ActionEvent event) {
-
-    }
-
-    @FXML
-    void actionConvertXMLtoCancer(ActionEvent event) {
-
-    }
-
-   
-
     @FXML
     void actionSeeCancer(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("AskIDSeeCancerDoctor.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("SeeCancerDoctor.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
@@ -98,9 +89,26 @@ public class CancerDoctorController {
 
     }
 
+  
+    @FXML
+    void actionConvertXML(ActionEvent event) {
+    	
+    	
+    	
+
+    }
+
+    @FXML
+    void actionConvertXMLtoCancer(ActionEvent event) {
+
+    }
+
+
     @FXML
     void actionXMLtoHTML(ActionEvent event) {
 
     }
+    
+   
 
 }
