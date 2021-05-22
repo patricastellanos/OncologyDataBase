@@ -1,5 +1,6 @@
 package application;
 import java.text.DateFormat;
+
 import java.text.SimpleDateFormat;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
@@ -16,7 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import oncology.db.interfaces.DBMaster;
 import oncology.db.pojos.MedicalExamination;
-import oncology.db.pojos.Patient;
+
 
 public class SeeMedicalExaminationDoctorController {
 	private DBMaster db = Main.getdbMaster();
@@ -30,7 +31,7 @@ public class SeeMedicalExaminationDoctorController {
     private Button see;
     
     @FXML
-    private TableView<?> table;
+    private TableView<MedicalExamination> table;
 
     @FXML
     private Button seeP;
@@ -86,20 +87,22 @@ public class SeeMedicalExaminationDoctorController {
 
     	table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     	
-    	TableColumn<Patient, String> idCol = new TableColumn<>("ID");
-    	TableColumn<Patient, String> typeCol = new TableColumn<>("Type");
-    	TableColumn<Patient, String> dateCol = new TableColumn<>("Date");
-    	TableColumn<Patient, String> diagnosisCol = new TableColumn<>("Diagnosis");
+    	TableColumn<MedicalExamination, String> idCol = new TableColumn<>("ID");
+    	TableColumn<MedicalExamination, String> typeCol = new TableColumn<>("Type");
+    	TableColumn<MedicalExamination, String> dateCol = new TableColumn<>("Date");
+    	TableColumn<MedicalExamination, String> diagnosisCol = new TableColumn<>("Diagnosis");
     	
     	
-    	idCol.setCellValueFactory(data -> new SimpleStringProperty(Integer.toString(data.getValue().getId_patient())));
-    	typeCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+    	
+    	idCol.setCellValueFactory(data -> new SimpleStringProperty(Integer.toString(data.getValue().getId_medExam())));
+    	typeCol.setCellValueFactory(new PropertyValueFactory<>("medExam_type"));
     	DateFormat dateformat=new SimpleDateFormat("yyyy-mm-dd");
-    	dateCol.setCellValueFactory(data -> new SimpleStringProperty(dateformat.format(data.getValue().getDate_birth())));
+    	dateCol.setCellValueFactory(data -> new SimpleStringProperty(dateformat.format(data.getValue().getDateMedExam())));
     	diagnosisCol.setCellValueFactory(new PropertyValueFactory<>("diagnosis"));
+    	
     
     	
-    	table.getColumns().addAll( idCol, typeCol, dateCol, diagnosisCol);
+    	table.getColumns().addAll(idCol, typeCol, dateCol, diagnosisCol);
     }
 
  
