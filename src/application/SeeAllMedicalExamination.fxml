@@ -15,7 +15,7 @@
                   <Image url="@oncology.jpg" />
                </image>
             </ImageView>
-            <TableView fx:id="tableP" layoutX="50.0" layoutY="91.0" prefHeight="246.0" prefWidth="591.0" />
+            <TableView fx:id="tableP" layoutX="50.0" layoutY="74.0" prefHeight="263.0" prefWidth="556.0" />
          </children>
       </AnchorPane>
       <Button fx:id="exitButton" layoutX="78.0" layoutY="375.0" mnemonicParsing="false" onAction="#actionExit" text="Exit" />
