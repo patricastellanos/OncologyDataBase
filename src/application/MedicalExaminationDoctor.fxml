@@ -101,8 +101,9 @@
                   <Font size="30.0" />
                </font>
             </Text>
-            <Button fx:id="seeMedExam" layoutX="369.0" layoutY="79.0" mnemonicParsing="false" onAction="#actionSeeMedExam" text="See the medical examination of a patient" />
-            <Button fx:id="addMedExam" layoutX="369.0" layoutY="134.0" mnemonicParsing="false" onAction="#actionAddMedExam" text="Add a medical examination" />
+            <Button fx:id="seeMedExam" layoutX="380.0" layoutY="99.0" mnemonicParsing="false" onAction="#actionSeeMedExam" text="See the medical examination of a patient" />
+            <Button fx:id="addMedExam" layoutX="380.0" layoutY="58.0" mnemonicParsing="false" onAction="#actionAddMedExam" text="Add a medical examination" />
+            <Button fx:id="seeAllMedExam" layoutX="380.0" layoutY="141.0" mnemonicParsing="false" onAction="#actionSeeAllMedExam" text="See all from the data base" />
          </children>
       </AnchorPane>
       <Button fx:id="exitButton" layoutX="78.0" layoutY="375.0" mnemonicParsing="false" onAction="#actionExit" text="Exit" />

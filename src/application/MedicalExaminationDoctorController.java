@@ -23,6 +23,10 @@ public class MedicalExaminationDoctorController {
 
     @FXML
     private Button backButton;
+    
+    @FXML
+    private Button seeAllMedExam;
+
     @FXML
     void actionBack(ActionEvent event) {
     	try{
@@ -62,6 +66,20 @@ public class MedicalExaminationDoctorController {
 
     @FXML
     void actionSeeMedExam(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("SeeMedicalExamination.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+
+    }
+    @FXML
+    void actionSeeAllMedExam(ActionEvent event) {
     	try{
 			Parent root = FXMLLoader.load(getClass().getResource("SeeAllMedicalExamination.fxml"));
 			Scene scene = new Scene(root);
