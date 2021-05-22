@@ -45,7 +45,7 @@ public class SearchPatientDoctorController {
     @FXML
     void actionBack(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("TreatmentDoctor.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("PatientDoctor.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		

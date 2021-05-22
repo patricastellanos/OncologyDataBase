@@ -10,14 +10,13 @@
    <children>
       <AnchorPane prefHeight="446.0" prefWidth="671.0" style="-fx-background-color: pink;">
          <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fitHeight="446.0" fitWidth="674.0" layoutX="-1.0" opacity="0.58">
                <image>
-                  <Image url="@../../../../OneDrive/Imágenes/methods.jpg" />
+                  <Image url="@methods.jpg" />
                </image>
             </ImageView>
             <Button fx:id="backButton" layoutX="546.0" layoutY="395.0" mnemonicParsing="false" onAction="#actionBack" text="Back" />
-            <TextField fx:id="id" layoutX="150.0" layoutY="173.0" text="Patient's id" />
+            <TextField fx:id="id" layoutX="150.0" layoutY="173.0" promptText="Patient's id" />
             <Button fx:id="removeP" layoutX="527.0" layoutY="309.0" mnemonicParsing="false" onAction="#actionRemove" text="Remove" />
             <Button fx:id="seeAllP" layoutX="520.0" layoutY="173.0" mnemonicParsing="false" onAction="#actionSeeP" text="See all patients" />
          </children>
