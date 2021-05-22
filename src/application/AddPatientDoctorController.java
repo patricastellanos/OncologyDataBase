@@ -10,7 +10,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -41,31 +43,51 @@ public class AddPatientDoctorController {
 
     @FXML
     private MenuBar loc;
-
-    @FXML
-    private MenuBar actualState;
     
     @FXML
-    private TextField patientSex;
+    private RadioButton homebutton;
 
     @FXML
-    private TextField patientLocation;
+    private RadioButton hospitalbutton;
+
+    
+    @FXML
+    private RadioButton malebutton;
 
     @FXML
-    private TextField patientState;
+    private RadioButton femalebutton;
+    
+    @FXML
+    private ComboBox<String> actualStateChoice;
+    private String[] actualStates = {"Acute Rehabilitation", "Lowstream Rehabilitation", "Complex care", 
+    		"Convalescent Care", "Paliative Care", "Recovered", "Death"};
+    
     
     private DBMaster db = Main.getdbMaster();
+    
+    public void initialize() {
+    	actualStateChoice.getItems().addAll(actualStates);
+    }
 
     @FXML
     void actionAdd(ActionEvent event) {
     	Window owner = addP.getScene().getWindow();
+    	String sex ="";
+    	if(malebutton.isSelected()) {
+    	     sex = "Male";
+    	}if(femalebutton.isSelected()) {
+    		sex ="Female";
+    	}
     	
+    	String location= "";
+    	if(homebutton.isSelected()) {
+    		location = "Home";
+    	}if(hospitalbutton.isSelected()) {
+    		location = "Hospital";
+    	}
+    	String state=actualStateChoice.getValue();
     	
-    	String sex =patientSex.getText();
-    	String location= patientLocation.getText();
-    	String state=patientState.getText();
-    	
-    	if(!state.equalsIgnoreCase("ACUTE REHABILITATION")&&
+    	/*if(!state.equalsIgnoreCase("ACUTE REHABILITATION")&&
     	   !state.equalsIgnoreCase("LOWSTREAM REHABILITATION")&&
     	   !state.equalsIgnoreCase("COMPLEX CARE")&&
     	   !state.equalsIgnoreCase("CONVALESCENT CARE")&&
@@ -80,7 +102,7 @@ public class AddPatientDoctorController {
     		showAlert(Alert.AlertType.ERROR, owner, "Error!", "States available: 1.ACUTE REHABILITATION, 2.LOWSTREAM REHABILITATION,"
     				+ " 3.COMPLEX CARE, 4.CONVALESCENT CARE, 5.PALLIATIVE RESPITE, 6.RECOVERED, 7.DEATH\n Gender available: MALE, FEMALE"
     				+ "\n Locations available: HOME, HOSPITAL");
-    	}
+    	}*/
     	
     	Patient p= new Patient(name.getText(), surname.getText(),sex,
     			Date.valueOf(dob.getText()),location ,state);
