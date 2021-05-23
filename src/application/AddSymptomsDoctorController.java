@@ -37,11 +37,22 @@ public class AddSymptomsDoctorController {
 
     @FXML
     void actionAdd(ActionEvent event) {
+    	
     	int id= Integer.parseInt(this.id.getText());
-    	
     	Symptoms s= new Symptoms(type.getText());
-    	
     	db.addSymptoms(s, id);
+    	
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("SymptomsDoctor.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+
     }
 
     @FXML

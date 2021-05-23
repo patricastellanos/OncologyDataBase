@@ -489,7 +489,7 @@ public class UserInteraction {
 		printPatientsMenu();
 		System.out.println("Choose the id of the patient from which you want see its medical examination");
 		int id = Integer.parseInt(reader.readLine());
-		System.out.println(dbmaster.printMedExamination(id));
+		System.out.println(dbmaster.printMedExamPatient(id));
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
