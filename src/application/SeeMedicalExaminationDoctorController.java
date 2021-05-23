@@ -2,6 +2,8 @@ package application;
 import java.text.DateFormat;
 
 import java.text.SimpleDateFormat;
+import java.util.List;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,8 +22,10 @@ import oncology.db.pojos.MedicalExamination;
 
 
 public class SeeMedicalExaminationDoctorController {
+	
 	private DBMaster db = Main.getdbMaster();
-    @FXML
+    
+	@FXML
     private Button backButton;
 
     @FXML
@@ -78,12 +82,29 @@ public class SeeMedicalExaminationDoctorController {
     @FXML
     void actionSee(ActionEvent event) {
     	
-    	MedicalExamination medicalExamination = db.printMedExamination(Integer.parseInt(id.getText()));	
-       
-    	table.getItems().addAll(medicalExamination);
+    	List<MedicalExamination> medExamList = db.printMedExamPatient(Integer.parseInt((id.getText())));	
+    	
+    	table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+    	
+    	TableColumn<MedicalExamination, String> idCol = new TableColumn<>("ID");
+    	TableColumn<MedicalExamination, String> typeCol = new TableColumn<>("Type");
+    	TableColumn<MedicalExamination, String> dateCol = new TableColumn<>("Date");
+    	TableColumn<MedicalExamination, String> diagnosisCol = new TableColumn<>("Diagnosis");
+    	
+    	
+    	idCol.setCellValueFactory(data -> new SimpleStringProperty(Integer.toString(data.getValue().getId_medExam())));
+    	typeCol.setCellValueFactory(new PropertyValueFactory<>("medExam_type"));
+    	DateFormat dateformat=new SimpleDateFormat("yyyy-mm-dd");
+    	dateCol.setCellValueFactory(data -> new SimpleStringProperty(dateformat.format(data.getValue().getDateMedExam())));
+    	diagnosisCol.setCellValueFactory(new PropertyValueFactory<>("diagnosis"));
+    	
+    
+    	
+    	table.getColumns().addAll(idCol, typeCol, dateCol, diagnosisCol);
+    	table.getItems().addAll(medExamList);
        
     }
-    public void initialize() {
+   /* public void initialize() {
 
     	table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     	
@@ -103,7 +124,7 @@ public class SeeMedicalExaminationDoctorController {
     
     	
     	table.getColumns().addAll(idCol, typeCol, dateCol, diagnosisCol);
-    }
+    }*/
 
  
 }

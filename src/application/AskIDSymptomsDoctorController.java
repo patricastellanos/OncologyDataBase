@@ -1,17 +1,25 @@
-papackage application;
+package application;
 
+import java.util.List;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import oncology.db.interfaces.DBMaster;
+import oncology.db.pojos.Symptoms;
+import javafx.scene.Node;
 
-public class SeeSymptomsDoctorController {
+public class AskIDSymptomsDoctorController {
+	
+	private DBMaster db = Main.getdbMaster();
 
     @FXML
     private Button backButton;
@@ -20,18 +28,16 @@ public class SeeSymptomsDoctorController {
     private TextField id;
 
     @FXML
-    private Button add;
+    private Button seeSymp;
 
     @FXML
     private Button seeP;
 
     @FXML
-    private Button exitButton;
+    private TableView<Symptoms> tableP;
 
     @FXML
-    void actionAdd(ActionEvent event) {
-
-    }
+    private Button exitButton;
 
     @FXML
     void actionBack(ActionEvent event) {
@@ -51,7 +57,6 @@ public class SeeSymptomsDoctorController {
     @FXML
     void actionExit(ActionEvent event) {
     	System.exit(0);
-
     }
 
     @FXML
@@ -68,12 +73,26 @@ public class SeeSymptomsDoctorController {
 		}
 
     }
-    
-    int idSymp =id.getAnchor();
 
-    public void setData(int idSymp ) {
-        target.setText(data);
+    @FXML
+    void actionseeSymp(ActionEvent event) {
+    	
+    	List<Symptoms> sympList=db.printPatientSymptoms(id.getAnchor());
+    	
+    	tableP.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+    	
+    	TableColumn<Symptoms, String> idCol = new TableColumn<>("ID");
+    	TableColumn<Symptoms, String> detailCol = new TableColumn<>("Detail");
+    	
+    	
+    	idCol.setCellValueFactory(data -> new SimpleStringProperty(Integer.toString(data.getValue().getId_symp())));
+    	detailCol.setCellValueFactory(new PropertyValueFactory<>("detail"));
+    	
+    	
+    	tableP.getColumns().addAll(idCol, detailCol);
+    	tableP.getItems().addAll(sympList);
+    }
 
 }
 
-
+  
