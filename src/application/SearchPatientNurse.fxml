@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.TextField?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AssesTreatmentDoctorController">
+<AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SearchPatientNurseController">
    <children>
       <AnchorPane prefHeight="446.0" prefWidth="671.0" style="-fx-background-color: pink;">
          <children>
@@ -16,9 +17,10 @@
                </image>
             </ImageView>
             <Button fx:id="backButton" layoutX="546.0" layoutY="395.0" mnemonicParsing="false" onAction="#actionBack" text="Back" />
-            <TextField fx:id="id" layoutX="235.0" layoutY="177.0" promptText="id" />
-            <Button fx:id="asses" layoutX="543.0" layoutY="311.0" mnemonicParsing="false" onAction="#actionAsses" text="Asses" />
-            <Button fx:id="seeP" layoutX="512.0" layoutY="177.0" mnemonicParsing="false" onAction="#actionSeeAllP" text="See Patients" />
+            <TextField fx:id="name" layoutX="244.0" layoutY="136.0" promptText="Name" />
+            <TextField fx:id="surname" layoutX="244.0" layoutY="179.0" promptText="Surname" />
+            <Button fx:id="searchP" layoutX="540.0" layoutY="179.0" mnemonicParsing="false" onAction="#actionSearch" text="Search" />
+            <TableView fx:id="tableselectedpatient" layoutX="42.0" layoutY="238.0" prefHeight="75.0" prefWidth="587.0" />
          </children>
       </AnchorPane>
       <Button fx:id="exitButton" layoutX="88.0" layoutY="385.0" mnemonicParsing="false" onAction="#actionExit" text="Exit" />

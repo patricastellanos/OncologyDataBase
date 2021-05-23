@@ -1,4 +1,5 @@
 package application;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -6,10 +7,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class SeeCancerDoctorController {
+public class SeeFamilyHistoryController {
 
     @FXML
     private Button backButton;
@@ -18,10 +20,10 @@ public class SeeCancerDoctorController {
     private TextField id;
 
     @FXML
-    private Button see;
+    private Button seeP;
 
     @FXML
-    private Button seeP;
+    private TableView<?> tableP;
 
     @FXML
     private Button exitButton;
@@ -29,7 +31,7 @@ public class SeeCancerDoctorController {
     @FXML
     void actionBack(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("CancerDoctor.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("FamilyHistoryDoctor.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
@@ -53,9 +55,9 @@ public class SeeCancerDoctorController {
     }
 
     @FXML
-    void actionSeeP(ActionEvent event) {
+    void actionSeeAllP(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsCancerDoctor.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsFamilyHistoryDoctor.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		

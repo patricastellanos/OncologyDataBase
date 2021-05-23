@@ -2,13 +2,14 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LogInDoctorController">
+<AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FamilyHistoryNurseController">
    <children>
       <AnchorPane prefHeight="446.0" prefWidth="671.0" style="-fx-background-color: pink;">
          <children>
@@ -82,9 +83,11 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button layoutX="253.0" layoutY="137.0" mnemonicParsing="false" text="See a family history" />
-            <Button layoutX="253.0" layoutY="190.0" mnemonicParsing="false" text="Convert to XML file" />
-            <Button layoutX="253.0" layoutY="243.0" mnemonicParsing="false" text="Convert from XML to FamilyHistory" />
+            <Button layoutX="232.0" layoutY="137.0" mnemonicParsing="false" onAction="#actionSeeFamHist" text="See a family history" />
+            <Button layoutX="232.0" layoutY="190.0" mnemonicParsing="false" onAction="#actionConvertToXML" text="Convert to XML file" />
+            <Button layoutX="232.0" layoutY="243.0" mnemonicParsing="false" onAction="#actionConvertToFamHist" text="Convert from XML to FamilyHistory" />
+            <TextField fx:id="convertToXML" layoutX="487.0" layoutY="190.0" />
+            <TextField fx:id="convertToFamHist" layoutX="488.0" layoutY="243.0" />
          </children>
       </AnchorPane>
       <Button fx:id="exitButton" layoutX="78.0" layoutY="375.0" mnemonicParsing="false" onAction="#actionExit" text="Exit" />

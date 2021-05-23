@@ -82,6 +82,7 @@ public class SymptomsDoctorController {
 
     @FXML
     void actionSeeSymp(ActionEvent event) {
+
     	try{
 			Parent root = FXMLLoader.load(getClass().getResource("SeeSymptomsDoctor.fxml"));
 			Scene scene = new Scene(root);
@@ -92,6 +93,10 @@ public class SymptomsDoctorController {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+
+
+    	
+    	
 
 
     }

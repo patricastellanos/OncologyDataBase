@@ -6,40 +6,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class MainMenuDoctorController {
 
-    @FXML
-    private Button allPatientsButton;
-
-    @FXML
-    private Button famHistoryButton;
-
-    @FXML
-    private Button medExamButton;
-
-    @FXML
-    private Button cancerButton;
-
-    @FXML
-    private Button treatButton;
-
-    @FXML
-    private Button allCancersButton;
-
-    @FXML
-    private Button PatientButton;
-
-    @FXML
-    private Button SympButton;
-
-    @FXML
-    private Button exitButton;
-
-    @FXML
-    private Button backButton;
     @FXML
     void actionBack(ActionEvent event) {
     	try{

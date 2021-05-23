@@ -1,7 +1,5 @@
 package userInteraction;
 
-
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -25,8 +23,8 @@ import oncology.db.pojos.Symptoms;
 import oncology.db.pojos.Treatment;
 
 public class UserInteraction {
+	
 	private static DBMaster dbmaster= new SQLMaster();
-	//private static UserMaster em = new JPAUserMaster();//preguntar
 	private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	private static List<Patient> patient_list = new ArrayList<Patient>();
 	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -247,8 +245,18 @@ public class UserInteraction {
 			printPatientsMenu();
 			System.out.println("Please insert the id of the patient you want to add a cancer");
 			int id_patient= Integer.parseInt(reader.readLine());
-			printCancersMenu();
-			System.out.println("Is the cancer's type one of the above? [Yes/No]");
+			List <Cancer> insertedCancer = dbmaster.printCancers();
+			System.out.println("Please insert the type of cancer");
+			String cancer_type= reader.readLine();
+			for(int i=0; i<insertedCancer.size(); i++) {
+				if(insertedCancer.get(i).getCancer_type().equalsIgnoreCase(cancer_type)) {
+					dbmaster.addExistingCancer(insertedCancer.get(i).getId_cancer(), id_patient);
+				}else {
+					Cancer cancer=new Cancer(cancer_type);
+					dbmaster.addCancer(cancer, id_patient);
+				}
+			}
+			/*System.out.println("Is the cancer's type one of the above? [Yes/No]");
 			String answer = reader.readLine();
 			if(answer.equalsIgnoreCase("No")) {
 				System.out.println("Please insert the type of cancer");
@@ -259,7 +267,7 @@ public class UserInteraction {
 				System.out.println("Please insert the id of the cancer");
 				int id_cancer = Integer.parseInt(reader.readLine());
 				dbmaster.addExistingCancer(id_cancer, id_patient);
-			}
+			}*/
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -478,16 +486,16 @@ public class UserInteraction {
 		printPatientsMenu();
 		System.out.println("Choose the id of the patient from which you want see its medical examination");
 		int id = Integer.parseInt(reader.readLine());
-		System.out.println(dbmaster.printMedExamination(id));
+		System.out.println(dbmaster.printMedExamPatient(id));
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 			
 	}
 	
-	public static void printMedExamMenu(){
+	public static void printAllMedicalExaminationsMenu(){
 		try {
-		medExam_list = dbmaster.printMedExam();
+		medExam_list = dbmaster.printAllMedExam();
 		for (int i = 0; i < medExam_list.size(); i++) {
 			System.out.println(medExam_list.get(i));
 

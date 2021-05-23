@@ -9,7 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class TreatmentNurseController {
+public class MainMenuPatientController {
 
     @FXML
     private Button exitButton;
@@ -18,28 +18,9 @@ public class TreatmentNurseController {
     private Button backButton;
 
     @FXML
-    void actionAssesTreatment(ActionEvent event) {
-    	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeTreatment.fxml"));
-			Scene scene = new Scene(root);
-			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		
-			stage.setScene(scene);
-			stage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-    }
-    
-    @FXML
-    void actionCheck(ActionEvent event) {
-
-    }
-
-    @FXML
     void actionBack(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("MainMenuNurse.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("LogInPatient.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
@@ -51,12 +32,20 @@ public class TreatmentNurseController {
 
 
     }
-
-   
 
     @FXML
     void actionExit(ActionEvent event) {
     	System.exit(0);
+
+    }
+
+    @FXML
+    void actionSeeFamilyHistory(ActionEvent event) {
+
+    }
+
+    @FXML
+    void actionSeeMedicalExamination(ActionEvent event) {
 
     }
 

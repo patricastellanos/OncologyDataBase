@@ -7,10 +7,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class AssesTreatmentDoctorController {
+public class AddFamilyHistoryDoctorController {
 
     @FXML
     private Button backButton;
@@ -19,23 +20,34 @@ public class AssesTreatmentDoctorController {
     private TextField id;
 
     @FXML
-    private Button asses;
+    private TextField type;
+
+    @FXML
+    private Button add;
 
     @FXML
     private Button seeP;
 
     @FXML
-    private Button exitButton;
+    private ComboBox<String> member;
 
     @FXML
-    void actionAsses(ActionEvent event) {
+    private Button exitButton;
+    
+    private String[] members= {"Mother","Father", "Siblings","Grandparents","Others"};
+    
+    public void initialize () {
+    	member.getItems().addAll(members);
+    }
+    @FXML
+    void actionAdd(ActionEvent event) {
 
     }
 
     @FXML
     void actionBack(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("TreatmentDoctor.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("FamilyHistoryDoctor.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
@@ -56,7 +68,7 @@ public class AssesTreatmentDoctorController {
     @FXML
     void actionSeeAllP(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsTreatmentDoctor.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsFamilyHistory.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		

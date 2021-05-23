@@ -9,35 +9,38 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import oncology.db.interfaces.DBMaster;
+import userInteraction.UserInteraction;
 
 public class CancerDoctorController {
+	
+	private DBMaster db = Main.getdbMaster();
+	
+	@FXML
+	private Button addCancer;
 
-    @FXML
-    private Button addCancer;
+	@FXML
+	private Button seeCancer;
 
-    @FXML
-    private Button seeCancer;
+	@FXML
+	private TextField convertXML;
 
-    @FXML
-    private Button convertXML;
+	@FXML
+	private TextField convertfromXMLtoCancer;
 
-    @FXML
-    private Button convertXMLtoCancer;
+	@FXML
+	private TextField convertXMLtoHTML;
 
-    @FXML
-    private Button ConvertXMLtoHTML;
+	@FXML
+	private Button exitButton;
 
-    @FXML
-    private Button exitButton;
+	@FXML
+	private Button backButton;
 
-    @FXML
-    private Button backButton;
-    
-    private DBMaster db = Main.getdbMaster();
     @FXML
     void actionBack(ActionEvent event) {
     	try{
@@ -60,6 +63,7 @@ public class CancerDoctorController {
 
     @FXML
     void actionAddCancer(ActionEvent event) {
+  
     	try{
 			Parent root = FXMLLoader.load(getClass().getResource("AddCancerDoctor.fxml"));
 			Scene scene = new Scene(root);
@@ -76,7 +80,7 @@ public class CancerDoctorController {
     @FXML
     void actionSeeCancer(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeCancerDoctor.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("SeeCancer.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
@@ -93,22 +97,34 @@ public class CancerDoctorController {
     @FXML
     void actionConvertXML(ActionEvent event) {
     	
-    	
-    	
+    	db.cancerToXml(Integer.parseInt(convertXML.getText()));
+    	infoMessage("File created and saved", null, "Message");
 
     }
 
     @FXML
     void actionConvertXMLtoCancer(ActionEvent event) {
-
+    	
+    	UserInteraction.XmlToCancerMenu();
+    	infoMessage("File imported and saved", null, "Message");
+   
     }
 
 
     @FXML
     void actionXMLtoHTML(ActionEvent event) {
-
+    	
+    	UserInteraction.cancerXmlToHtml();
+    	infoMessage("File created and saved", null, "Message");
     }
     
+    public static void infoMessage(String infoMessage, String headerText, String title) {
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setContentText(infoMessage);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.showAndWait();
+    }
    
 
 }

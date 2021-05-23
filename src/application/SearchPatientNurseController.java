@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 import oncology.db.interfaces.DBMaster;
 import oncology.db.pojos.Patient;
 
-public class SearchPatientDoctorController {
+public class SearchPatientNurseController {
 	private DBMaster db = Main.getdbMaster();
 
     @FXML

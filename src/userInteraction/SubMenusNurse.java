@@ -14,6 +14,14 @@ public class SubMenusNurse {
 		dbmasterSubMenuNurse=dbm2;
 	}
 	
+	public static void showPatientsSubMenuNurse() {
+		UserInteraction.printPatientsMenu();
+	}
+	
+	public static void searchPatientSubMenuNurse() {
+		UserInteraction.searchPatientMenu();
+	}
+	
 	public static void familyHistorySubmenuNurse() {
 		while (true) {
 			System.out.println("1. See the family history of a patient");
@@ -52,10 +60,11 @@ public class SubMenusNurse {
 		
 		while (true) {
 			System.out.println("1.See the medical examination of a patient");
-			System.out.println("2. Back to the main menu");
+			System.out.println("2.See the medical examination of all the patients");
+			System.out.println("3. Back to the main menu");
 			try {
 				int choice = Integer.parseInt(reader.readLine());
-				while (choice < 0 || choice > 2) {
+				while (choice < 0 || choice > 3) {
 					System.out.println("Choose an option within the range:");
 					choice = Integer.parseInt(reader.readLine());
 				}
@@ -64,6 +73,8 @@ public class SubMenusNurse {
 					UserInteraction.printMedicalExaminationMenu();
 					break;
 				case 2:
+					UserInteraction.printAllMedicalExaminationsMenu();
+				case 3:
 					return;
 				}
 			} catch (Exception e) {
@@ -113,10 +124,11 @@ public class SubMenusNurse {
   		
   		while (true) {
   			System.out.println("1.Asses a treatment from patient");
-  			System.out.println("2. Back to the main menu");
+  			System.out.println("2.Check patient´s treatment");
+  			System.out.println("3. Back to the main menu");
   			try {
   				int choice = Integer.parseInt(reader.readLine());
-  				while (choice < 0 || choice > 2) {
+  				while (choice < 0 || choice > 3) {
   					System.out.println("Choose an option within the range:");
   					choice = Integer.parseInt(reader.readLine());
   				}
@@ -126,6 +138,9 @@ public class SubMenusNurse {
   					break;
   					
   				case 2:
+  					UserInteraction.treatmentWorkoutMenu();
+  					
+  				case 3:
   					return;
   					
   				}

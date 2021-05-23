@@ -1,14 +1,15 @@
 package application;
 
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.List;
+
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -16,14 +17,20 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+
 import javafx.scene.input.MouseEvent;
+
 import javafx.stage.Stage;
 import oncology.db.interfaces.DBMaster;
 import oncology.db.pojos.Symptoms;
+import javafx.scene.Node;
+
 
 public class SeeSymptomsDoctorController {
+	
+	private DBMaster db = Main.getdbMaster();
 
-    private DBMaster db = Main.getdbMaster();
+    
 
     @FXML
     private Button backButton;
@@ -32,7 +39,7 @@ public class SeeSymptomsDoctorController {
     private TextField id;
 
     @FXML
-    private Button SeeSymp;
+    private Button seeSymp;
 
     @FXML
     private Button seeP;
@@ -69,7 +76,6 @@ public class SeeSymptomsDoctorController {
     @FXML
     void actionExit(ActionEvent event) {
     	System.exit(0);
-
     }
 
     @FXML
@@ -86,9 +92,6 @@ public class SeeSymptomsDoctorController {
 		}
 
     }
-
-    
-
     
     public void initialize(){
     	
@@ -104,7 +107,12 @@ public class SeeSymptomsDoctorController {
         
     }
     
+    @FXML
+    void actionseeSymp(ActionEvent event) {
+    	
+    	List<Symptoms> sympList=db.printPatientSymptoms(id.getAnchor());
+    	tableP.getItems().addAll(sympList);
+    }
 
 }
-
 

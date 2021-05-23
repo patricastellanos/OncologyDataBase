@@ -152,10 +152,11 @@ public class SubMenusDoctor {
 		while (true) {
 			System.out.println("1.Add a medical examination");
 			System.out.println("2.See the medical examination of a patient");
-			System.out.println("3. Back to the main menu");
+			System.out.println("3.See all the medical examinations");
+			System.out.println("4. Back to the main menu");
 			try {
 				int choice = Integer.parseInt(reader.readLine());
-				while (choice < 0 || choice > 3) {
+				while (choice < 0 || choice > 4) {
 					System.out.println("Choose an option within the range:");
 					choice = Integer.parseInt(reader.readLine());
 				}
@@ -168,6 +169,8 @@ public class SubMenusDoctor {
 					UserInteraction.printMedicalExaminationMenu();
 					break;
 				case 3:
+					UserInteraction.printAllMedicalExaminationsMenu();
+				case 4:
 					return;
 				default:
 					break;
