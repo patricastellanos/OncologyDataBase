@@ -96,14 +96,14 @@ public class CancerDoctorController {
     @FXML
     void actionConvertXML(ActionEvent event) {
     	
-    	
-    	
+    	db.cancerToXml(Integer.parseInt(convertXML.getText()));
+    	infoMessage("File created and saved", null, "Message");
 
     }
 
     @FXML
     void actionConvertXMLtoCancer(ActionEvent event) {
-
+   
     }
 
 
@@ -112,6 +112,13 @@ public class CancerDoctorController {
 
     }
     
+    public static void infoMessage(String infoMessage, String headerText, String title) {
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setContentText(infoMessage);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.showAndWait();
+    }
    
 
 }

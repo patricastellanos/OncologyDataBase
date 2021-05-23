@@ -46,19 +46,19 @@ public class SeeTreatmentDoctorController {
     	
     	tableP.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     	
-    	TableColumn<MedicalExamination, String> idCol = new TableColumn<>("ID");
-    	TableColumn<MedicalExamination, String> typeCol = new TableColumn<>("Type");
-    	TableColumn<MedicalExamination, String> dateCol = new TableColumn<>("Date");
-    	TableColumn<MedicalExamination, String> locationCol = new TableColumn<>("Diagnosis");
+    	TableColumn<Treatment, String> idCol = new TableColumn<>("ID");
+    	TableColumn<Treatment, String> typeCol = new TableColumn<>("Type");
+    	TableColumn<Treatment, String> dateCol = new TableColumn<>("Date");
+    	TableColumn<Treatment, String> locationCol = new TableColumn<>("Diagnosis");
     	
-    	idCol.setCellValueFactory(data -> new SimpleStringProperty(Integer.toString(data.getValue().getId_medExam())));
+    	idCol.setCellValueFactory(data -> new SimpleStringProperty(Integer.toString(data.getValue().getId_treat())));
     	typeCol.setCellValueFactory(new PropertyValueFactory<>("medExam_type"));
     	DateFormat dateformat=new SimpleDateFormat("yyyy-mm-dd");
-    	dateCol.setCellValueFactory(data -> new SimpleStringProperty(dateformat.format(data.getValue().getDateMedExam())));
+    	dateCol.setCellValueFactory(data -> new SimpleStringProperty(dateformat.format(data.getValue().getStart_date())));
     	locationCol.setCellValueFactory(new PropertyValueFactory<>("diagnosis"));
     	
         tableP.getColumns().addAll( idCol, typeCol, dateCol, locationCol);
-        tableP.getItems().addAll(treatment);
+        tableP.getItems().addAll(treatment_list);
         
     }
 
