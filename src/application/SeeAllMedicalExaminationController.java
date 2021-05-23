@@ -35,7 +35,7 @@ public class SeeAllMedicalExaminationController {
 	    
 	    public void initialize(){
 	    	
-	    	List<MedicalExamination> medExList = db.printMedExam();
+	    	List<MedicalExamination> medExList = db.printAllMedExam();
 	    	
 	    	
 	    	tableP.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);

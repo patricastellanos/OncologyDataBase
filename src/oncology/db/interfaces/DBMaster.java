@@ -30,7 +30,7 @@ public interface DBMaster {
    
     public List<MedicalExamination> printMedExamPatient (int id);
     public void addMedExam(MedicalExamination m, int id);
-    public List<MedicalExamination> printMedExam();
+    public List<MedicalExamination> printAllMedExam();
     
     public void addCancer(Cancer cancer, int id_patient);
     public void addExistingCancer(int id_cancer, int id_patient);

@@ -457,7 +457,7 @@ public class SQLMaster implements DBMaster {
 	}
 	
 	@Override
-	public List<MedicalExamination> printMedExam() { 
+	public List<MedicalExamination> printAllMedExam() { 
 		
 		List <MedicalExamination> medExam_list=new ArrayList<MedicalExamination>();
 		try {
