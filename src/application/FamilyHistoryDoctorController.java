@@ -33,6 +33,16 @@ public class FamilyHistoryDoctorController {
 
     @FXML
     void actionAddFam(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("AddFamilyHistoryDoctor.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 
     }
 
@@ -69,7 +79,16 @@ public class FamilyHistoryDoctorController {
 
     @FXML
     void actionSeeFamHist(ActionEvent event) {
-
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("SeeFamilyHistory.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
     }
 
 }
