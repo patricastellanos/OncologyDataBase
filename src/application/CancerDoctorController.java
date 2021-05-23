@@ -14,9 +14,12 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import oncology.db.interfaces.DBMaster;
+import userInteraction.UserInteraction;
 
 public class CancerDoctorController {
-
+	
+	private DBMaster db = Main.getdbMaster();
+	
 	@FXML
 	private Button addCancer;
 
@@ -38,8 +41,6 @@ public class CancerDoctorController {
 	@FXML
 	private Button backButton;
 
-    
-    private DBMaster db = Main.getdbMaster();
     @FXML
     void actionBack(ActionEvent event) {
     	try{
@@ -103,13 +104,18 @@ public class CancerDoctorController {
 
     @FXML
     void actionConvertXMLtoCancer(ActionEvent event) {
+    	
+    	UserInteraction.XmlToCancerMenu();
+    	infoMessage("File imported and saved", null, "Message");
    
     }
 
 
     @FXML
     void actionXMLtoHTML(ActionEvent event) {
-
+    	
+    	UserInteraction.cancerXmlToHtml();
+    	infoMessage("File created and saved", null, "Message");
     }
     
     public static void infoMessage(String infoMessage, String headerText, String title) {
