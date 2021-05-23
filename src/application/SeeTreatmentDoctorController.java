@@ -1,4 +1,4 @@
-/*package application;
+package application;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -17,6 +17,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import oncology.db.pojos.MedicalExamination;
 import oncology.db.pojos.Treatment;
 
 public class SeeTreatmentDoctorController {
@@ -26,6 +27,8 @@ public class SeeTreatmentDoctorController {
 
     @FXML
     private TextField id;
+    @FXML
+    private TableView<Treatment> tableP;
 
     @FXML
     private Button check;
@@ -38,7 +41,7 @@ public class SeeTreatmentDoctorController {
 
     public void initialize(){
     	
-    	List<Treatment> medExList = null;
+    	List<Treatment> treatment_list = null;
     	
     	
     	tableP.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
@@ -55,7 +58,7 @@ public class SeeTreatmentDoctorController {
     	locationCol.setCellValueFactory(new PropertyValueFactory<>("diagnosis"));
     	
         tableP.getColumns().addAll( idCol, typeCol, dateCol, locationCol);
-        tableP.getItems().addAll(medExList);
+        tableP.getItems().addAll(treatment);
         
     }
 
@@ -100,4 +103,4 @@ public class SeeTreatmentDoctorController {
 
     }
 
-}*/ //falta tabla see treatment = med exam
+}

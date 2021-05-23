@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -16,26 +17,27 @@ import oncology.db.interfaces.DBMaster;
 
 public class CancerDoctorController {
 
-    @FXML
-    private Button addCancer;
+	@FXML
+	private Button addCancer;
 
-    @FXML
-    private Button seeCancer;
+	@FXML
+	private Button seeCancer;
 
-    @FXML
-    private Button convertXML;
+	@FXML
+	private TextField convertXML;
 
-    @FXML
-    private Button convertXMLtoCancer;
+	@FXML
+	private TextField convertfromXMLtoCancer;
 
-    @FXML
-    private Button ConvertXMLtoHTML;
+	@FXML
+	private TextField convertXMLtoHTML;
 
-    @FXML
-    private Button exitButton;
+	@FXML
+	private Button exitButton;
 
-    @FXML
-    private Button backButton;
+	@FXML
+	private Button backButton;
+
     
     private DBMaster db = Main.getdbMaster();
     @FXML

@@ -8,27 +8,28 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class FamilyHistoryDoctorController {
 
-    @FXML
-    private Button addFamHist;
+	  @FXML
+	    private Button addFamHist;
 
-    @FXML
-    private Button seeFamHist;
+	    @FXML
+	    private Button seeFamHist;
 
-    @FXML
-    private Button convertToXML;
+	    @FXML
+	    private TextField convertToXML;
 
-    @FXML
-    private Button convertXMLToFamHist;
+	    @FXML
+	    private TextField convertXMLtoFamHist;
 
-    @FXML
-    private Button exitButton;
+	    @FXML
+	    private Button exitButton;
 
-    @FXML
-    private Button backButton;
+	    @FXML
+	    private Button backButton;
 
     @FXML
     void actionAddFam(ActionEvent event) {
