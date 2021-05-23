@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AskIDSymptomsDoctorController">
+<AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SeeSymptomsDoctorController">
    <children>
       <AnchorPane prefHeight="446.0" prefWidth="671.0" style="-fx-background-color: pink;">
          <children>
@@ -18,7 +18,7 @@
             </ImageView>
             <Button fx:id="backButton" layoutX="546.0" layoutY="395.0" mnemonicParsing="false" onAction="#actionBack" text="Back" />
             <TextField fx:id="id" layoutX="167.0" layoutY="78.0" promptText="id" />
-            <Button fx:id="add" layoutX="433.0" layoutY="332.0" mnemonicParsing="false" onAction="#actionAdd" text="See Symptoms associated" />
+            <Button fx:id="SeeSymp" layoutX="433.0" layoutY="332.0" mnemonicParsing="false" onAction="#actionSeeSymptomsassociated" text="See Symptoms associated" />
             <Button fx:id="seeP" layoutX="505.0" layoutY="78.0" mnemonicParsing="false" onAction="#actionSeeAllP" text="See Patients" />
             <TableView fx:id="tableP" layoutX="87.0" layoutY="141.0" prefHeight="163.0" prefWidth="499.0" />
          </children>

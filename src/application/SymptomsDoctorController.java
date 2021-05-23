@@ -29,6 +29,17 @@ public class SymptomsDoctorController {
 
     @FXML
     void actionAddSymp(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("AddSymptomsDoctor.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+
 
     }
 
@@ -49,6 +60,17 @@ public class SymptomsDoctorController {
 
     @FXML
     void actionDeleteSymp(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("RemoveSymptomsDoctor.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+
 
     }
 
@@ -60,6 +82,17 @@ public class SymptomsDoctorController {
 
     @FXML
     void actionSeeSymp(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("SeeSymptomsDoctor.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+
 
     }
 

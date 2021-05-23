@@ -23,6 +23,8 @@ import oncology.db.pojos.Symptoms;
 
 public class SeeSymptomsDoctorController {
 
+    private DBMaster db = Main.getdbMaster();
+
     @FXML
     private Button backButton;
 
@@ -30,7 +32,7 @@ public class SeeSymptomsDoctorController {
     private TextField id;
 
     @FXML
-    private Button add;
+    private Button SeeSymp;
 
     @FXML
     private Button seeP;
@@ -42,7 +44,9 @@ public class SeeSymptomsDoctorController {
     private TableView<Symptoms> tableP;
 
     @FXML
-    void actionAdd(ActionEvent event) {
+    void actionSeeSymptomsassociated(ActionEvent event) {
+    	List<Symptoms> symptoms_list = db.printPatientSymptoms(Integer.parseInt(id.getText()));
+    	tableP.getItems().addAll(symptoms_list);
 
     }
    
@@ -71,7 +75,7 @@ public class SeeSymptomsDoctorController {
     @FXML
     void actionSeeAllP(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsSymptoms.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsDoctor.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
@@ -82,6 +86,24 @@ public class SeeSymptomsDoctorController {
 		}
 
     }
+
+    
+
+    
+    public void initialize(){
+    	
+    	tableP.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+    	
+    	TableColumn<Symptoms, String> idCol = new TableColumn<>("ID");
+    	TableColumn<Symptoms, String> typeCol = new TableColumn<>("Details");
+    	
+    	idCol.setCellValueFactory(data -> new SimpleStringProperty(Integer.toString(data.getValue().getId_symp())));
+    	typeCol.setCellValueFactory(new PropertyValueFactory<>("details"));
+        tableP.getColumns().addAll(idCol, typeCol);
+        
+        
+    }
+    
 
 }
 

@@ -59,6 +59,21 @@ public class MainMenuDoctorController {
     	System.exit(0);
 
     }
+    @FXML
+    void actionAllCancer(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("SeeAllCancers.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+    	
+
+    }
 
     @FXML
     void actionAllPatients(ActionEvent event) {

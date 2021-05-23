@@ -32,7 +32,8 @@ public class RemoveSymptomsDoctorController {
 
     @FXML
     void actionRemove(ActionEvent event) {
-    	db.removePatient(Integer.parseInt(id.getText()));
+    	
+    	db.removeSymptoms(Integer.parseInt(id.getText()));
 
     }
 
@@ -60,7 +61,7 @@ public class RemoveSymptomsDoctorController {
     @FXML
     void actionSeeAllP(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsSymptoms.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsDoctor.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
