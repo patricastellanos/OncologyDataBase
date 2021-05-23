@@ -11,7 +11,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class SeeFamilyHistoryDoctorController {
+public class SeeFamilyHistoryController {
 
     @FXML
     private Button backButton;

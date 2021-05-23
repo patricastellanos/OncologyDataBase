@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 import oncology.db.pojos.MedicalExamination;
 import oncology.db.pojos.Treatment;
 
-public class SeeTreatmentDoctorController {
+public class SeeTreatmentController {
 
     @FXML
     private Button backButton;

@@ -21,17 +21,17 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button fx:id="allPatientsButton" layoutX="226.0" layoutY="136.0" mnemonicParsing="false" onAction="#actionAllPatients" text="See all patients" />
-            <Button fx:id="famHistoryButton" layoutX="228.0" layoutY="172.0" mnemonicParsing="false" onAction="#actionFamilyHistory" text="Family History" />
-            <Button fx:id="medExamButton" layoutX="228.0" layoutY="208.0" mnemonicParsing="false" onAction="#actionMedicalExamination" text="Medical Examination" />
-            <Button fx:id="cancerButton" layoutX="227.0" layoutY="240.0" mnemonicParsing="false" onAction="#actionCancer" text="Cancer" />
-            <Button fx:id="treatButton" layoutX="228.0" layoutY="310.0" mnemonicParsing="false" onAction="#actionTreatment" text="Treatment" />
-            <Button fx:id="allCancersButton" layoutX="227.0" layoutY="276.0" mnemonicParsing="false" onAction="#actionAllPatients" text="See all cancers" />
-            <Button fx:id="PatientButton" layoutX="227.0" layoutY="101.0" mnemonicParsing="false" onAction="#actionPatient" text="Patient" />
-            <Button fx:id="SympButton" layoutX="227.0" layoutY="346.0" mnemonicParsing="false" onAction="#actionSymp" text="Symptoms" />
+            <Button layoutX="226.0" layoutY="136.0" mnemonicParsing="false" onAction="#actionAllPatients" text="See all patients" />
+            <Button layoutX="228.0" layoutY="172.0" mnemonicParsing="false" onAction="#actionFamilyHistory" text="Family History" />
+            <Button layoutX="228.0" layoutY="208.0" mnemonicParsing="false" onAction="#actionMedicalExamination" text="Medical Examination" />
+            <Button layoutX="227.0" layoutY="240.0" mnemonicParsing="false" onAction="#actionCancer" text="Cancer" />
+            <Button layoutX="228.0" layoutY="310.0" mnemonicParsing="false" onAction="#actionTreatment" text="Treatment" />
+            <Button layoutX="227.0" layoutY="276.0" mnemonicParsing="false" onAction="#actionAllPatients" text="See all cancers" />
+            <Button layoutX="227.0" layoutY="101.0" mnemonicParsing="false" onAction="#actionPatient" text="Patient" />
+            <Button layoutX="227.0" layoutY="346.0" mnemonicParsing="false" onAction="#actionSymp" text="Symptoms" />
          </children>
       </AnchorPane>
-      <Button fx:id="exitButton" layoutX="559.0" layoutY="357.0" mnemonicParsing="false" onAction="#actionExit" prefHeight="26.0" prefWidth="47.0" text="Exit" />
-      <Button fx:id="backButton" layoutX="101.0" layoutY="357.0" mnemonicParsing="false" onAction="#actionBack" prefHeight="26.0" prefWidth="47.0" text="Back" />
+      <Button layoutX="559.0" layoutY="357.0" mnemonicParsing="false" onAction="#actionExit" prefHeight="26.0" prefWidth="47.0" text="Exit" />
+      <Button layoutX="101.0" layoutY="357.0" mnemonicParsing="false" onAction="#actionBack" prefHeight="26.0" prefWidth="47.0" text="Back" />
    </children>
 </AnchorPane>

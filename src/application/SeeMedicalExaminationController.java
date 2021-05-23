@@ -21,7 +21,7 @@ import oncology.db.interfaces.DBMaster;
 import oncology.db.pojos.MedicalExamination;
 
 
-public class SeeMedicalExaminationDoctorController {
+public class SeeMedicalExaminationController {
 	
 	private DBMaster db = Main.getdbMaster();
     

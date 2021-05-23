@@ -138,7 +138,7 @@ public class Menu {
 				System.out.println("1. See all the patients");
 				System.out.println("2. Search a patient");
 				System.out.println("3. Family History");
-				System.out.println("4. See Medical Examination");
+				System.out.println("4. Medical Examination");
 				System.out.println("5. Cancer");
 				System.out.println("6. See all the cancers");
 				System.out.println("7. Treatment");
