@@ -1,8 +1,5 @@
 package userInteraction;
 
-
-
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -16,6 +13,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 import actions.SQLMaster;
 import oncology.db.interfaces.DBMaster;
+import oncology.db.interfaces.InteractionMaster;
 import oncology.db.interfaces.UserMaster;
 import oncology.db.jpa.JPAUserMaster;
 import oncology.db.pojos.Cancer;
@@ -25,9 +23,9 @@ import oncology.db.pojos.Patient;
 import oncology.db.pojos.Symptoms;
 import oncology.db.pojos.Treatment;
 
-public class UserInteraction {
+public class UserInteraction implements InteractionMaster {
+	
 	private static DBMaster dbmaster= new SQLMaster();
-	//private static UserMaster em = new JPAUserMaster();//preguntar
 	private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	private static List<Patient> patient_list = new ArrayList<Patient>();
 	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");

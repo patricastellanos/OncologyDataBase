@@ -19,6 +19,7 @@ import oncology.db.jpa.JPAUserMaster;
 import oncology.db.pojos.users.User;
 
 public class LogInPatientController {
+	
 	private static UserMaster userman = new JPAUserMaster();
 
     public LogInPatientController() {
