@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import actions.SQLMaster;
@@ -27,15 +28,22 @@ public class UpdatePatientDoctorController {
 
 	    @FXML
 	    private Button updateP;
-
+	    
 	    @FXML
-	    private TextField newState;
+	    private ComboBox<String> newState;
+	    private String[] actualStates = {"Acute Rehabilitation", "Lowstream Rehabilitation", "Complex care", 
+	    		"Convalescent Care", "Paliative Care", "Recovered", "Death"};
+
 
 	    @FXML
 	    private Button exitButton;
 	    
 	    @FXML
 	    private Button seePatients;
+	    
+	    public void initialize() {
+	    	newState.getItems().addAll(actualStates);
+	    }
 
     @FXML
     void actionBack(ActionEvent event) {
@@ -76,23 +84,11 @@ public class UpdatePatientDoctorController {
     	Window owner = updateP.getScene().getWindow();
     	
     	db= new SQLMaster();
-    	int id=Integer.parseInt(idPatient.getText());
-    	String newActState=newState.getText();
     	
-    	if(!newActState.equalsIgnoreCase("ACUTE REHABILITATION")&&
-    	   !newActState.equalsIgnoreCase("LOWSTREAM REHABILITATION")&&
-    	   !newActState.equalsIgnoreCase("COMPLEX CARE")&&
-    	   !newActState.equalsIgnoreCase("CONVALESCENT CARE")&&
-    	   !newActState.equalsIgnoreCase("PALLIATIVE RESPITE")&&
-    	   !newActState.equalsIgnoreCase("RECOVERED")&&
-    	   !newActState.equalsIgnoreCase("DEATH")){
-    		
-    		showAlert(Alert.AlertType.ERROR, owner, "Error!", "States available: 1.ACUTE REHABILITATION, 2.LOWSTREAM REHABILITATION,"
-    				+ " 3.COMPLEX CARE, 4.CONVALESCENT CARE, 5.PALLIATIVE RESPITE, 6.RECOVERED, 7.DEATH");
-    										
-    		}else {
-    			db.update_patient_state(id, newActState );
-    		}
+    	String newActState=newState.getValue();
+    	
+    	
+    	db.update_patient_state(Integer.parseInt(idPatient.getText()), newActState );
     	
     	try{
 			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsPatient.fxml"));
