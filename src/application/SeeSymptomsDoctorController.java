@@ -17,7 +17,7 @@ import oncology.db.interfaces.DBMaster;
 import oncology.db.pojos.Symptoms;
 import javafx.scene.Node;
 
-public class AskIDSymptomsDoctorController {
+public class SeeSymptomsDoctorController {
 	
 	private DBMaster db = Main.getdbMaster();
 
@@ -95,4 +95,3 @@ public class AskIDSymptomsDoctorController {
 
 }
 
-  
