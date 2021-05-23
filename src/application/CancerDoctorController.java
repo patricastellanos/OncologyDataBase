@@ -62,6 +62,7 @@ public class CancerDoctorController {
 
     @FXML
     void actionAddCancer(ActionEvent event) {
+  
     	try{
 			Parent root = FXMLLoader.load(getClass().getResource("AddCancerDoctor.fxml"));
 			Scene scene = new Scene(root);
