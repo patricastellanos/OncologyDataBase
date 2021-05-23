@@ -134,32 +134,41 @@ public class Menu {
 		private static void nurseMenu() throws Exception {
 			do {
 				System.out.println("Choose an option:");
-				System.out.println("1. Family History");
-				System.out.println("2. Medical Examination");
-				System.out.println("3. Cancer");
-				System.out.println("4. See all the cancers");
-				System.out.println("5. Treatment");
+				
+				System.out.println("1. See all the patients");
+				System.out.println("2. Search a patient");
+				System.out.println("3. Family History");
+				System.out.println("4. See Medical Examination");
+				System.out.println("5. Cancer");
+				System.out.println("6. See all the cancers");
+				System.out.println("7. Treatment");
 				System.out.println("0. Back to the main menu");
 				int choice = Integer.parseInt(reader.readLine());
-				while (choice < 0 || choice > 5) {
+				while (choice < 0 || choice > 7) {
 					System.out.println("Choose an option within the range:");
                     choice =Integer.parseInt(reader.readLine());
                     }
 				switch (choice) {
 				case 1:
-					SubMenusNurse.familyHistorySubmenuNurse();
+					SubMenusNurse.showPatientsSubMenuNurse();
 					break;
 				case 2:
+					SubMenusNurse.searchPatientSubMenuNurse();
+					break;
+				case 3:
+					SubMenusNurse.familyHistorySubmenuNurse();
+					break;
+				case 4:
 					SubMenusNurse.medicalExaminationSubmenuNurse();
 					break;
 					
-				case 3:
+				case 5:
 					SubMenusNurse.cancerSubmenuNurse();
 					break;
-				case 4:
+				case 6:
 					SubMenusNurse.showCancersSubMenuNurse();
 					break;
-				case 5:
+				case 7:
 					SubMenusNurse.treatmentSubmenuNurse();
 					break;
 					
