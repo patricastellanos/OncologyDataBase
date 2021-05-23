@@ -38,11 +38,10 @@ public class AddCancerDoctorController {
 
     @FXML
     void actionAdd(ActionEvent event) {
-    	int id= Integer.parseInt(this.id.getText());
     	
-    	Cancer cancer= new Cancer( type.getText());
+    	Cancer cancer= new Cancer(type.getText());
     	
-    	db.addCancer(cancer, id);
+    	db.addCancer(cancer, Integer.parseInt(id.getText()));
 
 
     }
@@ -71,7 +70,7 @@ public class AddCancerDoctorController {
     @FXML
     void actionSeeAllP(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsCancerDoctor.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsCancer.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		

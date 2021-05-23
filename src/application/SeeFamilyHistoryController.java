@@ -51,13 +51,14 @@ public class SeeFamilyHistoryController {
 
     @FXML
     void actionSee(ActionEvent event) {
+    	
 
     }
 
     @FXML
     void actionSeeAllP(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsFamilyHistoryDoctor.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsFamilyHistory.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		

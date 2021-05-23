@@ -29,6 +29,21 @@ public class TreatmentDoctorController {
 
     @FXML
     void actionAddTreat(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("AddTreatmentDoctor.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+
+    }
+    
+    @FXML
+    void actionCheckTreat(ActionEvent event) {
 
     }
 
@@ -63,10 +78,7 @@ public class TreatmentDoctorController {
 
     }
 
-    @FXML
-    void actionCheckTreat(ActionEvent event) {
-
-    }
+    
 
     @FXML
     void actionExit(ActionEvent event) {

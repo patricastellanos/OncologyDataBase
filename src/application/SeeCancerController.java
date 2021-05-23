@@ -64,9 +64,9 @@ public class SeeCancerController {
 
     @FXML
     void actionSee(ActionEvent event) {
-    	Cancer can = db.printCancer(Integer.parseInt(id.getText()));	
+    	Cancer cancer = db.printCancer(Integer.parseInt(id.getText()));	
         
-    	cancerTable.getItems().addAll(can);
+    	cancerTable.getItems().addAll(cancer);
 
     }
     
@@ -88,7 +88,7 @@ public class SeeCancerController {
     @FXML
     void actionSeeP(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsCancerDoctor.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsCancer.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		

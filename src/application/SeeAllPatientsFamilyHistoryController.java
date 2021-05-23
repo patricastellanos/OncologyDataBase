@@ -66,7 +66,7 @@ public class SeeAllPatientsFamilyHistoryController {
     @FXML
     void actionBack(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("CancerDoctor.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("FamilyHistoryDoctor.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
