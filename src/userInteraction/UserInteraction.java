@@ -496,7 +496,7 @@ public class UserInteraction {
 			
 	}
 	
-	public static void printMedExamMenu(){
+	public static void printAllMedicalExaminationsMenu(){
 		try {
 		medExam_list = dbmaster.printMedExam();
 		for (int i = 0; i < medExam_list.size(); i++) {
