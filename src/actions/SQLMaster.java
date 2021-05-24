@@ -103,7 +103,7 @@ public class SQLMaster implements DBMaster {
 			
 			// Create table treatment
 			sql1 = "CREATE TABLE treatment " + "(id_treat   INTEGER  PRIMARY KEY AUTOINCREMENT, "
-				    + " treat_type    TEXT  NOT NULL, " + " start_date DATE NOT NULL, " + " duration INTEGER)";
+				    + " treat_type    TEXT  NOT NULL, " + " start_date DATE NOT NULL, " + " duration INTEGER NOT NULL)";
 			stmt1.executeUpdate(sql1);
 			
 			// Create table symptoms
@@ -112,7 +112,8 @@ public class SQLMaster implements DBMaster {
 			stmt1.executeUpdate(sql1);
 
 			// Create table patient_treatment
-			sql1 = "CREATE TABLE patient_treatment " + "(id INTEGER REFERENCES patient (id), "
+			sql1 = "CREATE TABLE patient_treatment "
+					+ "(id INTEGER REFERENCES patient (id) ON DELETE SET NULL, "
 					+ " id_treat INTEGER REFERENCES treatment (id_treat) ON DELETE SET NULL, "
 					+ " PRIMARY KEY (id, id_treat))";
 			stmt1.executeUpdate(sql1);
@@ -691,11 +692,11 @@ public class SQLMaster implements DBMaster {
 			
 			while(rs.next()) {
 				
-				int id = rs.getInt("id_treat");
+				Integer id_treat = rs.getInt(1);
 				String type = rs.getString("treat_type"); 
 				Date startdate = rs.getDate("start_date");
 				int duration = rs.getInt("duration");	
-				Treatment t= new Treatment(id, type, startdate, duration);
+				Treatment t= new Treatment(id_treat, type, startdate, duration);
 				treatment_list.add(t);
 			}
 			
