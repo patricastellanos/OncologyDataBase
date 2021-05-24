@@ -50,7 +50,7 @@ public class SeeAllPatientsFamilyHistoryController {
     	idCol.setCellValueFactory(data -> new SimpleStringProperty(Integer.toString(data.getValue().getId_patient())));
     	nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
     	surNameCol.setCellValueFactory(new PropertyValueFactory<>("surname"));
-    	DateFormat dateformat=new SimpleDateFormat("yyyy/MM/dd");
+    	DateFormat dateformat=new SimpleDateFormat("yyyy-MM-dd");
     	doBCol.setCellValueFactory(data -> new SimpleStringProperty(dateformat.format(data.getValue().getDate_birth())));
     	sexCol.setCellValueFactory(new PropertyValueFactory<>("sex"));
     	locationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
