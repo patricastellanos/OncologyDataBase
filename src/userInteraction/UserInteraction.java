@@ -248,14 +248,24 @@ public class UserInteraction {
 			List <Cancer> insertedCancer = dbmaster.printCancers();
 			System.out.println("Please insert the type of cancer");
 			String cancer_type= reader.readLine();
-			for(int i=0; i<insertedCancer.size(); i++) {
-				if(insertedCancer.get(i).getCancer_type().equalsIgnoreCase(cancer_type)) {
-					dbmaster.addExistingCancer(insertedCancer.get(i).getId_cancer(), id_patient);
-				}else {
-					Cancer cancer=new Cancer(cancer_type);
-					dbmaster.addCancer(cancer, id_patient);
+			if(insertedCancer.size()==0) {
+				Cancer cancer=new Cancer(cancer_type);
+				dbmaster.addCancer(cancer, id_patient);
+			}else {
+				for(int i=0; i<insertedCancer.size(); i++) {
+					if(insertedCancer.get(i).getCancer_type().equalsIgnoreCase(cancer_type)) {
+						dbmaster.addExistingCancer(insertedCancer.get(i).getId_cancer(), id_patient);
+						break;
+						
+					}else {
+						Cancer cancer=new Cancer(cancer_type);
+						dbmaster.addCancer(cancer, id_patient);
+						break;
+					}
+					
 				}
 			}
+			
 			/*System.out.println("Is the cancer's type one of the above? [Yes/No]");
 			String answer = reader.readLine();
 			if(answer.equalsIgnoreCase("No")) {
@@ -282,7 +292,7 @@ public class UserInteraction {
 			printPatientsMenu();
 			System.out.println("Choose the id of the patient");
 			int id = Integer.parseInt(reader.readLine());
-			System.out.println(dbmaster.printCancer(id));
+			System.out.println(dbmaster.printCancersPatient(id));
 			
 		}catch(Exception e) {
 			e.printStackTrace();

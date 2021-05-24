@@ -15,6 +15,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+
+import java.util.List;
+
 import com.gluonhq.charm.glisten.control.TextField;
 
 public class SeeCancerController {
@@ -62,13 +65,23 @@ public class SeeCancerController {
 
     @FXML
     void actionSee(ActionEvent event) {
-    	Cancer cancer = db.printCancer(Integer.parseInt(id.getText()));	
+    	List<Cancer> cancerList = db.printCancersPatient(Integer.parseInt(id.getText()));	
+    	cancerTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+    	
+    	TableColumn<Cancer, String> idCol = new TableColumn<>("ID");
+    	TableColumn<Cancer, String> typeCol = new TableColumn<>("Type");
+    	
+    	
+    	idCol.setCellValueFactory(data -> new SimpleStringProperty(Integer.toString(data.getValue().getId_cancer())));
+    	typeCol.setCellValueFactory(new PropertyValueFactory<>("cancer_type"));
+    	
+        cancerTable.getColumns().addAll(idCol, typeCol);
         
-    	cancerTable.getItems().addAll(cancer);
+    	cancerTable.getItems().addAll(cancerList);
 
     }
     
-    public void initialize() {
+    /*public void initialize() {
 
     	cancerTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     	
@@ -80,7 +93,7 @@ public class SeeCancerController {
     	typeCol.setCellValueFactory(new PropertyValueFactory<>("cancer_type"));
     	
         cancerTable.getColumns().addAll(idCol, typeCol);
-    }
+    }*/
 
 
     @FXML

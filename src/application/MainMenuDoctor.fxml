@@ -26,7 +26,7 @@
             <Button layoutX="228.0" layoutY="208.0" mnemonicParsing="false" onAction="#actionMedicalExamination" text="Medical Examination" />
             <Button layoutX="227.0" layoutY="240.0" mnemonicParsing="false" onAction="#actionCancer" text="Cancer" />
             <Button layoutX="228.0" layoutY="310.0" mnemonicParsing="false" onAction="#actionTreatment" text="Treatment" />
-            <Button layoutX="227.0" layoutY="276.0" mnemonicParsing="false" onAction="#actionAllPatients" text="See all cancers" />
+            <Button fx:id="seeCancer" layoutX="227.0" layoutY="276.0" mnemonicParsing="false" onAction="#actionAllCancer" text="See all cancers" />
             <Button layoutX="227.0" layoutY="101.0" mnemonicParsing="false" onAction="#actionPatient" text="Patient" />
             <Button layoutX="227.0" layoutY="346.0" mnemonicParsing="false" onAction="#actionSymp" text="Symptoms" />
          </children>

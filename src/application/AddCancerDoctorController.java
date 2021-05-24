@@ -1,6 +1,7 @@
 package application;
 
-import java.sql.Date;
+
+import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,11 +39,42 @@ public class AddCancerDoctorController {
 
     @FXML
     void actionAdd(ActionEvent event) {
-    	
-    	Cancer cancer= new Cancer(type.getText());
-    	
-    	db.addCancer(cancer, Integer.parseInt(id.getText()));
+    
+    	List <Cancer> insertedCancer = db.printCancers();
+		String cancer_type= type.getText();
+		if(insertedCancer.size()==0) {
+			Cancer cancer=new Cancer(type.getText());
+			db.addCancer(cancer, Integer.parseInt(id.getText()));
+		}else {
+			for(int i=0; i<insertedCancer.size(); i++) {
+				if(insertedCancer.get(i).getCancer_type().equalsIgnoreCase(cancer_type)) {
+					db.addExistingCancer(insertedCancer.get(i).getId_cancer(), Integer.parseInt(id.getText()));
+					break;
+				}else {
+					Cancer cancer=new Cancer(type.getText());
+					db.addCancer(cancer, Integer.parseInt(id.getText()));
+					break;
+				
+				}
+				
+				
+			}
+		}
+		
+		try{
+			Parent root = FXMLLoader.load(getClass().getResource("CancerDoctor.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 
+		
+    	
+   
 
     }
 

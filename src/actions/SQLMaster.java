@@ -529,8 +529,8 @@ public class SQLMaster implements DBMaster {
 	}
 	
 	
-	public Cancer printCancer(int id_patient) {
-		
+	public List<Cancer> printCancersPatient(int id_patient) {
+		List<Cancer> cancer_list=new ArrayList<Cancer>();
 		Cancer cancer= null;
 		try {
 			Statement stmt = c.createStatement();
@@ -540,7 +540,7 @@ public class SQLMaster implements DBMaster {
 				Integer id_cancer = rs.getInt(1);
 				String type = rs.getString("cancer_type");
 				cancer= new Cancer ( id_cancer, type);
-				
+				cancer_list.add(cancer);
 			}
 			rs.close();
 			stmt.close();
@@ -549,7 +549,7 @@ public class SQLMaster implements DBMaster {
 			e.printStackTrace();
 		}
 			
-		return cancer;
+		return cancer_list;
 	}
 	
 	@Override
