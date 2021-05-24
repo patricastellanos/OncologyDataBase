@@ -96,7 +96,7 @@ public class SQLMaster implements DBMaster {
 			// Create table cancer
 			sql1 = "CREATE TABLE cancer " + "(id_cancer INTEGER PRIMARY KEY AUTOINCREMENT, "
 					+ " id_medExam REFERENCES medical_examination (id_medExam) ON DELETE SET NULL, "
-					+ " type TEXT NOT NULL)";
+					+ " cancer_type TEXT NOT NULL)";
 			// sql = "INSERT INTO cancer (type) "
 			// + "VALUES ('Liver');";
 			stmt1.executeUpdate(sql1);
@@ -488,7 +488,7 @@ public class SQLMaster implements DBMaster {
 	@Override
 	public void addCancer(Cancer cancer, int id_patient) {
 		try {
-		String sql1 = "INSERT INTO cancer (type) VALUES ( ?)";
+		String sql1 = "INSERT INTO cancer (cancer_type) VALUES ( ?)";
 		PreparedStatement prep1 = c.prepareStatement(sql1);
 		prep1.setString(1, cancer.getCancer_type());
 		prep1.executeUpdate();
@@ -538,7 +538,7 @@ public class SQLMaster implements DBMaster {
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Integer id_cancer = rs.getInt(1);
-				String type = rs.getString("type");
+				String type = rs.getString("cancer_type");
 				cancer= new Cancer ( id_cancer, type);
 				
 			}
@@ -562,7 +562,7 @@ public class SQLMaster implements DBMaster {
 				ResultSet rs = stmt.executeQuery(sql);
 				while (rs.next()) {
 					Integer id_cancer = rs.getInt("id_cancer");
-					String type = rs.getString("type");
+					String type = rs.getString("cancer_type");
 								
 					Cancer cancer= new Cancer (id_cancer,type);
 					cancer_list.add(cancer);	
