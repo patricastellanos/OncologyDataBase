@@ -552,7 +552,7 @@ public class UserInteraction {
 			printPatientsMenu();
 			System.out.println("Choose the id of the patient which you want to asses");
 			int id_patient= Integer.parseInt(reader.readLine());
-			System.out.println(dbmaster.assessTreatment(id_patient)) ;
+			System.out.println(dbmaster.seeTreatment(id_patient)) ;
 			
 			
 		}catch (Exception e) {

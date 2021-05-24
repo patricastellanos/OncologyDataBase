@@ -103,7 +103,7 @@ public class SQLMaster implements DBMaster {
 			
 			// Create table treatment
 			sql1 = "CREATE TABLE treatment " + "(id_treat   INTEGER  PRIMARY KEY AUTOINCREMENT, "
-				    + " type    TEXT  NOT NULL, " + " startdate DATE NOT NULL, " + " duration INTEGER, " + " patient_id INTEGER REFERENCES patient(id) ON DELETE SET NULL)";
+				    + " treat_type    TEXT  NOT NULL, " + " start_date DATE NOT NULL, " + " duration INTEGER, " + " patient_id INTEGER REFERENCES patient(id) ON DELETE SET NULL)";
 			stmt1.executeUpdate(sql1);
 			
 			// Create table symptoms
@@ -642,15 +642,15 @@ public class SQLMaster implements DBMaster {
 	}
 	
 			
-		public void addTreatment(Treatment t, int id) {
-		 String sql = "INSERT INTO treatment (type, startDate, duration, patient_id) VALUES (?, ?, ?, ?)";
-		 PreparedStatement prep;
+		public void addTreatment(Treatment t, int id_patient) {
+	
 		try {
-			prep = c.prepareStatement(sql);
+			String sql = "INSERT INTO treatment (treat_type, start_date, duration, patient_id) VALUES ( ?, ?, ?, ?)";
+			PreparedStatement prep = c.prepareStatement(sql);
 			prep.setString(1, t.getTreat_type());
 			prep.setDate(2, (Date) t.getStart_date());
 			prep.setInt(3, t.getDuration());
-			prep.setInt(4, id);
+			prep.setInt(4, id_patient);
 			prep.executeUpdate();
 			prep.close();
 		} catch (SQLException e) {
@@ -659,7 +659,7 @@ public class SQLMaster implements DBMaster {
 		 
 	 }
 	@Override
-	public Treatment assessTreatment(int id_patient) {
+	public Treatment seeTreatment(int id_patient) {
 		
 		Treatment treatment=null;
 		try {
@@ -674,8 +674,8 @@ public class SQLMaster implements DBMaster {
 			while(rs.next()) {
 				
 				int id = rs.getInt("id_treat");
-				String type = rs.getString("type"); 
-				Date startdate = rs.getDate("startdate");
+				String type = rs.getString("treat_type"); 
+				Date startdate = rs.getDate("start_date");
 				int duration = rs.getInt("duration");		
 				return treatment=new Treatment(id, type, startdate, duration);		
 			}

@@ -2,6 +2,7 @@ package application;
 
 import java.sql.Date;
 
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import com.gluonhq.charm.glisten.control.TextField;
 import javafx.stage.Stage;
 import oncology.db.interfaces.DBMaster;
 import oncology.db.pojos.Treatment;
@@ -43,12 +44,9 @@ public class AddTreatmentDoctorController {
 
     @FXML
     void actionAdd(ActionEvent event) {
-    	int id= Integer.parseInt(this.id.getText());
-    	int duration= Integer.parseInt(this.duration.getText());
-    	
-    	Treatment treat= new Treatment( type.getText(),Date.valueOf(startDate.getText()),duration);
-    	
-    	db.addTreatment(treat, id);
+  
+    	Treatment treat= new Treatment( type.getText(),Date.valueOf(startDate.getText()), Integer.parseInt(duration.getText()));
+    	db.addTreatment(treat,Integer.parseInt(id.getText()));
 
     }
 
