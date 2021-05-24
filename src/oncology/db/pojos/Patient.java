@@ -18,7 +18,7 @@ import oncology.xml.utils.SQLDateAdapter;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name= "Patient")
-@XmlType(propOrder= {"name", "surname","sex","birth_date","location","actual_state","famHistory_list","cancer_list"})
+@XmlType(propOrder= {"name", "surname","sex","birth_date","location","actual_state","famHistory_list","treatment_list"})
 
 public class Patient implements Serializable {
 
@@ -39,12 +39,15 @@ private static final long serialVersionUID = 1L;
  private String location;
 @XmlElement
  private String actual_state;
+
 @XmlElement(name= "FamilyHistory")
 @XmlElementWrapper(name= "FamilyHistorials")
  private List<FamilyHistory> famHistory_list;
-@XmlElement(name= "Cancer")
-@XmlElementWrapper(name= "Cancers")
- private List<Cancer> cancer_list;
+
+@XmlElement(name= "Treatment")
+@XmlElementWrapper(name= "Treatments")
+ private List<Treatment> treatment_list;
+
  @XmlTransient
  private List<Symptoms> symptoms_list;
  @XmlTransient
@@ -55,8 +58,6 @@ private static final long serialVersionUID = 1L;
 public Patient() {
 	super();
 }
-
-
 
 
 //Constructor for the method searchPatientByName
@@ -95,7 +96,7 @@ public Patient() {
 	}
 
 public Patient(Integer id, String name, String surname, String sex, Date birth_date, String location,
-		String actual_state, List<Cancer> cancer_list, List<Symptoms> symptoms_list) {
+		String actual_state, List<Treatment> treatment_list, List<Symptoms> symptoms_list) {
 	super();
 	this.id = id;
 	this.name = name;
@@ -104,7 +105,7 @@ public Patient(Integer id, String name, String surname, String sex, Date birth_d
 	this.birth_date = birth_date;
 	this.location = location;
 	this.actual_state = actual_state;
-	this.cancer_list = cancer_list;
+	this.treatment_list = treatment_list;
 	this.symptoms_list = symptoms_list;
 }
 
@@ -161,12 +162,7 @@ public String getActual_state() {
 public void setActual_state(String actual_state) {
 	this.actual_state = actual_state;
 }
-/*@Override
-public String toString() {
-	return "Patient"+"\n"+ "[id_patient=" + id_patient + "\n" +"name=" + name +"\n" +"surname=" + surname 
-			+ "\n"+"sex=" + sex+"\n"+ "birth_date=" + birth_date +"\n"+"location=" 
-			+ location +"\n"+"actual_state=" + actual_state + "]";
-}*/
+
 
 @Override
 public String toString() {

@@ -103,7 +103,7 @@ public class SQLMaster implements DBMaster {
 			
 			// Create table treatment
 			sql1 = "CREATE TABLE treatment " + "(id_treat   INTEGER  PRIMARY KEY AUTOINCREMENT, "
-				    + " treat_type    TEXT  NOT NULL, " + " start_date DATE NOT NULL, " + " duration INTEGER, " + " patient_id INTEGER REFERENCES patient(id) ON DELETE SET NULL)";
+				    + " treat_type    TEXT  NOT NULL, " + " start_date DATE NOT NULL, " + " duration INTEGER)";
 			stmt1.executeUpdate(sql1);
 			
 			// Create table symptoms
@@ -111,10 +111,10 @@ public class SQLMaster implements DBMaster {
 				   + " detail TEXT NOT NULL)";
 			stmt1.executeUpdate(sql1);
 
-			// Create table cancer_treatment
-			sql1 = "CREATE TABLE cancer_treatment " + "(id_cancer INTEGER REFERENCES cancer (id_cancer), "
-					+ " id_treat INTEGER REFERENCES treatment (id_treat), "
-					+ " PRIMARY KEY (id_cancer, id_treat))";
+			// Create table patient_treatment
+			sql1 = "CREATE TABLE patient_treatment " + "(id INTEGER REFERENCES patient (id), "
+					+ " id_treat INTEGER REFERENCES treatment (id_treat) ON DELETE SET NULL, "
+					+ " PRIMARY KEY (id, id_treat))";
 			stmt1.executeUpdate(sql1);
 
 			// Create table patient_symptoms
@@ -493,8 +493,6 @@ public class SQLMaster implements DBMaster {
 		prep1.setString(1, cancer.getCancer_type());
 		prep1.executeUpdate();
 		prep1.close();
-		//System.out.println(cancer.getCancer_type());
-		//System.out.println(cancer.getId_cancer());
 		
 		String query = "SELECT last_insert_rowid() AS lastId";
 		PreparedStatement p = c.prepareStatement(query);
@@ -599,8 +597,6 @@ public class SQLMaster implements DBMaster {
 					Patient p = new Patient(name,surname,sex,dob,location,actual_state);
 					patient_list.add(p);
 					can = new Cancer (type, patient_list);
-				
-				
 					
 				}else {
 					String name = rs.getString(7);
@@ -642,33 +638,55 @@ public class SQLMaster implements DBMaster {
 	}
 	
 			
-		public void addTreatment(Treatment t, int id_patient) {
-	
-		try {
-			String sql = "INSERT INTO treatment (treat_type, start_date, duration, patient_id) VALUES ( ?, ?, ?, ?)";
-			PreparedStatement prep = c.prepareStatement(sql);
-			prep.setString(1, t.getTreat_type());
-			prep.setDate(2, (Date) t.getStart_date());
-			prep.setInt(3, t.getDuration());
-			prep.setInt(4, id_patient);
-			prep.executeUpdate();
-			prep.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}		
-		 
-	 }
-	@Override
-	public Treatment seeTreatment(int id_patient) {
+		public void addTreatment(Treatment treat, int id_patient) {
+			try {
+				String sql1 = "INSERT INTO treatment (treat_type, start_date, duration) VALUES ( ?, ?, ?)";
+				PreparedStatement prep1 = c.prepareStatement(sql1);
+				prep1.setString(1, treat.getTreat_type());
+				prep1.setDate(2, (Date) treat.getStart_date());
+				prep1.setInt(3, treat.getDuration());
+				prep1.executeUpdate();
+				prep1.close();
 		
-		Treatment treatment=null;
-		try {
+				String query = "SELECT last_insert_rowid() AS lastId";
+				PreparedStatement p = c.prepareStatement(query);
+				ResultSet rs = p.executeQuery();
+				Integer lastId = rs.getInt("lastId");
+				p.close();
+				rs.close();
+				
+				String sql2 = "INSERT INTO patient_treatment (id_treat, id) VALUES ( ?, ?)";
+				PreparedStatement prep2 = c.prepareStatement(sql2);
+				prep2.setInt(1, lastId);
+				prep2.setInt(2, id_patient);
+				prep2.executeUpdate();
+				prep2.close();
+				
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
 			
+	 }
+		
+		public void removeTreatment (int id_patient) {
+			try {
+				String sql = "DELETE FROM patient_treatment WHERE id= ?";
+				PreparedStatement prep = c.prepareStatement(sql);
+				prep.setInt(1, id_patient);
+				prep.executeUpdate();
+				prep.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}	
+		}
+		
+	@Override
+	public List<Treatment> seeTreatment(int id_patient) {
+		
+		List<Treatment> treatment_list=new ArrayList<Treatment>();
+		try {
 			Statement stmt=c.createStatement();
-			String sql= "SELECT * FROM treatment AS t JOIN cancer_treatment AS ct ON t.id_treat= ct.id_treat JOIN cancer AS c ON ct.id_cancer= c.id_cancer JOIN cancer_patient AS cp ON c.id_cancer= cp.id_cancer WHERE cp.id=  "+id_patient;
-					/*"SELECT * FROM treatment AS t JOIN cancer_treatment AS ct ON t.id_treat=ct.id_treat JOIN cancer_patient AS cp "
-					+ "ON ct.id_cancer=cp.id WHERE cp.id = " +id_patient;*/
-					
+			String sql= "SELECT * FROM treatment AS t JOIN patient_treatment AS pt ON pt.id_treat=t.id_treat WHERE pt.id= " +id_patient;		
 			ResultSet rs=stmt.executeQuery(sql);
 			
 			while(rs.next()) {
@@ -676,8 +694,9 @@ public class SQLMaster implements DBMaster {
 				int id = rs.getInt("id_treat");
 				String type = rs.getString("treat_type"); 
 				Date startdate = rs.getDate("start_date");
-				int duration = rs.getInt("duration");		
-				return treatment=new Treatment(id, type, startdate, duration);		
+				int duration = rs.getInt("duration");	
+				Treatment t= new Treatment(id, type, startdate, duration);
+				treatment_list.add(t);
 			}
 			
 			rs.close();
@@ -687,7 +706,7 @@ public class SQLMaster implements DBMaster {
 			e.printStackTrace();
 			
 		}
-		return treatment;
+		return treatment_list;
 	}
 	
 	

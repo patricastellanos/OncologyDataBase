@@ -13,7 +13,7 @@ public class Treatment implements Serializable {
 	private String treat_type;
 	private Date start_date;
 	private Integer duration;
-	private List<Cancer> cancer_list=new ArrayList<>();//initialize
+	private List <Patient> patient_list=new ArrayList<>();//initialize
 	
 	
 	

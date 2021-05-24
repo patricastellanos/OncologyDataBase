@@ -30,6 +30,7 @@ public class UserInteraction {
 	private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 	private static UserMaster userman = new JPAUserMaster();
 	private static List<Cancer> cancer_list = new ArrayList<Cancer>();
+	private static List<Treatment> treat_list = new ArrayList<Treatment>();
 	private static List<MedicalExamination> medExam_list = new ArrayList<MedicalExamination>();
 	
 	
@@ -547,18 +548,36 @@ public class UserInteraction {
 		
 	}
 	
-	public static void assesTreatmentMenu() {
+	public static void printTreatmentMenu() {
 		try {
 			printPatientsMenu();
 			System.out.println("Choose the id of the patient which you want to asses");
 			int id_patient= Integer.parseInt(reader.readLine());
-			System.out.println(dbmaster.seeTreatment(id_patient)) ;
-			
-			
+			try {
+				treat_list = dbmaster.seeTreatment(id_patient);
+				for (int i = 0; i < treat_list.size(); i++) {
+					System.out.println(treat_list.get(i));
+
+				}
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+		
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public static void removeTreatmentMenu() {
+		try {
+			printPatientsMenu();
+			System.out.println("Choose the id of the patient from which you delete the symptoms");
+			int id=Integer.parseInt(reader.readLine());
+			dbmaster.removeTreatment(id);
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
 	}
 	
 	public static void treatmentWorkoutMenu() {
@@ -582,12 +601,5 @@ public class UserInteraction {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

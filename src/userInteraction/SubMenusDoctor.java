@@ -231,12 +231,13 @@ public class SubMenusDoctor {
 		
 		while (true) {
 			System.out.println("1.Add a treatment for a patient");
-			System.out.println("2.Asses a treatment from patient");
-			System.out.println("3.Check patient´s treatment");
-			System.out.println("4. Back to the main menu");
+			System.out.println("2.Remove a treatment for a patient");
+			System.out.println("3.Asses a treatment from patient");
+			System.out.println("4.Check patient´s treatment");
+			System.out.println("5. Back to the main menu");
 			try {
 				int choice = Integer.parseInt(reader.readLine());
-				while (choice < 0 || choice > 4) {
+				while (choice < 0 || choice > 5) {
 					System.out.println("Choose an option within the range:");
 					choice = Integer.parseInt(reader.readLine());
 				}
@@ -246,12 +247,15 @@ public class SubMenusDoctor {
 					UserInteraction.addTreatmentMenu();
 					break;
 				case 2:
-					UserInteraction.assesTreatmentMenu();
+					UserInteraction.removeTreatmentMenu();
 					break;
 				case 3:
-					UserInteraction.treatmentWorkoutMenu();
+					UserInteraction.printTreatmentMenu();
 					break;
 				case 4:
+					UserInteraction.treatmentWorkoutMenu();
+					break;
+				case 5:
 					return;
 				default:
 					break;
