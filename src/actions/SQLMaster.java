@@ -726,9 +726,11 @@ public class SQLMaster implements DBMaster {
 			}
 
 			if (!actual_state.equalsIgnoreCase("RECOVERED") && !actual_state.equalsIgnoreCase("DEATH")) {
+				
 				return false;
 
 			} else {
+				
 				return true;
 			}
 		} catch (Exception e) {

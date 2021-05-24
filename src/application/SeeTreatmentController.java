@@ -79,7 +79,7 @@ public class SeeTreatmentController {
 
     @FXML
     void actionCheck(ActionEvent event) {
-    	Treatment treatment = db.seeTreatment(Integer.parseInt(id.getText()));
+    	List<Treatment> treatment = db.seeTreatment(Integer.parseInt(id.getText()));
     	tableP.getItems().addAll(treatment);
 
     }
