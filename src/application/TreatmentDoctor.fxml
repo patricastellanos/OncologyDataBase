@@ -71,6 +71,7 @@
                </font>
             </Text>
             <Button fx:id="exitButton" layoutX="112.0" layoutY="377.0" mnemonicParsing="false" onAction="#actionExit" text="Exit" />
+            <Button fx:id="removeTreat" layoutX="209.0" layoutY="297.0" mnemonicParsing="false" onAction="#actionRemoveTreat" text="Remove a treatment " />
          </children>
       </AnchorPane>
       <Button fx:id="backButton" layoutX="536.0" layoutY="385.0" mnemonicParsing="false" onAction="#actionBack" text="Back" />

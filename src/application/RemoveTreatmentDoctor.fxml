@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RemoveTreatmentDoctorController">
+   <children>
+      <AnchorPane prefHeight="446.0" prefWidth="671.0" style="-fx-background-color: pink;">
+         <children>
+            <ImageView fitHeight="454.0" fitWidth="687.0" layoutX="-8.0" layoutY="-1.0" opacity="0.19">
+               <image>
+                  <Image url="@imagenLoginRegister.jpg" />
+               </image>
+            </ImageView>
+            <TextField fx:id="id" layoutX="231.0" layoutY="187.0" prefHeight="26.0" prefWidth="186.0" promptText="id" />
+            <Button fx:id="removeButton" layoutX="231.0" layoutY="243.0" mnemonicParsing="false" onAction="#actionRemove" text="Remove" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="backButton" layoutX="526.0" layoutY="375.0" mnemonicParsing="false" onAction="#actionBack" text="Back" />
+      <Button fx:id="exitButton" layoutX="78.0" layoutY="375.0" mnemonicParsing="false" onAction="#actionExit" text="Exit" />
+   </children>
+</AnchorPane>
