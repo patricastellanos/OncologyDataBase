@@ -40,7 +40,7 @@ public class MainMenuNurseController {
     @FXML
     void actionAllPatients(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatients.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsNurse.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
@@ -55,7 +55,7 @@ public class MainMenuNurseController {
     @FXML
     void actionAllCancers(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeAllCancers.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("SeeAllCancersNurse.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
@@ -115,6 +115,16 @@ public class MainMenuNurseController {
 
     @FXML
     void actionTreatment(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("TreatmentNurse.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 
     }
 

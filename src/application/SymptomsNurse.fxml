@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SymptomsNurseController">
+   <children>
+      <AnchorPane prefHeight="446.0" prefWidth="671.0" style="-fx-background-color: pink;">
+         <children>
+            <ImageView fitHeight="448.0" fitWidth="691.0" layoutY="-1.0" opacity="0.35">
+               <image>
+                  <Image url="@oncology.jpg" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" layoutX="206.0" layoutY="21.0" prefHeight="68.0" prefWidth="214.0" style="-fx-background-color: 0000;" text="CHOOSE AN OPTION">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="addSymp" layoutX="231.0" layoutY="130.0" mnemonicParsing="false" onAction="#actionAddSymp" text=" Add symptoms to a patient" />
+            <Button fx:id="deleteSymp" layoutX="227.0" layoutY="183.0" mnemonicParsing="false" onAction="#actionDeleteSymp" text="Delete symptoms of a patient" />
+            <Button fx:id="seeSymp" layoutX="224.0" layoutY="244.0" mnemonicParsing="false" onAction="#actionSeeSymp" text="See the symptoms of a patient" />
+            <Text layoutX="70.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S" wrappingWidth="17.487091064453125">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Text layoutX="70.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Y" wrappingWidth="17.487091064453125">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Text layoutX="70.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="T" wrappingWidth="17.487091064453125">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Text layoutX="68.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="M" wrappingWidth="11.08709716796875">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Text layoutX="70.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="O" wrappingWidth="17.487091064453125">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Text layoutX="65.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="M" wrappingWidth="17.487091064453125">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Text layoutX="70.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="P" wrappingWidth="17.487091064453125">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Text layoutX="70.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S" wrappingWidth="17.487091064453125">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <Button fx:id="exitButton" layoutX="78.0" layoutY="375.0" mnemonicParsing="false" onAction="#actionExit" text="Exit" />
+      <Button fx:id="backButton" layoutX="536.0" layoutY="385.0" mnemonicParsing="false" onAction="#actionBack" text="Back" />
+   </children>
+</AnchorPane>

@@ -19,7 +19,7 @@ import oncology.db.interfaces.DBMaster;
 import oncology.db.pojos.Cancer;
 
 
-public class SeeAllCancersController {
+public class SeeAllCancersNurseController {
 
 	    @FXML
 	    private TableView<Cancer> tableC;
@@ -35,7 +35,7 @@ public class SeeAllCancersController {
 	    @FXML
 	    void actionBack(ActionEvent event) {
 	    	try{
-				Parent root = FXMLLoader.load(getClass().getResource("MainMenuDoctor.fxml"));
+				Parent root = FXMLLoader.load(getClass().getResource("MainMenuNurse.fxml"));
 				Scene scene = new Scene(root);
 				Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			

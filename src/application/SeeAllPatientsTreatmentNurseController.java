@@ -19,7 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 
-public class SeeAllPatientsTreatmentController {
+public class SeeAllPatientsTreatmentNurseController {
 
     @FXML
     private TableView<Patient> tableP;
@@ -66,7 +66,7 @@ public class SeeAllPatientsTreatmentController {
     @FXML
     void actionBack(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("TreatmentDoctor.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("TreatmentNurse.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		

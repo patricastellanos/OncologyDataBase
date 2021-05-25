@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 import oncology.db.interfaces.DBMaster;
 import oncology.db.pojos.Treatment;
 
-public class SeeTreatmentController {
+public class SeeTreatmentNurseController {
 
     @FXML
     private Button backButton;
@@ -65,7 +65,7 @@ public class SeeTreatmentController {
     @FXML
     void actionBack(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("TreatmentDoctor.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("TreatmentNurse.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		

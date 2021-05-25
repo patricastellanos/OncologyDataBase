@@ -20,7 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 
-public class SeeAllPatientsController {
+public class SeeAllPatientsDoctorController {
 
     @FXML
     private TableView<Patient> tableP;

@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 import oncology.db.interfaces.DBMaster;
 import oncology.db.pojos.MedicalExamination;
 
-public class SeeAllMedicalExaminationController {
+public class SeeAllMedicalExaminationNurseController {
 	
 
 
@@ -59,7 +59,7 @@ public class SeeAllMedicalExaminationController {
 	    @FXML
 	    void actionBack(ActionEvent event) {
 	    	try{
-				Parent root = FXMLLoader.load(getClass().getResource("MedicalExaminationDoctor.fxml"));
+				Parent root = FXMLLoader.load(getClass().getResource("MedicalExaminationNurse.fxml"));
 				Scene scene = new Scene(root);
 				Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 			

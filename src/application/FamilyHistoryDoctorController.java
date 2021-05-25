@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import oncology.db.interfaces.DBMaster;
 import oncology.db.pojos.FamilyHistory;
+import userInteraction.UserInteraction;
 
 public class FamilyHistoryDoctorController {
 
@@ -76,29 +77,14 @@ public class FamilyHistoryDoctorController {
     @FXML
     void actionConvertToXML(ActionEvent event) {
     	db.familyHistoryToXml(Integer.parseInt(convertToXML.getText()));
-    	infoMessage("XML file generated and saved", null, "Message");
-    	
+    	infoMessage("File created and saved", null, "Message");
 
     }
 
     @FXML
     void actionConvertXMLToFamHist(ActionEvent event) {
-    	try {
-			JAXBContext jaxbContext = JAXBContext.newInstance(FamilyHistory.class);
-		    Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
-
-			File file = new File("./xmls/FamilyHistory.xml");
-			FamilyHistory famhist = (FamilyHistory) unmarshaller.unmarshal(file);
-			
-			System.out.println("Family History:");
-			System.out.println("Type: " + famhist.getType_cancerFam());
-			System.out.println("Member: " + famhist.getMember());
-			
-		    
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-    	infoMessage("Family History generated and saved", null, "Message");
+    	UserInteraction.XmlToFamilyHistoryMenu();
+    	infoMessage("File imported and saved", null, "Message");
 
     }
 

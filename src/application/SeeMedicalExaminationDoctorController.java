@@ -22,7 +22,7 @@ import oncology.db.interfaces.DBMaster;
 import oncology.db.pojos.MedicalExamination;
 
 
-public class SeeMedicalExaminationController {
+public class SeeMedicalExaminationDoctorController {
 	
 	private DBMaster db = Main.getdbMaster();
     
@@ -105,27 +105,5 @@ public class SeeMedicalExaminationController {
     	table.getItems().addAll(medExamList);
        
     }
-   /* public void initialize() {
 
-    	table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-    	
-    	TableColumn<MedicalExamination, String> idCol = new TableColumn<>("ID");
-    	TableColumn<MedicalExamination, String> typeCol = new TableColumn<>("Type");
-    	TableColumn<MedicalExamination, String> dateCol = new TableColumn<>("Date");
-    	TableColumn<MedicalExamination, String> diagnosisCol = new TableColumn<>("Diagnosis");
-    	
-    	
-    	
-    	idCol.setCellValueFactory(data -> new SimpleStringProperty(Integer.toString(data.getValue().getId_medExam())));
-    	typeCol.setCellValueFactory(new PropertyValueFactory<>("medExam_type"));
-    	DateFormat dateformat=new SimpleDateFormat("yyyy-mm-dd");
-    	dateCol.setCellValueFactory(data -> new SimpleStringProperty(dateformat.format(data.getValue().getDateMedExam())));
-    	diagnosisCol.setCellValueFactory(new PropertyValueFactory<>("diagnosis"));
-    	
-    
-    	
-    	table.getColumns().addAll(idCol, typeCol, dateCol, diagnosisCol);
-    }*/
-
- 
 }

@@ -20,7 +20,7 @@ import oncology.db.interfaces.DBMaster;
 import oncology.db.pojos.FamilyHistory;
 
 
-public class SeeFamilyHistoryController {
+public class SeeFamilyHistoryDoctorController {
 
     @FXML
     private Button backButton;

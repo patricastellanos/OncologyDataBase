@@ -32,7 +32,7 @@ public class FamilyHistoryNurseController {
     @FXML
     void actionBack(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("FamilyHistoryNurse.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("MainMenuNurse.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
@@ -47,13 +47,13 @@ public class FamilyHistoryNurseController {
     void actionConvertToFamHist(ActionEvent event) {
     	UserInteraction.XmlToFamilyHistoryMenu();
     	infoMessage("File imported and saved", null, "Message");
-
     }
 
     @FXML
     void actionConvertToXML(ActionEvent event) {
-    	UserInteraction.familyHistoryToXmlMenu();
-    	infoMessage("File imported and saved", null, "Message");
+    	db.familyHistoryToXml(Integer.parseInt(convertToXML.getText()));
+    	infoMessage("File created and saved", null, "Message");
+
     	
     }
 

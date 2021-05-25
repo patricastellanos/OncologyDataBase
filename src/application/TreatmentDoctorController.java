@@ -62,13 +62,15 @@ public class TreatmentDoctorController {
     
     @FXML
     void actionCheckTreat(ActionEvent event) {
+    	
+    
 
     }
 
     @FXML
     void actionAssesTreat(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeTreatment.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("SeeTreatmentDoctor.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		

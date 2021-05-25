@@ -46,6 +46,7 @@ public class CancerNurseController {
 
     @FXML
     void actionConvertToCancer(ActionEvent event) {
+    
     	UserInteraction.XmlToCancerMenu();
     	infoMessage("File imported and saved", null, "Message");
 
@@ -55,7 +56,6 @@ public class CancerNurseController {
     void actionConvertToXML(ActionEvent event) {
     	db.cancerToXml(Integer.parseInt(convertToXML.getText()));
     	infoMessage("File created and saved", null, "Message");
-
     }
 
     @FXML

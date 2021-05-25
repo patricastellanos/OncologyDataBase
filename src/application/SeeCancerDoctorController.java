@@ -20,7 +20,7 @@ import java.util.List;
 
 import com.gluonhq.charm.glisten.control.TextField;
 
-public class SeeCancerController {
+public class SeeCancerDoctorController {
 	
 	private DBMaster db = Main.getdbMaster();
 
