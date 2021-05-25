@@ -134,7 +134,7 @@ public class SubMenusNurse {
   				}
   				switch (choice) {
   				case 1:
-  					UserInteraction.assesTreatmentMenu();
+  					UserInteraction.printTreatmentMenu();
   					break;
   					
   				case 2:

@@ -26,11 +26,29 @@ public class TreatmentDoctorController {
 
     @FXML
     private Button backButton;
+    
+    @FXML
+    private Button removeTreat;
 
     @FXML
     void actionAddTreat(ActionEvent event) {
     	try{
 			Parent root = FXMLLoader.load(getClass().getResource("AddTreatmentDoctor.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+
+    }
+    
+    @FXML
+    void actionRemoveTreat(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("RemoveTreatmentDoctor.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		

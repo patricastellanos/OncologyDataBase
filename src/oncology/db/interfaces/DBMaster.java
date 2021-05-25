@@ -40,7 +40,8 @@ public interface DBMaster {
     public void simpleTransform(String sourcePath, String xsltPath,String resultDir);
    
     public void addTreatment(Treatment t, int id);
-    public Treatment seeTreatment(int id_patient); 
+    public List <Treatment> seeTreatment(int id_patient); 
+    public void removeTreatment(int id_patient); 
     public boolean treatment_worked(int id_patient);  
     
     

@@ -94,7 +94,7 @@ public class SeeMedicalExaminationController {
     	
     	idCol.setCellValueFactory(data -> new SimpleStringProperty(Integer.toString(data.getValue().getId_medExam())));
     	typeCol.setCellValueFactory(new PropertyValueFactory<>("medExam_type"));
-    	DateFormat dateformat=new SimpleDateFormat("yyyy-mm-dd");
+    	DateFormat dateformat=new SimpleDateFormat("yyyy-MM-dd");
     	dateCol.setCellValueFactory(data -> new SimpleStringProperty(dateformat.format(data.getValue().getDateMedExam())));
     	diagnosisCol.setCellValueFactory(new PropertyValueFactory<>("diagnosis"));
     	

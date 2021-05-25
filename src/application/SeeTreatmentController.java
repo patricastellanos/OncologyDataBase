@@ -53,7 +53,7 @@ public class SeeTreatmentController {
     	
     	idCol.setCellValueFactory(data -> new SimpleStringProperty(Integer.toString(data.getValue().getId_treat())));
     	typeCol.setCellValueFactory(new PropertyValueFactory<>("treat_type"));
-    	DateFormat dateformat=new SimpleDateFormat("yyyy-mm-dd");
+    	DateFormat dateformat=new SimpleDateFormat("yyyy-MM-dd");
     	dateCol.setCellValueFactory(data -> new SimpleStringProperty(dateformat.format(data.getValue().getStart_date())));
     	durationCol.setCellValueFactory(data -> new SimpleStringProperty(Integer.toString(data.getValue().getDuration())));
     	
@@ -79,7 +79,7 @@ public class SeeTreatmentController {
 
     @FXML
     void actionCheck(ActionEvent event) {
-    	Treatment treatment = db.seeTreatment(Integer.parseInt(id.getText()));
+    	List<Treatment> treatment = db.seeTreatment(Integer.parseInt(id.getText()));
     	tableP.getItems().addAll(treatment);
 
     }
