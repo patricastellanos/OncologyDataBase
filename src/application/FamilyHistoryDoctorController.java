@@ -12,10 +12,16 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Alert.AlertType;
 
+import java.io.File;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Unmarshaller;
+
 import com.gluonhq.charm.glisten.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import oncology.db.interfaces.DBMaster;
+import oncology.db.pojos.FamilyHistory;
 
 public class FamilyHistoryDoctorController {
 
@@ -79,7 +85,21 @@ public class FamilyHistoryDoctorController {
 
     @FXML
     void actionConvertXMLToFamHist(ActionEvent event) {
-    	db.simpleTransform("./xmls/FamilyHistory.xml", "./xmls/FamilyHistory.xslt", "./xmls/FamilyHistory.html");
+    	try {
+			JAXBContext jaxbContext = JAXBContext.newInstance(FamilyHistory.class);
+		    Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
+
+			File file = new File("./xmls/FamilyHistory.xml");
+			FamilyHistory famhist = (FamilyHistory) unmarshaller.unmarshal(file);
+			
+			System.out.println("Family History:");
+			System.out.println("Type: " + famhist.getType_cancerFam());
+			System.out.println("Member: " + famhist.getMember());
+			
+		    
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
     	infoMessage("Family History generated and saved", null, "Message");
 
     }
