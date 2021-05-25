@@ -51,8 +51,18 @@ import oncology.db.interfaces.DBMaster;
 
 	    @FXML
 	    void actionRemove(ActionEvent event) {
-	    	db.removeTreatment(Integer.parseInt(id.getText()));
-
+	    	//db.removeTreatment(Integer.parseInt(id.getText()));
+	    	
+	    	try{
+				Parent root = FXMLLoader.load(getClass().getResource("TreatmentDoctor.fxml"));
+				Scene scene = new Scene(root);
+				Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+			
+				stage.setScene(scene);
+				stage.show();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 	    }
 
 }

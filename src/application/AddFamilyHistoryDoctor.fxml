@@ -16,7 +16,7 @@
                   <Image url="@methods.jpg" />
                </image>
             </ImageView>
-            <Button fx:id="backButton" layoutX="546.0" layoutY="384.0" mnemonicParsing="false" onAction="#actionBack" text="Back" />
+           <Button fx:id="backButton" layoutX="546.0" layoutY="395.0" mnemonicParsing="false" onAction="#actionBack" text="Back" />
             <TextField fx:id="id" layoutX="236.0" layoutY="149.0" promptText="id" />
             <TextField fx:id="type" layoutX="236.0" layoutY="265.0" promptText="Type" />
             <Button fx:id="add" layoutX="547.0" layoutY="311.0" mnemonicParsing="false" onAction="#actionAdd" text="Add" />

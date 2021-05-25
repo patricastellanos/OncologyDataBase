@@ -572,9 +572,22 @@ public class UserInteraction {
 	public static void removeTreatmentMenu() {
 		try {
 			printPatientsMenu();
-			System.out.println("Choose the id of the patient from which you delete the symptoms");
-			int id=Integer.parseInt(reader.readLine());
-			dbmaster.removeTreatment(id);
+			System.out.println("Choose the id of the patient which you want to delete a treatment");
+			int id_patient=Integer.parseInt(reader.readLine());
+			//IMPRIME LOS TREATMENT 
+			try {
+				treat_list = dbmaster.seeTreatment(id_patient);
+				for (int i = 0; i < treat_list.size(); i++) {
+					System.out.println(treat_list.get(i));
+
+				}
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
+			
+			System.out.println("Choose the id of the treatment which you want to delete");
+			int id_treat=Integer.parseInt(reader.readLine());
+			dbmaster.removeTreatment(id_patient, id_treat);
 			}catch(Exception e) {
 				e.printStackTrace();
 			}

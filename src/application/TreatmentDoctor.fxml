@@ -24,7 +24,7 @@
             </Label>
             <Button fx:id="addTreat" layoutX="209.0" layoutY="150.0" mnemonicParsing="false" onAction="#actionAddTreat" text="Add a treatment for a patient" />
             <Button fx:id="assesTreat" layoutX="209.0" layoutY="198.0" mnemonicParsing="false" onAction="#actionAssesTreat" text="Asses a treatment from patient" />
-            <Button fx:id="checkTreat" layoutX="209.0" layoutY="250.0" mnemonicParsing="false" onAction="#actionCheckTreat" text="Check's patient treatment" />
+            <Button fx:id="checkTreat" layoutX="209.0" layoutY="250.0" mnemonicParsing="false" onAction="#actionCheckTreat" text="Check patient's treatment" />
             <Text layoutX="55.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="T" wrappingWidth="17.487091064453125">
                <font>
                   <Font size="30.0" />

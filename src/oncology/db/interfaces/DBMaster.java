@@ -41,7 +41,7 @@ public interface DBMaster {
    
     public void addTreatment(Treatment t, int id);
     public List <Treatment> seeTreatment(int id_patient); 
-    public void removeTreatment(int id_patient); 
+    public void removeTreatment(int id_patient, int id_treat); 
     public boolean treatment_worked(int id_patient);  
     
     
