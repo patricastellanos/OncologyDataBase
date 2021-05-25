@@ -6,7 +6,12 @@ package oncology.ui;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.Query;
 
 import actions.SQLMaster;
 import oncology.db.interfaces.DBMaster;
@@ -23,7 +28,7 @@ public class Menu {
 	private static SQLMaster dbmasterMenu =new SQLMaster();
 	private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 	private static UserMaster userman = new JPAUserMaster();
-	
+	private EntityManager em;
 
 	
 	public static void main(String[] args) throws Exception {
@@ -83,8 +88,6 @@ public class Menu {
 	}
 }
 
-
-
 	 
 	public static void login() throws Exception {
 		// Ask the user for an email
@@ -106,12 +109,15 @@ public class Menu {
 		}
 		// Check the type of the user and redirect her to the proper menu
 	}
+
+	
 		
 		private static void patientMenu() throws Exception {
 			do {
 				System.out.println("Choose an option:");
 				System.out.println("1. Family History");
 				System.out.println("2. Medical Examination");
+				System.out.println("3. Change password");
 				System.out.println("0. Back to the main menu");
 				int choice = Integer.parseInt(reader.readLine());
 				while (choice < 0 || choice > 7) {
@@ -125,6 +131,12 @@ public class Menu {
 				case 2:
 					SubMenusPatient.medicalExaminationSubmenuNurse();
 					break;
+				case 3:
+					System.out.println("user");
+					String email=reader.readLine();
+					System.out.println("new password");
+					String newPass=reader.readLine();
+					userman.changePassword(email, newPass);
 				case 0:
 					return;
 				default:

@@ -26,8 +26,6 @@ public class Cancer implements Serializable{
 	@XmlElement(name= "Patient")
 	@XmlElementWrapper(name= "Patients")
 	private List<Patient> patient_list;
-	@XmlTransient
-	private List<Treatment>treat_list;	
 	@XmlTransient//to avoid infinite loops
 	private MedicalExamination m;
 	//constructor
@@ -83,12 +81,6 @@ public class Cancer implements Serializable{
 	public List<Patient> getPatients(){
 		return patient_list;
 	}
-	public List<Treatment> getTreatments(){
-		return treat_list;
-	}
-	
-	
-	//tostring
 	
 	public List<Patient> getPatient_list() {
 		return patient_list;

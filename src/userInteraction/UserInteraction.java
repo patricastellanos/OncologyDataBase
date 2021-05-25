@@ -335,9 +335,8 @@ public class UserInteraction {
 			System.out.println("Cancer:");
 			System.out.println("Type: " + can.getCancer_type());
 			List<Patient> p = can.getPatients();
-			List<Treatment> t = can.getTreatments();
 		    System.out.println(p);
-		    System.out.println(t);
+		    
 		    
 		}catch(Exception e) {
 			e.printStackTrace();
