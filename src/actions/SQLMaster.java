@@ -321,7 +321,7 @@ public class SQLMaster implements DBMaster {
 			ResultSet rs = stmt.executeQuery(sql);
 			while (rs.next()) {
 				Integer id = rs.getInt(1);
-				String type = rs.getString("type");
+				String type = rs.getString("type_cancerFam");
 				String member = rs.getString("member");
 				FamilyHistory fh= new FamilyHistory (type, member);
 			
