@@ -1,8 +1,10 @@
 package application;
 
-import java.awt.event.ActionEvent;
+
 
 import com.gluonhq.charm.glisten.control.TextField;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -11,6 +13,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
+import oncology.db.interfaces.DBMaster;
+import oncology.db.pojos.FamilyHistory;
 
 public class AddFamilyHistoryDoctorController {
 
@@ -40,8 +44,15 @@ public class AddFamilyHistoryDoctorController {
     public void initialize () {
     	member.getItems().addAll(members);
     }
+    
+    private DBMaster db = Main.getdbMaster();
     @FXML
     void actionAdd(ActionEvent event) {
+    	String memberFam = member.getValue();
+    
+    	FamilyHistory fam = new FamilyHistory(type.getText(), memberFam);
+    	db.addFamHistory(Integer.parseInt(id.getText()), fam);
+    	
     	try{
 			Parent root = FXMLLoader.load(getClass().getResource("FamilyHistoryDoctor.fxml"));
 			Scene scene = new Scene(root);

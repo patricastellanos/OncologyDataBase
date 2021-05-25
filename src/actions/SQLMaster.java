@@ -78,7 +78,7 @@ public class SQLMaster implements DBMaster {
 			stmt1 = c.createStatement();
 			// Create table family_history
 			String sql1 = "CREATE TABLE family_history " + "(id_famHistory INTEGER PRIMARY KEY AUTOINCREMENT, "
-								+ "  type TEXT, " + "  member TEXT , " + " patient_id REFERENCES patient (id) ON DELETE SET NULL)";
+								+ "  type_cancerFam TEXT, " + "  member TEXT , " + " patient_id REFERENCES patient (id) ON DELETE SET NULL)";
 			stmt1.executeUpdate(sql1);
 						
 			// Create table patient
@@ -277,7 +277,7 @@ public class SQLMaster implements DBMaster {
 	
 	public void addFamHistory(int id, FamilyHistory famhist) {
 		try {
-			String sql = "INSERT INTO family_history (type, member, patient_id) VALUES(?, ?, ?)";
+			String sql = "INSERT INTO family_history (type_cancerFam, member, patient_id) VALUES(?, ?, ?)";
 			PreparedStatement prep = c.prepareStatement(sql);
 			prep.setString(1, famhist.getType_cancerFam());
 			prep.setString(2, famhist.getMember());
@@ -298,7 +298,7 @@ public class SQLMaster implements DBMaster {
 			ResultSet rs = prep.executeQuery();
 			while (rs.next()) {
 				Integer id_famHistory = rs.getInt("id_famHistory");
-				String type = rs.getString("type");
+				String type = rs.getString("type_cancerFam");
 				String member = rs.getString("member");
 				
 				famHist=new FamilyHistory(id_famHistory,type, member);	
