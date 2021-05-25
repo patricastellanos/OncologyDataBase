@@ -8,12 +8,9 @@ public class Symptoms implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id_symp;
-	//private String intensity; //fixed values for future
 	private String details;
 	private List<Patient> patient_list;
-	private MedicalExamination m;
-	
-	//constructor
+
 	
 	public Symptoms(Integer id_symp, String details) {
 		super();

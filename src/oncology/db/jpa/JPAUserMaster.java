@@ -101,7 +101,30 @@ public class JPAUserMaster implements UserMaster {
 		}
 		return (User) q.getSingleResult();
 	}
- 
+	
+	//@Override
+	public void changePassword(String email, String newPass) {
+		
+		Query q=null;
+		User u=null;
+		
+		try {
+			/*MessageDigest md = MessageDigest.getInstance("MD5");
+			md.update(password.getBytes());
+			byte[] hash = md.digest();*/
+			q = em.createNativeQuery("UPDATE users SET password = ? WHERE email = ?", User.class);
+			q.setParameter(1, newPass);
+			q.setParameter(1, email);
+
+			
+		} catch (NoResultException nre) {
+			nre.printStackTrace();
+		}
+		
+	}
+	
+
+	
 
 
 }

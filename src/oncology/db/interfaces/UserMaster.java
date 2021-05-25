@@ -13,4 +13,6 @@ public interface UserMaster {
 	public boolean userNameTaken(String userName);
 	public List<Role> getRolesList();
 	public User checkPassword(String email, String password);
+	public void changePassword(String email, String newPass);
+	
 }
