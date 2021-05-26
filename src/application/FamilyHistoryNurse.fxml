@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.TextField?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import com.gluonhq.charm.glisten.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -83,11 +83,10 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button layoutX="232.0" layoutY="137.0" mnemonicParsing="false" onAction="#actionSeeFamHist" text="See a family history" />
+            <Button fx:id="seeFH" layoutX="232.0" layoutY="137.0" mnemonicParsing="false" onAction="#actionSeeFamHist" text="See a family history" />
             <Button layoutX="232.0" layoutY="190.0" mnemonicParsing="false" onAction="#actionConvertToXML" text="Convert to XML file" />
             <Button layoutX="232.0" layoutY="243.0" mnemonicParsing="false" onAction="#actionConvertToFamHist" text="Convert from XML to FamilyHistory" />
-            <TextField fx:id="convertToXML" layoutX="487.0" layoutY="190.0" />
-            <TextField fx:id="convertToFamHist" layoutX="488.0" layoutY="243.0" />
+            <TextField fx:id="convertToXML" layoutX="487.0" layoutY="190.0" promptText="id" />
          </children>
       </AnchorPane>
       <Button fx:id="exitButton" layoutX="78.0" layoutY="375.0" mnemonicParsing="false" onAction="#actionExit" text="Exit" />

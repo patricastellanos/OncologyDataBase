@@ -67,7 +67,7 @@ public class CancerNurseController {
     @FXML
     void actionSeeCancerP(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeCancer.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("SeeCancerNurse.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
