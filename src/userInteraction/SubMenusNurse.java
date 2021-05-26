@@ -22,6 +22,10 @@ public class SubMenusNurse {
 		UserInteraction.searchPatientMenu();
 	}
 	
+	public static void seeSymptomsMenuNurse() {
+		UserInteraction.removeSymptomsMenu();
+	}
+	
 	public static void familyHistorySubmenuNurse() {
 		while (true) {
 			System.out.println("1. See the family history of a patient");

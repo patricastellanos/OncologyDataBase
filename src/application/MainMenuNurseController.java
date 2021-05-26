@@ -143,6 +143,21 @@ public class MainMenuNurseController {
 		}
 
     }
+    
+    @FXML
+    void actionSeeSymptoms(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("SeeSymptomsNurse.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+
+    }
 
 }
 

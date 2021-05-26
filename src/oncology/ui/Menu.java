@@ -154,15 +154,16 @@ public class Menu {
 				System.out.println("1. See all the patients");
 				System.out.println("2. Search a patient");
 				System.out.println("3. Family History");
-				System.out.println("4. Medical Examination");
-				System.out.println("5. Cancer");
-				System.out.println("6. See all the cancers");
-				System.out.println("7. Treatment");
-				System.out.println("8. Change password");
-				System.out.println("9. Remove user");
+				System.out.println("4. See symptoms");
+				System.out.println("5. Medical Examination");
+				System.out.println("6. Cancer");
+				System.out.println("7. See all the cancers");
+				System.out.println("8. Treatment");
+				System.out.println("9. Change password");
+				System.out.println("10. Remove user");
 				System.out.println("0. Back to the main menu");
 				int choice = Integer.parseInt(reader.readLine());
-				while (choice < 0 || choice > 9) {
+				while (choice < 0 || choice > 10) {
 					System.out.println("Choose an option within the range:");
                     choice =Integer.parseInt(reader.readLine());
                     }
@@ -177,22 +178,25 @@ public class Menu {
 					SubMenusNurse.familyHistorySubmenuNurse();
 					break;
 				case 4:
+					SubMenusNurse.seeSymptomsMenuNurse();
+					break;
+				case 5:
 					SubMenusNurse.medicalExaminationSubmenuNurse();
 					break;
 					
-				case 5:
+				case 6:
 					SubMenusNurse.cancerSubmenuNurse();
 					break;
-				case 6:
+				case 7:
 					SubMenusNurse.showCancersSubMenuNurse();
 					break;
-				case 7:
+				case 8:
 					SubMenusNurse.treatmentSubmenuNurse();
 					break;
-				case 8:
+				case 9:
 					UserInteraction.changePasswordMenu();
 					break;
-				case 9:
+				case 10:
 					UserInteraction.removeUserMenu();
 					System.exit(0);
 					

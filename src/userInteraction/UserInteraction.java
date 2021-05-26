@@ -267,19 +267,6 @@ public class UserInteraction {
 				}
 			}
 			
-			/*System.out.println("Is the cancer's type one of the above? [Yes/No]");
-			String answer = reader.readLine();
-			if(answer.equalsIgnoreCase("No")) {
-				System.out.println("Please insert the type of cancer");
-				String cancer_type= reader.readLine();
-				Cancer cancer=new Cancer(cancer_type);
-				dbmaster.addCancer(cancer, id_patient);
-			}else {
-				System.out.println("Please insert the id of the cancer");
-				int id_cancer = Integer.parseInt(reader.readLine());
-				dbmaster.addExistingCancer(id_cancer, id_patient);
-			}*/
-			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -384,16 +371,14 @@ public class UserInteraction {
 		try {
 			printPatientsMenu();
 			System.out.print("Choose a patient to turn its family history into an XML file:");
-			int patient_id= Integer.parseInt(reader.readLine());
+			int patient_id = Integer.parseInt(reader.readLine());
 			dbmaster.familyHistoryToXml(patient_id);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
+
 		}
-		
-		
-		
+
 	}
 	
 	public static void XmlToFamilyHistoryMenu() {
