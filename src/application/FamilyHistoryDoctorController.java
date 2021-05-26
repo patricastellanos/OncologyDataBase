@@ -112,7 +112,7 @@ public class FamilyHistoryDoctorController {
     @FXML
     void actionSeeFamHist(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeFamilyHistory.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("SeeFamilyHistoryDoctor.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
