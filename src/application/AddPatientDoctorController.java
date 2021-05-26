@@ -15,12 +15,17 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import oncology.db.interfaces.DBMaster;
 import oncology.db.pojos.Patient;
 
 public class AddPatientDoctorController {
+	@FXML
+    private ToggleGroup sexRadioButton;
+	@FXML
+    private ToggleGroup locationRadioButton;
 
     @FXML
     private Button backButton;

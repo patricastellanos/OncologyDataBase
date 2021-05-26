@@ -81,25 +81,12 @@ public class SeeCancerDoctorController {
 
     }
     
-    /*public void initialize() {
-
-    	cancerTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-    	
-    	TableColumn<Cancer, String> idCol = new TableColumn<>("ID");
-    	TableColumn<Cancer, String> typeCol = new TableColumn<>("Type");
-    	
-    	
-    	idCol.setCellValueFactory(data -> new SimpleStringProperty(Integer.toString(data.getValue().getId_cancer())));
-    	typeCol.setCellValueFactory(new PropertyValueFactory<>("cancer_type"));
-    	
-        cancerTable.getColumns().addAll(idCol, typeCol);
-    }*/
 
 
     @FXML
     void actionSeeP(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsCancer.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsCancerDoctor.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
