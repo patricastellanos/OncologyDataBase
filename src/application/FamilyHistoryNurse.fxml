@@ -87,6 +87,7 @@
             <Button layoutX="232.0" layoutY="190.0" mnemonicParsing="false" onAction="#actionConvertToXML" text="Convert to XML file" />
             <Button layoutX="232.0" layoutY="243.0" mnemonicParsing="false" onAction="#actionConvertToFamHist" text="Convert from XML to FamilyHistory" />
             <TextField fx:id="convertToXML" layoutX="487.0" layoutY="190.0" promptText="id" />
+            <Button layoutX="503.0" layoutY="91.0" mnemonicParsing="false" onAction="#actionSeeP" text="See all patients" />
          </children>
       </AnchorPane>
       <Button fx:id="exitButton" layoutX="78.0" layoutY="375.0" mnemonicParsing="false" onAction="#actionExit" text="Exit" />

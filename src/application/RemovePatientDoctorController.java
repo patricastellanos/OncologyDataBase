@@ -1,7 +1,6 @@
 
 package application;
 
-import actions.SQLMaster;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
