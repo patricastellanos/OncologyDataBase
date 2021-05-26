@@ -613,5 +613,55 @@ public class UserInteraction {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void changePasswordMenu() {
+		
+		try {
+			System.out.println("Please write your email");
+			String email= reader.readLine();
+			System.out.println("Please write your new password");
+			String newPass1=reader.readLine();
+			System.out.println("Please confirm your new password");
+			String newPass2=reader.readLine();
+			
+			if(!newPass1.equals(newPass2)) {
+				System.out.println("Error, repeat the action");
+			}else {
+			userman.changePassword(email, newPass1);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void removeUserMenu() {
+		System.out.println("Please write your email");
+		String email2;
+		try {
+			email2 = reader.readLine();
+			System.out.println("Please write your password");
+			String pass=reader.readLine();
+			userman.removeUser(email2, pass);
+			
+			System.out.println("User deleted");
+		
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

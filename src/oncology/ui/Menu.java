@@ -118,6 +118,7 @@ public class Menu {
 				System.out.println("1. Family History");
 				System.out.println("2. Medical Examination");
 				System.out.println("3. Change password");
+				System.out.println("4. Remove user");
 				System.out.println("0. Back to the main menu");
 				int choice = Integer.parseInt(reader.readLine());
 				while (choice < 0 || choice > 7) {
@@ -132,11 +133,11 @@ public class Menu {
 					SubMenusPatient.medicalExaminationSubmenuNurse();
 					break;
 				case 3:
-					System.out.println("user");
-					String email=reader.readLine();
-					System.out.println("new password");
-					String newPass=reader.readLine();
-					userman.changePassword(email, newPass);
+					UserInteraction.changePasswordMenu();
+					break;
+				case 4:
+					UserInteraction.removeUserMenu();
+					System.exit(0);
 				case 0:
 					return;
 				default:
@@ -157,9 +158,11 @@ public class Menu {
 				System.out.println("5. Cancer");
 				System.out.println("6. See all the cancers");
 				System.out.println("7. Treatment");
+				System.out.println("8. Change password");
+				System.out.println("9. Remove user");
 				System.out.println("0. Back to the main menu");
 				int choice = Integer.parseInt(reader.readLine());
-				while (choice < 0 || choice > 7) {
+				while (choice < 0 || choice > 9) {
 					System.out.println("Choose an option within the range:");
                     choice =Integer.parseInt(reader.readLine());
                     }
@@ -186,6 +189,12 @@ public class Menu {
 				case 7:
 					SubMenusNurse.treatmentSubmenuNurse();
 					break;
+				case 8:
+					UserInteraction.changePasswordMenu();
+					break;
+				case 9:
+					UserInteraction.removeUserMenu();
+					System.exit(0);
 					
 				case 0:
 					return;
@@ -206,12 +215,14 @@ public class Menu {
 		System.out.println("6.Act on patient's cancer");
 		System.out.println("7.See all the cancers");
 		System.out.println("8.Act on patient's treatment");
+		System.out.println("9. Change password");
+		System.out.println("10. Remove user");
 		System.out.println("0.Back to the main menu");
 			
 		try {
 				
 				int choice = Integer.parseInt(reader.readLine());
-				while (choice < 0 || choice > 8) {
+				while (choice < 0 || choice > 10) {
 					System.out.println("Choose an option within the range:");
                     choice =Integer.parseInt(reader.readLine());
                     }
@@ -242,6 +253,12 @@ public class Menu {
 			case 8:
 				SubMenusDoctor.treatmentSubmenu();
 				break;
+			case 9:
+				UserInteraction.changePasswordMenu();
+				break;
+			case 10:
+				UserInteraction.removeUserMenu();
+				System.exit(0);
 			case 0:
 				dbmasterMenu.disconnect();
 				System.out.println("Data base closed");

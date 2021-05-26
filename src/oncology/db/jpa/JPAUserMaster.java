@@ -60,6 +60,13 @@ public class JPAUserMaster implements UserMaster {
 
 	}
 	
+	public User getUser(String email) {
+		Query q = em.createNativeQuery("SELECT * FROM users WHERE email = ?", User.class);
+		q.setParameter(1, email);
+		return (User) q.getSingleResult();
+
+	}
+	
 	@Override
 	public boolean userNameTaken(String username) {
 		Query q = em.createNativeQuery("SELECT * FROM users WHERE email = ?", User.class);
@@ -94,36 +101,46 @@ public class JPAUserMaster implements UserMaster {
 			q.setParameter(2, hash);
 			
 			return (User) q.getSingleResult();
-		} catch (NoSuchAlgorithmException e) {
+		}catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		} catch (NoResultException nre) {
 			return null;
 		}
+		
 		return (User) q.getSingleResult();
 	}
 	
-	//@Override
+	
+	
+	@Transient
 	public void changePassword(String email, String newPass) {
 		
-		Query q=null;
-		User u=null;
+	try {
+		em.getTransaction().begin();
+		User u=getUser(email);
 		
-		try {
-			/*MessageDigest md = MessageDigest.getInstance("MD5");
-			md.update(password.getBytes());
-			byte[] hash = md.digest();*/
-			q = em.createNativeQuery("UPDATE users SET password = ? WHERE email = ?", User.class);
-			q.setParameter(1, newPass);
-			q.setParameter(1, email);
-
-			
-		} catch (NoResultException nre) {
-			nre.printStackTrace();
-		}
+		MessageDigest md = MessageDigest.getInstance("MD5");
+		md.update(newPass.getBytes());
+		byte[] hash = md.digest();
 		
+		u.setPassword(hash);
+		em.persist(u);
+		em.getTransaction().commit();
+		
+	}catch (NoSuchAlgorithmException e) {
+		e.printStackTrace();
+	}
 	}
 	
+	
+	public void removeUser(String email, String password) {
+		
+		em.getTransaction().begin();
+		User u=this.checkPassword(email, password);
+		em.remove(u);
+		em.getTransaction().commit();
 
+	}
 	
 
 
