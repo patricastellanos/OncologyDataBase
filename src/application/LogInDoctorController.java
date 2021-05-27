@@ -37,6 +37,12 @@ public class LogInDoctorController {
     private Button loginButton;
     
     @FXML
+    private Button changePassButton;
+
+    @FXML
+    private Button removeUserButton;
+    
+    @FXML
     private Button exitButton;
     
     @FXML
@@ -61,8 +67,31 @@ public class LogInDoctorController {
 		}
 
     }
-
     
+
+    @FXML
+    void actionChangePass(ActionEvent event) {
+    	
+    	 try{
+   			Parent root = FXMLLoader.load(getClass().getResource("ChangePasswordDoctor.fxml"));
+   			Scene scene = new Scene(root);
+   			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+   		
+   			stage.setScene(scene);
+   			stage.show();
+   		} catch(Exception e) {
+   			e.printStackTrace();
+   		}
+
+    }
+    
+
+    @FXML
+    void actionRemoveUser(ActionEvent event) {
+
+    }
+
+    @FXML
     public void actionLogin(ActionEvent event) throws SQLException{
     	
     	Window owner = loginButton.getScene().getWindow();

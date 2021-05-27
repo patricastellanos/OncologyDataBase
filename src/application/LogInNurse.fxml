@@ -19,6 +19,8 @@
             <PasswordField fx:id="passText" layoutX="232.0" layoutY="229.0" prefHeight="26.0" prefWidth="186.0" promptText="Password" />
             <TextField fx:id="userText" layoutX="231.0" layoutY="187.0" prefHeight="26.0" prefWidth="186.0" promptText="Username" />
             <Button fx:id="loginButton" layoutX="237.0" layoutY="292.0" mnemonicParsing="false" onAction="#actionLogin" text="Log in" />
+            <Button fx:id="changePassButton" layoutX="547.0" layoutY="44.0" mnemonicParsing="false" onAction="#actionChangePass" text="Change password" />
+            <Button fx:id="removeUserButton" layoutX="573.0" layoutY="78.0" mnemonicParsing="false" onAction="#actionRemoveUser" text="Remove user" />
          </children>
       </AnchorPane>
       <Button fx:id="backButton" layoutX="526.0" layoutY="375.0" mnemonicParsing="false" onAction="#actionBack" text="Back" />

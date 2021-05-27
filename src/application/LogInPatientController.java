@@ -36,6 +36,12 @@ public class LogInPatientController {
     private Button loginButton;
     
     @FXML
+    private Button changePassButton;
+
+    @FXML
+    private Button removeUserButton;
+    
+    @FXML
     private Button exitButton;
     
     @FXML
@@ -58,6 +64,28 @@ public class LogInPatientController {
   		} catch(Exception e) {
   			e.printStackTrace();
   		}
+
+    }
+    
+
+    @FXML
+    void actionChangePass(ActionEvent event) {
+    	
+    	 try{
+   			Parent root = FXMLLoader.load(getClass().getResource("ChangePasswordPatient.fxml"));
+   			Scene scene = new Scene(root);
+   			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+   		
+   			stage.setScene(scene);
+   			stage.show();
+   		} catch(Exception e) {
+   			e.printStackTrace();
+   		}
+
+    }
+
+    @FXML
+    void actionRemoveUser(ActionEvent event) {
 
     }
 

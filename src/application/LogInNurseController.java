@@ -35,6 +35,12 @@ public class LogInNurseController {
     private Button loginButton;
     
     @FXML
+    private Button changePassButton;
+
+    @FXML
+    private Button removeUserButton;
+    
+    @FXML
     private Button exitButton;
     
     @FXML
@@ -60,6 +66,28 @@ public class LogInNurseController {
 
     }
 
+
+    @FXML
+    void actionChangePass(ActionEvent event) {
+    	
+    	 try{
+   			Parent root = FXMLLoader.load(getClass().getResource("ChangePasswordNurse.fxml"));
+   			Scene scene = new Scene(root);
+   			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+   		
+   			stage.setScene(scene);
+   			stage.show();
+   		} catch(Exception e) {
+   			e.printStackTrace();
+   		}
+
+    }
+    
+
+    @FXML
+    void actionRemoveUser(ActionEvent event) {
+
+    }
     @FXML
 	void actionLogin(ActionEvent event) {
     	

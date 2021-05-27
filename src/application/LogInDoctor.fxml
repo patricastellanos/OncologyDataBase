@@ -18,9 +18,11 @@
             </ImageView>
             <PasswordField fx:id="passText" layoutX="232.0" layoutY="229.0" onAction="#actionPassword" prefHeight="26.0" prefWidth="186.0" promptText="Password" />
             <TextField fx:id="userText" layoutX="231.0" layoutY="187.0" prefHeight="26.0" prefWidth="186.0" promptText="Username" />
+            <Button fx:id="loginButton1" layoutX="252.0" layoutY="295.0" mnemonicParsing="false" onAction="#actionLogin" text="Log in" />
+            <Button fx:id="changePassButton" layoutX="537.0" layoutY="47.0" mnemonicParsing="false" onAction="#actionChangePass" text="Change password" />
+            <Button fx:id="removeUserButton" layoutX="563.0" layoutY="83.0" mnemonicParsing="false" onAction="#actionRemoveUser" text="Remove user" />
          </children>
       </AnchorPane>
-      <Button fx:id="loginButton" layoutX="242.0" layoutY="285.0" mnemonicParsing="false" onAction="#actionLogin" text="Log in" />
       <Button fx:id="backButton" layoutX="526.0" layoutY="375.0" mnemonicParsing="false" onAction="#actionBack" text="Back" />
       <Button fx:id="exitButton" layoutX="78.0" layoutY="375.0" mnemonicParsing="false" onAction="#actionExit" text="Exit" />
    </children>
