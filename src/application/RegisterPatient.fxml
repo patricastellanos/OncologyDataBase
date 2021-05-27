@@ -18,8 +18,8 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <PasswordField fx:id="password" layoutX="242.0" layoutY="233.0" onAction="#actionPassword" prefHeight="26.0" prefWidth="186.0" promptText="Password" />
-      <PasswordField fx:id="confirmPassword" layoutX="242.0" layoutY="276.0" onAction="#actionConfirmPassword" prefHeight="26.0" prefWidth="186.0" promptText="Confirm Password" />
+      <PasswordField fx:id="password" layoutX="242.0" layoutY="233.0" prefHeight="26.0" prefWidth="186.0" promptText="Password" />
+      <PasswordField fx:id="confirmPassword" layoutX="242.0" layoutY="276.0" prefHeight="26.0" prefWidth="186.0" promptText="Confirm Password" />
       <PasswordField fx:id="password" layoutX="242.0" layoutY="233.0" prefHeight="26.0" prefWidth="186.0" promptText="Password" />
       <PasswordField fx:id="confirmPassword" layoutX="242.0" layoutY="276.0" prefHeight="26.0" prefWidth="186.0" promptText="Confirm Password" />
       <Button id="registerPatient" fx:id="registerPatient" layoutX="242.0" layoutY="316.0" mnemonicParsing="false" onAction="#actionRegisterPatient" text="Register" />

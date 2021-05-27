@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import oncology.db.interfaces.UserMaster;
 import oncology.db.jpa.JPAUserMaster;
 import oncology.db.pojos.users.User;
@@ -64,6 +65,8 @@ public class ChangePasswordDoctorController {
     	String confirmPass=confirmPassText.getText();
     	
     	User u=userman.getUser(user);
+    	Window owner = changePassButton.getScene().getWindow();
+    	System.out.println(u);
     	
     	if(!pass.equals(confirmPass)) {
     		infoMessage("ERROR, repeat the action", null, "Failed");
@@ -73,9 +76,11 @@ public class ChangePasswordDoctorController {
         	infoMessage("Password changed", null, "Message");
         
         	
-    	}else {
+    	}else if(u.getPassword()==null) {
     	
-    		infoMessage("ERROR, not existing user", null, "Failed");
+    		//infoMessage("ERROR, not existing user", null, "Failed");
+    		showAlert(Alert.AlertType.ERROR, owner, "Error!", "Not existing user");
+			return;
     	}
     	
     	try{
@@ -106,6 +111,14 @@ public class ChangePasswordDoctorController {
         alert.setTitle(title);
         alert.setHeaderText(headerText);
         alert.showAndWait();
+    }
+    public static void showAlert(Alert.AlertType alertType, Window owner, String title, String message ) {
+    	Alert alert = new Alert(alertType);
+    	alert.setTitle(title);
+    	alert.setHeaderText(null);
+    	alert.setContentText(message);
+    	alert.initOwner(owner);
+    	alert.show();
     }
 
 }

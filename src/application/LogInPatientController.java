@@ -22,10 +22,6 @@ public class LogInPatientController {
 	
 	private static UserMaster userman = new JPAUserMaster();
 
-    public LogInPatientController() {
-		
-	}
-
 	@FXML
     private PasswordField passText;
 
@@ -127,10 +123,6 @@ public class LogInPatientController {
 	}
     
 
-    @FXML
-    void actionPassword(ActionEvent event) {
-    
-		}
     public static void infoMessage(String infoMessage, String headerText, String title) {
     	Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setContentText(infoMessage);

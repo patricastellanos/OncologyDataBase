@@ -13,8 +13,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import oncology.db.interfaces.UserMaster;
 import oncology.db.jpa.JPAUserMaster;
+import oncology.db.pojos.users.User;
 
 public class ChangePasswordPatientController {
 	
@@ -57,16 +59,25 @@ public class ChangePasswordPatientController {
     @FXML
     void actionChangePass(ActionEvent event) {
     	
+    	String user=userText.getText();
     	String pass=passText.getText();
     	String confirmPass=confirmPassText.getText();
     	
+    	User u=userman.getUser(user);
+    	Window owner = changePassButton.getScene().getWindow();
+    	
     	if(!pass.equals(confirmPass)) {
     		infoMessage("ERROR, repeat the action", null, "Failed");
+    	}else if(u!=null) {
+    		userman.changePassword(user, pass);
+        	infoMessage("Password changed", null, "Message");
+        	
     	}else {
     	
-    	userman.changePassword(userText.getText(), pass);
+    		//infoMessage("ERROR, not existing user", null, "Failed");
+    		showAlert(Alert.AlertType.ERROR, owner, "Error!", "Not existing user");
+			return;
     	}
-    	
     	try{
    			Parent root = FXMLLoader.load(getClass().getResource("LogInNurse.fxml"));
    			Scene scene = new Scene(root);
@@ -77,7 +88,6 @@ public class ChangePasswordPatientController {
    		} catch(Exception e) {
    			e.printStackTrace();
    		}
-
     }
 
     @FXML
@@ -98,6 +108,14 @@ public class ChangePasswordPatientController {
         alert.setTitle(title);
         alert.setHeaderText(headerText);
         alert.showAndWait();
+    }
+    public static void showAlert(Alert.AlertType alertType, Window owner, String title, String message ) {
+    	Alert alert = new Alert(alertType);
+    	alert.setTitle(title);
+    	alert.setHeaderText(null);
+    	alert.setContentText(message);
+    	alert.initOwner(owner);
+    	alert.show();
     }
 
 }
