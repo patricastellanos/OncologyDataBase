@@ -66,7 +66,7 @@ public class AddSymptomsDoctorController {
     @FXML
     void actionSeeAllP(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatients.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsSymptomsDoctor.fxml"));
 			//TODO
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();

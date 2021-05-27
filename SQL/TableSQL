@@ -1,7 +1,8 @@
 CREATE TABLE family_history (
       id_famHistory INTEGER PRIMARY KEY AUTOINCREMENT ,
-      type TEXT ,
+      type_cancerFam TEXT ,
       member TEXT,
+      patient_id REFERENCES patient (id) ON DELETE SET NULL,
 )
 
 CREATE TABLE patient (
@@ -12,55 +13,53 @@ CREATE TABLE patient (
       date_birth DATE NOT NULL ,
       location TEXT NOT NULL ,
       actual_state TEXT NOT NULL ,
-      id_famHistory INTEGER REFERENCES family_history (id_famHistory) ON DELETE SET NULL, 
 
 )
 
 CREATE TABLE medical_examination (
     id_medExam INTEGER PRIMARY KEY AUTOINCREMENT ,
-    type TEXT NOT NULL ,
-    date DATE NOT NULL ,
+    medExam_type TEXT NOT NULL ,
+    dateMedExam DATE NOT NULL ,
+    diagnosis TEXT NOT NULL,
+    patient_id REFERENCES patient (id) ON DELETE SET NULL
 )
 
 CREATE TABLE cancer (
     id_cancer INTEGER PRIMARY KEY AUTOINCREMENT ,
     id_medExam INTEGER REFERENCES medical_examinations (id_medExam) ON DELETE SET NULL ,
-    type TEXT NOT NULL, 
+    cancer_type TEXT NOT NULL, 
 
 )
 
 CREATE TABLE treatment (
     id_treatment INTEGER PRIMARY KEY AUTOINCREMENT ,
-    type TEXT NOT NULL ,
-    startDate DATE NOT NULL ,
+    treat_type TEXT NOT NULL ,
+    start_date DATE NOT NULL ,
     duration INTEGER NOT NULL,
 )
 
 
-
-CREATE TABLE symptomps (
+CREATE TABLE symptoms (
    id_Symps INTEGER PRIMARY KEY AUTOINCREMENT ,
    detail TEXT NOT NULL ,
-   id_medExam INTEGER REFERENCES medical_examinations (id_medExam) ON DELETE SET NULL,
 )
 
 CREATE TABLE patient_symptomps (
-   id_patient INTEGER REFERENCES patient (id_patient) ,
-   id_symp INTEGER REFERENCES symptoms (id_Symps) ,
-   intensity TEXT NOT NULL,
-   PRIMARY KEY (id_patient, id_symp) ,
+   id INTEGER REFERENCES patient (id) ,
+   id_symp INTEGER REFERENCES symptoms (id_symp) ,
+   PRIMARY KEY (id, id_symp) ,
 )
  
-CREATE TABLE cancer_treatment (
-   id_cancer INTEGER REFERENCES cancer (id_cancer) ,
-   id_treat INTEGER REFERENCES treatment (id_treatment),
-   PRIMARY KEY (id_cancer, id_treat) ,
+CREATE TABLE patient_treatment (
+   id INTEGER REFERENCES patient (id) ,
+   id_treat INTEGER REFERENCES treatment (id_treat),
+   PRIMARY KEY (id, id_treat) ,
 
 )
 
 CREATE TABLE cancer_patient (
    id_cancer INTEGER REFERENCES cancer (id_cancer) ,
-   id_patient INTEGER REFERENCES patient (id_patient),
+   id INTEGER REFERENCES patient (id),
    PRIMARY KEY (id_cancer, id_patient) ,
    
  )

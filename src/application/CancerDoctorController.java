@@ -106,7 +106,7 @@ public class CancerDoctorController {
     void actionConvertXMLtoCancer(ActionEvent event) {
     	
     	UserInteraction.XmlToCancerMenu();
-    	infoMessage("File imported and saved", null, "Message");
+    	infoMessage("Cancer created and saved", null, "Message");
    
     }
 

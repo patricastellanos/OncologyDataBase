@@ -4,18 +4,14 @@
    <!ELEMENT CANCER (type, Patients, Treatments)>
    <!ELEMENT type (#PCDATA)>
    <!ELEMENT Patients(Patient+)>
-   <!ELEMENT Treatments(Treatment+)>
-   <!ELEMENT Patient (dob, sex, location, actualState)>
+   <!ELEMENT Patient (name, surname, dob, sex, location, actualState)>
+   <!ELEMENT name (#PCDATA)>
+   <!ELEMENT surname (#PCDATA)>
    <!ELEMENT dob (#PCDATA)>
    <!ELEMENT sex (#PCDATA)>
    <!ELEMENT location (#PCDATA)>
    <!ELEMENT actualState (#PCDATA)>
-   <!ATTLIST Patient id CDATA #REQUIRED
-                     name CDATA #REQUIRED 
-                     surname CDATA #REQUIRED>
-   <!ELEMENT Treatment (treatType, startDate, duration)>
-   <!ELEMENT treatType (#PCDATA)>
-   <!ELEMENT startDate(#PCDATA)>
-   <!ELEMENT duration (#PCDATA)>
+   
+ 
 
 ]>

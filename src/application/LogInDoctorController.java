@@ -3,6 +3,7 @@ package application;
 import java.sql.SQLException;
 
 
+
 import com.gluonhq.charm.glisten.control.TextField;
 
 import javafx.event.ActionEvent;
@@ -34,7 +35,7 @@ public class LogInDoctorController {
     private TextField userText;
     
     @FXML
-    private Button loginButton;
+    private Button loginButton1;
     
     @FXML
     private Button changePassButton;
@@ -94,7 +95,7 @@ public class LogInDoctorController {
     @FXML
     public void actionLogin(ActionEvent event) throws SQLException{
     	
-    	Window owner = loginButton.getScene().getWindow();
+    	Window owner = loginButton1.getScene().getWindow();
 		if (userText.getText().isEmpty()) {
 			showAlert(Alert.AlertType.ERROR, owner, "Error!", "Please enter your email");
 			return;

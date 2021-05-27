@@ -60,7 +60,7 @@ public class SeeSymptomsNurseController {
     @FXML
     void actionBack(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SymptomsNurse.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("MainMenuNurse.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		

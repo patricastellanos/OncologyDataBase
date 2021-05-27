@@ -58,9 +58,7 @@
             <Button layoutX="237.0" layoutY="190.0" mnemonicParsing="false" onAction="#actionConvertXML" text="Convert to XML" />
             <Button layoutX="237.0" layoutY="230.0" mnemonicParsing="false" onAction="#actionConvertXMLtoCancer" text="Convert from XML to Cancer" />
             <Button layoutX="237.0" layoutY="275.0" mnemonicParsing="false" onAction="#actionXMLtoHTML" text="Convert the XML file created to HTML" />
-            <TextField fx:id="convertXML" layoutX="475.0" layoutY="190.0" prefHeight="26.0" prefWidth="138.0" />
-            <TextField fx:id="convertfromXMLtoCancer" layoutX="475.0" layoutY="229.0" prefHeight="26.0" prefWidth="138.0" />
-            <TextField fx:id="convertXMLtoHTML" layoutX="475.0" layoutY="274.0" prefHeight="26.0" prefWidth="138.0" />
+            <TextField fx:id="convertXML" layoutX="475.0" layoutY="190.0" prefHeight="26.0" prefWidth="138.0" promptText="id" />
          </children>
       </AnchorPane>
       <Button fx:id="exitButton" layoutX="78.0" layoutY="375.0" mnemonicParsing="false" onAction="#actionExit" text="Exit" />
