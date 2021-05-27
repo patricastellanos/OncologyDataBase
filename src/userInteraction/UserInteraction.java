@@ -21,6 +21,7 @@ import oncology.db.pojos.MedicalExamination;
 import oncology.db.pojos.Patient;
 import oncology.db.pojos.Symptoms;
 import oncology.db.pojos.Treatment;
+import oncology.db.pojos.users.User;
 
 public class UserInteraction {
 	
@@ -621,15 +622,26 @@ public class UserInteraction {
 	}
 	
 	public static void removeUserMenu() {
-		System.out.println("Please write your email");
-		String email2;
+		
 		try {
-			email2 = reader.readLine();
+			System.out.println("Please write your email");
+			 String email2 = reader.readLine();
 			System.out.println("Please write your password");
 			String pass=reader.readLine();
-			userman.removeUser(email2, pass);
+			User u=userman.getUser(email2);
+			//System.out.println(u);
 			
+			/*if(u==null) {
+				System.out.println("Not existing user");
+			}else {
+				userman.removeUser(email2, pass);
+				System.out.println("User deleted");
+			}*/
+			
+			userman.removeUser(email2, pass);
 			System.out.println("User deleted");
+			
+			
 		
 		} catch (IOException e) {
 			e.printStackTrace();

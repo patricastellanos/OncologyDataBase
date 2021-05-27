@@ -11,8 +11,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
+import oncology.db.interfaces.UserMaster;
+import oncology.db.jpa.JPAUserMaster;
 
 public class RemoveUserDoctorController {
+	
+	private static UserMaster userman = new JPAUserMaster();
 
     @FXML
     private PasswordField passText;
@@ -47,12 +51,20 @@ public class RemoveUserDoctorController {
 
     @FXML
     void actionDeleteUser(ActionEvent event) {
+    	
+    	String email=userText.getText();
+    	String pass=passText.getText();
+    	
+    	userman.removeUser(email, pass);
+    	
 
 
     }
 
     @FXML
     void actionExit(ActionEvent event) {
+    	
+    	System.exit(0);
 
     }
 

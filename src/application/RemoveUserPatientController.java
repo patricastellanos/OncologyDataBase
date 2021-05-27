@@ -6,8 +6,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import oncology.db.interfaces.UserMaster;
+import oncology.db.jpa.JPAUserMaster;
 
 public class RemoveUserPatientController {
+	
+	private static UserMaster userman = new JPAUserMaster();
 
     @FXML
     private PasswordField passText;
