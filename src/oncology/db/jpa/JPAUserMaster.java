@@ -139,25 +139,14 @@ public class JPAUserMaster implements UserMaster {
 	}
 	
 	
-	public User removeUser(String email, String password) {
+	public void removeUser(String email, String password) {
 		
 		
-		User u=this.getUser(email);
-		List<User> usersList=this.getUsersList(u.getRole().getId());
-		for(int i=0; i<usersList.size(); i++) {
-			if(usersList.get(i).getEmail()==email) {
-				
-				em.getTransaction().begin();
-				u=this.checkPassword(email, password);
-				em.remove(u);
-				em.getTransaction().commit();
-			}else {
-				
-				u=null;
-			}
-			
-		}
-		return u;
+		em.getTransaction().begin();
+		User u=this.checkPassword(email, password);
+		em.remove(u);
+		em.getTransaction().commit();
+		
 		
 	}
 	

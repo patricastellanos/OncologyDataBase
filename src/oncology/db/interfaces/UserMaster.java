@@ -15,7 +15,7 @@ public interface UserMaster {
 	public User checkPassword(String email, String password);
 	public User getUser(String email);
 	public void changePassword(String email, String newPass);
-	public User removeUser(String email, String password);
+	public void removeUser(String email, String password);
 	public List<User> getUsersList(int id_role);
 	
 }
