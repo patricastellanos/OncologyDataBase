@@ -21,8 +21,8 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button layoutX="314.0" layoutY="170.0" mnemonicParsing="false" onAction="#actionSeeFamilyHistory" text="See family history" />
-            <Button layoutX="315.0" layoutY="227.0" mnemonicParsing="false" onAction="#actionSeeMedicalExamination" text="See medical examination" />
+            <Button fx:id="seeFamHistButton" layoutX="279.0" layoutY="170.0" mnemonicParsing="false" onAction="#actionSeeFamilyHistory" text="See family history" />
+            <Button fx:id="seeMedExamButton" layoutX="279.0" layoutY="215.0" mnemonicParsing="false" onAction="#actionSeeMedicalExamination" text="See medical examination" />
          </children>
       </AnchorPane>
       <Button fx:id="exitButton" layoutX="559.0" layoutY="357.0" mnemonicParsing="false" onAction="#actionExit" prefHeight="26.0" prefWidth="47.0" text="Exit" />

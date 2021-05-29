@@ -71,12 +71,6 @@ public class ChangePasswordNurseController {
     		userman.changePassword(user, pass);
         	infoMessage("Password changed", null, "Message");
         
-        	
-    	} if(userman.getUser(user)==null){
-    	
-    		//infoMessage("ERROR, not existing user", null, "Failed");
-    		showAlert(Alert.AlertType.ERROR, owner, "Error!", "Not existing user");
-			return;
     	}
     	try{
    			Parent root = FXMLLoader.load(getClass().getResource("LogInNurse.fxml"));

@@ -8,8 +8,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import oncology.db.interfaces.UserMaster;
 import oncology.db.jpa.JPAUserMaster;
@@ -56,6 +58,18 @@ public class RemoveUserDoctorController {
     	String pass=passText.getText();
     	
     	userman.removeUser(email, pass);
+    	infoMessage("User deleted", null, "Message");
+    	//System.exit(0);
+    	 try{
+ 			Parent root = FXMLLoader.load(getClass().getResource("SecondInteractionDoctor.fxml"));
+ 			Scene scene = new Scene(root);
+ 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+ 		
+ 			stage.setScene(scene);
+ 			stage.show();
+ 		} catch(Exception e) {
+ 			e.printStackTrace();
+ 		}
     	
 
 
@@ -68,5 +82,12 @@ public class RemoveUserDoctorController {
 
     }
 
+    public static void infoMessage(String infoMessage, String headerText, String title) {
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setContentText(infoMessage);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.showAndWait();
+    }
 }
 

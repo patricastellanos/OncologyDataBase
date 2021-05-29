@@ -32,7 +32,8 @@ public class User implements Serializable{
 		this.role = role2;
 	}
 	
-	
+
+
 	public User() {
 		super();
 	}

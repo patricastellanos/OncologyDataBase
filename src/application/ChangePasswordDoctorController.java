@@ -66,7 +66,7 @@ public class ChangePasswordDoctorController {
     	
     	User u=userman.getUser(user);
     	Window owner = changePassButton.getScene().getWindow();
-    	System.out.println(u);
+    	
     	
     	if(!pass.equals(confirmPass)) {
     		infoMessage("ERROR, repeat the action", null, "Failed");
@@ -74,13 +74,7 @@ public class ChangePasswordDoctorController {
     	else if(u!=null) {
     		userman.changePassword(user, pass);
         	infoMessage("Password changed", null, "Message");
-        
         	
-    	}else if(u.getPassword()==null) {
-    	
-    		//infoMessage("ERROR, not existing user", null, "Failed");
-    		showAlert(Alert.AlertType.ERROR, owner, "Error!", "Not existing user");
-			return;
     	}
     	
     	try{
@@ -93,6 +87,7 @@ public class ChangePasswordDoctorController {
    		} catch(Exception e) {
    			e.printStackTrace();
    		}
+    	
     	
 
     }

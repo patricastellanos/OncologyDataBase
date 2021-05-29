@@ -82,6 +82,18 @@ public class LogInPatientController {
 
     @FXML
     void actionRemoveUser(ActionEvent event) {
+    	
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("RemoveUserPatient.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+
 
     }
 
@@ -122,6 +134,17 @@ public class LogInPatientController {
 
 	}
     
+    //String nameUser=userText.getText();
+    
+    public String getUserPatient() {
+    	
+		return userText.getText();
+    	
+    }
+    
+    public static void setUserPatient(String userName) {
+    	userName=getUser
+    }
 
     public static void infoMessage(String infoMessage, String headerText, String title) {
     	Alert alert = new Alert(AlertType.CONFIRMATION);

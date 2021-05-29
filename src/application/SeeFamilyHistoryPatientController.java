@@ -18,6 +18,7 @@ import com.gluonhq.charm.glisten.control.TextField;
 import javafx.stage.Stage;
 import oncology.db.interfaces.DBMaster;
 import oncology.db.pojos.FamilyHistory;
+import oncology.db.pojos.Patient;
 
 
 public class SeeFamilyHistoryPatientController {
@@ -60,9 +61,16 @@ public class SeeFamilyHistoryPatientController {
 
     }
     
-    public void initialize() {
+    
 
+    @FXML
+    void actionSee(ActionEvent event) {
+    	
+    	String idSee=id.getText();
+    	
     	tableP.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
+    	FamilyHistory fam = db.printFamHistory(Integer.parseInt(idSee));
     	
     	TableColumn<FamilyHistory, String> idCol = new TableColumn<>("ID");
     	TableColumn<FamilyHistory, String> typeCol = new TableColumn<>("Type");
@@ -75,13 +83,6 @@ public class SeeFamilyHistoryPatientController {
     	
     	
     	tableP.getColumns().addAll( idCol, typeCol, memberCol);
-    }
-
-
-    @FXML
-    void actionSee(ActionEvent event) {
-    	FamilyHistory fam = db.printFamHistory(Integer.parseInt(id.getText()));
-    	
     	tableP.getItems().addAll(fam);
     	
 
@@ -90,7 +91,7 @@ public class SeeFamilyHistoryPatientController {
     @FXML
     void actionSeeAllP(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsFamilyHistory.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsPatient.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		

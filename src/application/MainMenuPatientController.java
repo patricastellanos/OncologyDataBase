@@ -10,8 +10,14 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class MainMenuPatientController {
+    
+	@FXML
+    private Button seeFamHistButton;
 
     @FXML
+    private Button seeMedExamButton;
+    
+	@FXML
     private Button exitButton;
 
     @FXML
