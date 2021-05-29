@@ -87,11 +87,11 @@ public class JPAUserMaster implements UserMaster {
 		return (List<Role>) q.getResultList();
 	}
 
-	@Override
+	/*@Override
 	public List<User> getUsersList(int id_role) {
 		Query q = em.createNativeQuery("SELECT * FROM users WHERE role LIKE" +id_role, User.class);
 		return (List<User>) q.getResultList();
-	}
+	}*/
 	
 	@Override
 	public User checkPassword(String email, String password) {
