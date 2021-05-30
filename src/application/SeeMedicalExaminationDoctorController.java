@@ -61,7 +61,7 @@ public class SeeMedicalExaminationDoctorController {
     @FXML
     void actionSeeP(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsMedicalExamination.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsMedicalExaminationDoctor.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		

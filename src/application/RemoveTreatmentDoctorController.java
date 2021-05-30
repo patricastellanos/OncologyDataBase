@@ -15,17 +15,23 @@ import oncology.db.interfaces.DBMaster;
 	public class RemoveTreatmentDoctorController {
 		private DBMaster db = Main.getdbMaster();
 
-	    @FXML
-	    private TextField id;
+		 @FXML
+		    private Button backButton;
 
-	    @FXML
-	    private Button removeButton;
+		    @FXML
+		    private TextField idPatient;
 
-	    @FXML
-	    private Button backButton;
+		    @FXML
+		    private Button removeP;
 
-	    @FXML
-	    private Button exitButton;
+		    @FXML
+		    private Button seeAllP;
+
+		    @FXML
+		    private TextField idTreat;
+
+		    @FXML
+		    private Button exitButton;
 
 	    @FXML
 	    void actionBack(ActionEvent event) {
@@ -67,7 +73,7 @@ import oncology.db.interfaces.DBMaster;
 
 	    @FXML
 	    void actionRemove(ActionEvent event) {
-	    	//db.removeTreatment(Integer.parseInt(id.getText()));
+	    	db.removeTreatment(Integer.parseInt(idPatient.getText()), Integer.parseInt(idTreat.getText()));
 	    	
 	    	try{
 				Parent root = FXMLLoader.load(getClass().getResource("TreatmentDoctor.fxml"));

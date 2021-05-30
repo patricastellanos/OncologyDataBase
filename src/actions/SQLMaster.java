@@ -78,7 +78,8 @@ public class SQLMaster implements DBMaster {
 			stmt1 = c.createStatement();
 			// Create table family_history
 			String sql1 = "CREATE TABLE family_history " + "(id_famHistory INTEGER PRIMARY KEY AUTOINCREMENT, "
-								+ "  type_cancerFam TEXT, " + "  member TEXT , " + " patient_id REFERENCES patient (id) ON DELETE SET NULL)";
+								+ "  type_cancerFam TEXT, " + "  member TEXT , " 
+								+ " patient_id REFERENCES patient (id) ON DELETE SET NULL)";
 			stmt1.executeUpdate(sql1);
 						
 			// Create table patient
@@ -89,7 +90,8 @@ public class SQLMaster implements DBMaster {
 			
 			//Create the table medical examination
 			sql1= "CREATE TABLE medical_examination " + "(id_medExam INTEGER PRIMARY KEY AUTOINCREMENT, "
-			      + " medExam_type TEXT NOT NULL, " + " dateMedExam DATE NOT NULL, " + " diagnosis TEXT NOT NULL, " + " patient_id INTEGER REFERENCES patient (id) ON DELETE SET NULL)";
+			      + " medExam_type TEXT NOT NULL, " + " dateMedExam DATE NOT NULL, " + " diagnosis TEXT NOT NULL, " 
+			      + " patient_id INTEGER REFERENCES patient (id) ON DELETE SET NULL)";
 			stmt1.executeUpdate(sql1);
 
 			
@@ -671,7 +673,7 @@ public class SQLMaster implements DBMaster {
 		
 		public void removeTreatment (int id_patient, int id_treat) {
 			try {
-				String sql = "DELETE FROM patient_treatment WHERE id= ? AND id_treat=? ";
+				String sql = "DELETE FROM patient_treatment WHERE id= ? AND id_treat= ?";
 				PreparedStatement prep = c.prepareStatement(sql);
 				prep.setInt(1, id_patient);
 				prep.setInt(2, id_treat);

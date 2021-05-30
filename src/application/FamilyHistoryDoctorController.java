@@ -34,7 +34,9 @@ public class FamilyHistoryDoctorController {
 
 	    @FXML
 	    private TextField convertToXML;
-
+	    
+	    @FXML
+	    private Button seeAllP;
 
 	    @FXML
 	    private Button exitButton;
@@ -97,7 +99,7 @@ public class FamilyHistoryDoctorController {
     @FXML
     void actionSeeP(ActionEvent event) {
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsFamilyHistory.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsFamilyHistoryDoctor.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		

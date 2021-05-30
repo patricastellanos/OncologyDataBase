@@ -61,6 +61,9 @@ public class SeeAllPatientsFamilyHistoryDoctorController {
         //tableP.getItems().add(new Patient(1,"pepe", "perez", "male", new Date(1935, 05, 06),"home","complex_care"));
         tableP.getItems().addAll(patients_list);
         //System.out.println("Nombre primer paciente" + patients_list.get(0).getName());
+        
+        
+        
     }
     
     @FXML

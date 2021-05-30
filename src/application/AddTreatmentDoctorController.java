@@ -47,7 +47,17 @@ public class AddTreatmentDoctorController {
   
     	Treatment treat= new Treatment( type.getText(),Date.valueOf(startDate.getText()), Integer.parseInt(duration.getText()));
     	db.addTreatment(treat,Integer.parseInt(id.getText()));
-
+    	
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("TreatmentDoctor.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
     }
 
     @FXML
