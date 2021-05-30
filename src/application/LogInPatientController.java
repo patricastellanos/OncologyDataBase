@@ -1,5 +1,7 @@
 package application;
 
+import java.io.IOException;
+
 import com.gluonhq.charm.glisten.control.TextField;
 
 import javafx.event.ActionEvent;
@@ -11,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.stage.Window;
@@ -26,7 +29,7 @@ public class LogInPatientController {
     private PasswordField passText;
 
     @FXML
-    private TextField userText;
+    public static TextField userText;
     
     @FXML
     private Button loginButton;
@@ -122,6 +125,8 @@ public class LogInPatientController {
 		  			Parent root = FXMLLoader.load(getClass().getResource("MainMenuPatient.fxml")); 
 		  			Scene scene = new Scene(root);
 		  			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		  			
+		  			
 		  		
 		  			stage.setScene(scene);
 		  			stage.show();
@@ -134,17 +139,7 @@ public class LogInPatientController {
 
 	}
     
-    //String nameUser=userText.getText();
-    
-    public String getUserPatient() {
-    	
-		return userText.getText();
-    	
-    }
-    
-    public static void setUserPatient(String userName) {
-    	userName=getUser
-    }
+   
 
     public static void infoMessage(String infoMessage, String headerText, String title) {
     	Alert alert = new Alert(AlertType.CONFIRMATION);
