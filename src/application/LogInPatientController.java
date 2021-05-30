@@ -29,7 +29,7 @@ public class LogInPatientController {
     private PasswordField passText;
 
     @FXML
-    public static TextField userText;
+    private TextField userText;
     
     @FXML
     private Button loginButton;
