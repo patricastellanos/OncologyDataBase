@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CheckTreatmentDoctorController">
+   <children>
+      <AnchorPane prefHeight="446.0" prefWidth="671.0" style="-fx-background-color: pink;">
+         <children>
+            <ImageView fitHeight="446.0" fitWidth="674.0" layoutX="-1.0" opacity="0.58">
+               <image>
+                  <Image url="@methods.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="backButton" layoutX="546.0" layoutY="395.0" mnemonicParsing="false" onAction="#actionBack" text="Back" />
+            <TextField fx:id="idPatient" layoutX="150.0" layoutY="173.0" promptText="Patient's id" />
+            <Button fx:id="checkButton" layoutX="527.0" layoutY="309.0" mnemonicParsing="false" onAction="#actionCheckTreat" text="Check treatment" />
+            <Button fx:id="seeAllP" layoutX="520.0" layoutY="173.0" mnemonicParsing="false" onAction="#actionSeeP" text="See all patients" />
+         </children>
+      </AnchorPane>
+      <Button fx:id="exitButton" layoutX="88.0" layoutY="385.0" mnemonicParsing="false" onAction="#actionExit" text="Exit" />
+   </children>
+</AnchorPane>
