@@ -43,18 +43,20 @@ public class AddCancerDoctorController {
     
     	List <Cancer> insertedCancer = db.printCancers();
 		String cancer_type= type.getText();
+		
 		if(insertedCancer.size()==0) {
 			Cancer cancer=new Cancer(type.getText());
 			db.addCancer(cancer, Integer.parseInt(id.getText()));
+			
 		}else {
 			for(int i=0; i<insertedCancer.size(); i++) {
-				if(insertedCancer.get(i).getCancer_type().equalsIgnoreCase(cancer_type)) {
+				if((insertedCancer.get(i).getCancer_type()).equalsIgnoreCase(cancer_type)) {
 					db.addExistingCancer(insertedCancer.get(i).getId_cancer(), Integer.parseInt(id.getText()));
-					break;
+					continue;
 				}else {
 					Cancer cancer=new Cancer(type.getText());
 					db.addCancer(cancer, Integer.parseInt(id.getText()));
-					break;
+					continue;
 				
 				}
 				
