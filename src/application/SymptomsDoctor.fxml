@@ -22,9 +22,9 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button fx:id="addSymp" layoutX="231.0" layoutY="130.0" mnemonicParsing="false" onAction="#actionAddSymp" text=" Add symptoms to a patient" />
-            <Button fx:id="deleteSymp" layoutX="227.0" layoutY="183.0" mnemonicParsing="false" onAction="#actionDeleteSymp" text="Delete symptoms of a patient" />
-            <Button fx:id="seeSymp" layoutX="224.0" layoutY="244.0" mnemonicParsing="false" onAction="#actionSeeSymp" text="See the symptoms of a patient" />
+            <Button fx:id="addSymp" layoutX="206.0" layoutY="137.0" mnemonicParsing="false" onAction="#actionAddSymp" text=" Add symptoms to a patient" />
+            <Button fx:id="deleteSymp" layoutX="206.0" layoutY="183.0" mnemonicParsing="false" onAction="#actionDeleteSymp" text="Delete symptoms of a patient" />
+            <Button fx:id="seeSymp" layoutX="206.0" layoutY="231.0" mnemonicParsing="false" onAction="#actionSeeSymp" text="See the symptoms of a patient" />
             <Text layoutX="70.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="S" wrappingWidth="17.487091064453125">
                <font>
                   <Font size="30.0" />

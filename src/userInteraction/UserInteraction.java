@@ -426,6 +426,8 @@ public class UserInteraction {
 		printPatientsMenu();
 		System.out.println("Choose the id of the patient from which you delete the symptoms");
 		int id=Integer.parseInt(reader.readLine());
+		/*System.out.println("Choose the id of the symptom you want to delete");
+		int idSymp=Integer.parseInt(reader.readLine());*/
 		dbmaster.removeSymptoms(id);
 		}catch(Exception e) {
 			e.printStackTrace();

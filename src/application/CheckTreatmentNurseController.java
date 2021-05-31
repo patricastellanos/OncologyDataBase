@@ -13,9 +13,10 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import oncology.db.interfaces.DBMaster;
 
-public class CheckTreatmentDoctorController {
+public class CheckTreatmentNurseController {
 
 	private DBMaster db = Main.getdbMaster();
+	
 	@FXML
     private Button backButton;
 
@@ -35,7 +36,7 @@ public class CheckTreatmentDoctorController {
     void actionBack(ActionEvent event) {
     	
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("TreatmentDoctor.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("TreatmentNurse.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
@@ -75,7 +76,7 @@ public class CheckTreatmentDoctorController {
     void actionSeeP(ActionEvent event) {
     	
     	try{
-			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsTreatmentDoctor.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("SeeAllPatientsTreatmentNurse.fxml"));
 			Scene scene = new Scene(root);
 			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		

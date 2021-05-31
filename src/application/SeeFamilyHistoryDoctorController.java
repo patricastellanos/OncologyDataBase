@@ -8,9 +8,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 
@@ -82,7 +84,11 @@ public class SeeFamilyHistoryDoctorController {
     void actionSee(ActionEvent event) {
     	FamilyHistory fam = db.printFamHistory(Integer.parseInt(id.getText()));
     	
-    	tableP.getItems().addAll(fam);
+    	if(fam==null) {
+    		infoMessage("No family history available", null, "Message");
+    	}else {
+    		tableP.getItems().addAll(fam);
+    	}
     	
 
     }
@@ -100,6 +106,14 @@ public class SeeFamilyHistoryDoctorController {
 			e.printStackTrace();
 		}
 
+    }
+    
+    public static void infoMessage(String infoMessage, String headerText, String title) {
+    	Alert alert = new Alert(AlertType.CONFIRMATION);
+        alert.setContentText(infoMessage);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.showAndWait();
     }
 
 }
