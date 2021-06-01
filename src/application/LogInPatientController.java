@@ -122,7 +122,7 @@ public class LogInPatientController {
 		} else {
 			infoMessage("Successfull log in !!", null, "Message");
 			 try{
-		  			Parent root = FXMLLoader.load(getClass().getResource("MainMenuPatient.fxml")); 
+		  			Parent root = FXMLLoader.load(getClass().getResource("PatientActions.fxml")); 
 		  			Scene scene = new Scene(root);
 		  			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		  			

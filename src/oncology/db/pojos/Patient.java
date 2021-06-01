@@ -25,6 +25,8 @@ public class Patient implements Serializable {
 private static final long serialVersionUID = 1L;
 @XmlTransient
  private Integer id;
+@XmlTransient
+private String IDNumber;
 @XmlElement
  private String name;
 @XmlElement
@@ -59,8 +61,46 @@ public Patient() {
 	super();
 }
 
+public Patient (String IDNumber) {
+	super();
+	this.IDNumber = IDNumber;
+}
 
-//Constructor for the method searchPatientByName
+public Patient(String IDNumber, String name, String surname, String sex, Date birth_date,String location, String actual_state) {
+	super();
+	this.IDNumber = IDNumber;
+	this.name = name;
+	this.surname = surname;
+	this.sex=sex;
+	this.birth_date=birth_date;
+	this.location=location;
+	this.actual_state=actual_state;
+	
+}
+
+public Patient(int id, String IDNumber, String name, String surname, String sex, Date birth_date,String location, String actual_state) {
+	super();
+	this.id = id;
+	this.IDNumber = IDNumber;
+	this.name = name;
+	this.surname = surname;
+	this.sex=sex;
+	this.birth_date=birth_date;
+	this.location=location;
+	this.actual_state=actual_state;
+	
+}
+
+
+public String getIDNumber() {
+	return IDNumber;
+}
+
+public void setIDNumber(String iDNumber) {
+	IDNumber = iDNumber;
+}
+
+	//Constructor for the method searchPatientByName
 	public Patient(Integer id, String name,String surname) {
 	super();
 	this.id = id;

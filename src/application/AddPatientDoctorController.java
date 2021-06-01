@@ -56,7 +56,9 @@ public class AddPatientDoctorController {
     @FXML
     private RadioButton hospitalbutton;
 
-    
+    @FXML
+    private TextField IDNum;
+
     @FXML
     private RadioButton malebutton;
 
@@ -110,7 +112,7 @@ public class AddPatientDoctorController {
     				+ "\n Locations available: HOME, HOSPITAL");
     	}*/
     	
-    	Patient p= new Patient(name.getText(), surname.getText(),sex,
+    	Patient p= new Patient(IDNum.getText(), name.getText(), surname.getText(),sex,
     			Date.valueOf(dob.getText()),location ,state);
     	db.addPatient(p);
     	

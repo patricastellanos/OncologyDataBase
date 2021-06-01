@@ -1,6 +1,7 @@
 package actions;
 
 import java.io.File;
+
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -83,7 +84,7 @@ public class SQLMaster implements DBMaster {
 			stmt1.executeUpdate(sql1);
 						
 			// Create table patient
-			 sql1 = "CREATE TABLE patient " + "( id INTEGER  PRIMARY KEY AUTOINCREMENT, "
+			 sql1 = "CREATE TABLE patient " + "( id INTEGER  PRIMARY KEY AUTOINCREMENT, " + " IDNumber TEXT NOT NULL, "
 					+ " name TEXT NOT NULL, " + " surname TEXT NOT NULL, " + " sex TEXT NOT NULL, "
 					+ " date_birth DATE NOT NULL, " + " location TEXT NOT NULL, " + " actual_state TEXT NOT NULL)";					
 			stmt1.executeUpdate(sql1);
@@ -146,14 +147,15 @@ public class SQLMaster implements DBMaster {
 	@Override
 	public void addPatient(Patient p) {
 		try {
-			String sql = "INSERT INTO patient (name, surname, sex, date_birth, location, actual_state) VALUES(?, ?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO patient (IDNumber, name, surname, sex, date_birth, location, actual_state) VALUES(?, ?, ?, ?, ?, ?, ?)";
 			PreparedStatement prep = c.prepareStatement(sql);
-			prep.setString(1, p.getName());
-			prep.setString(2, p.getSurname());
-			prep.setString(3, p.getSex());
-			prep.setDate(4, p.getDate_birth());
-			prep.setString(5, p.getLocation());
-			prep.setString(6, p.getActual_state());
+			prep.setString(1, p.getIDNumber());
+			prep.setString(2, p.getName());
+			prep.setString(3, p.getSurname());
+			prep.setString(4, p.getSex());
+			prep.setDate(5, p.getDate_birth());
+			prep.setString(6, p.getLocation());
+			prep.setString(7, p.getActual_state());
 			prep.executeUpdate();
 			prep.close();
 		} catch (Exception e) {
@@ -206,6 +208,32 @@ public class SQLMaster implements DBMaster {
 			e.printStackTrace();
 		}
 		return patient_list;
+	}
+	
+	public Patient showPatientByIDNumber (String IDNumber) {
+		Patient p = null;
+		try {
+			Statement stmt = c.createStatement();
+			String sql = "SELECT * FROM patient WHERE IDNumber = " + IDNumber;
+			ResultSet rs = stmt.executeQuery(sql);
+			while(rs.next()) {
+				int id = rs.getInt("id");
+				String ID_Number = rs.getString("IDNumber");
+				String patientName = rs.getString("name");
+				String patientSurname = rs.getString("surname");
+				String sex=rs.getString("sex");
+				String location=rs.getString("location");
+				String actual_state=rs.getString("actual_state");
+				Date date_birth=rs.getDate("date_birth");
+				p = new Patient(id, ID_Number, patientName, patientSurname, sex,date_birth, location, actual_state);
+			}
+			rs.close();
+			stmt.close();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return p;
 	}
 
 	//Update patient state
@@ -297,6 +325,32 @@ public class SQLMaster implements DBMaster {
 			String sql = "SELECT * FROM family_history WHERE patient_id= ? ";
 			PreparedStatement prep = c.prepareStatement(sql);
 			prep.setInt(1, id);
+			ResultSet rs = prep.executeQuery();
+			while (rs.next()) {
+				Integer id_famHistory = rs.getInt("id_famHistory");
+				String type = rs.getString("type_cancerFam");
+				String member = rs.getString("member");
+				
+				famHist=new FamilyHistory(id_famHistory,type, member);	
+				
+			}
+			rs.close();
+			stmt.close();
+			prep.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return famHist;
+		
+	}
+	
+	public FamilyHistory showFamilyHistoryByIDNumber (String IDNumber) {
+		FamilyHistory famHist=null;
+		try {
+			Statement stmt = c.createStatement();
+			String sql = "SELECT * FROM family_history AS fh JOIN patient AS p ON fh.patient_id = p.id WHERE p.IDNumber= ? ";
+			PreparedStatement prep = c.prepareStatement(sql);
+			prep.setString(1, IDNumber);
 			ResultSet rs = prep.executeQuery();
 			while (rs.next()) {
 				Integer id_famHistory = rs.getInt("id_famHistory");

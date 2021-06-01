@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.TextField?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.RadioButton?>
+<?import com.gluonhq.charm.glisten.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -57,6 +57,7 @@
                </toggleGroup></RadioButton>
             <RadioButton fx:id="hospitalbutton" layoutX="460.0" layoutY="214.0" mnemonicParsing="false" text="Hospital" toggleGroup="$locationRadioButton" />
             <ComboBox fx:id="actualStateChoice" layoutX="152.0" layoutY="253.0" prefWidth="150.0" promptText="Actual State" />
+            <TextField fx:id="IDNum" layoutX="150.0" layoutY="65.0" promptText="ID Number" />
          </children>
       </AnchorPane>
       <Button fx:id="exitButton" layoutX="88.0" layoutY="385.0" mnemonicParsing="false" onAction="#actionExit" text="Exit" />
