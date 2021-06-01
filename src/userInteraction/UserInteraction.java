@@ -156,6 +156,17 @@ public class UserInteraction {
 		}
 		return date_birth;
 	}
+	
+	public static String printIDNumberMenu(){
+		String IDNumber=null;
+		try {
+		System.out.println("Please, input the patient's ID number:");
+	    IDNumber = reader.readLine();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return IDNumber;
+	}
 	//this method prints the details of the patient's symptoms
 	public static String printSymptomsDetailMenu(){
 		String detail="";
@@ -172,7 +183,7 @@ public class UserInteraction {
 	//this method is used to add a new patient to the db
 	public static void addPatientMenu(){
 		try {
-
+        String IDNumber = printIDNumberMenu();
 		String name = printPatientNameMenu();
 		String surname = printPatientSurnameMenu();
 		String sex = printPatientSexMenu();
@@ -180,7 +191,7 @@ public class UserInteraction {
 		String location = printPatientLocationMenu();
 		String actual_state = printPatientStateMenu();
 
-		dbmaster.addPatient(new Patient(name, surname, sex, Date.valueOf(date_birth), location, actual_state));//review
+		dbmaster.addPatient(new Patient(IDNumber, name, surname, sex, Date.valueOf(date_birth), location, actual_state));//review
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

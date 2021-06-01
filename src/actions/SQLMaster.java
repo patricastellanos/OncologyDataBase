@@ -210,22 +210,23 @@ public class SQLMaster implements DBMaster {
 		return patient_list;
 	}
 	
-	public Patient showPatientByIDNumber (String IDNumber) {
+	/*public Patient showPatientByIDNumber (String IDNumber) {
 		Patient p = null;
 		try {
-			Statement stmt = c.createStatement();
-			String sql = "SELECT * FROM patient WHERE IDNumber = " + IDNumber;
+			String sql = "SELECT * FROM patient WHERE IDNumber = ?";
+			PreparedStatement stmt = c.prepareStatement(sql);
+			
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()) {
 				int id = rs.getInt("id");
-				String ID_Number = rs.getString("IDNumber");
+				stmt.setString(1, IDNumber);
 				String patientName = rs.getString("name");
 				String patientSurname = rs.getString("surname");
 				String sex=rs.getString("sex");
 				String location=rs.getString("location");
 				String actual_state=rs.getString("actual_state");
 				Date date_birth=rs.getDate("date_birth");
-				p = new Patient(id, ID_Number, patientName, patientSurname, sex,date_birth, location, actual_state);
+				p = new Patient(id, IDNumber, patientName, patientSurname, sex,date_birth, location, actual_state);
 			}
 			rs.close();
 			stmt.close();
@@ -234,7 +235,7 @@ public class SQLMaster implements DBMaster {
 			e.printStackTrace();
 		}
 		return p;
-	}
+	}*/
 
 	//Update patient state
 		public void update_patient_state(int id, String actual_state) {
@@ -645,23 +646,23 @@ public class SQLMaster implements DBMaster {
 					Integer id_cancer = rs.getInt(1);
 					String type = rs.getString(3);
 					Integer id_patient = rs.getInt(6);
-					String name = rs.getString(7);
-					String surname = rs.getString(8);
-					String sex = rs.getString(9);
-					Date dob = rs.getDate(10);
-					String location = rs.getString(11);
-					String actual_state = rs.getString(12);
+					String name = rs.getString(8);
+					String surname = rs.getString(9);
+					String sex = rs.getString(10);
+					Date dob = rs.getDate(11);
+					String location = rs.getString(12);
+					String actual_state = rs.getString(13);
 					Patient p = new Patient(name,surname,sex,dob,location,actual_state);
 					patient_list.add(p);
 					can = new Cancer (type, patient_list);
 					
 				}else {
-					String name = rs.getString(7);
-					String surname = rs.getString(8);
-					String sex = rs.getString(9);
-					Date dob = rs.getDate(10);
-					String location = rs.getString(11);
-					String actual_state = rs.getString(12);
+					String name = rs.getString(8);
+					String surname = rs.getString(9);
+					String sex = rs.getString(10);
+					Date dob = rs.getDate(11);
+					String location = rs.getString(12);
+					String actual_state = rs.getString(13);
 					Patient p = new Patient(name,surname,sex,dob,location,actual_state);
 					patient_list.add(p);
 					can.setPatient_list(patient_list);

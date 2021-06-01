@@ -1,12 +1,17 @@
 package application;
 
 import java.text.DateFormat;
+
 import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -15,6 +20,7 @@ import javafx.scene.control.Alert.AlertType;
 
 import com.gluonhq.charm.glisten.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import oncology.db.interfaces.DBMaster;
 import oncology.db.pojos.FamilyHistory;
 import oncology.db.pojos.Patient;
@@ -26,9 +32,6 @@ public class PatientActionsController {
     private TextField pid;
 
     @FXML
-    private Button personalInfo;
-
-    @FXML
     private Button familyHist;
 
     @FXML
@@ -36,6 +39,33 @@ public class PatientActionsController {
 
     @FXML
     private TableView<FamilyHistory> tableF;
+    
+    @FXML
+    private Button exit;
+
+    @FXML
+    private Button back;
+
+    @FXML
+    void actionBack(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("SecondInteractionPatient.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+
+    }
+
+    @FXML
+    void actionExit(ActionEvent event) {
+    	System.exit(0);
+
+    }
 
     @FXML
     void actionSeeFamilyHist(ActionEvent event) {
@@ -48,16 +78,11 @@ public class PatientActionsController {
         }
     }
 
-    @FXML
-    void actionSeePersonalInfo(ActionEvent event) {
-    	Patient p = db.showPatientByIDNumber(pid.getText());
-    	tableP.getItems().addAll(p);
-
-    }
+   
     
     public void initialize() {
 
-    	tableP.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+    	/*tableP.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     	
     	TableColumn<Patient, String> idCol = new TableColumn<>("ID");
     	TableColumn<Patient, String> idNumCol = new TableColumn<>("IDNumber");
@@ -79,7 +104,7 @@ public class PatientActionsController {
     	actualStateCol.setCellValueFactory(new PropertyValueFactory<>("actual_state"));
     	
     	
-    	tableP.getColumns().addAll(idCol, idNumCol, nameCol, surNameCol, doBCol, sexCol, locationCol, actualStateCol);
+    	tableP.getColumns().addAll(idCol, idNumCol, nameCol, surNameCol, doBCol, sexCol, locationCol, actualStateCol);*/
     	
         tableF.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     	
