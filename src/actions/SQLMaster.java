@@ -84,7 +84,7 @@ public class SQLMaster implements DBMaster {
 			stmt1.executeUpdate(sql1);
 						
 			// Create table patient
-			 sql1 = "CREATE TABLE patient " + "( id INTEGER  PRIMARY KEY AUTOINCREMENT, " + " IDNumber TEXT NOT NULL, "
+			 sql1 = "CREATE TABLE patient " + "( id INTEGER  PRIMARY KEY AUTOINCREMENT, " + " idNumber TEXT NOT NULL, "
 					+ " name TEXT NOT NULL, " + " surname TEXT NOT NULL, " + " sex TEXT NOT NULL, "
 					+ " date_birth DATE NOT NULL, " + " location TEXT NOT NULL, " + " actual_state TEXT NOT NULL)";					
 			stmt1.executeUpdate(sql1);
@@ -210,23 +210,23 @@ public class SQLMaster implements DBMaster {
 		return patient_list;
 	}
 	
-	/*public Patient showPatientByIDNumber (String IDNumber) {
+	public Patient showPatientByIDNumber (String IDNumber) {
 		Patient p = null;
 		try {
-			String sql = "SELECT * FROM patient WHERE IDNumber = ?";
-			PreparedStatement stmt = c.prepareStatement(sql);
-			
+			Statement stmt = c.createStatement();
+			String sql = "SELECT * FROM patient WHERE idNumber =" +IDNumber;
+
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()) {
 				int id = rs.getInt("id");
-				stmt.setString(1, IDNumber);
+				String IDNum = rs.getString("idNumber");
 				String patientName = rs.getString("name");
 				String patientSurname = rs.getString("surname");
 				String sex=rs.getString("sex");
 				String location=rs.getString("location");
 				String actual_state=rs.getString("actual_state");
 				Date date_birth=rs.getDate("date_birth");
-				p = new Patient(id, IDNumber, patientName, patientSurname, sex,date_birth, location, actual_state);
+				p = new Patient(id, IDNum, patientName, patientSurname, sex,date_birth, location, actual_state);
 			}
 			rs.close();
 			stmt.close();
@@ -235,7 +235,7 @@ public class SQLMaster implements DBMaster {
 			e.printStackTrace();
 		}
 		return p;
-	}*/
+	}
 
 	//Update patient state
 		public void update_patient_state(int id, String actual_state) {

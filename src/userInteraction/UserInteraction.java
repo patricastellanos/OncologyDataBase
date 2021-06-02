@@ -237,6 +237,22 @@ public class UserInteraction {
 		}
 	}
 	
+	public static void seeInfoPatientMenu() { 
+		System.out.println("Please, input the ID number:");
+		try {
+		
+		String idNum =reader.readLine();
+		Patient p= dbmaster.showPatientByIDNumber(idNum);
+		if (p==null) {
+			System.out.println("No results.");
+		} else {
+			System.out.println(p);
+		}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	//this method is used to update a patient´s state
 	public static void update_patient_stateMenu() {
 		try {

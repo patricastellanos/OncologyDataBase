@@ -39,7 +39,7 @@ public class SubMenusPatient {
 
 		}
 		
-		 public static void medicalExaminationSubmenuNurse() {
+		 public static void medicalExaminationSubmenuPatient() {
 				
 				while (true) {
 					System.out.println("1.See your medical examination");
@@ -61,6 +61,32 @@ public class SubMenusPatient {
 						System.out.println("An error has ocurred");
 					}
 				}
+			}
+		 
+		 public static void infoPatientSubmenuPatient() {
+				while (true) {
+					System.out.println("1. See your information ");
+					System.out.println("2. Back to the main menu");
+					try {
+						int choice = Integer.parseInt(reader.readLine());
+						while (choice < 0 || choice > 2) {
+							System.out.println("Choose an option within the range:");
+							choice = Integer.parseInt(reader.readLine());
+						}
+						switch (choice) {
+						case 1:
+							UserInteraction.seeInfoPatientMenu();
+							break;
+						case 2:
+							return;
+						default:
+							break;
+						}
+					} catch (Exception e) {
+						System.out.println("An error has ocurred");
+					}
+				}
+
 			}
 	
 }

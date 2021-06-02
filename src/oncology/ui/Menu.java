@@ -117,11 +117,12 @@ public class Menu {
 				System.out.println("Choose an option:");
 				System.out.println("1. Family History");
 				System.out.println("2. Medical Examination");
-				System.out.println("3. Change password");
-				System.out.println("4. Remove user");
+				System.out.println("3. Patient");
+				System.out.println("4. Change password");
+				System.out.println("5. Remove user");
 				System.out.println("0. Back to the main menu");
 				int choice = Integer.parseInt(reader.readLine());
-				while (choice < 0 || choice > 7) {
+				while (choice < 0 || choice > 5) {
 					System.out.println("Choose an option within the range:");
                     choice =Integer.parseInt(reader.readLine());
 				}
@@ -130,12 +131,15 @@ public class Menu {
 					SubMenusPatient.familyHistorySubmenuPatient();
 					break;
 				case 2:
-					SubMenusPatient.medicalExaminationSubmenuNurse();
+					SubMenusPatient.medicalExaminationSubmenuPatient();
 					break;
 				case 3:
-					UserInteraction.changePasswordMenu();
+					SubMenusPatient.infoPatientSubmenuPatient();
 					break;
 				case 4:
+					UserInteraction.changePasswordMenu();
+					break;
+				case 5 :
 					UserInteraction.removeUserMenu();
 					System.exit(0);
 				case 0:
