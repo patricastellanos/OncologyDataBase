@@ -33,6 +33,16 @@ public class TreatmentNurseController {
     
     @FXML
     void actionCheck(ActionEvent event) {
+    	try{
+			Parent root = FXMLLoader.load(getClass().getResource("CheckTreatmentNurse.fxml"));
+			Scene scene = new Scene(root);
+			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		
+			stage.setScene(scene);
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 
     }
 

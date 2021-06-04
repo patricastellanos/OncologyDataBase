@@ -11,6 +11,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.gluonhq.charm.glisten.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
@@ -42,6 +51,7 @@ public class CancerDoctorController {
 
 	@FXML
 	private Button backButton;
+
 
     @FXML
     void actionBack(ActionEvent event) {
@@ -101,6 +111,7 @@ public class CancerDoctorController {
     	
     	db.cancerToXml(Integer.parseInt(convertXML.getText()));
     	infoMessage("File created and saved", null, "Message");
+    	
 
     }
 
@@ -127,6 +138,8 @@ public class CancerDoctorController {
         alert.setHeaderText(headerText);
         alert.showAndWait();
     }
+    
+  
    
 
 }
