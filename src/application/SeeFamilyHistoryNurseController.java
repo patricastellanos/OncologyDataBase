@@ -85,7 +85,6 @@ public class SeeFamilyHistoryNurseController {
     void actionSee(ActionEvent event) {
     	FamilyHistory fam = db.printFamHistory(Integer.parseInt(id.getText()));
     	
-    	tableP.getItems().addAll(fam);
     	
     	if(fam==null) {
     		infoMessage("No family history available", null, "Message");
