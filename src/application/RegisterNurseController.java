@@ -110,7 +110,7 @@ public class RegisterNurseController {
    	   		userman.newUser(user);
    	   		
    	   		
-   			Parent root = FXMLLoader.load(getClass().getResource("MainMenuNurse.fxml")); 
+   			Parent root = FXMLLoader.load(getClass().getResource("LogInNurse.fxml")); 
    			Scene scene = new Scene(root);
    			Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
    			

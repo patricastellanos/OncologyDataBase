@@ -117,7 +117,7 @@ public class RegisterDoctorController {
    		userman.newUser(user);
    		
    		
-		Parent root = FXMLLoader.load(getClass().getResource("MainMenuDoctor.fxml")); 
+		Parent root = FXMLLoader.load(getClass().getResource("LogInDoctor.fxml")); 
 		Scene scene = new Scene(root);
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
