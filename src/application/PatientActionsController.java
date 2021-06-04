@@ -82,29 +82,6 @@ public class PatientActionsController {
     
     public void initialize() {
 
-    	/*tableP.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-    	
-    	TableColumn<Patient, String> idCol = new TableColumn<>("ID");
-    	TableColumn<Patient, String> idNumCol = new TableColumn<>("IDNumber");
-    	TableColumn<Patient, String> nameCol = new TableColumn<>("Name");
-    	TableColumn<Patient, String> surNameCol = new TableColumn<>("SurName");
-    	TableColumn<Patient, String> doBCol = new TableColumn<>("Date of birth");
-    	TableColumn<Patient, String> sexCol = new TableColumn<>("Sex");
-    	TableColumn<Patient, String> locationCol = new TableColumn<>("Location");
-    	TableColumn<Patient, String> actualStateCol = new TableColumn<>("Actual State");
-    	
-    	idCol.setCellValueFactory(data -> new SimpleStringProperty(Integer.toString(data.getValue().getId_patient())));
-    	idNumCol.setCellValueFactory(new PropertyValueFactory<>("IDNumber"));
-    	nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-    	surNameCol.setCellValueFactory(new PropertyValueFactory<>("surname"));
-    	DateFormat dateformat=new SimpleDateFormat("yyyy-mm-dd");
-    	doBCol.setCellValueFactory(data -> new SimpleStringProperty(dateformat.format(data.getValue().getDate_birth())));
-    	sexCol.setCellValueFactory(new PropertyValueFactory<>("sex"));
-    	locationCol.setCellValueFactory(new PropertyValueFactory<>("location"));
-    	actualStateCol.setCellValueFactory(new PropertyValueFactory<>("actual_state"));
-    	
-    	
-    	tableP.getColumns().addAll(idCol, idNumCol, nameCol, surNameCol, doBCol, sexCol, locationCol, actualStateCol);*/
     	
         tableF.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
     	

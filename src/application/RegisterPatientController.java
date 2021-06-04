@@ -108,7 +108,7 @@ public class RegisterPatientController {
    		userman.newUser(user);
    		
    		
-		Parent root = FXMLLoader.load(getClass().getResource("PatientActions.fxml")); 
+		Parent root = FXMLLoader.load(getClass().getResource("LogInPatient.fxml")); 
 		Scene scene = new Scene(root);
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		
