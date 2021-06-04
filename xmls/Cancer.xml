@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Cancer>
-    <Type>liver</Type>
+    <Type>Lung</Type>
     <Patients>
         <Patient>
-            <name>polo</name>
-            <surname>lopez</surname>
-            <sex>MALE</sex>
-            <dob>1955-02-28</dob>
-            <location>HOME</location>
-            <actual_state>LOWSTREAM_REHABILITATION</actual_state>
+            <name>Carlos</name>
+            <surname>García</surname>
+            <sex>Male</sex>
+            <dob>2000-05-20</dob>
+            <location>Hospital</location>
+            <actual_state>Complex care</actual_state>
         </Patient>
     </Patients>
 </Cancer>
