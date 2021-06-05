@@ -80,11 +80,11 @@ public class SQLMaster implements DBMaster {
 			// Create table family_history
 			String sql1 = "CREATE TABLE family_history " + "(id_famHistory INTEGER PRIMARY KEY AUTOINCREMENT, "
 								+ "  type_cancerFam TEXT, " + "  member TEXT , " 
-								+ " patient_id REFERENCES patient (id) ON DELETE SET NULL)";
+								+ " patient_id REFERENCES patient (id) ON DELETE CASCADE)";
 			stmt1.executeUpdate(sql1);
 						
 			// Create table patient
-			 sql1 = "CREATE TABLE patient " + "( id INTEGER  PRIMARY KEY AUTOINCREMENT, " + " idNumber TEXT NOT NULL, "
+			 sql1 = "CREATE TABLE patient " + "(id INTEGER  PRIMARY KEY AUTOINCREMENT, " + " idNumber TEXT NOT NULL, "
 					+ " name TEXT NOT NULL, " + " surname TEXT NOT NULL, " + " sex TEXT NOT NULL, "
 					+ " date_birth DATE NOT NULL, " + " location TEXT NOT NULL, " + " actual_state TEXT NOT NULL)";					
 			stmt1.executeUpdate(sql1);
@@ -92,13 +92,13 @@ public class SQLMaster implements DBMaster {
 			//Create the table medical examination
 			sql1= "CREATE TABLE medical_examination " + "(id_medExam INTEGER PRIMARY KEY AUTOINCREMENT, "
 			      + " medExam_type TEXT NOT NULL, " + " dateMedExam DATE NOT NULL, " + " diagnosis TEXT NOT NULL, " 
-			      + " patient_id INTEGER REFERENCES patient (id) ON DELETE SET NULL)";
+			      + " patient_id INTEGER REFERENCES patient (id) ON DELETE CASCADE)";
 			stmt1.executeUpdate(sql1);
 
 			
 			// Create table cancer
 			sql1 = "CREATE TABLE cancer " + "(id_cancer INTEGER PRIMARY KEY AUTOINCREMENT, "
-					+ " id_medExam REFERENCES medical_examination (id_medExam) ON DELETE SET NULL, "
+					+ " id_medExam REFERENCES medical_examination (id_medExam) ON DELETE CASCADE, "
 					+ " cancer_type TEXT NOT NULL)";
 			// sql = "INSERT INTO cancer (type) "
 			// + "VALUES ('Liver');";
@@ -117,14 +117,14 @@ public class SQLMaster implements DBMaster {
 			// Create table patient_treatment
 			sql1 = "CREATE TABLE patient_treatment "
 					+ "(id INTEGER REFERENCES patient (id) ON DELETE SET NULL, "
-					+ " id_treat INTEGER REFERENCES treatment (id_treat) ON DELETE SET NULL, "
+					+ " id_treat INTEGER REFERENCES treatment (id_treat) ON DELETE CASCADE, "
 					+ " PRIMARY KEY (id, id_treat))";
 			stmt1.executeUpdate(sql1);
 
 			// Create table patient_symptoms
 			sql1 = "CREATE TABLE patient_symptoms"
 					+ "(id INTEGER REFERENCES patient(id) ON DELETE SET NULL, "
-					+ " id_symp INTEGER REFERENCES symptoms(id_symp) ON DELETE SET NULL, "
+					+ " id_symp INTEGER REFERENCES symptoms(id_symp) ON DELETE CASCADE, "
 					+ " PRIMARY KEY (id, id_symp))";
 
 			stmt1.executeUpdate(sql1);
