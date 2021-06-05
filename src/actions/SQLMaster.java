@@ -728,12 +728,9 @@ public class SQLMaster implements DBMaster {
 		
 		public void removeTreatment (int id_patient, int id_treat) {
 			try {
-				String sql = "DELETE FROM treatment AS t JOIN patient_treatment AS pt ON pt.id_treat = t.id_treat WHERE pt.id= ? AND pt.id_treat= ?";
+				String sql = "DELETE FROM patient_treatment WHERE id= ? AND id_treat= ?";
 				PreparedStatement prep = c.prepareStatement(sql);
 				
-				/*SELECT * FROM cancer AS c JOIN cancer_patient AS cp ON 
-				 * cp.id_cancer=c.id_cancer WHERE cp.id= " +id_patient;
-				 */
 				prep.setInt(1, id_patient);
 				prep.setInt(2, id_treat);
 				prep.executeUpdate();
