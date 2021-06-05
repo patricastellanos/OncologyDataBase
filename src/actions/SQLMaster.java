@@ -166,7 +166,7 @@ public class SQLMaster implements DBMaster {
 	public void removePatient(int id) {
 		// TODO Unsafe method, update later
 		try {
-			String sql = "DELETE FROM patient WHERE id= ?";
+			String sql = "DELETE FROM patient WHERE id= ? ";
 			PreparedStatement prep = c.prepareStatement(sql);
 			prep.setInt(1, id);
 			prep.executeUpdate();
