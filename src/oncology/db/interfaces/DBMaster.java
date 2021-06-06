@@ -19,7 +19,6 @@ public interface DBMaster {
     public void update_patient_state(int id, String actual_state);
     public List<Patient> printPatients();
     public String printActualState(int id_patient);
-    public Patient showPatientByIDNumber (String IDNumber);
     
     public FamilyHistory printFamHistory(int id);
     public void addFamHistory(int id,FamilyHistory famHist); 

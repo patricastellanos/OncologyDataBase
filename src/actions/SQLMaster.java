@@ -209,33 +209,7 @@ public class SQLMaster implements DBMaster {
 		}
 		return patient_list;
 	}
-	
-	public Patient showPatientByIDNumber (String IDNumber) {
-		Patient p = null;
-		try {
-			Statement stmt = c.createStatement();
-			String sql = "SELECT * FROM patient WHERE idNumber =" +IDNumber;
 
-			ResultSet rs = stmt.executeQuery(sql);
-			while(rs.next()) {
-				int id = rs.getInt("id");
-				String IDNum = rs.getString("idNumber");
-				String patientName = rs.getString("name");
-				String patientSurname = rs.getString("surname");
-				String sex=rs.getString("sex");
-				String location=rs.getString("location");
-				String actual_state=rs.getString("actual_state");
-				Date date_birth=rs.getDate("date_birth");
-				p = new Patient(id, IDNum, patientName, patientSurname, sex,date_birth, location, actual_state);
-			}
-			rs.close();
-			stmt.close();
-			
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		return p;
-	}
 
 	//Update patient state
 		public void update_patient_state(int id, String actual_state) {
